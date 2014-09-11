@@ -1,0 +1,1745 @@
+FORMAT: 1A
+
+# Clickbus Public API
+This is the documentation and samples for Clickbus Public API
+Also this can be used as mocked data to simply test API integration.
+
+In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus ( contato@clickubs.com.br for more commercial details ).
+
+# Group Stations
+
+## Stations [/stations]
+
+### Get Avaliable Stations [GET]
+
++ Parameters
+
+    + lang (required,string,`pt_BR`) ... The lang you need the stations to be displayed. If not available in that language en_US will be default
+
++ Response 200 (application/json)
+        {
+          "meta": "",
+          "items": [
+            {
+              "id": "1",
+              "station_id": "1",
+              "slug": "sao-paulo-todos",
+              "locale": "pt_BR",
+              "name": "Sao Paulo Todos",
+              "is_primary": "true",
+              "created_at": "0000-00-00 00:00:00",
+              "updated_at": "2014-03-19 20:43:14",
+              "city": {
+                "id": "1",
+                "place_id": "1",
+                "locale": "pt_BR",
+                "name": "Sao Paulo",
+                "created_at": "0000-00-00 00:00:00",
+                "updated_at": "2014-03-19 20:43:14",
+                "latitude": "",
+                "longitude": ""
+              },
+              "state": {
+                "code": "SP",
+                "name": "Sao Paulo"
+              },
+              "country": {
+                "code": "BRA",
+                "name": "Brasil"
+              }
+            },
+            {
+              "id": "2141",
+              "station_id": "2141",
+              "slug": "abacaxi-go",
+              "locale": "pt_BR",
+              "name": "Rodoviaria de Abacaxi",
+              "is_primary": "true",
+              "created_at": "2013-04-26 07:31:26",
+              "updated_at": "2014-03-19 20:43:14",
+              "city": {
+                "id": "2141",
+                "place_id": "2141",
+                "locale": "pt_BR",
+                "name": "Abacaxi, GO",
+                "created_at": "2013-04-26 07:31:26",
+                "updated_at": "2014-03-19 20:43:14",
+                "latitude": "",
+                "longitude": ""
+              },
+              "state": {
+                "code": "GO",
+                "name": "Goias"
+              },
+              "country": {
+                "code": "BRA",
+                "name": "Brasil"
+              }
+            },
+            {
+              "id": "2142",
+              "station_id": "2142",
+              "slug": "abel-figueira-pa",
+              "locale": "pt_BR",
+              "name": "Posto Policial de Abel Figueira rod. 1234",
+              "is_primary": "true",
+              "created_at": "2013-04-26 07:31:26",
+              "updated_at": "2014-03-19 20:43:14",
+              "city": {
+                "id": "2142",
+                "place_id": "2142",
+                "locale": "pt_BR",
+                "name": "Abel Figueira, PA",
+                "created_at": "2013-04-26 07:31:26",
+                "updated_at": "2014-03-19 20:43:14",
+                "latitude": "",
+                "longitude": ""
+              },
+              "state": {
+                "code": "PA",
+                "name": "Para"
+              },
+              "country": {
+                "code": "BRA",
+                "name": "Brasil"
+              }
+            },
+            {
+              "id": "2143",
+              "station_id": "2143",
+              "slug": "ac-camaca-ba",
+              "locale": "pt_BR",
+              "name": "Entroncamento do km 18 Camaca",
+              "is_primary": "true",
+              "created_at": "2013-04-26 07:31:26",
+              "updated_at": "2014-03-19 20:43:14",
+              "city": {
+                "id": "2143",
+                "place_id": "2143",
+                "locale": "pt_BR",
+                "name": "Ac. Camaca, BA",
+                "created_at": "2013-04-26 07:31:26",
+                "updated_at": "2014-03-19 20:43:14",
+                "latitude": "",
+                "longitude": "",
+                "state": {
+                  "code": "BA",
+                  "name": "Bahia"
+                }
+              }
+            },
+            {
+              "id": "2144",
+              "station_id": "2144",
+              "slug": "acailandia-ma",
+              "locale": "pt_BR",
+              "name": "Terminal de Acailandia",
+              "is_primary": "true",
+              "created_at": "2013-04-26 07:31:26",
+              "updated_at": "2014-03-19 20:43:14",
+              "city": {
+                "id": "2144",
+                "place_id": "2144",
+                "locale": "pt_BR",
+                "name": "Acailandia, MA",
+                "created_at": "2013-04-26 07:31:26",
+                "updated_at": "2014-03-19 20:43:14",
+                "latitude": "",
+                "longitude": ""
+              },
+              "state": {
+                "code": "MA",
+                "name": "Maranhao"
+              },
+              "country": {
+                "code": "BRA",
+                "name": "Brasil"
+              }
+            },
+            {
+              "id": "2145",
+              "station_id": "2145",
+              "slug": "acampamento-es",
+              "locale": "pt_BR",
+              "name": "Rodoviaria Municipal de Acampamento",
+              "is_primary": "true",
+              "created_at": "2013-04-26 07:31:26",
+              "updated_at": "2014-03-19 20:43:14",
+              "city": {
+                "id": "2145",
+                "place_id": "2145",
+                "locale": "pt_BR",
+                "name": "Acampamento, ES",
+                "created_at": "2013-04-26 07:31:26",
+                "updated_at": "2014-03-19 20:43:14",
+                "latitude": "",
+                "longitude": ""
+              },
+              "state": {
+                "code": "ES",
+                "name": "Espirito Santo"
+              },
+              "country": {
+                "code": "BRA",
+                "name": "Brasil"
+              }
+            }
+          ]
+        }
+
+# Group Search
+
+## Search [/search]
+
+### Get Avaliable Trips [GET]
+
++ Parameters
+
+    + from (required, `Terminal do Tiete`) ... The Station or Place name/alias to perform the search from    
+    + to (required, `Rio de Janeiro`) ... The Station or Place name/alias to perform the search to    
+    + departure (required, `2015-10-30`) ... The departure date to perform the search
+    + engine ( required, `"5411E7D726991"`) ... Specify in what booking engine you want to perform the search, if not provided will search in the availiable booking engine on the server
+    + quantity (optional, `2`) ... The minimum ammount of avaliable seats
+    + locale (optional, `pt_BR`) ... The locale i want to perform the search in. If you provide nothing the system will try to search in all languages avaliables on the server (that can take more time to respond)
+
++ Response 200 (application/json)
+
+        {
+          "meta": "",
+          "paymentSettings": {
+            "bankslip": {
+              "total": "0.00",
+              "fixedValue": 0,
+              "serviceFee": 0,
+              "serviceFeePercentage": "11.00"
+            },
+            "creditcard": {
+              "total": {
+                "1": "0.00",
+                "2": "0.00",
+                "3": "0.00",
+                "4": "0.00",
+                "5": "0.00",
+                "6": "0.00",
+                "7": "0.00",
+                "8": "0.00",
+                "9": "0.00",
+                "10": "0.00",
+                "11": "0.00",
+                "12": "0.00"
+              },
+              "fixedValue": 0,
+              "serviceFee": {
+                "1": 0,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0,
+                "10": 0,
+                "11": 0,
+                "12": 0
+              },
+              "serviceFeePercentage": {
+                "1": "11.00",
+                "2": "11.00",
+                "3": "11.00",
+                "4": "11.00",
+                "5": "11.00",
+                "6": "11.00",
+                "7": "11.00",
+                "8": "11.00",
+                "9": "11.00",
+                "10": "11.00",
+                "11": "11.00",
+                "12": "11.00"
+              }
+            },
+            "debitcard": {
+              "total": "0.00",
+              "fixedValue": 0,
+              "serviceFee": 0,
+              "serviceFeePercentage": "11.00"
+            },
+            "paypal_hpp": {
+              "total": "0.00",
+              "fixedValue": 0,
+              "serviceFee": 0,
+              "serviceFeePercentage": "11.00"
+            },
+            "banktransfer": {
+              "total": "0.00",
+              "fixedValue": 0,
+              "serviceFee": 0,
+              "serviceFeePercentage": "11.00"
+            }
+          },
+          "items": [
+            {
+              "from": "São Paulo, SP",
+              "to": "Rio de Janeiro, RJ",
+              "booking_engine": "cbconnect",
+              "parts": [
+                {
+                  "trip_id": 333,
+                  "departure": {
+                    "price": 9000,
+                    "waypoint": {
+                      "id": 113,
+                      "prices": [
+                        {
+                          "waypoint": 123,
+                          "price": 9000
+                        },
+                        {
+                          "waypoint": 133,
+                          "price": 4500
+                        }
+                      ],
+                      "schedule": {
+                        "id": 12,
+                        "date": "2015-10-31",
+                        "time": "11:00",
+                        "timezone": "America/Sao_Paulo"
+                      },
+                      "context": "departure",
+                      "place": {
+                        "country": "BRA",
+                        "state": "São Paulo",
+                        "city": "São Paulo",
+                        "station": {
+                          "current": {
+                            "id": 111,
+                            "name": "Autobus Terminal of Barra Funda",
+                            "locale": "en_US"
+                          },
+                          "default": {
+                            "id": 1231,
+                            "name": "Terminal Rodoviário da Barra Funda",
+                            "locale": "pt_BR"
+                          }
+                        },
+                        "locale": "en_US",
+                        "id": 123
+                      },
+                      "isDeparture": true,
+                      "position": 0
+                    }
+                  },
+                  "arrival": {
+                    "price": 0,
+                    "waypoint": {
+                      "id": 123,
+                      "prices": [],
+                      "schedule": {
+                        "id": 13,
+                        "date": "2015-10-31",
+                        "time": "19:00",
+                        "timezone": "America/Sao_Paulo"
+                      },
+                      "context": "arrival",
+                      "place": {
+                        "country": "BRA",
+                        "state": "São Paulo",
+                        "city": "Santos",
+                        "station": {
+                          "current": {
+                            "id": 112,
+                            "name": "Galeao Terminal",
+                            "locale": "en_US"
+                          },
+                          "default": {
+                            "id": 1232,
+                            "name": "Terminal do Galeão",
+                            "locale": "pt_BR"
+                          }
+                        },
+                        "locale": "en_US",
+                        "id": 124
+                      },
+                      "isDeparture": true,
+                      "position": 2
+                    }
+                  },
+                  "busCompany": {
+                    "name": "Itapemirim",
+                    "id": 12
+                  },
+                  "bus": {
+                    "serviceClass": "Conventional",
+                    "name": "BusName",
+                    "id": 1
+                  },
+                  "waypoints": [
+                    {
+                      "id": 113,
+                      "prices": [
+                        {
+                          "waypoint": 123,
+                          "price": 9000
+                        },
+                        {
+                          "waypoint": 133,
+                          "price": 4500
+                        }
+                      ],
+                      "schedule": {
+                        "id": 12,
+                        "date": "2015-10-31",
+                        "time": "11:00",
+                        "timezone": "America/Sao_Paulo"
+                      },
+                      "context": "departure",
+                      "place": {
+                        "country": "BRA",
+                        "state": "São Paulo",
+                        "city": "São Paulo",
+                        "station": {
+                          "current": {
+                            "id": 111,
+                            "name": "Autobus Terminal of Barra Funda",
+                            "locale": "en_US"
+                          },
+                          "default": {
+                            "id": 1231,
+                            "name": "Terminal Rodoviário da Barra Funda",
+                            "locale": "pt_BR"
+                          }
+                        },
+                        "locale": "en_US",
+                        "id": 123
+                      },
+                      "isDeparture": true,
+                      "position": 0
+                    },
+                    {
+                      "id": 123,
+                      "prices": [],
+                      "schedule": {
+                        "id": 13,
+                        "date": "2015-10-31",
+                        "time": "19:00",
+                        "timezone": "America/Sao_Paulo"
+                      },
+                      "context": "arrival",
+                      "place": {
+                        "country": "BRA",
+                        "state": "São Paulo",
+                        "city": "Santos",
+                        "station": {
+                          "current": {
+                            "id": 112,
+                            "name": "Galeao Terminal",
+                            "locale": "en_US"
+                          },
+                          "default": {
+                            "id": 1232,
+                            "name": "Terminal do Galeão",
+                            "locale": "pt_BR"
+                          }
+                        },
+                        "locale": "en_US",
+                        "id": 124
+                      },
+                      "isDeparture": true,
+                      "position": 2
+                    },
+                    {
+                      "id": 133,
+                      "prices": [
+                        {
+                          "waypoint": 123,
+                          "price": 1500
+                        }
+                      ],
+                      "schedule": {
+                        "id": 14,
+                        "date": "2015-10-31",
+                        "time": "13:00",
+                        "timezone": "America/Sao_Paulo"
+                      },
+                      "context": "stop",
+                      "place": {
+                        "country": "BRA",
+                        "state": "São Paulo",
+                        "city": "Guaruja",
+                        "station": {
+                          "current": {
+                            "id": 112,
+                            "name": "Big Beach",
+                            "locale": "en_US"
+                          },
+                          "default": {
+                            "id": 1232,
+                            "name": "Praia Grande",
+                            "locale": "pt_BR"
+                          }
+                        },
+                        "locale": "en_US",
+                        "id": 124
+                      },
+                      "isDeparture": true,
+                      "position": 1
+                    }
+                  ],
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handcap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ],
+                  "products": [
+                    {
+                      "uuid": "ab123d123d1",
+                      "name": "Potato Chips",
+                      "price": 500,
+                      "currency": "BRL",
+                      "avaliable": true
+                    },
+                    {
+                      "uuid": "ab123dc121",
+                      "name": "Potato Chips Large",
+                      "price": 1500,
+                      "currency": "BRL",
+                      "avaliable": true
+                    },
+                    {
+                      "uuid": "ab123d5fd",
+                      "name": "Extra Luggage 1kg",
+                      "price": 1000,
+                      "currency": "BRL",
+                      "avaliable": false
+                    }
+                  ],
+                  "availableSeats": 10
+                }
+              ]
+            }
+          ]
+        }
+
+# Group Session
+
+## Session [/session]
+
+### Get Session [GET]
+
++ Response 201 (application/json)
+        {
+            "content" : "AAAFFFD-DAADA-111444ED-GGFFEE"
+        }
+
+# Group Trip Details
+
+## Trip Details [/trip/{scheduleId}]
+
++ Parameters
+    + scheduleId (required,`13ASDF-AASDA12-AADDDFF11-ASDASD`) ... Schedule ID from a search result part. Note that if you want details from more than one part ( results can have 1 or more parts if is routed for example ) you need to call details from each part schedule id
+        
+### Get Trips Details [GET]
+
++ Response 200 (application/json)
+
+        {
+          "meta": {},
+          "content": {
+            "trip_id": 40123,
+            "busCompany": {
+              "name": "Cometa"
+            },
+            "bus": {
+              "id": 12222111,
+              "name": "Dunha"
+            },
+            "seats": [
+              {
+                "id": 13,
+                "name": "A02",
+                "available": true,
+                "position": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 14,
+                "name": "A03",
+                "available": false,
+                "position": {
+                  "x": 1,
+                  "y": 3,
+                  "z": 1
+                },
+                "details": {}
+              },
+              {
+                "id": 15,
+                "name": "A04",
+                "available": true,
+                "position": {
+                  "x": 1,
+                  "y": 4,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 16,
+                "name": "A05",
+                "available": true,
+                "position": {
+                  "x": 2,
+                  "y": 0,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 17,
+                "name": "A06",
+                "available": true,
+                "position": {
+                  "x": 2,
+                  "y": 1,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 18,
+                "name": "A07",
+                "available": true,
+                "position": {
+                  "x": 2,
+                  "y": 3,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 19,
+                "name": "A08",
+                "available": true,
+                "position": {
+                  "x": 2,
+                  "y": 4,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 20,
+                "name": "A09",
+                "available": true,
+                "position": {
+                  "x": 3,
+                  "y": 0,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 21,
+                "name": "A10",
+                "available": true,
+                "position": {
+                  "x": 3,
+                  "y": 1,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 22,
+                "name": "A11",
+                "available": true,
+                "position": {
+                  "x": 3,
+                  "y": 3,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 23,
+                "name": "A12",
+                "available": true,
+                "position": {
+                  "x": 3,
+                  "y": 4,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 24,
+                "name": "A13",
+                "available": true,
+                "position": {
+                  "x": 4,
+                  "y": 0,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 25,
+                "name": "A14",
+                "available": true,
+                "position": {
+                  "x": 4,
+                  "y": 1,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 26,
+                "name": "A15",
+                "available": true,
+                "position": {
+                  "x": 4,
+                  "y": 3,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 27,
+                "name": "A16",
+                "available": true,
+                "position": {
+                  "x": 4,
+                  "y": 4,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 28,
+                "name": "A17",
+                "available": true,
+                "position": {
+                  "x": 5,
+                  "y": 0,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 29,
+                "name": "A18",
+                "available": true,
+                "position": {
+                  "x": 5,
+                  "y": 1,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 30,
+                "name": "A19",
+                "available": true,
+                "position": {
+                  "x": 5,
+                  "y": 3,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 31,
+                "name": "A20",
+                "available": true,
+                "position": {
+                  "x": 5,
+                  "y": 4,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 32,
+                "name": "A21",
+                "available": true,
+                "position": {
+                  "x": 6,
+                  "y": 0,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 33,
+                "name": "A22",
+                "available": true,
+                "position": {
+                  "x": 6,
+                  "y": 1,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 34,
+                "name": "A23",
+                "available": true,
+                "position": {
+                  "x": 6,
+                  "y": 3,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 35,
+                "name": "A24",
+                "available": true,
+                "position": {
+                  "x": 6,
+                  "y": 4,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 36,
+                "name": "A25",
+                "available": true,
+                "position": {
+                  "x": 7,
+                  "y": 0,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 37,
+                "name": "A26",
+                "available": true,
+                "position": {
+                  "x": 7,
+                  "y": 1,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 38,
+                "name": "A27",
+                "available": true,
+                "position": {
+                  "x": 7,
+                  "y": 3,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 39,
+                "name": "A28",
+                "available": true,
+                "position": {
+                  "x": 7,
+                  "y": 4,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 40,
+                "name": "A29",
+                "available": true,
+                "position": {
+                  "x": 8,
+                  "y": 0,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 41,
+                "name": "A30",
+                "available": true,
+                "position": {
+                  "x": 8,
+                  "y": 1,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 42,
+                "name": "A31",
+                "available": true,
+                "position": {
+                  "x": 8,
+                  "y": 3,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": 43,
+                "name": "A32",
+                "available": true,
+                "position": {
+                  "x": 8,
+                  "y": 4,
+                  "z": 1
+                },
+                "details": {
+                  "price": 1100,
+                  "currency": "BRL",
+                  "seatTypes": [
+                    {
+                      "name": "Professor",
+                      "discount": 0.9,
+                      "id": 1
+                    },
+                    {
+                      "name": "Handicap",
+                      "discount": 0.9,
+                      "id": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }        
+
+# Group Seat Block
+
+## Seat Block [/seat-block]
+
+### Create a lock in a seat based on a session id [PUT]
++ Parameters
+    + meta
+    + request (required,object,`{}`) ... The request object content
+    + request.seat (required,numeric, `01`) ... The seat id from the given Seat in TripDetails call
+    + request.passenger (required,object) ... Passenger data
+    + request.passenger.name (required,string,`Joe Doe`) ... The passenger name
+    + request.passenger.document (optional,alphanumeric,`1111123123`) ... Passenger document if the api request so
+    + request.passenger.documentType (optional,alphanumeric,`RG`) ... Passenger document type
+    + request.passenger.gender (optional,alphanumeric,`M`) ... Passenger gender
+    + request.schedule (required,object) ... Schedule object from the previous search result part call
+    + request.schedule.id (required,alphanumeric,`FFFDDD-DAFASD-DFFF3344-DDASSS`) ... Schedule id
+    + sessionId (required, alphanumeric, `g1898g0ogdlh9f3mfra2hl3el3`) ... Order/Booking unique identifier.
+
++ Request
+
+    + Body
+    
+            {
+              "meta": {},
+              "request": {
+                "seat": "01",
+                "passenger": {
+                  "name": "Pedrinn Ribeiro",
+                  "document": "12345",
+                  "documentType": "RG",
+                  "gender": "M"
+                },
+                "schedule": {
+                  "id": "DDFF999-AAACCC-DDDFFF@113-AFAFDD"
+                },
+                "sessionId": "g1898g0ogdlh9f3mfra2hl3el3"
+              }
+            }
+
++ Response 201 (application/json)
+
+    + Body
+    
+            {
+              "meta": {},
+              "items": [
+                {
+                  "seat": "05",
+                  "schedule": {
+                    "id": "DDFF999-AAACCC-DDDFFF@113-AFAFDD",
+                    "date": "2014-10-30",
+                    "time": "11:00",
+                    "timezone": "America/Sao_Paulo"
+                  },
+                  "status": "blocked",
+                  "sessionId": "g8qegjpd6kl0h557q0gjc02815",
+                  "expireAt": "2014-06-16 11:43"
+                }
+              ]
+            }
+
+### Remove a block in a seat [DELETE]
+
++ Parameters
+
+    + meta
+    + request (required,object,`{}`) ... The request object content
+    + request.seat (required,numeric, `01`) ... The seat id from the given Seat in TripDetails call
+    + request.schedule (required,object) ... Schedule object from the previous search result part call
+    + request.schedule.id (required,alphanumeric,`FFFDDD-DAFASD-DFFF3344-DDASSS`) ... Schedule id
+    + sessionId (required, alphanumeric, `g1898g0ogdlh9f3mfra2hl3el3`) ... Order/Booking unique identifier.
+
+
++ Request (application/json)
+
+    + Body
+
+            {
+              "meta": {},
+              "request": {
+                "seat": "12A",
+                "schedule": {
+                  "id": "DDFF999-AAACCC-DDDFFF@113-AFAFDDDDFF999-AAACCC-DDDFFF@113-AFAFDD"
+                },
+                "sessionId": "g8qegjpd6kl0h557q0gjc02815"
+              }
+            }
+
++ Response 202 (application/json)
+
+        {
+            "meta": {},
+            "content": {
+                "status": "canceled",
+                "messages": [],
+                "sessionId": "g8qegjpd6kl0h557q0gjc02815"
+            }
+        }
+        
+# Group Booking
+
+## Create and update orders [/booking]
+
+### Create Order [PUT]
+
++ Parameters
+
+      + meta (optional,object)
+      + request (required,object)
+      + request.sessionId (required,alphanumeric,`egqviudfa9i43j5dj8hodqikk6`) ... The session id from the TripDetails call
+      + request.buyer (required,object) ... Buyer data
+      + request.buyer.firstName (required,string,`Joe`) ... Buyer's first name
+      + request.buyer.lastName (required,string,`Doe`) ... Buyer's last name
+      + request.buyer.email (required,alphanumeric,`joe.doe@clickbus.com.br`) ... Buyer's email
+      + request.buyer.phone (optional,alphanumeric,`+5511981231234`) ... Buyer's phone
+      + request.buyer.document (optional,alphanumeric,`123123123123`) ... Buyer's document
+      + request.buyer.gender (optional,string,`M`) ... Buyer's gender
+      + request.buyer.birthday (optional,alphanumeric,`1986-05-17`) ... Buyer's birthday
+      + request.buyer.meta (optional,object) ... Any other data you want to store from the buyer such as cookies or anything (will not be necessarely used by the system)
+      + request.buyer.payment (required,object) ... Payment data and settings
+      + request.buyer.payment.method (required,alphanumeric,`creditcard`) ... Allowed payment method token ( given in search paymentSettings )
+      + request.buyer.payment.currency (required,alphanumeric) ... Payment prefered currency
+      + request.buyer.payment.total (required,numeric) ... Total value to double check with server's session ( this is meant only for security reasons once the server validate it's value anyway)
+      + request.buyer.payment.meta (required,object) ... Payment method data. Each payment method may have it's own values here once they are pretty different from each other (transparent, syncronous, asyncronous, hosted, redirected, etc... The sample will follow a transparent credit card flow)
+      + request.buyer.payment.meta.card (required,numeric) ... Credit Card number without hyphens
+      + request.buyer.payment.meta.code (required,numeric) ... Credit Card CVV number (security code)
+      + request.buyer.payment.meta.name (required,string) ... Name of the holder in credit card ( same as is )
+      + request.buyer.payment.meta.expiration (required,alphanumeric,`2017-03-01`) ... Expiration date of the credit card
+      + request.buyer.payment.meta.installment (optional,numeric,`1`) ... Number of installments (if not set 1 will be considered as default once its the minimum amount)
+      + request.buyer.payment.meta.zipcode (optional,numeric,`123123123`) ... Some countries require this to perform anti-fraud check, however it's optional and depends on each payment type or anti-fraud service
+      + request.orderItems (required,array) ... Order items to perform the request
+      + request.orderItems[0].context (required,alphanumeric,`departure`) ... Context of the trip ( departure or return )
+      + request.orderItems[0].seatReservation (required,alphanumeric) ... Seat reservation code from Seat Block call
+      + request.orderItems[0].passenger (required,object) ... Passenger Data
+      + request.orderItems[0].passenger.firstName (required,string,`Joe`) ... Passenger's first name
+      + request.orderItems[0].passenger.lastName (required,string,`Doe`) ... Passenger's last name
+      + request.orderItems[0].passenger.email (required,alphanumeric,`joe.doe@clickbus.com.br`) ... Passenger's email
+      + request.orderItems[0].passenger.phone (optional,alphanumeric,`+5511981231234`) ... Passenger's phone
+      + request.orderItems[0].passenger.document (optional,alphanumeric,`123123123123`) ... Passenger's document
+      + request.orderItems[0].passenger.gender (optional,string,`M`) ... Passenger's gender
+      + request.orderItems[0].passenger.birthday (optional,alphanumeric,`1986-05-17`) ... Passenger's birthday
+      + request.orderItems[0].passenger.meta (optional,object) ... Passenger's meta data you want to store ( not necessarely will be used by the system )
+      + request.orderItems[0].products (optional,array) ... Passenger's meta data you want to store ( not necessarely will be used by the system )
+      + request.orderItems[0].products[0] (optional,object) ... Product's details ( it can be a extra lugedt, bike seat, potato chips, etc... )
+      + request.orderItems[0].products[0].uuid (required,alphanumeric) ... Product's unique identifier
+      + request.orderItems[0].products[0].quantity (required,float) ... Product's amount
+
++ Request (application/json)
+            
+    + Body        
+            
+            {
+              "meta": {},
+              "request": {
+                "sessionId": "egqviudfa9i43j5dj8hodqikk6",
+                "buyer": {
+                  "locale" : "pt_BR",
+                  "firstName": "Joe",
+                  "lastName": "Doe",
+                  "email": "joe.doe@clickbus.com.br",
+                  "phone": "+5511981231234",
+                  "document": "123.123.123-01",
+                  "documentType": "br.cpf",
+                  "gender": "M",
+                  "birthday": "1986-05-17",
+                  "meta": {},
+                  "payment": {
+                    "method": "creditcard",
+                    "currency": "BRL",
+                    "total": 3900,
+                    "installment": "1",
+                    "meta": {
+                      "card": "4111111111111111",
+                      "code": "887",
+                      "name": "CESARIO MARTINS",
+                      "expiration": "2017-03",
+                      "zipcode": "08265390"
+                    }
+                  }
+                },
+                "orderItems": [
+                  {
+                    "context" : "departure",
+                    "seatReservation": "NDAxNy0tMzkzNS0tMjAxNC0wNi0yMiAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg==",
+                    "passenger": {
+                      "firstName": "Pedrinn",
+                      "lastName": "Ribeiro",
+                      "email": "dev@clickbus.com.br",
+                      "document": "123.123.123-01",
+                      "documentType" : "passport",
+                      "gender": "M",
+                      "birthday": "1986-05-17",
+                      "meta": {}
+                    },
+                    "products": [
+                      {
+                        "uuid": "abcd123s",
+                        "quantity": 2
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+
+
++ Response 201 (application/json)
+
+        {
+          "meta": {},
+          "content": {
+            "id": 123,
+            "status": "pending",
+            "localizer": "53347e09aee47",
+            "payment": {
+              "method": "creditcard",
+              "total": 3900,
+              "currency": "BRL",
+              "status": "pending",
+              "meta": {
+                "card": "XXXX-XXXX-XXXX-1234",
+                "code": "XXX",
+                "name": "Klederson Bueno Bezerra da Silva",
+                "expiration": "XXXX-XX-XX"
+              }
+            },
+            "items": [
+              {
+                "context" : "departure",
+                "localizer" : "XPTO123",
+                "trip_id": 123123123,
+                "order_item": 1234,
+                "departure": {
+                  "waypoint": 113,
+                  "schedule": {
+                    "id": "FFDSAAA-ASDADS-AAADDFF-GGFFER3",
+                    "date": "2014-10-31",
+                    "time": "10:00",
+                    "timezone": "America/Sao_Paulo"
+                  }
+                },
+                "arrival": {
+                  "waypoint": 123,
+                  "schedule": {
+                    "id": 15,
+                    "date": "2014-10-31",
+                    "time": "23:00",
+                    "timezone": "America/Sao_Paulo"
+                  }
+                },
+                "seat": {
+                  "seatReservation" : "ADADSASD-ASDADS-AAADDFF-AASDASD",
+                  "id": 14,
+                  "name": "A01",
+                  "price": 1000,
+                  "status": "pending",
+                  "currency": "BRL",
+                  "type": {
+                    "name": "Professor",
+                    "discount": 0.9,
+                    "id": 1
+                  }
+                },
+                "passenger": {
+                  "firstName": "Klederson",
+                  "lastName": "Bueno",
+                  "email": "dev@clickbus.com.br",
+                  "document": "123.123.123-01",
+                  "documentType" : "passport",
+                  "gender": "M",
+                  "birthday": "1986-05-17",
+                  "meta": {}
+                },
+                "products": [
+                  {
+                    "uuid": "abcd123s",
+                    "name": "Potato Chips",
+                    "quantity": 2,
+                    "price": 500,
+                    "currency": "BRL"
+                  }
+                ],
+                "subtotal": 1900
+              }
+            ],
+            "createdAt": "2010-10-30"
+          }
+        }
+
+### Update Order [POST]
+
+#### This method update an order status and is availiable only for allowed credentials
+
++ Parameters
+    + localizer (required, alphanumeric, "53347e09aee47") ... The given localizer in the order generation
+    + status (required,alphanumeric,"confirmed") ... the new status to be updated
+    
++ Request
+        {
+            "request" : {
+                "localizer" : "53347e09aee47",
+                "status":  "confirmed"
+            }
+        }
+    
++ Response 202 (application/json)
+
+        {
+          "meta": {},
+          "content": {
+            "id": 123,
+            "status": "pending",
+            "localizer": "53347e09aee47",
+            "payment": {
+              "method": "creditcard",
+              "total": 3900,
+              "currency": "BRL",
+              "status": "pending",
+              "meta": {
+                "card": "XXXX-XXXX-XXXX-1234",
+                "code": "XXX",
+                "name": "Klederson Bueno Bezerra da Silva",
+                "expiration": "XXXX-XX-XX"
+              }
+            },
+            "items": [
+              {
+                "context" : "departure",
+                "localizer" : "XPTO123",
+                "trip_id": 123123123,
+                "order_item": 1234,
+                "departure": {
+                  "waypoint": 113,
+                  "schedule": {
+                    "id": "FFDSAAA-ASDADS-AAADDFF-GGFFER3",
+                    "date": "2014-10-31",
+                    "time": "10:00",
+                    "timezone": "America/Sao_Paulo"
+                  }
+                },
+                "arrival": {
+                  "waypoint": 123,
+                  "schedule": {
+                    "id": 15,
+                    "date": "2014-10-31",
+                    "time": "23:00",
+                    "timezone": "America/Sao_Paulo"
+                  }
+                },
+                "seat": {
+                  "seatReservation" : "ADADSASD-ASDADS-AAADDFF-AASDASD",
+                  "id": 14,
+                  "name": "A01",
+                  "price": 1000,
+                  "status": "pending",
+                  "currency": "BRL",
+                  "type": {
+                    "name": "Professor",
+                    "discount": 0.9,
+                    "id": 1
+                  }
+                },
+                "passenger": {
+                  "firstName": "Klederson",
+                  "lastName": "Bueno",
+                  "email": "dev@clickbus.com.br",
+                  "document": "123.123.123-01",
+                  "documentType" : "passport",
+                  "gender": "M",
+                  "birthday": "1986-05-17",
+                  "meta": {}
+                },
+                "products": [
+                  {
+                    "uuid": "abcd123s",
+                    "name": "Potato Chips",
+                    "quantity": 2,
+                    "price": 500,
+                    "currency": "BRL"
+                  }
+                ],
+                "subtotal": 1900
+              }
+            ],
+            "createdAt": "2010-10-30"
+          }
+        }
