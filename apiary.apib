@@ -1753,170 +1753,677 @@ In this documentation you may find both how to integrate with Clickbus API for a
 
 + Response 200 (application/json)
         {
-          "meta": "",
-          "items": [
-            {
-              "id": "1",
-              "station_id": "1",
-              "slug": "sao-paulo-todos",
-              "locale": "pt_BR",
-              "name": "Sao Paulo Todos",
-              "is_primary": "true",
-              "created_at": "0000-00-00 00:00:00",
-              "updated_at": "2014-03-19 20:43:14",
-              "city": {
-                "id": "1",
-                "place_id": "1",
-                "locale": "pt_BR",
-                "name": "Sao Paulo",
-                "created_at": "0000-00-00 00:00:00",
-                "updated_at": "2014-03-19 20:43:14",
-                "latitude": "",
-                "longitude": ""
-              },
-              "state": {
-                "code": "SP",
-                "name": "Sao Paulo"
-              },
-              "country": {
-                "code": "BRA",
-                "name": "Brasil"
+          "items": [{
+              "type": "cheader",
+              "region": "header",
+              "order": 0,
+              "store": "",
+              "platform": "",
+              "model": "",
+              "title": "",
+              "lang": "",
+              "routes": ["/home", "/page1", "/page2/page2b"],
+              "content": {
+                "logo": "ClickBus",
+                "phones": [{
+                  "text": "Vendas:",
+                  "value": "088-773-6140"
+                }, {
+                  "text": "Dúvidas:",
+                  "value": "(011) 4302-5078"
+                }],
+                "button": {
+                  "text": "Minhas Viagens",
+                  "url": "http://www.clickbus.com.br"
+                },
+                "languages": [{
+                  "abbr": "pt",
+                  "text": "português",
+                  "icon": "br"
+                }, {
+                  "abbr": "en",
+                  "text": "english",
+                  "icon": "us"
+                }, {
+                  "abbr": "es",
+                  "text": "español",
+                  "icon": "es"
+                }, {
+                  "abbr": "de",
+                  "text": "deutsche",
+                  "icon": "de"
+                }]
               }
-            },
-            {
-              "id": "2141",
-              "station_id": "2141",
-              "slug": "abacaxi-go",
-              "locale": "pt_BR",
-              "name": "Rodoviaria de Abacaxi",
-              "is_primary": "true",
-              "created_at": "2013-04-26 07:31:26",
-              "updated_at": "2014-03-19 20:43:14",
-              "city": {
-                "id": "2141",
-                "place_id": "2141",
-                "locale": "pt_BR",
-                "name": "Abacaxi, GO",
-                "created_at": "2013-04-26 07:31:26",
-                "updated_at": "2014-03-19 20:43:14",
-                "latitude": "",
-                "longitude": ""
-              },
-              "state": {
-                "code": "GO",
-                "name": "Goias"
-              },
-              "country": {
-                "code": "BRA",
-                "name": "Brasil"
-              }
-            },
-            {
-              "id": "2142",
-              "station_id": "2142",
-              "slug": "abel-figueira-pa",
-              "locale": "pt_BR",
-              "name": "Posto Policial de Abel Figueira rod. 1234",
-              "is_primary": "true",
-              "created_at": "2013-04-26 07:31:26",
-              "updated_at": "2014-03-19 20:43:14",
-              "city": {
-                "id": "2142",
-                "place_id": "2142",
-                "locale": "pt_BR",
-                "name": "Abel Figueira, PA",
-                "created_at": "2013-04-26 07:31:26",
-                "updated_at": "2014-03-19 20:43:14",
-                "latitude": "",
-                "longitude": ""
-              },
-              "state": {
-                "code": "PA",
-                "name": "Para"
-              },
-              "country": {
-                "code": "BRA",
-                "name": "Brasil"
-              }
-            },
-            {
-              "id": "2143",
-              "station_id": "2143",
-              "slug": "ac-camaca-ba",
-              "locale": "pt_BR",
-              "name": "Entroncamento do km 18 Camaca",
-              "is_primary": "true",
-              "created_at": "2013-04-26 07:31:26",
-              "updated_at": "2014-03-19 20:43:14",
-              "city": {
-                "id": "2143",
-                "place_id": "2143",
-                "locale": "pt_BR",
-                "name": "Ac. Camaca, BA",
-                "created_at": "2013-04-26 07:31:26",
-                "updated_at": "2014-03-19 20:43:14",
-                "latitude": "",
-                "longitude": "",
-                "state": {
-                  "code": "BA",
-                  "name": "Bahia"
+            }, {
+              "type": "chomeslider",
+              "region": "main",
+              "order": 1,
+              "store": "",
+              "platform": "",
+              "model": "",
+              "title": "",
+              "lang": "",
+              "routes": ["/home", "/page1", "/page2/page2b"],
+              "content": {
+                "carousel": {
+                  "time": 10000,
+                  "items": [{
+                    "image": {
+                      "url": "https://s3.amazonaws.com/ooomf-com-files/bsrOzgDkQhGRKOVC7Era_9X6A3584.jpg",
+                      "alt": ""
+                    },
+                    "color": "#b00",
+                    "time": 5000
+                  }, {
+                    "image": {
+                      "url": "https://s3.amazonaws.com/ooomf-com-files/iYvDeqVGRbebiQv2PIJi_DSC_8407.JPG",
+                      "alt": ""
+                    },
+                    "color": "#bb0",
+                    "time": 5000
+                  }, {
+                    "image": {
+                      "url": "https://s3.amazonaws.com/ooomf-com-files/M1IHnsfYRz2ThTgzl6qz_canyousea.jpg",
+                      "alt": ""
+                    },
+                    "color": "#0bb",
+                    "time": 5000
+                  }, {
+                    "image": {
+                      "url": "https://s3.amazonaws.com/ooomf-com-files/Vo7YbYQQ8iyOo4J9bOoj_ggb24.jpg",
+                      "alt": ""
+                    },
+                    "color": "#00b",
+                    "time": 5000
+                  }]
+                },
+                "form": {
+                  "title": "Compre sua passagem de ônibus",
+                  "button": "Buscar passagem",
+                  "origin": {
+                    "label": "Origem",
+                    "placeholder": "Digite o local de origem"
+                  },
+                  "destination": {
+                    "label": "Destino",
+                    "placeholder": "Digite o local de destino"
+                  },
+                  "date": {
+                    "departure": {
+                      "label": "Data da ida",
+                      "placeholder": "",
+                      "minDate": "23/10/2015",
+                      "maxDate": "",
+                      "defaultDate": ""
+                    },
+                    "arrival": {
+                      "label": "Data da volta",
+                      "placeholder": "Opcional",
+                      "minDate": "",
+                      "maxDate": "",
+                      "defaultDate": ""
+                    }
+                  }
                 }
               }
-            },
-            {
-              "id": "2144",
-              "station_id": "2144",
-              "slug": "acailandia-ma",
-              "locale": "pt_BR",
-              "name": "Terminal de Acailandia",
-              "is_primary": "true",
-              "created_at": "2013-04-26 07:31:26",
-              "updated_at": "2014-03-19 20:43:14",
-              "city": {
-                "id": "2144",
-                "place_id": "2144",
-                "locale": "pt_BR",
-                "name": "Acailandia, MA",
-                "created_at": "2013-04-26 07:31:26",
-                "updated_at": "2014-03-19 20:43:14",
-                "latitude": "",
-                "longitude": ""
-              },
-              "state": {
-                "code": "MA",
-                "name": "Maranhao"
-              },
-              "country": {
-                "code": "BRA",
-                "name": "Brasil"
+            }, {
+              "type": "cuniquesellingpoints",
+              "region": "main",
+              "order": 2,
+              "store": "",
+              "platform": "",
+              "model": "",
+              "title": "",
+              "lang": "",
+              "routes": ["/home", "/page1", "/page2/page2b"],
+              "content": [{
+                "title": "mais de 35 viações",
+                "description": "Compare e encontre o melhor preço!",
+                "image": {
+                  "url": "http://localhost:8001/images/icons/clickbus-bus-plus.svg",
+                  "alt": "Bus clickbus"
+                }
+              }, {
+                "title": "compre em até 12x sem juros",
+                "description": "Parcele no cartão de credito",
+                "image": {
+                  "url": "http://localhost:8001/images/icons/credit-card.svg",
+                  "alt": "credit card"
+                }
+              }, {
+                "title": "site seguro",
+                "description": "Confie em um site que está em mais de 7 países (e contando).",
+                "image": {
+                  "url": "http://localhost:8001/images/icons/world.svg",
+                  "alt": "world"
+                }
+              }, {
+                "title": "baixe nosso app",
+                "description": "Disponível para iPhone e Android",
+                "image": {
+                  "url": "http://localhost:8001/images/icons/clickbus-app.svg",
+                  "alt": "app clickbus"
+                }
+              }]
+            }, {
+              "type": "cdisclaimer",
+              "region": "main",
+              "order": 3,
+              "store": "",
+              "platform": "",
+              "model": "",
+              "title": "",
+              "lang": "",
+              "routes": ["/home", "/page1", "/page2/page2b"],
+              "content": {
+                "title": "Passagem de ônibus para os melhores destinos na Colombia",
+                "subtitle": "Lorem ipsum dolor sit amet consectetuer"
               }
             },
+        
             {
-              "id": "2145",
-              "station_id": "2145",
-              "slug": "acampamento-es",
-              "locale": "pt_BR",
-              "name": "Rodoviaria Municipal de Acampamento",
-              "is_primary": "true",
-              "created_at": "2013-04-26 07:31:26",
-              "updated_at": "2014-03-19 20:43:14",
-              "city": {
-                "id": "2145",
-                "place_id": "2145",
-                "locale": "pt_BR",
-                "name": "Acampamento, ES",
-                "created_at": "2013-04-26 07:31:26",
-                "updated_at": "2014-03-19 20:43:14",
-                "latitude": "",
-                "longitude": ""
-              },
-              "state": {
-                "code": "ES",
-                "name": "Espirito Santo"
-              },
-              "country": {
-                "code": "BRA",
-                "name": "Brasil"
+              "type": "ctopdestinations",
+              "region": "main",
+              "order": 3,
+              "store": "",
+              "platform": "",
+              "model": "",
+              "title": "",
+              "lang": "",
+              "routes": ["/home", "/page1", "/page2/page2b"],
+              "content": {
+                "title": "Autobuses para los mejores destinos en Colombia",
+                "description": "Lorem ipsum dolor sit amet consectetuer",
+                "departure": "São Paulo",
+                "title": "Buses saliendo de São Paulo",
+                "weather": {
+                  "image": {
+                    "url": "http://p-hold.com/saopaulo/555/125",
+                    "alt": ""
+                  },
+                  "text": ""
+                },
+                "destinations": [{
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }]
+              }
+            }, {
+              "type": "ctopdestinations",
+              "region": "main",
+              "order": 3,
+              "store": "",
+              "platform": "",
+              "model": "",
+              "title": "",
+              "lang": "",
+              "routes": ["/home", "/page1", "/page2/page2b"],
+              "content": {
+                "title": "Autobuses para los mejores destinos en Colombia",
+                "description": "Lorem ipsum dolor sit amet consectetuer",
+                "departure": "Rio de Janeiro",
+                "title": "Buses saliendo de Rio de Janeiro",
+                "weather": {
+                  "image": {
+                    "url": "http://p-hold.com/riodejaneiro/555/125",
+                    "alt": ""
+                  },
+                  "text": ""
+                },
+                "destinations": [{
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }]
+              }
+            }, {
+              "type": "ctopdestinations",
+              "region": "main",
+              "order": 3,
+              "store": "",
+              "platform": "",
+              "model": "",
+              "title": "",
+              "lang": "",
+              "routes": ["/home", "/page1", "/page2/page2b"],
+              "content": {
+                "title": "Autobuses para los mejores destinos en Colombia",
+                "description": "Lorem ipsum dolor sit amet consectetuer",
+                "departure": "Bogotá",
+                "title": "Buses saliendo de Bogotá",
+                "weather": {
+                  "image": {
+                    "url": "http://p-hold.com/bogota/555/125",
+                    "alt": "Bogotá"
+                  },
+                  "text": ""
+                },
+                "destinations": [{
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }]
+              }
+            }, {
+              "type": "ctopdestinations",
+              "region": "main",
+              "order": 3,
+              "store": "",
+              "platform": "",
+              "model": "",
+              "title": "",
+              "lang": "",
+              "routes": ["/home", "/page1", "/page2/page2b"],
+              "content": {
+                "title": "Autobuses para los mejores destinos en Colombia",
+                "description": "Lorem ipsum dolor sit amet consectetuer",
+                "departure": "sopaulo",
+                "title": "Buses saliendo de Santa Marta",
+                "weather": {
+                  "image": {
+                    "url": "",
+                    "alt": ""
+                  },
+                  "text": "Teste"
+                },
+                "destinations": [{
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }, {
+                  "label": "Para Santa Marta",
+                  "link": {
+                    "text": "Comprar",
+                    "url": "/url/action"
+                  }
+                }]
+              }
+            }, {
+              "type": "csideimage",
+              "region": "main",
+              "order": 4,
+              "store": "",
+              "platform": "",
+              "model": "",
+              "title": "",
+              "lang": "",
+              "routes": ["/home", "/page1", "/page2/page2b"],
+              "content": {
+                "title": "Trabalhamos em escala global",
+                "subtitle": "Com conhecimento e atisafação para nossos clientes",
+                "html": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iure quidem magni vel illum. Adipisci in laborum ut voluptates eum laudantium dolorem consequatur, aspernatur ipsa, totam, quo officia quam eaque!</p>",
+                "image": {
+                  "url": "http://p-hold.com/beach/555/300",
+                  "alt": ""
+                }
+              }
+            }, {
+              "type": "cpress",
+              "region": "main",
+              "order": 5,
+              "store": "",
+              "platform": "",
+              "model": "",
+              "title": "",
+              "lang": "",
+              "routes": ["/home", "/page1", "/page2/page2b"],
+              "content": {
+                "title": "ClickBus na Mídia",
+                "subtitle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+                "items": [{
+                  "image": {
+                    "url": "http://placehold.it/300x90/fff/900&text=Logo+01",
+                    "alt": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, fuga!"
+                  },
+                  "url": "#"
+                }, {
+                  "image": {
+                    "url": "http://placehold.it/160x90/fff/090&text=Logo+02",
+                    "alt": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, fuga!"
+                  },
+                  "url": "#"
+                }, {
+                  "image": {
+                    "url": "http://placehold.it/250x90/fff/009&text=Logo+03",
+                    "alt": "Lorem ipsum dolor sit amet."
+                  },
+                  "url": "#"
+                }, {
+                  "image": {
+                    "url": "http://placehold.it/250x90/fff/099&text=Logo+04",
+                    "alt": "Lorem ipsum dolor sit amet."
+                  },
+                  "url": "#"
+                }]
+              }
+            }, {
+              "type": "cnewsletterinline",
+              "region": "main",
+              "order": 6,
+              "store": "",
+              "platform": "",
+              "model": "",
+              "title": "",
+              "lang": "",
+              "routes": ["/home", "/page1", "/page2/page2b"],
+              "content": {
+                "form": {
+                  "title": "Ofertas e Novidades no seu email!",
+                  "button": "Eu quero ofertas!",
+                  "email": {
+                    "placeholder": "Insira seu email"
+                  }
+                }
+              }
+            }, {
+              "type": "clisticons",
+              "region": "main",
+              "order": 7,
+              "store": "",
+              "platform": "",
+              "model": "",
+              "title": "",
+              "lang": "",
+              "routes": ["/home", "/page1", "/page2/page2b"],
+              "content": {
+                "social": [{
+                  "text": "Facebook",
+                  "url": "http://google.com.br",
+                  "icon": "facebook"
+                }, {
+                  "text": "Instagram",
+                  "url": "http://google.com.br",
+                  "icon": "instagram"
+                }, {
+                  "text": "Twitter",
+                  "url": "http://google.com.br",
+                  "icon": "twitter"
+                }, {
+                  "text": "Google Plus",
+                  "url": "http://google.com.br",
+                  "icon": "googleplus"
+                }, {
+                  "text": "RSS",
+                  "url": "http://google.com.br",
+                  "icon": "rss"
+                }, {
+                  "text": "Pinterest",
+                  "url": "http://google.com.br",
+                  "icon": "pinterest"
+                }, {
+                  "text": "Youtube",
+                  "url": "http://google.com.br",
+                  "icon": "youtube"
+                }],
+                "payment": [{
+                  "text": "MasterCard",
+                  "url": "",
+                  "icon": "payment-logo-mastercard"
+                }, {
+                  "text": "Visa",
+                  "url": "",
+                  "icon": "payment-logo-visa"
+                }, {
+                  "text": "Diners Club",
+                  "url": "",
+                  "icon": "payment-logo-diners-club"
+                }, {
+                  "text": "PayPal",
+                  "url": "",
+                  "icon": "payment-logo-paypal"
+                }, {
+                  "text": "Visa Electron",
+                  "url": "",
+                  "icon": "payment-logo-visa-electron"
+                }, {
+                  "text": "Boleto",
+                  "url": "",
+                  "icon": "payment-logo-boleto"
+                }]
+              }
+            }, {
+              "type": "cfooter",
+              "region": "footer",
+              "order": 8,
+              "store": "",
+              "platform": "",
+              "model": "",
+              "title": "",
+              "lang": "",
+              "routes": ["/home", "/page1", "/page2/page2b"],
+              "content": {
+                "navigation": [{
+                  "title": "Minha passagem",
+                  "items": [{
+                    "link": {
+                      "text": "Como Comprar?",
+                      "url": "/url/action"
+                    }
+                  }, {
+                    "link": {
+                      "text": "Como Cancelar?",
+                      "url": "/url/action"
+                    }
+                  }, {
+                    "link": {
+                      "text": "Como Retirar?",
+                      "url": "/url/action"
+                    }
+                  }, {
+                    "link": {
+                      "text": "Como Trocar?",
+                      "url": "/url/action"
+                    }
+                  }]
+                }, {
+                  "title": "Institucional",
+                  "items": [{
+                    "link": {
+                      "text": "Política de Privacidade",
+                      "url": "/url/action"
+                    }
+                  }, {
+                    "link": {
+                      "text": "Termos de Uso",
+                      "url": "/url/action"
+                    }
+                  }, {
+                    "link": {
+                      "text": "Sobre nós",
+                      "url": "/url/action"
+                    }
+                  }]
+                }, {
+                  "title": "Atendimento",
+                  "items": [{
+                    "link": {
+                      "text": "Vendas: 0800 2222 2222",
+                      "url": "/url/action"
+                    }
+                  }, {
+                    "link": {
+                      "text": "Dúvidas: (11) 4444 4444",
+                      "url": "/url/action"
+                    }
+                  }, {
+                    "link": {
+                      "text": "Central de Atendimento Online",
+                      "url": "/url/action"
+                    }
+                  }]
+                }],
+                "legal": {
+                  "html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident minus est harum, dicta quam aliquam mollitia cupiditate recusandae. Recusandae reiciendis velit est, neque obcaecati. Voluptatem nihil facere, nam eius sunt."
+                },
+                "countrieslist": {
+                  "title": "Encontre ônibus também em:",
+                  "items": [{
+                    "link": {
+                      "text": "Mexico",
+                      "url": "http://www.clickbus.com.mx"
+                    },
+                    "icon": "mx"
+                  }, {
+                    "link": {
+                      "text": "Colombia",
+                      "url": "http://www.clickbus.co"
+                    },
+                    "icon": "co"
+                  }, {
+                    "link": {
+                      "text": "Germany",
+                      "url": "http://www.klickbus.de"
+                    },
+                    "icon": "de"
+                  }, {
+                    "link": {
+                      "text": "Thailand",
+                      "url": "http://www.clickbus.co.th"
+                    },
+                    "icon": "th"
+                  }, {
+                    "link": {
+                      "text": "Poland",
+                      "url": "http://www.clickbus.pl"
+                    },
+                    "icon": "pl"
+                  }, {
+                    "link": {
+                      "text": "Turkey",
+                      "url": "http://www.tikobus.com.tr"
+                    },
+                    "icon": "tr"
+                  }, {
+                    "link": {
+                      "text": "Pakistan",
+                      "url": "http://www.clickbus.com.pk"
+                    },
+                    "icon": "pk"
+                  }]
+                }
               }
             }
           ]
