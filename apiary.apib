@@ -1483,7 +1483,6 @@ In this documentation you may find both how to integrate with Clickbus API for a
       + request.buyer.payment.meta.zipcode (optional,numeric,`123123123`) ... Some countries require this to perform anti-fraud check, however it's optional and depends on each payment type or anti-fraud service
       + request.orderItems (required,array) ... Order items to perform the request
       + request.orderItems[0].context (required,alphanumeric,`departure`) ... Context of the trip ( departure or return )
-      + request.orderItems[0].seatReservation (required,alphanumeric) ... Seat reservation code from Seat Block call
       + request.orderItems[0].passenger (required,object) ... Passenger Data
       + request.orderItems[0].passenger.firstName (required,string,`Joe`) ... Passenger's first name
       + request.orderItems[0].passenger.lastName (required,string,`Doe`) ... Passenger's last name
@@ -1534,7 +1533,6 @@ In this documentation you may find both how to integrate with Clickbus API for a
                 "orderItems": [
                   {
                     "context" : "departure",
-                    "seatReservation": "NDAxNy0tMzkzNS0tMjAxNC0wNi0yMiAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg==",
                     "passenger": {
                       "firstName": "Pedrinn",
                       "lastName": "Ribeiro",
