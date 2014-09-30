@@ -1371,6 +1371,7 @@ In this documentation you may find both how to integrate with Clickbus API for a
 + Parameters
     + meta
     + request (required,object,`{}`) ... The request object content
+    + request.seatReservationUUID (required,numeric, `01`) ... The seat id from the given Seat in TripDetails call
     + request.seat (required,numeric, `01`) ... The seat id from the given Seat in TripDetails call
     + request.passenger (required,object) ... Passenger data
     + request.passenger.name (required,string,`Joe Doe`) ... The passenger name
@@ -1387,6 +1388,7 @@ In this documentation you may find both how to integrate with Clickbus API for a
             {
               "meta": {},
               "request": {
+                "seatReservationUUID": "f447b20a7fcbf53a5d5be013ea0b15af",
                 "seat": "01",
                 "passenger": {
                   "name": "Pedrinn Ribeiro",
