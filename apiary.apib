@@ -8,7 +8,7 @@ In this documentation you may find both how to integrate with Clickbus API for a
 
 # Group Search
 
-## Search [/search]
+## Search [/search{?from,to,departure}]
 
 ### Get Avaliable Trips [GET]
 
@@ -17,7 +17,7 @@ In this documentation you may find both how to integrate with Clickbus API for a
     + from (required, `Terminal do Tiete`) ... The Station or Place name/alias to perform the search from    
     + to (required, `Rio de Janeiro`) ... The Station or Place name/alias to perform the search to    
     + departure (required, `2015-10-30`) ... The departure date to perform the search
-    + engine ( required, `"5411E7D726991"`) ... Specify in what booking engine you want to perform the search, if not provided will search in the availiable booking engine on the server
+    + engine ( optional, `"5411E7D726991"`) ... Specify in what booking engine you want to perform the search, if not provided will search in the availiable booking engine on the server
     + quantity (optional, `2`) ... The minimum ammount of avaliable seats
     + locale (optional, `pt_BR`) ... The locale i want to perform the search in. If you provide nothing the system will try to search in all languages avaliables on the server (that can take more time to respond)
 
@@ -359,7 +359,7 @@ In this documentation you may find both how to integrate with Clickbus API for a
 
 # Group Trip Details
 
-## Trip Details [/trip]
+## Trip Details [/trip{?scheduleId}]
 
 + Parameters
     + scheduleId (required,`13ASDF-AASDA12-AADDDFF11-ASDASD`) ... Schedule ID from a search result part. Note that if you want details from more than one part ( results can have 1 or more parts if is routed for example ) you need to call details from each part schedule id
