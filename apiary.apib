@@ -1319,7 +1319,7 @@ In this documentation you may find both how to integrate with Clickbus API for a
       + request.buyer.payment.meta.card (required,numeric) ... Credit Card number without hyphens
       + request.buyer.payment.meta.code (required,numeric) ... Credit Card CVV number (security code)
       + request.buyer.payment.meta.name (required,string) ... Name of the holder in credit card ( same as is )
-      + request.buyer.payment.meta.expiration (required,alphanumeric,`2017-03-01`) ... Expiration date of the credit card
+      + request.buyer.payment.meta.expiration (required,alphanumeric,`2017-03`) ... Expiration date of the credit card
       + request.buyer.payment.meta.installment (optional,numeric,`1`) ... Number of installments (if not set 1 will be considered as default once its the minimum amount)
       + request.buyer.payment.meta.zipcode (optional,numeric,`123123123`) ... Some countries require this to perform anti-fraud check, however it's optional and depends on each payment type or anti-fraud service
       + request.orderItems (required,array) ... Order items to perform the request
@@ -1413,7 +1413,7 @@ In this documentation you may find both how to integrate with Clickbus API for a
                 "card": "XXXX-XXXX-XXXX-1234",
                 "code": "XXX",
                 "name": "Klederson Bueno Bezerra da Silva",
-                "expiration": "XXXX-XX-XX"
+                "expiration": "XXXX-XX"
               }
             },
             "items": [
@@ -1513,7 +1513,7 @@ In this documentation you may find both how to integrate with Clickbus API for a
                 "card": "XXXX-XXXX-XXXX-1234",
                 "code": "XXX",
                 "name": "Klederson Bueno Bezerra da Silva",
-                "expiration": "XXXX-XX-XX"
+                "expiration": "XXXX-XX"
               }
             },
             "items": [
