@@ -1300,6 +1300,9 @@ In this documentation you may find both how to integrate with Clickbus API for a
 + Parameters
 
       + meta (optional,object)
+      + meta.model (optional,alphanumeric,`lorem`) ... Your model identifier
+      + meta.store (optional,alphanumeric,`ipsum`) ... Your store identifier
+      + meta.platform (optional,alphanumeric,`dolor`) ... Your platform identifier
       + request (required,object)
       + request.sessionId (required,alphanumeric,`egqviudfa9i43j5dj8hodqikk6`) ... The session id from the TripDetails call
       + request.buyer (required,object) ... Buyer data
@@ -1344,7 +1347,11 @@ In this documentation you may find both how to integrate with Clickbus API for a
     + Body        
             
             {
-              "meta": {},
+              "meta": {
+                "model": "lorem",
+                "store": "ipsum",
+                "platform": "dolor"
+              },
               "request": {
                 "sessionId": "egqviudfa9i43j5dj8hodqikk6",
                 "buyer": {
@@ -1399,7 +1406,11 @@ In this documentation you may find both how to integrate with Clickbus API for a
 + Response 201 (application/json)
 
         {
-          "meta": {},
+          "meta": {
+            "model": "lorem",
+            "store": "ipsum",
+            "platform": "dolor"
+          },
           "content": {
             "id": 123,
             "status": "pending",
