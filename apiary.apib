@@ -1324,6 +1324,8 @@ In this documentation you may find both how to integrate with Clickbus API for a
       + request.buyer.payment.meta.name (required,string) ... Name of the holder in credit card ( same as is )
       + request.buyer.payment.meta.expiration (required,alphanumeric,`2017-03`) ... Expiration date of the credit card
       + request.buyer.payment.meta.installment (optional,numeric,`1`) ... Number of installments (if not set 1 will be considered as default once its the minimum amount)
+      + request.buyer.payment.meta.callbackURL (optional,string,`http://mystore.com/checkout/success`) ... URL to redirect (HTTP 302) client after payment resolution
+      + request.buyer.payment.meta.postbackURL (optional,string,`http://mystore.com/checkout/postback-receiver`) ... URL to notify merchant about payment updates, when payment method is assinchronous.
       + request.buyer.payment.meta.zipcode (optional,numeric,`123123123`) ... Some countries require this to perform anti-fraud check, however it's optional and depends on each payment type or anti-fraud service
       + request.orderItems (required,array) ... Order items to perform the request
       + request.orderItems[0].context (required,alphanumeric,`departure`) ... Context of the trip ( departure or return )
@@ -1488,6 +1490,204 @@ In this documentation you may find both how to integrate with Clickbus API for a
             "createdAt": "2010-10-30"
           }
         }
+
+### Create a Order using debit card [POST]
+
+#### Uses same parameters of regular order creation
+In the response, a _content.payment.meta.continuePaymentURL_ should be returned. You must redirect your
+client to bank authorization and after it you will be redirected to API.
+
+If a _request.buyer.payment.meta.postbackURL_ was sent, a postback will notify you about the payment status.
+
+If a _request.buyer.payment.meta.callbackURL_ was sent, after bank approvation, the application will redirect
+you to this URL.
+
++ Request (application/json)
+
+    + Body
+        
+            {
+                "meta": {
+                    "model": "Retail",
+                    "store": "ClickBus",
+                    "platform": "Mobile"
+                },
+                "request": {
+                  "sessionId": "pb3tlvfik8kiif4hvets3shfn3",
+                  "buyer": {
+                    "locale": "pt_BR",
+                    "firstName": "Nome",
+                    "lastName": "Sobrenome",
+                    "email": "teste@clickbus.com.br",
+                    "phone": "11999999999",
+                    "document": "123.123.123-01",
+                    "gender": "M",
+                    "birthday": "1980-01-01",
+                    "meta": {},
+                    "payment": {
+                        "method": "debitcard",
+                        "currency": "BRL",
+                        "total": 3900,
+                        "installment": "1",
+                        "meta": {
+                            "card": "4551870000000183",
+                            "code": "737",
+                            "name": "NOME SOBRENOME",
+                            "expiration": "2017-03",
+                            "zipcode": "08265390"
+                        }
+                    }
+                },
+                "orderItems": [
+                {
+                    "seatReservation": "NDAxNy0tMzkzNS0tMjAxNC0xMi0yMCAyMDoxMC0tOS0tMDAxMy0tMS0tMS0tMS0tQ09OVg==",
+                    "passenger": {
+                        "firstName": "Nome",
+                        "lastName": "Sobrenome",
+                        "email": "dev@clickbus.com.br",
+                        "document": "123.123.123-01",
+                        "gender": "M",
+                        "birthday": "1986-05-17",
+                        "seat": "49",
+                        "meta": {}
+                        },
+                        "products":{
+                            "meta": {},
+                            "request": {
+                              "sessionId": "pb3tlvfik8kiif4hvets3shfn3",
+                              "buyer": {
+                                "locale": "pt_BR",
+                                "firstName": "Nome",
+                                "lastName": "Sobrenome",
+                                "email": "teste@clickbus.com.br",
+                                "phone": "11999999999",
+                                "document": "123.123.123-01",
+                                "gender": "M",
+                                "birthday": "1980-01-01",
+                                "meta": {},
+                                "payment": {
+                                  "method": "debitcard",
+                                  "currency": "BRL",
+                                  "total": 3900,
+                                  "installment": "1",
+                                  "meta": {
+                                    "card": "4551870000000183",
+                                    "code": "737",
+                                    "name": "NOME SOBRENOME",
+                                    "expiration": "2017-03",
+                                    "zipcode": "08265390"
+                                }
+                            }
+                            },
+                            "orderItems": [
+                            {
+                                "seatReservation": "NDAxNy0tMzkzNS0tMjAxNC0xMi0yMCAyMDoxMC0tOS0tMDAxMy0tMS0tMS0tMS0tQ09OVg==",
+                                "passenger": {
+                                    "firstName": "Nome",
+                                    "lastName": "Sobrenome",
+                                    "email": "dev@clickbus.com.br",
+                                    "document": "123.123.123-01",
+                                    "gender": "M",
+                                    "birthday": "1986-05-17",
+                                    "seat": "49",
+                                    "meta": {}
+                                },
+                                "products": [
+                                    {
+                                        "uuid": "abcd123s",
+                                        "quantity": 2
+                                    }
+                                ]
+                            }]
+                        }
+                    } [
+                    {
+                        "uuid": "abcd123s",
+                        "quantity": 2
+                    }
+                    ]}
+                ]}
+            }
+            
++ Response 201 (application/json)
+
+    + Body
+    
+            {
+                "meta": {
+                    "model": "Retail",
+                    "store": "ClickBus",
+                    "platform": "Mobile"
+                },
+                "content": {
+                    "id": "627",
+                    "status": "clarify_debit_card_payment_pending",
+                    "localizer": "FDDAQQ",
+                    "uuid": "",
+                    "payment": {
+                        "method": "payment.debitcard",
+                        "total": "4.717",
+                        "currency": "BRL",
+                        "status": "clarify_debit_card_payment_pending",
+                        "meta": {
+                            "continuePaymentURL": "https://qasecommerce.cielo.com.br/web/index.cbmp?id=4734430bf6ad6336ad84c464c95357f1",
+                            "card": "4551-XXXX-XXXX-0183",
+                            "code": "XXX",
+                            "name": "NOME SOBRENOME",
+                            "expiration": "XXXX-XX-XX",
+                            "postbackUrl": "",
+                            "callbackUrl": ""
+                        }
+                    },
+                    "items": [
+                        {
+                            "trip_id": "0013",
+                            "context": "departure",
+                            "order_item": "678",
+                            "serviceClass": "Convencional",
+                            "departure": {
+                                "waypoint": "4017",
+                                "schedule": {
+                                    "id": "",
+                                    "date": "2014-12-20",
+                                    "time": "20:10",
+                                    "timezone": "America/Sao_Paulo"
+                                }
+                            },
+                            "arrival": {
+                                "waypoint": "3935",
+                                "schedule": {
+                                    "id": "",
+                                    "date": "2014-12-20",
+                                    "time": "21:09",
+                                    "timezone": "America/Sao_Paulo"
+                                }
+                            },
+                            "seat": {
+                                "id": "49",
+                                "name": "49",
+                                "price": "5.30",
+                                "status": "reserved",
+                                "currency": "BRL",
+                                "type": {}
+                            },
+                            "passenger": {
+                                "firstName": "Test User",
+                                "lastName": "",
+                                "email": "teste@clickbus.com.br",
+                                "document": "123.456.789-0",
+                                "gender": "",
+                                "birthday": "",
+                                "meta": {}
+                            },
+                            "products": [],
+                            "subtotal": "5.30"
+                        }
+                    ],
+                    "createdAt": "2014-11-12"
+                }
+            }
+
 
 ### Update Order [PUT]
 
