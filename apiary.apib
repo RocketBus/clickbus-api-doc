@@ -14,9 +14,9 @@ In this documentation you may find both how to integrate with Clickbus API for a
 
 + Parameters
 
-    + from (required, `Terminal do Tiete`) ... The Station or Place name/alias to perform the search from    
-    + to (required, `Rio de Janeiro`) ... The Station or Place name/alias to perform the search to    
-    + departure (required, `2015-10-30`) ... The departure date to perform the search
+    + from (required, `sao-paulo-tiete-sp`) ... The Station or Place name/alias to perform the search from    
+    + to (required, `santos-sp`) ... The Station or Place name/alias to perform the search to    
+    + departure (required, `2014-12-03`) ... The departure date to perform the search
     + engine ( optional, `"5411E7D726991"`) ... Specify in what booking engine you want to perform the search, if not provided will search in the availiable booking engine on the server
     + quantity (optional, `2`) ... The minimum ammount of avaliable seats
     + locale (optional, `pt_BR`) ... The locale i want to perform the search in. If you provide nothing the system will try to search in all languages avaliables on the server (that can take more time to respond)
@@ -28,9 +28,10 @@ In this documentation you may find both how to integrate with Clickbus API for a
           "paymentSettings": {
             "bankslip": {
               "total": "0.00",
+              "savings": 0,
               "fixedValue": 0,
               "serviceFee": 0,
-              "serviceFeePercentage": "11.00"
+              "serviceFeePercentage": 11
             },
             "creditcard": {
               "total": {
@@ -47,6 +48,7 @@ In this documentation you may find both how to integrate with Clickbus API for a
                 "11": "0.00",
                 "12": "0.00"
               },
+              "savings": 0.2,
               "fixedValue": 0,
               "serviceFee": {
                 "1": 0,
@@ -63,283 +65,210 @@ In this documentation you may find both how to integrate with Clickbus API for a
                 "12": 0
               },
               "serviceFeePercentage": {
-                "1": "11.00",
-                "2": "11.00",
-                "3": "11.00",
-                "4": "11.00",
-                "5": "11.00",
-                "6": "11.00",
-                "7": "11.00",
-                "8": "11.00",
-                "9": "11.00",
-                "10": "11.00",
-                "11": "11.00",
-                "12": "11.00"
+                "1": "0.00",
+                "2": "0.00",
+                "3": "0.00",
+                "4": "0.00",
+                "5": "0.00",
+                "6": "0.00",
+                "7": "0.00",
+                "8": "0.00",
+                "9": "0.00",
+                "10": "0.00",
+                "11": "0.00",
+                "12": "0.00"
               }
             },
             "debitcard": {
               "total": "0.00",
+              "savings": 0,
               "fixedValue": 0,
               "serviceFee": 0,
-              "serviceFeePercentage": "11.00"
-            },
-            "paypal_hpp": {
-              "total": "0.00",
-              "fixedValue": 0,
-              "serviceFee": 0,
-              "serviceFeePercentage": "11.00"
+              "serviceFeePercentage": 0
             },
             "banktransfer": {
               "total": "0.00",
+              "savings": 0,
               "fixedValue": 0,
               "serviceFee": 0,
-              "serviceFeePercentage": "11.00"
+              "serviceFeePercentage": 0
             }
           },
           "items": [
             {
-              "from": "São Paulo, SP",
-              "to": "Rio de Janeiro, RJ",
-              "booking_engine": "cbconnect",
+              "from": "Sao Paulo - Tiete, SP",
+              "to": "Santos, SP",
               "parts": [
                 {
-                  "trip_id": 333,
+                  "trip_id": "4322",
                   "departure": {
-                    "price": 9000,
+                    "price": "564",
                     "waypoint": {
-                      "id": 113,
+                      "id": "4017",
                       "prices": [
                         {
-                          "waypoint": 123,
-                          "price": 9000
-                        },
-                        {
-                          "waypoint": 133,
-                          "price": 4500
+                          "waypoint": "3935",
+                          "price": "564"
                         }
                       ],
                       "schedule": {
-                        "id": 12,
-                        "date": "2015-10-31",
-                        "time": "11:00",
+                        "id": "AAAFFFD-DAADA-111444ED-GGFFEE",
+                        "date": "2014-12-03",
+                        "time": "01:00",
                         "timezone": "America/Sao_Paulo"
                       },
                       "context": "departure",
                       "place": {
                         "country": "BRA",
-                        "state": "São Paulo",
-                        "city": "São Paulo",
+                        "state": "",
+                        "city": "Sao Paulo - Tiete, SP",
                         "station": {
                           "current": {
-                            "id": 111,
-                            "name": "Autobus Terminal of Barra Funda",
+                            "id": "4017",
+                            "name": "Sao Paulo - Tiete, SP",
                             "locale": "en_US"
                           },
                           "default": {
-                            "id": 1231,
-                            "name": "Terminal Rodoviário da Barra Funda",
-                            "locale": "pt_BR"
+                            "id": "",
+                            "name": "",
+                            "locale": ""
                           }
                         },
-                        "locale": "en_US",
-                        "id": 123
+                        "locale": "pt_BR",
+                        "id": "4017"
                       },
-                      "isDeparture": true,
-                      "position": 0
+                      "isDeparture": "true",
+                      "position": "0"
                     }
                   },
                   "arrival": {
-                    "price": 0,
+                    "price": "564",
                     "waypoint": {
-                      "id": 123,
-                      "prices": [],
+                      "id": "3935",
+                      "prices": [
+                        {
+                          "waypoint": "",
+                          "price": ""
+                        }
+                      ],
                       "schedule": {
-                        "id": 13,
-                        "date": "2015-10-31",
-                        "time": "19:00",
+                        "id": "AAAFFFD-DAADA-111444ED-GGFFEE",
+                        "date": "2014-12-03",
+                        "time": "03:00",
                         "timezone": "America/Sao_Paulo"
                       },
                       "context": "arrival",
                       "place": {
                         "country": "BRA",
-                        "state": "São Paulo",
-                        "city": "Santos",
+                        "state": "",
+                        "city": "Santos, SP",
                         "station": {
                           "current": {
-                            "id": 112,
-                            "name": "Galeao Terminal",
-                            "locale": "en_US"
+                            "id": "111",
+                            "name": "Santos, SP",
+                            "locale": "pt_BR"
                           },
                           "default": {
-                            "id": 1232,
-                            "name": "Terminal do Galeão",
-                            "locale": "pt_BR"
+                            "id": "",
+                            "name": "",
+                            "locale": ""
                           }
                         },
-                        "locale": "en_US",
-                        "id": 124
+                        "locale": "pt_BR",
+                        "id": "3935"
                       },
-                      "isDeparture": true,
-                      "position": 2
+                      "isDeparture": "false",
+                      "position": "0"
                     }
                   },
                   "busCompany": {
-                    "name": "Itapemirim",
-                    "id": 12
+                    "name": "Demon",
+                    "id": "9"
                   },
                   "bus": {
-                    "serviceClass": "Conventional",
-                    "name": "BusName",
-                    "id": 1
+                    "serviceClass": "Convencional",
+                    "name": "Convencional",
+                    "id": "1"
                   },
                   "waypoints": [
                     {
-                      "id": 113,
+                      "id": "4017",
                       "prices": [
                         {
-                          "waypoint": 123,
-                          "price": 9000
-                        },
-                        {
-                          "waypoint": 133,
-                          "price": 4500
+                          "waypoint": "3935",
+                          "price": "564"
                         }
                       ],
                       "schedule": {
-                        "id": 12,
-                        "date": "2015-10-31",
-                        "time": "11:00",
+                        "id": "AAAFFFD-DAADA-111444ED-GGFFEE",
+                        "date": "2014-12-03",
+                        "time": "01:00",
                         "timezone": "America/Sao_Paulo"
                       },
                       "context": "departure",
                       "place": {
                         "country": "BRA",
-                        "state": "São Paulo",
-                        "city": "São Paulo",
+                        "state": "SÃ£o Paulo",
+                        "city": "SÃ£o Paulo",
                         "station": {
                           "current": {
-                            "id": 111,
-                            "name": "Autobus Terminal of Barra Funda",
-                            "locale": "en_US"
+                            "id": "4017",
+                            "name": "Sao Paulo - Tiete, SP",
+                            "locale": "pt_BR"
                           },
                           "default": {
-                            "id": 1231,
-                            "name": "Terminal Rodoviário da Barra Funda",
-                            "locale": "pt_BR"
+                            "id": "",
+                            "name": "",
+                            "locale": ""
                           }
                         },
-                        "locale": "en_US",
-                        "id": 123
+                        "locale": "pt_BR",
+                        "id": "123"
                       },
-                      "isDeparture": true,
-                      "position": 0
+                      "isDeparture": "true",
+                      "position": "0"
                     },
                     {
-                      "id": 123,
-                      "prices": [],
+                      "id": "3935",
+                      "prices": [
+                        {
+                          "waypoint": "",
+                          "price": "564"
+                        }
+                      ],
                       "schedule": {
-                        "id": 13,
-                        "date": "2015-10-31",
-                        "time": "19:00",
+                        "id": "AAAFFFD-DAADA-111444ED-GGFFEE",
+                        "date": "2014-12-03",
+                        "time": "01:00",
                         "timezone": "America/Sao_Paulo"
                       },
                       "context": "arrival",
                       "place": {
                         "country": "BRA",
-                        "state": "São Paulo",
-                        "city": "Santos",
+                        "state": "",
+                        "city": "Santos, SP",
                         "station": {
                           "current": {
-                            "id": 112,
-                            "name": "Galeao Terminal",
-                            "locale": "en_US"
+                            "id": "3935",
+                            "name": "Santos, SP",
+                            "locale": "pt_BR"
                           },
                           "default": {
-                            "id": 1232,
-                            "name": "Terminal do Galeão",
-                            "locale": "pt_BR"
+                            "id": "",
+                            "name": "",
+                            "locale": ""
                           }
                         },
-                        "locale": "en_US",
-                        "id": 124
+                        "locale": "pt_BR",
+                        "id": ""
                       },
-                      "isDeparture": true,
-                      "position": 2
-                    },
-                    {
-                      "id": 133,
-                      "prices": [
-                        {
-                          "waypoint": 123,
-                          "price": 1500
-                        }
-                      ],
-                      "schedule": {
-                        "id": 14,
-                        "date": "2015-10-31",
-                        "time": "13:00",
-                        "timezone": "America/Sao_Paulo"
-                      },
-                      "context": "stop",
-                      "place": {
-                        "country": "BRA",
-                        "state": "São Paulo",
-                        "city": "Guaruja",
-                        "station": {
-                          "current": {
-                            "id": 112,
-                            "name": "Big Beach",
-                            "locale": "en_US"
-                          },
-                          "default": {
-                            "id": 1232,
-                            "name": "Praia Grande",
-                            "locale": "pt_BR"
-                          }
-                        },
-                        "locale": "en_US",
-                        "id": 124
-                      },
-                      "isDeparture": true,
-                      "position": 1
+                      "isDeparture": false,
+                      "position": 0
                     }
                   ],
-                  "seatTypes": [
-                    {
-                      "name": "Professor",
-                      "discount": 0.9,
-                      "id": 1
-                    },
-                    {
-                      "name": "Handcap",
-                      "discount": 0.9,
-                      "id": 1
-                    }
-                  ],
-                  "products": [
-                    {
-                      "uuid": "ab123d123d1",
-                      "name": "Potato Chips",
-                      "price": 500,
-                      "currency": "BRL",
-                      "avaliable": true
-                    },
-                    {
-                      "uuid": "ab123dc121",
-                      "name": "Potato Chips Large",
-                      "price": 1500,
-                      "currency": "BRL",
-                      "avaliable": true
-                    },
-                    {
-                      "uuid": "ab123d5fd",
-                      "name": "Extra Luggage 1kg",
-                      "price": 1000,
-                      "currency": "BRL",
-                      "avaliable": false
-                    }
-                  ],
-                  "availableSeats": 10
+                  "seatTypes": [],
+                  "products": [],
+                  "availableSeats": "1"
                 }
               ]
             }
