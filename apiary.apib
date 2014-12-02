@@ -1637,15 +1637,11 @@ you to this URL.
     + Body
         
             {
-                "meta": {
-                    "model": "Retail",
-                    "store": "ClickBus",
-                    "platform": "Mobile"
-                },
+                "meta": {},
                 "request": {
-                  "sessionId": "pb3tlvfik8kiif4hvets3shfn3",
+                  "sessionId": "orcut0kb0evdihcl39l4raebh7",
                   "buyer": {
-                    "locale": "pt_BR",
+                    "locale": "en_US",
                     "firstName": "Nome",
                     "lastName": "Sobrenome",
                     "email": "teste@clickbus.com.br",
@@ -1653,90 +1649,46 @@ you to this URL.
                     "document": "123.123.123-01",
                     "gender": "M",
                     "birthday": "1980-01-01",
-                    "meta": {},
+                    "meta": {
+                        "card": "4111111111111111",
+                        "code": "123",
+                        "name": "BUS S AGEND LTDA",
+                        "expiration": "2021-07",
+                        "zipcode": "08265390"
+                    },
                     "payment": {
-                        "method": "paypal_hpp",
-                        "currency": "BRL",
-                        "total": 3900,
-                        "installment": "1",
-                        "meta": {
-                            "card": "4551870000000183",
-                            "code": "737",
-                            "name": "NOME SOBRENOME",
-                            "expiration": "2017-03",
-                            "zipcode": "08265390"
-                        }
+                      "method": "paypal_hpp",
+                      "currency": "BRL",
+                      "total": 3900,
+                      "installment": "1",
+                      "meta": {
+                        "postbackUrl": "http://my.host.com/postbackUrl",
+                        "callbackUrl": "http://my.host.com/callbackUrl"
+                      }
                     }
-                },
-                "orderItems": [
-                {
-                    "seatReservation": "NDAxNy0tMzkzNS0tMjAxNC0xMi0yMCAyMDoxMC0tOS0tMDAxMy0tMS0tMS0tMS0tQ09OVg==",
-                    "passenger": {
-                        "firstName": "Nome",
-                        "lastName": "Sobrenome",
-                        "email": "dev@clickbus.com.br",
-                        "document": "123.123.123-01",
-                        "gender": "M",
-                        "birthday": "1986-05-17",
-                        "seat": "49",
-                        "meta": {}
-                        },
-                        "products":{
-                            "meta": {},
-                            "request": {
-                              "sessionId": "pb3tlvfik8kiif4hvets3shfn3",
-                              "buyer": {
-                                "locale": "pt_BR",
-                                "firstName": "Nome",
-                                "lastName": "Sobrenome",
-                                "email": "teste@clickbus.com.br",
-                                "phone": "11999999999",
-                                "document": "123.123.123-01",
-                                "gender": "M",
-                                "birthday": "1980-01-01",
-                                "meta": {},
-                                "payment": {
-                                  "method": "debitcard",
-                                  "currency": "BRL",
-                                  "total": 3900,
-                                  "installment": "1",
-                                  "meta": {
-                                    "card": "4551870000000183",
-                                    "code": "737",
-                                    "name": "NOME SOBRENOME",
-                                    "expiration": "2017-03",
-                                    "zipcode": "08265390"
-                                }
-                            }
-                            },
-                            "orderItems": [
-                            {
-                                "seatReservation": "NDAxNy0tMzkzNS0tMjAxNC0xMi0yMCAyMDoxMC0tOS0tMDAxMy0tMS0tMS0tMS0tQ09OVg==",
-                                "passenger": {
-                                    "firstName": "Nome",
-                                    "lastName": "Sobrenome",
-                                    "email": "dev@clickbus.com.br",
-                                    "document": "123.123.123-01",
-                                    "gender": "M",
-                                    "birthday": "1986-05-17",
-                                    "seat": "49",
-                                    "meta": {}
-                                },
-                                "products": [
-                                    {
-                                        "uuid": "abcd123s",
-                                        "quantity": 2
-                                    }
-                                ]
-                            }]
-                        }
-                    } [
+                  },
+                  "orderItems": [
                     {
-                        "uuid": "abcd123s",
-                        "quantity": 2
+                        "seatReservation": "NDAxNi0tMzkzNS0tMjAxNC0xMi0wNSAwNjoxMC0tMTItLTMwMDAtLTEtLTEtLTEtLVJPRE9WSUFSSU8=",
+                        "passenger": {
+                            "firstName": "Joaozinho",
+                            "lastName": "da Silva",
+                            "email": "rafael.silveira@clickbus.com.br",
+                            "document": "123.123.123-01",
+                            "gender": "M",
+                            "birthday": "1986-05-17",
+                            "seat": "13",
+                            "meta": {}
+                        },
+                        "products": [
+                            {
+                                "uuid": "abcd123s",
+                                "quantity": 2
+                            }
+                        ]
                     }
-                    ]}
-                ]}
+                  ]
+                }
             }
             
 + Response 201 (application/json)
