@@ -1431,6 +1431,9 @@ If a _request.buyer.payment.meta.postbackURL_ was sent, a postback will notify y
 If a _request.buyer.payment.meta.callbackURL_ was sent, after bank approvation, the application will redirect
 you to this URL.
 
+Note: To authorize a test using this payment method, you must choose a trip with any value that the last two digits (cents) are zeros. Otherwise, all transactions will be denied. 
+
+
 + Request (application/json)
 
     + Body
