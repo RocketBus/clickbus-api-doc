@@ -1253,8 +1253,8 @@ In this documentation you may find both how to integrate with Clickbus API for a
       + request.buyer.payment.meta.name (required,string) ... Name of the holder in credit card ( same as is )
       + request.buyer.payment.meta.expiration (required,alphanumeric,`2017-03`) ... Expiration date of the credit card
       + request.buyer.payment.meta.installment (optional,numeric,`1`) ... Number of installments (if not set 1 will be considered as default once its the minimum amount)
-      + request.buyer.payment.meta.callbackURL (optional,string,`http://mystore.com/checkout/success`) ... URL to redirect (HTTP 302) client after payment resolution
-      + request.buyer.payment.meta.postbackURL (optional,string,`http://mystore.com/checkout/postback-receiver`) ... URL to notify merchant about payment updates, when payment method is assinchronous.
+      + request.buyer.payment.meta.callbackUrl (optional,string,`http://mystore.com/checkout/success`) ... URL to redirect (HTTP 302) client after payment resolution
+      + request.buyer.payment.meta.postbackUrl (optional,string,`http://mystore.com/checkout/postback-receiver`) ... URL to notify merchant about payment updates, when payment method is assinchronous.
       + request.buyer.payment.meta.zipcode (optional,numeric,`123123123`) ... Some countries require this to perform anti-fraud check, however it's optional and depends on each payment type or anti-fraud service
       + request.orderItems (required,array) ... Order items to perform the request
       + request.orderItems[0].context (required,alphanumeric,`departure`) ... Context of the trip ( departure or return )
@@ -1426,9 +1426,9 @@ In this documentation you may find both how to integrate with Clickbus API for a
 In the response, a _content.payment.meta.continuePaymentURL_ should be returned. You must redirect your
 client to bank authorization and after it you will be redirected to API.
 
-If a _request.buyer.payment.meta.postbackURL_ was sent, a postback will notify you about the payment status.
+If a _request.buyer.payment.meta.postbackUrl_ was sent, a postback will notify you about the payment status.
 
-If a _request.buyer.payment.meta.callbackURL_ was sent, after bank approvation, the application will redirect
+If a _request.buyer.payment.meta.callbackUrl_ was sent, after bank approvation, the application will redirect
 you to this URL.
 
 Note: To authorize a test using this payment method, you must choose a trip with any value that the last two digits (cents) are zeros. Otherwise, all transactions will be denied. 
@@ -1466,7 +1466,9 @@ Note: To authorize a test using this payment method, you must choose a trip with
                             "code": "737",
                             "name": "NOME SOBRENOME",
                             "expiration": "2017-03",
-                            "zipcode": "08265390"
+                            "zipcode": "08265390",
+                            "postbackUrl": "http://my.host.com/postbackUrl",
+                            "callbackUrl": "http://my.host.com/callbackUrl"
                         }
                     }
                 },
@@ -1567,8 +1569,8 @@ Note: To authorize a test using this payment method, you must choose a trip with
                             "code": "XXX",
                             "name": "NOME SOBRENOME",
                             "expiration": "XXXX-XX-XX",
-                            "postbackUrl": "",
-                            "callbackUrl": ""
+                            "postbackUrl": "http://my.host.com/postbackUrl",
+                            "callbackUrl": "http://my.host.com/callbackUrl"
                         }
                     },
                     "items": [
@@ -1630,9 +1632,9 @@ The _content.payment.meta.postUrl_ of response, describe the Paypal URL that you
 
 The _content.payment.meta.postData_ of response, describe the post data that you need to send to Paypel URL ( _content.payment.meta.postUrl_ ).
 
-If a _request.buyer.payment.meta.postbackURL_ was sent, a postback will notify you about the payment status.
+If a _request.buyer.payment.meta.postbackUrl_ was sent, a postback will notify you about the payment status.
 
-If a _request.buyer.payment.meta.callbackURL_ was sent, after bank approvation, the application will redirect
+If a _request.buyer.payment.meta.callbackUrl_ was sent, after bank approvation, the application will redirect
 you to this URL.
 
 + Request (application/json)
@@ -1729,8 +1731,8 @@ you to this URL.
                                 "return": "http://api.clickbus.dev.br/api/v1/booking/payment?orderId=132",
                                 "lc": "PT"
                             },
-                            "postbackUrl": "",
-                            "callbackUrl": ""
+                            "postbackUrl": "http://my.host.com/postbackUrl",
+                            "callbackUrl": "http://my.host.com/callbackUrl"
                         }
                     },
                     "items": [
