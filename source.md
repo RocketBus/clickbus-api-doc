@@ -91,9 +91,16 @@ Tatra in sunt exercitation non.
 The resource `/search` provides 
 
 ### Get Avaliable Trips [GET]
-```php
-<?php
-    $foo = $bar
+```json
+{
+    "test":{
+        "value1": 1,
+        "value2": 2,
+        "value3": 3,
+        "value4": 4,
+        "value5": 5
+    }
+}
 ```
 Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
 
