@@ -72,6 +72,8 @@ With the correct params, this resource returns a Response _200_ and a list, in J
         - Which `busCompany` offer these travels;
         - `availableSeats` provides how many seats are available.
 
+**WARNING:** The data returned on `paymentSettings` is deprecated since 19th January, 2015.
+
 **Examples**
 
  - Searching for travels from _Sao Paulo - Brazil_ to _Santos - Brazil_ in _11th Feb 2015_, with all correct params:
