@@ -18,7 +18,7 @@ Below are the topic Groups to perform every task for your applications:
 - Obtain **Trip Details** from each route;
 - **Seat Block** to lock or unlock seat reservations;
 - **Booking** orders;
-- Sign your actions with **Session**.
+- Sign your actions with an ID provided by **Session**.
 
 ## **Groups**
 
@@ -28,21 +28,25 @@ Below are the topic Groups to perform every task for your applications:
 
 The resource `/search` provides a list with all the information you need about any trips that you can find.
 
+Remember that each request to `/search` will erase all itens stored in your Pre-Order, so, if you don't have confirmed your Order, all the items added to the Pre-Order will be lost.
+
 ### Get Avaliable Trips [GET]
 
 This method requires the following params:
 
 |PARAMS|VALUE|DESCRIPTION|FORMAT|
 |:----|:----|:----|:---:|
-|from|string|A destination from where a trip starts.|`sao-paulo-jabaquara-sp`|
-|to|string|A destination to where a trip ends.|`santos-sp`|
-|departure|date|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
+|from (required)|string|A destination from where a trip starts.|`sao-paulo-jabaquara-sp`|
+|to (required)|string|A destination to where a trip ends.|`santos-sp`|
+|departure (required)|date|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
 
 **Example**
 
-    api/v1/search?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=2015-02-11
+```
+api/v1/search?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=2015-02-11
+```
 
-The given route returns a list in JSON format with many details, as follow:
+The given route returns a list, in JSON format, with the details as follow:
 
 ```json
 {
