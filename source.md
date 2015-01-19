@@ -2,15 +2,11 @@ FORMAT: 1A
 
 # Clickbus Public API
 
-**Behold!** This is the documentation and samples for Clickbus Public API, the words for the Wise and the Brave!
+This is the documentation and samples for Clickbus Public API Also this can be used as mocked data to simply test API integration.
 
-Look! This also can be used as mocked data to simply test API integration.
+In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (contato@clickubs.com.br for more commercial details).
 
-In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus 
-Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your 
-services and start selling your bus services as well using clickbus (contato@clickubs.com.br for more commercial details).
-
-## **Overview**
+### **Overview**
 
 Below are the topic Groups to perform every task for your applications:
 
@@ -19,6 +15,8 @@ Below are the topic Groups to perform every task for your applications:
 - **Seat Block** to lock or unlock seat reservations;
 - **Booking** orders;
 - Sign your actions with an ID provided by **Session**.
+
+# API Reference
 
 ## **Predicates**
 
@@ -29,6 +27,7 @@ Below are the topic Groups to perform every task for your applications:
         "message":"Invalid Parameters"
     }
     ```
+3. The **Evaluation** environment (http://api-evaluation.clickbus.com.br/api/v1) have only 1 possible trip: from **Sao Paulo, Tiete** (`sao-paulo-tiete-sp`) to **Santos, SP** (`santos-sp`), and vice-versa.
 
 ## **Groups**
 
@@ -36,27 +35,37 @@ Below are the topic Groups to perform every task for your applications:
 
 ## Get Avaliable Trips [/search]
 
-The resource `/search` provides a list with all the information you need about our covered trips.
+The resource `/search` provides a list with all available trips, with all sort of details you may need.
 
-Remember that each request to `/search` will erase all itens stored in your Pre-Order, so, if you don't have confirmed your Order yet, all the items added to the Pre-Order will be lost.
+**ADVICES:** 
+
+1. Remember that each request to `/search` will erase all itens stored in your Pre-Order, so, if you don't have confirmed your Order yet, all the items added to the Pre-Order will be lost.
+2. The params **store**, **model** and **platform** are required and created for each partner. To obtain these credentials, please contact our commercial department at contato@clickbus.com.br.
 
 ### Get Avaliable Trips [GET]
 
 **Parameters**
 
-
-|PARAMS|VALUE|DESCRIPTION|FORMAT|
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:---:|
 |**from** (required)|_string_|A destination from where a trip starts.|`sao-paulo-jabaquara-sp`|
 |**to** (required)|_string_|A destination to where a trip ends.|`santos-sp`|
 |**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
+|**store** (required)|_string_|A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`clickbus`|
+|**model** (required)|_string_|A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`retail`|
+|**platform** (required)|_string_|A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`web`|
+|**engine** (optional)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
+|**quantity** (optional)|_int_|The minimum ammount of avaliable seats.|`10`|
+|**locale** (optional)|_string_|The locale you want to perform the search. If you provide no value for this param, the system will try to search in all languages avaliables on the server (which can take more time to return the results).|`pt_BR`|
 
 **Response**
 
 With the correct params, this resource returns a Response _200_ and a list, in JSON format, with these details as follow:
 
-- Payment types;
-- Items, which have:
+- `paymentSettings`, like:
+    - `creditcard`, with it's own `serviceFee` and `serviceFeePercentage` which is attributed for each partner (contact ClickBus at contato@clickubs.com.br for more commercial details);
+    - `debitcard`, `paypal_hpp` and `banktransfer` information;
+- `items`, which have:
     - `from` and `to` destinations;
     - `parts` section, which contains:
         - `waypoint` information, such as `schedule` for each waypoint, including `price`, `date` and `time`;
@@ -69,7 +78,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 
     - URL:
         ```
-        api/v1/search?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=2015-02-11
+        api/v1/search?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=2015-02-11&store=clickbus&platform=web&model=retail
         ```
     - Response:
         ```json
@@ -336,7 +345,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 - Searching for travels from _Sao Paulo - Brazil_ to _Santos - Brazil_ using an incorrect date value on _departure_:
     - URL:
         ```
-        api/v1/search?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=9999-99-99
+        api/v1/search?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=9999-99-99&store=clickbus&platform=web&model=retail
         ```
     - Response:
         ```json
@@ -346,7 +355,6 @@ With the correct params, this resource returns a Response _200_ and a list, in J
             "items": []
         }
         ```
-
 
 # Group Trip Details
 
@@ -361,6 +369,18 @@ Tatra in sunt exercitation non.
 ### Get Trip Details [GET]
     Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
 
+# Group Session
+
+## Get Session [/search{?from,to,departure}]
+
+Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
+exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
+irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. 
+Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
+Tatra in sunt exercitation non.
+
+### Get Session [GET]
+    Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
 
 
 # Group Booking
@@ -420,31 +440,6 @@ Tatra in sunt exercitation non.
 ### Update Order [PUT]
     Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
 
-# Group Session
-
-## Options [/search{?from,to,departure}]
-
-Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
-exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
-irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. 
-Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
-Tatra in sunt exercitation non.
-
-### Options [OPTIONS]
-    Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
-
-## Get Session [/search{?from,to,departure}]
-
-Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
-exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
-irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. 
-Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
-Tatra in sunt exercitation non.
-
-### Get Session [GET]
-    Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
-
-
 # Group Seat Block
 
 ## Options [/search{?from,to,departure}]
@@ -479,11 +474,3 @@ Tatra in sunt exercitation non.
 
 ### Remove a block in a seat [DELETE]
     Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
-
-
-| RESOURCES                                   | METHOD  |     |                       |                             |
-|:------------------------------------------- |:-------:|:---:|:---------------------:|:----------------------------|
-| rocket_bus_brazil_api_booking_options       | OPTIONS | ANY |  api.clickbus.dev.br  |  `/api/v1/booking`          |
-| rocket_bus_brazil_api_booking_index         | POST    | ANY |  api.clickbus.dev.br  |  `/api/v1/booking`          |
-| rocket_bus_brazil_api_booking_update        | PUT     | ANY |  api.clickbus.dev.br  |  `/api/v1/booking`          |
-| rocket_bus_brazil_api_booking_resumepayment | ANY     | ANY |  api.clickbus.dev.br  |  `/api/v1/booking/payment`  |
