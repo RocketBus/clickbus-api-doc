@@ -491,20 +491,70 @@ a.list-group-item.heading:hover {
 </code></pre></li>
 </ul></li>
 </ul>
-</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="trip-details">Trip Details&nbsp;<a href="#trip-details"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="trip-details-get-trip-details">Get Trip Details&nbsp;<a href="#trip-details-get-trip-details"><i class="fa fa-link"></i></a></h4><p>Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu,
-exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore
-irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut.
-Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices
-Tatra in sunt exercitation non.</p>
-<section id="trip-details-get-trip-details-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Trip Details</span></div><div style="float:left"><a href="#trip-details-get-trip-details-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/trip{?}</code></div></div><div class="panel-body"><pre><code>Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
-</code></pre>
-</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="session">Session&nbsp;<a href="#session"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="session-get-session">Get Session&nbsp;<a href="#session-get-session"><i class="fa fa-link"></i></a></h4><p>Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu,
-exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore
-irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut.
-Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices
-Tatra in sunt exercitation non.</p>
-<section id="session-get-session-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Session</span></div><div style="float:left"><a href="#session-get-session-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/search{?from,to,departure}</code></div></div><div class="panel-body"><pre><code>Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
-</code></pre>
+</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="trip-details">Trip Details&nbsp;<a href="#trip-details"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="trip-details-get-trip-details">Get Trip Details&nbsp;<a href="#trip-details-get-trip-details"><i class="fa fa-link"></i></a></h4><p>The resource <code>/trip</code> return all information related to a specific trip, based on it’s</p>
+<section id="trip-details-get-trip-details-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Trip Details</span></div><div style="float:left"><a href="#trip-details-get-trip-details-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/trip{?}</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:center">EXAMPLE</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>scheduleId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination from where a trip starts.</td><td style="text-align:center"><code>sao-paulo-jabaquara-sp</code></td></tr>
+</tbody>
+</table>
+<p><strong>Response</strong></p>
+<p>yada yada yada yada</p>
+<ul>
+<li><p><code>zuba</code>, yada:</p>
+<ul>
+<li><code>zuba</code>, yada yada yada yada</li>
+<li><code>zuba</code>, yada yada yada yada</li>
+</ul></li>
+<li><p><code>zuba</code>, yada:</p>
+<ul>
+<li><code>zuba</code>, yada yada yada yada</li>
+<li><code>zuba</code>, yada yada yada yada</li>
+</ul></li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li><p>Sucessfull Yada for <em>yada</em></p>
+<ul>
+<li>URL:
+<pre><code>api<span class="hljs-regexp">/v1/</span>trip
+</code></pre></li>
+<li>Response:
+<pre><code class="language-json">
+</code></pre></li>
+</ul></li>
+<li><p>Failed Yada for <em>yada</em></p>
+<ul>
+<li>URL:
+<pre><code>api<span class="hljs-regexp">/v1/</span>trip
+</code></pre></li>
+<li>Response:
+<pre><code class="language-json">
+</code></pre></li>
+</ul></li>
+</ul>
+</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="session">Session&nbsp;<a href="#session"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="session-get-session">Get Session&nbsp;<a href="#session-get-session"><i class="fa fa-link"></i></a></h4><p>The resource <code>/session</code> retrieves the current Session ID, which is useful to obtain data from the current session, like add a reservation by locking a seat using the <strong>Seat Block</strong> resource.</p>
+<section id="session-get-session-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Session</span></div><div style="float:left"><a href="#session-get-session-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/session</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<p><em>None</em></p>
+<p><strong>Response</strong></p>
+<p>The given request returns a Response <em>201</em>, and the session ID on the Response Body, as follow:</p>
+<p><strong>Example</strong></p>
+<ul>
+<li><p>Sucessfull request:</p>
+<ul>
+<li>URL:
+<pre><code>api<span class="hljs-regexp">/v1/</span>session
+</code></pre></li>
+<li>Response:
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"or8k5s91s66fsl3bp6ksu96qs7"</span>
+</span>}
+</code></pre></li>
+</ul></li>
+</ul>
 </div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="booking">Booking&nbsp;<a href="#booking"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="booking-options">Options&nbsp;<a href="#booking-options"><i class="fa fa-link"></i></a></h4><p>The execution of this method is required for every request made to this API, so please do not forget to use it before any request.</p>
 <section id="booking-options-options" class="panel panel-default"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">&lt;&gt;</span></div><div style="float:left"><a href="#booking-options-options" class="btn btn-xs btn-default">OPTIONS</a></div><div style="overflow:hidden"><code>/booking</code></div></div><div class="panel-body"><p><strong>Example:</strong> <a href="http://api.clickbus.com.br/api/v1/booking"><code>http://api.clickbus.com.br/api/v1/booking</code></a></p>
 <pre><code>Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.

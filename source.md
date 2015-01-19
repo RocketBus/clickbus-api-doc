@@ -368,27 +368,81 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 
 ## Get Trip Details [/trip{?}]
 
-Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
-exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
-irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. 
-Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
-Tatra in sunt exercitation non.
+The resource `/trip` return all information related to a specific trip, based on it's 
 
 ### Get Trip Details [GET]
-    Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
+
+**Parameters**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:---:|
+|**scheduleId** (required)|_string_|A destination from where a trip starts.|`sao-paulo-jabaquara-sp`|
+
+**Response**
+
+yada yada yada yada
+
+- `zuba`, yada:
+    - `zuba`, yada yada yada yada
+    - `zuba`, yada yada yada yada
+- `zuba`, yada:
+    - `zuba`, yada yada yada yada
+    - `zuba`, yada yada yada yada
+
+**Examples**
+
+ - Sucessfull Yada for _yada_
+
+    - URL:
+        ```
+        api/v1/trip
+        ```
+    - Response:
+        ```json
+        
+        ```
+- Failed Yada for _yada_
+    - URL:
+        ```
+        api/v1/trip
+        ``` 
+    - Response:
+        ```json
+        
+        ```
+
+
 
 # Group Session
 
-## Get Session [/search{?from,to,departure}]
+## Get Session [/session]
 
-Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
-exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
-irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. 
-Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
-Tatra in sunt exercitation non.
+The resource `/session` retrieves the current Session ID, which is useful to obtain data from the current session, like add a reservation by locking a seat using the **Seat Block** resource.
 
 ### Get Session [GET]
-    Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
+
+**Parameters**
+
+_None_
+
+**Response**
+
+The given request returns a Response _201_, and the session ID on the Response Body, as follow:
+
+**Example**
+
+ - Sucessfull request:
+
+    - URL:
+        ```
+        api/v1/session
+        ```
+    - Response:
+        ```json
+        {
+            "content": "or8k5s91s66fsl3bp6ksu96qs7"
+        }
+        ```
 
 
 # Group Booking
