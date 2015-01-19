@@ -344,11 +344,17 @@ With the correct params, this resource returns a Response _200_ and a list, in J
             }]
         }
         ```
-- Searching for travels from _Sao Paulo - Brazil_ to _Santos - Brazil_ using an incorrect date value on _departure_:
+- Searching for travels from _Sao Paulo - Brazil_ to _Santos - Brazil_ using an incorrect or even an unavailable date value on _departure_:
     - URL:
+        
+        For an incorrect value, like `99/99/9999`:
         ```
         api/v1/search?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=9999-99-99&store=clickbus&platform=web&model=retail
+        ``` 
+        For an unavailable value, like `1th January, 2010`:
         ```
+        api/v1/search?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=2010-01-01&store=clickbus&platform=web&model=retail
+        ``` 
     - Response:
         ```json
         {
