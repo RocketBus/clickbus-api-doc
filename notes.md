@@ -182,3 +182,22 @@ All requisitions SHOULD be realized after a OPTIONS request to the server.
             - Route: `/trip`
             - Method: [GET]
             - Return: _mixed_        
+
+
+2014-11-21 14:25:42 GET /api/v1/trip?scheduleId=NDAxNy0tMzkzNS0tMjAxNC0xMS0yMiAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg%3D%3D
+
+2014-11-21 14:25:44 PUT /api/v1/seat-block (JOAO VAI, assento 08)
+
+2014-11-21 14:25:46 GET /api/v1/trip?scheduleId=NDAxNy0tMzkzNS0tMjAxNC0xMS0yMiAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg%3D%3D (essa requisição removeu o JOAO VAI)
+
+2014-11-21 14:25:46 PUT /api/v1/seat-block (MARIA VAI, assento 07)
+
+2014-11-21 14:25:50 GET /api/v1/trip?scheduleId=MzkzNS0tNDAxNy0tMjAxNC0xMS0yMyAwNDoxOC0tOS0tMDAxMS0tMS0tMS0tMS0tQ09OVg%3D%3D
+
+2014-11-21 14:25:53 PUT /api/v1/seat-block (JOAO VOLTA, assento 01)
+
+2014-11-21 14:25:55 GET /api/v1/trip?scheduleId=MzkzNS0tNDAxNy0tMjAxNC0xMS0yMyAwNDoxOC0tOS0tMDAxMS0tMS0tMS0tMS0tQ09OVg%3D%3D (essa requisição removeu o JOAO VOLTA)
+
+2014-11-21 14:25:57 PUT /api/v1/seat-block (MARIA VOLTA, assento 02)
+
+2014-11-21 14:26:06 POST /api/v1/booking
