@@ -366,9 +366,9 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 
 # Group Trip Details
 
-## Get Trip Details [/trip{?}]
+## Get Trip Details [/trip]
 
-The resource `/trip` return all information related to a specific trip, based on it's 
+The resource `/trip` return all information related to a specific trip, based on a given schedule ID (check **Search** resource for more details).
 
 ### Get Trip Details [GET]
 
@@ -376,40 +376,88 @@ The resource `/trip` return all information related to a specific trip, based on
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:---:|
-|**scheduleId** (required)|_string_|A destination from where a trip starts.|`sao-paulo-jabaquara-sp`|
+|**scheduleId** (required)|_string_|A given hash from a search part. See on **Search** resource, in the output, into each `items` part, the value on `departure.waypoint.schedule.id` node. |`NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==`|
 
 **Response**
 
-yada yada yada yada
+Using a valid `scheduleId`, the request will return a _200_ Response, with the structure as described below:
 
-- `zuba`, yada:
-    - `zuba`, yada yada yada yada
-    - `zuba`, yada yada yada yada
-- `zuba`, yada:
-    - `zuba`, yada yada yada yada
-    - `zuba`, yada yada yada yada
+- `sessionId`, which is the current session's ID;
+    - `content`, containing:
+        - `trip_id` which is the trip ID (each trip has it's own ID);
+        - The `busCompany` name;
+        - The `bus` vehicle itself;
+        - Each bus seat is listed on `seats`, with:
+            - A single `id`;
+            - The seat's `name`;
+            - If this given seat is `available` or not;
+            - The seat `position`, which is useful to understand how the **Seat** proccess works, distributed in:
+                - `x` is for the horizontal axis;
+                - `y` is for the vertical axis;
+                - **NOTE:** the `z` value is only required for double-decker vehicles.
+            - The seat `details`, which provides:
+                - Seat's `price`, `currency` and `seatTypes`.
 
 **Examples**
 
- - Sucessfull Yada for _yada_
+- Get the trip details from _Sao Paulo - Brazil_ to _Santos - Brazil_ in _11th Feb 2015_ from a single part of this search.
 
     - URL:
         ```
-        api/v1/trip
+        api/v1/trip?scheduleId=NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==
         ```
     - Response:
         ```json
-        
+        {
+            "meta": {},
+            "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+            "content": {
+                "trip_id": "2949",
+                "busCompany": {
+                    "name": "Cometa"
+                },
+                "bus": {
+                    "id": "",
+                    "name": ""
+                },
+                "seats": [{
+                    "id": "01",
+                    "name": "01",
+                    "available": "",
+                    "position": {
+                        "x": "1",
+                        "y": "0",
+                        "z": ""
+                    },
+                    "details": {
+                        "price": "2191",
+                        "currency": "R$",
+                        "seatTypes": []
+                    }
+                }, {...}
+                ]
+            }
+        }
         ```
-- Failed Yada for _yada_
+- Incorrect request (using a invalid or incorrect schedule ID):
     - URL:
         ```
-        api/v1/trip
+        api/v1/trip?scheduleId=0123456789abcdefghijklmnopqrstuvxz
         ``` 
-    - Response:
+    - Response (status code: _400_):
         ```json
-        
+        {
+            "message": "Invalid Parameters"
+        }
         ```
+
+
+
+## How Seat position works [/trip]
+
+According to the explanation about the `seats` node information, retrieved on `/trip` resource,
+
+
 
 
 
