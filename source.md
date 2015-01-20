@@ -539,6 +539,149 @@ The given request returns a Response _201_, and the session ID on the Response B
         }
         ```
 
+# Group Seat Block
+
+## Create a block in a Seat [/seat-block]
+
+This request creates a block in a Seat, which indicates that this Seat is now unavailable for other passengers.
+
+**NOTES:**
+
+1. This block may last ~10 minutes. After that, the seat is available again;
+2. All Request shall declare in cookies the key `PHPSESSID`, along with it's value, the Sessio's ID, as follow:
+    
+    > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
+
+### Create a block in a Seat [PUT]
+
+**Parameters**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:---:|
+|**meta** (required)|_object_|An empty object. Partners can use this parameter to provide their own `meta` information: `store`, `platform` and `model`. |`{}`|
+|**request** (required)|_object_|A container which requires: ||
+|**request.from** (required)|_string_|A destination from where a trip starts. Same value used on **Search**.|`sao-paulo-tiete-sp`|
+|**request.to** (required)|_string_|A destination to where a trip ends. Same value used on **Search**.|`santos-sp`|
+|**request.seat** (required)|_string_|The seat’s `name`, obtained on **Trip Details**.|`07`|
+|**request.passenger** (required)|_object_|A container which contains multiple items, one for each passenger: ||
+|**request.passenger.name** (required)|_string_|Passenger's name.|`Fulano da Silva`|
+|**request.passenger.document** (required)|_string_|Passenger's document.|`123.456.789-00`|
+|**request.passenger.documentType** (required)|_string_||`""`|
+|**request.passenger.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
+|**request.schedule** (required)|_object_|A container which requires: ||
+|**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg==`|
+|**request.schedule.date** (required)|_string_|Any valid date, in format `yyyy-mm-dd`. Use the same value applied on **Search**.|`2015-01-27`|
+|**request.schedule.time** (required)|_string_|Any valid time between `00:00` and `23:59`, in format `HH:ii`.|`10:30`|
+|**request.schedule.timezone** (required)|_string_|Timezone information, based on actual country.|`America/Sao_Paulo`|
+|**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
+
+**Request**
+
+- Created a block for a Seat, named _07_, on a travel from _Sao Paulo - Brazil_ to _Santos - Brazil_ in _27th January 2015_, with all params correct:
+
+    ```json
+    {
+        "meta": {},
+        "request": {
+            "from": "sao-paulo-tiete-sp",
+            "to": "santos-sp",
+            "seat": "07",
+            "passenger": {
+                "name": "Fulano da Silva",
+                "document": "123.456.789-00",
+                "documentType": "",
+                "gender": "M"
+            },
+            "schedule": {
+                "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg==",
+                "date": "2015-01-27",
+                "time": "10:30",
+                "timezone": "America/Sao_Paulo"
+            },
+            "sessionId": "dnlfm8aecg2omtjaang62fvla5"
+        }
+    }
+    ```
+
+**Response**
+
+This request, with all correct params and being executed before the Seat block's life time ends, will return a Response _200_, with the following Response body:
+
+```json
+{
+    "meta": {},
+    "items": [{
+        "seat": "07",
+        "schedule": {
+            "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg==",
+            "date": "",
+            "time": "",
+            "timezone": "America/Sao_Paulo"
+        },
+        "status": "blocked",
+        "sessionId": "dnlfm8aecg2omtjaang62fvla5",
+        "expireAt": "2015-01-20 17:46"
+    }]
+}
+```
+
+## Remove a block in a Seat [/seat-block]
+
+As opposed to the Create proccess, the Remove will delete a block created on a Seat, which automatically turns a Seat available for all passengers.
+
+### Remove a block in a Seat [DELETE]
+
+**Parameters**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:---:|
+|**meta** (required)|_object_|An empty object. Partners can use this parameter to provide their own `meta` information: `store`, `platform` and `model`. |`{}`|
+|**request** (required)|_object_|A container which requires: ||
+|**request.seat** (required)|_string_|The seat’s `name`, obtained on **Trip Details**.|`07`|
+|**request.schedule** (required)|_object_|A container which requires: ||
+|**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg==`|
+|**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
+
+**Request**
+
+- Removing the Seat block, named _07_, on a travel from _Sao Paulo - Brazil_ to _Santos - Brazil_ in _27th January 2015_, with all params correct:
+
+    ```json
+    {
+        "meta": {},
+        "request": {
+            "seat": "07",
+            "schedule": {
+                "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg=="
+            },
+            "sessionId": "dnlfm8aecg2omtjaang62fvla5"
+        }
+    }
+    ```
+
+**Response**
+
+This request, with all correct params, will return a Response _202_, with the following Response body:
+
+```json
+{
+    "meta": {},
+    "content": {
+        "status": "canceled",
+        "messages": [],
+        "sessionId": "dnlfm8aecg2omtjaang62fvla5"
+    }
+}
+```
+
+**NOTE** If the `sessionId` or the lifetime of the Seat block have already expired, you may obtain a _400_ Response with the following Response body:
+
+```json
+{
+    "message": "Invalid Parameters"
+}
+```
+
 
 # Group Booking
 
@@ -597,37 +740,3 @@ Tatra in sunt exercitation non.
 ### Update Order [PUT]
     Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
 
-# Group Seat Block
-
-## Options [/search{?from,to,departure}]
-
-Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
-exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
-irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. 
-Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
-Tatra in sunt exercitation non.
-
-### Options [OPTIONS]
-    Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
-
-## Create a lock in a seat based on a session id [/search{?from,to,departure}]
-
-Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
-exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
-irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. 
-Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
-Tatra in sunt exercitation non.
-
-### Create a lock in a seat based on a session id [PUT]
-    Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
-
-## Remove a block in a seat [/search{?from,to,departure}]
-
-Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
-exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
-irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. 
-Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
-Tatra in sunt exercitation non.
-
-### Remove a block in a seat [DELETE]
-    Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
