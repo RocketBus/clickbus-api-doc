@@ -493,7 +493,7 @@ In this image, we can represent the Seat manipulation as an array, with X and Y 
 
 ![Seat Selection - source: http://www.clickbus.com.br](img/2_array_example.png)
 
-So, if you have the following coordinates (X: 3, Y: 3), you have selected the Seat `"name": "12"`, as follow:
+So, if you have the following coordinates (X: 3, Y: 3), you have selected the Seat `"name": "16"`, as follow:
 
 ```json
 {
