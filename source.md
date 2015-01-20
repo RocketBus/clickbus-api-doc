@@ -453,12 +453,59 @@ Using a valid `scheduleId`, the request will return a _200_ Response, with the s
 
 
 
-## How Seat position works [/trip]
+## How Seat Position works [/trip]
 
-According to the explanation about the `seats` node information, retrieved on `/trip` resource,
+According to the explanation about the `seats` node information, retrieved on `/trip` resource, the Seat manipulation is as follow:
 
+Let's have a look back to our `seats` node, found inside the `/trip` Response:
 
+```json
+{
+    "seats": [{
+        "id": "01",
+        "name": "01",
+        "available": "",
+        "position": {
+            "x": "1",
+            "y": "0",
+            "z": ""
+        },
+        "details": {
+            "price": "2191",
+            "currency": "R$",
+            "seatTypes": []
+        }
+    }]
+}
+```
 
+The concept here is pretty simple: in the `position` node, we have 3 different values:
+
+- `x`, which represents the horizontal axis;
+- `y`, which represents the horizontal axis;
+- `z`, which we may disconsider by now (it's only applied for double-decker vehicles).
+
+Consider the image below:
+
+![Seat Selection - source: http://www.clickbus.com.br](img/1_bus_seats.png)
+
+In this image, we can represent the Seat manipulation as an array, with X and Y axis:
+
+![Seat Selection - source: http://www.clickbus.com.br](img/2_array_example.png)
+
+So, if you have the following coordinates (X: 3, Y: 3), you have selected the Seat `"name": "12"`, as follow:
+
+```json
+{
+    "position": {
+        "x": "3",
+        "y": "3",
+        "z": ""
+    }
+}
+```
+
+![Seat Selection - source: http://www.clickbus.com.br](img/3_selected_seat.png)
 
 
 # Group Session
