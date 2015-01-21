@@ -514,6 +514,8 @@ So, if you have the following coordinates (X: 3, Y: 3), you have selected the Se
 
 The resource `/session` retrieves the current Session ID, which is useful to obtain data from the current session, like add a reservation by locking a seat using the **Seat Block** resource.
 
+**NOTE:** The token have a lifetime of ~15 minutes. After that, the token is expired, so you have to execute a new request to `/session` to generate a new token.
+
 ### Get Session [GET]
 
 **Parameters**
@@ -548,9 +550,10 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 **NOTES:**
 
 1. This block may last ~10 minutes. After that, the seat is available again;
-2. All Request shall declare in cookies the key `PHPSESSID`, along with it's value, the Sessio's ID, as follow:
-    
+2. Every Request's header shall declare the key `PHPSESSID`, along with it's value, Session's ID (obtained on **Session**), as follow:
     > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
+3. You can create up to 5 Seat blocks per Order.
+
 
 ### Create a block in a Seat [PUT]
 
@@ -682,32 +685,71 @@ This request, with all correct params, will return a Response _202_, with the fo
 }
 ```
 
-
 # Group Booking
 
-## Options [/booking]
+## Create an Order [/booking]
 
-The execution of this method is required for every request made to this API, so please do not forget to use it before any request.
+When you have selected all the Seats, then you may proceed to create an Order, which will start the payment process.
 
-### <> [OPTIONS]
+Please keep in mind that you need to provide in your header the 
 
-**Example:** [`http://api.clickbus.com.br/api/v1/booking`](http://api.clickbus.com.br/api/v1/booking)
+### Create an Order [POST]
 
-    Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
+**Parameters**
 
-## Create Order [/search{?from,to,departure}]
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**meta** (required)|_object_|An empty object. Partners can use this parameter to provide:|`{}`|
+|**meta.model** (required)|_object_|Partner's `model` data. |`retail`|
+|**meta.store** (required)|_object_|Partner's `store` data. |`newstore`|
+|**meta.platform** (required)|_object_|Partner's `platform` data. |`web`|
+|**request** (required)|_object_|A container which requires: ||
+|**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
+|**request.buyer** (required)|_object_|A container which requires: ||
+|**request.buyer.locale** (required)|_string_|Buyer's locale.|`pt_BR`|
+|**request.buyer.firstName** (required)|_string_|Buyer's fisrt name.|`Fulano`|
+|**request.buyer.lastName** (required)|_string_|Buyer's surname.|`de Silva`|
+|**request.buyer.email** (required)|_string_|Buyer's email.|`fulano@teste.com.br`|
+|**request.buyer.phone** (required)|_string_|Buyer's phone, in format `AABBBBBBBBB`, where:|`11912345678`|
+|||`AA` stands for the brazilian phone's region code;|`11`|
+|||`BBBBBBBBB` stands for phone number.|`912345678`|
+|**request.buyer.document** (required)|_string_|Buyer's document.|`123.456.789-00`|
+|**request.buyer.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
+|**request.buyer.birthday** (required)|_string_|Buyer's birth date, in format `yyyy-mm-dd`.|`1970-01-15`|
+|**request.buyer.meta** (required)|_object_|An empty object.|`{}`|
+|**request.buyer.payment** (required)|_object_|||
+|**request.orderItems** (required)|_object_|A collection of objects, which may contain at least 1 and a maximum of N to be considered valid. Each object contains:||
+|**request.orderItems.seatReservation** (required)|_string_|Schedule's ID, obtained in the **Seat** process.|`NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==`|
+|**request.orderItems.passenger** (required)|_object_|A container, which have:||
+|**request.orderItems.passenger.firstName** (required)|_string_|Passenger's first name.|`Beltrano`|
+|**request.orderItems.passenger.lastName** (required)|_string_|Passenger's surname.|`da Silva`|
+|**request.orderItems.passenger.email** (required)|_string_|Passenger's email.|`beltrano@teste.com.br`|
+|**request.orderItems.passenger.document** (required)|_string_|Passenger's document.|`123.456.789-00`|
+|**request.orderItems.passenger.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
+|**request.orderItems.passenger.birthday** (required)|_string_|Passenger's birth date, in format `yyyy-mm-dd`.|`1970-01-15`|
+|**request.orderItems.passenger.seat** (required)|_string_|`seat` name, obtained on **Seat** proccess.|`08`|
+|**request.orderItems.passenger.meta** (required)|_object_|Passenger's birth date, in format `yyyy-mm-dd`.|`1970-01-15`|
 
-Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
-exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
-irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. 
-Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
-Tatra in sunt exercitation non.
+**Response**
 
-### Create Order [POST]
 
-    Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
 
-## Create Order using debit card [/search{?from,to,departure}]
+**Example**
+
+ - Sucessfull request:
+
+    - URL:
+        ```
+        api/v1/session
+        ```
+    - Response:
+        ```json
+        {
+
+        }
+        ```
+
+## Create an Order using debit card [/search{?from,to,departure}]
 
 Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
 exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
@@ -715,10 +757,10 @@ irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure
 Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
 Tatra in sunt exercitation non.\
 
-### Create Order using debit card [POST]
+### Create an Order using debit card [POST]
     Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
 
-## Create Order using PayPal [/search{?from,to,departure}]
+## Create an Order using PayPal [/search{?from,to,departure}]
 
 Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
 exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
@@ -726,10 +768,10 @@ irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure
 Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
 Tatra in sunt exercitation non.
 
-### Create Order using PayPal [POST]
+### Create an Order using PayPal [POST]
     Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
 
-## Update Order [/search{?from,to,departure}]
+## Update an Order [/search{?from,to,departure}]
 
 Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
 exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
@@ -737,6 +779,6 @@ irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure
 Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
 Tatra in sunt exercitation non.
 
-### Update Order [PUT]
+### Update an Order [PUT]
     Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
 
