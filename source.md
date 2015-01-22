@@ -374,7 +374,7 @@ The resource `/trip` return all information related to a specific trip, based on
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
-|**scheduleId** (required)|_string_|A given hash from a search part. See on **Search** resource, in the output, into each `items` part, the value on `departure.waypoint.schedule.id` node. |`NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==`|
+|**scheduleId** (required)|_string_|A given hash from a search part. See on **Search** resource, in the output, into each `items` part, the value on `departure.waypoint.schedule.id` node. |`NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwM...`|
 
 **Response**
 
@@ -570,7 +570,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 |**request.passenger.documentType** (required)|_string_||`""`|
 |**request.passenger.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
 |**request.schedule** (required)|_object_|A container which requires: ||
-|**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg==`|
+|**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw...`|
 |**request.schedule.date** (required)|_string_|Any valid date, in format `yyyy-mm-dd`. Use the same value applied on **Search**.|`2015-01-27`|
 |**request.schedule.time** (required)|_string_|Any valid time between `00:00` and `23:59`, in format `HH:ii`.|`10:30`|
 |**request.schedule.timezone** (required)|_string_|Timezone information, based on actual country.|`America/Sao_Paulo`|
@@ -640,7 +640,7 @@ As opposed to the Create proccess, the Remove will delete a block created on a S
 |**request** (required)|_object_|A container which requires: ||
 |**request.seat** (required)|_string_|The seat’s `name`, obtained on **Trip Details**.|`07`|
 |**request.schedule** (required)|_object_|A container which requires: ||
-|**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg==`|
+|**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw...`|
 |**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
 
 **Request**
@@ -701,9 +701,7 @@ To create an Order, the request's body requires a range of data, which, for a be
         - **request.buyer.payment** contains all the Buyer's payment data;
     - **request.orderItems** contains all the Seats, along with their information, added to the Order.
 
-### Create an Order: payment with Credit Card [POST]
-
-**Parameters**
+Every `/booking` Request have the same structure, as below:
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
@@ -715,7 +713,7 @@ To create an Order, the request's body requires a range of data, which, for a be
 |**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
 |**request.buyer** (required)|_object_|A container which requires: ||
 |**request.buyer.locale** (required)|_string_|Buyer's locale.|`pt_BR`|
-|**request.buyer.firstName** (required)|_string_|Buyer's fisrt name.|`Fulano`|
+|**request.buyer.firstName** (required)|_string_|Buyer's first name.|`Fulano`|
 |**request.buyer.lastName** (required)|_string_|Buyer's surname.|`de Silva`|
 |**request.buyer.email** (required)|_string_|Buyer's email.|`fulano@teste.com.br`|
 |**request.buyer.phone** (required)|_string_|Buyer's phone, in format `AABBBBBBBBB`, where `AA` stands for the brazilian phone's region code, and `BBBBBBBBB` stands for the phone number.|`11912345678`|
@@ -723,9 +721,19 @@ To create an Order, the request's body requires a range of data, which, for a be
 |**request.buyer.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
 |**request.buyer.birthday** (required)|_string_|Buyer's birth date, in format `yyyy-mm-dd`.|`1970-01-15`|
 |**request.buyer.meta** (required)|_object_|An empty object.|`{}`|
-|**request.buyer.payment** (required)|_object_|||
+|**request.buyer.payment** (required)|_object_|An object containing:||
+|**request.buyer.payment.method** (required)|_string_|Payment type: `creditcard`.|`creditcard`|
+|**request.buyer.payment.currency** (required)|_string_|Payment currency.|`BRL`|
+|**request.buyer.payment.total** (required)|_int_|Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, `1400` means `14.00`, and `6050` means `60.50`.|`1400`|
+|**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
+|**request.buyer.payment.meta** (required)|_object_|An object which requires the following data:||
+|**request.buyer.payment.meta.card** (required)|_string_|Credit card's number.|`1234567812345678`|
+|**request.buyer.payment.meta.code** (required)|_string_|Credit card's security code.|`065`|
+|**request.buyer.payment.meta.name** (required)|_string_|Credit card owner's name, in all upper case.|`CICRANO SILVA`|
+|**request.buyer.payment.meta.expiration** (required)|_string_|Credit card's expiration date, in format `yyyy-mm`.|`2016-02`|
+|**request.buyer.payment.meta.zipcode** (required)|_string_|Credit card owner's zip code, with only digits.|`12345678`|
 |**request.orderItems** (required)|_object_|A collection of objects, which may contain at least 1 and a maximum of N to be considered valid. Each object contains:||
-|**request.orderItems.seatReservation** (required)|_string_|Schedule's ID, obtained in the **Seat** process.|`NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==`|
+|**request.orderItems.seatReservation** (required)|_string_|Schedule's ID, obtained in the **Seat** process.|`NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAw...`|
 |**request.orderItems.passenger** (required)|_object_|A container, which have:||
 |**request.orderItems.passenger.firstName** (required)|_string_|Passenger's first name.|`Beltrano`|
 |**request.orderItems.passenger.lastName** (required)|_string_|Passenger's surname.|`da Silva`|
@@ -735,55 +743,99 @@ To create an Order, the request's body requires a range of data, which, for a be
 |**request.orderItems.passenger.birthday** (required)|_string_|Passenger's birth date, in format `yyyy-mm-dd`.|`1970-01-15`|
 |**request.orderItems.passenger.seat** (required)|_string_|`seat` name, obtained on **Seat** proccess.|`08`|
 |**request.orderItems.passenger.meta** (required)|_object_|An empty object.|`{}`|
+|**request.orderItems.products** (optional)|_array_|A collection of objects, which may have:|`{}`|
+|**request.orderItems.products.uuid** (optional)|_string_||`abcd123s`|
+|**request.orderItems.products.quantity** (optional)|_int_|A collection of objects, which may have:|`{}`|
+
+except for `payment` block, which have the 3 valid following methods:
+
+- **Credit Card**
+- **Debit Card**
+- **PayPal**
+
+### Create an Order [POST]
+
+There are 3 valid payment methods, which are described below:
+
+**1) Payment method: Credit Card**
+
+**Parameters**
 
 
-- Request
+
+**Request - Example**
 
 - Create an Order with the following data:
-    - Created from a `store` _Example_;
-    - Selected 1 Seat for _Fulano da Silva_ and 1 Seat for _Beltrano da Silva_;
-    - 
+    - Created from a `store` called _NewWorld_;
+    - Selected 1 Seat for _Fulano da Silva_ and 1 Seat for _Beltrano da Silva_ in the same Order;
+    - Each item costs R$ 12.35, so the `request.buyer.payment.total` value is _2470_;
+    - The payment is settled to a single `installment`.
 
-```json
-{
-    "meta": {
-        "model": "Model",
-        "store": "clickbus",
-        "platform": "Medium"
-    },
-    "request": {
-        "sessionId": "<sessionId>",
-        "buyer": {
-            "locale": "pt_BR",
-            "meta": {},
-            "payment": {
-                "method": "direct",
-                "currency": "BRL",
-                "total": 3900,
-                "installment": "1",
-                "meta": {}
-            }
-        },
-        "orderItems": [{
-            "seatReservation": "<scheduleId>",
-            "passenger": {
-                "firstName": "Nome",
-                "lastName": "Sobrenome",
-                "email": "dev@clickbus.com.br",
-                "document": "123.123.123-01",
-                "gender": "M",
-                "birthday": "1986-05-17",
-                "seat": "<seat>",
-                "meta": {}
+        ```json
+        {
+            "meta": {
+                "model": "foo",
+                "store": "newworld",
+                "platform": "bar"
             },
-            "products": [{
-                "uuid": "abcd123s",
-                "quantity": 2
-            }]
-        }]
-    }
-}
-```
+            "request": {
+                "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+                "buyer": {
+                    "locale": "pt_BR",
+                    "meta": {},
+                    "payment": {
+                        "method": "creditcard",
+                        "currency": "BRL",
+                        "total": 3900,
+                        "installment": "1",
+                        "meta": {
+                            "card": "4111111111111111",
+                            "code": "737",
+                            "name": "NOME SOBRENOME",
+                            "expiration": "2017-03",
+                            "zipcode": "08265390"
+                        }
+                    }
+                },
+                "orderItems": [
+                    {
+                        "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
+                        "passenger": {
+                            "firstName": "Fulano",
+                            "lastName": "da Silva",
+                            "email": "fulano@teste.com.br",
+                            "document": "123.123.123-01",
+                            "gender": "M",
+                            "birthday": "1986-05-17",
+                            "seat": "11",
+                            "meta": {}
+                        },
+                        "products": [{
+                            "uuid": "abcd123s",
+                            "quantity": 1
+                        }
+                    },
+                    {
+                        "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
+                        "passenger": {
+                            "firstName": "Beltrano",
+                            "lastName": "da Silva",
+                            "email": "beltrano@teste.com.br",
+                            "document": "987.654.321-99",
+                            "gender": "M",
+                            "birthday": "1942-10-17",
+                            "seat": "02",
+                            "meta": {}
+                        },
+                        "products": [{
+                            "uuid": "abcd123s",
+                            "quantity": 1
+                        }]
+                    }
+                ]
+            }
+        }
+        ```
 
 **Response**
 
