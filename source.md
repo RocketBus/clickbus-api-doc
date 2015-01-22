@@ -28,6 +28,7 @@ Below are the topic Groups to perform every task for your applications:
     }
     ```
 3. The **Evaluation** environment (http://api-evaluation.clickbus.com.br/api/v1) have only 1 possible trip: from **Sao Paulo, Tiete** (`sao-paulo-tiete-sp`) to **Santos, SP** (`santos-sp`), and vice-versa.
+4. The params **store**, **model** and **platform** are required and singular for each partner. To obtain these credentials, please contact our commercial department at contato@clickbus.com.br.
 
 ## **Groups**
 
@@ -37,17 +38,14 @@ Below are the topic Groups to perform every task for your applications:
 
 The resource `/search` provides a list with all available trips, with all sort of details you may need.
 
-**ADVICES:** 
-
-1. Remember that each request to `/search` will erase all itens stored in your Pre-Order, so, if you don't have confirmed your Order yet, all the items added to the Pre-Order will be lost.
-2. The params **store**, **model** and **platform** are required and created for each partner. To obtain these credentials, please contact our commercial department at contato@clickbus.com.br.
+**ADVICE:** Remember that each request to `/search` will erase all itens stored in your Pre-Order, so, if you don't have confirmed your Order yet, all the items added to the Pre-Order will be lost.
 
 ### Get Avaliable Trips [GET]
 
 **Parameters**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
-|:----|:----|:----|:---:|
+|:----|:----|:----|:----|
 |**from** (required)|_string_|A destination from where a trip starts.|`sao-paulo-jabaquara-sp`|
 |**to** (required)|_string_|A destination to where a trip ends.|`santos-sp`|
 |**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
@@ -375,7 +373,7 @@ The resource `/trip` return all information related to a specific trip, based on
 **Parameters**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
-|:----|:----|:----|:---:|
+|:----|:----|:----|:----|
 |**scheduleId** (required)|_string_|A given hash from a search part. See on **Search** resource, in the output, into each `items` part, the value on `departure.waypoint.schedule.id` node. |`NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==`|
 
 **Response**
@@ -560,7 +558,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 **Parameters**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
-|:----|:----|:----|:---:|
+|:----|:----|:----|:----|
 |**meta** (required)|_object_|An empty object. Partners can use this parameter to provide their own `meta` information: `store`, `platform` and `model`. |`{}`|
 |**request** (required)|_object_|A container which requires: ||
 |**request.from** (required)|_string_|A destination from where a trip starts. Same value used on **Search**.|`sao-paulo-tiete-sp`|
@@ -637,7 +635,7 @@ As opposed to the Create proccess, the Remove will delete a block created on a S
 **Parameters**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
-|:----|:----|:----|:---:|
+|:----|:----|:----|:----|
 |**meta** (required)|_object_|An empty object. Partners can use this parameter to provide their own `meta` information: `store`, `platform` and `model`. |`{}`|
 |**request** (required)|_object_|A container which requires: ||
 |**request.seat** (required)|_string_|The seat’s `name`, obtained on **Trip Details**.|`07`|
@@ -691,9 +689,19 @@ This request, with all correct params, will return a Response _202_, with the fo
 
 When you have selected all the Seats, then you may proceed to create an Order, which will start the payment process.
 
-Please keep in mind that you need to provide in your header the 
+Please keep in mind that you need to provide in your header the `PHPSESSID` key with the Session's ID in the Cookie, as below:
 
-### Create an Order [POST]
+    Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
+
+To create an Order, the request's body requires a range of data, which, for a better understanding, we will divide in the following blocks below:
+
+- **meta**, which contains the params `model`, `store` and `platform` for each Partner;
+- **request**, which contains:
+    - **request.buyer** contains all required information about the Buyer;
+        - **request.buyer.payment** contains all the Buyer's payment data;
+    - **request.orderItems** contains all the Seats, along with their information, added to the Order.
+
+### Create an Order: payment with Credit Card [POST]
 
 **Parameters**
 
@@ -710,9 +718,7 @@ Please keep in mind that you need to provide in your header the
 |**request.buyer.firstName** (required)|_string_|Buyer's fisrt name.|`Fulano`|
 |**request.buyer.lastName** (required)|_string_|Buyer's surname.|`de Silva`|
 |**request.buyer.email** (required)|_string_|Buyer's email.|`fulano@teste.com.br`|
-|**request.buyer.phone** (required)|_string_|Buyer's phone, in format `AABBBBBBBBB`, where:|`11912345678`|
-|||`AA` stands for the brazilian phone's region code;|`11`|
-|||`BBBBBBBBB` stands for phone number.|`912345678`|
+|**request.buyer.phone** (required)|_string_|Buyer's phone, in format `AABBBBBBBBB`, where `AA` stands for the brazilian phone's region code, and `BBBBBBBBB` stands for the phone number.|`11912345678`|
 |**request.buyer.document** (required)|_string_|Buyer's document.|`123.456.789-00`|
 |**request.buyer.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
 |**request.buyer.birthday** (required)|_string_|Buyer's birth date, in format `yyyy-mm-dd`.|`1970-01-15`|
@@ -728,7 +734,56 @@ Please keep in mind that you need to provide in your header the
 |**request.orderItems.passenger.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
 |**request.orderItems.passenger.birthday** (required)|_string_|Passenger's birth date, in format `yyyy-mm-dd`.|`1970-01-15`|
 |**request.orderItems.passenger.seat** (required)|_string_|`seat` name, obtained on **Seat** proccess.|`08`|
-|**request.orderItems.passenger.meta** (required)|_object_|Passenger's birth date, in format `yyyy-mm-dd`.|`1970-01-15`|
+|**request.orderItems.passenger.meta** (required)|_object_|An empty object.|`{}`|
+
+
+- Request
+
+- Create an Order with the following data:
+    - Created from a `store` _Example_;
+    - Selected 1 Seat for _Fulano da Silva_ and 1 Seat for _Beltrano da Silva_;
+    - 
+
+```json
+{
+    "meta": {
+        "model": "Model",
+        "store": "clickbus",
+        "platform": "Medium"
+    },
+    "request": {
+        "sessionId": "<sessionId>",
+        "buyer": {
+            "locale": "pt_BR",
+            "meta": {},
+            "payment": {
+                "method": "direct",
+                "currency": "BRL",
+                "total": 3900,
+                "installment": "1",
+                "meta": {}
+            }
+        },
+        "orderItems": [{
+            "seatReservation": "<scheduleId>",
+            "passenger": {
+                "firstName": "Nome",
+                "lastName": "Sobrenome",
+                "email": "dev@clickbus.com.br",
+                "document": "123.123.123-01",
+                "gender": "M",
+                "birthday": "1986-05-17",
+                "seat": "<seat>",
+                "meta": {}
+            },
+            "products": [{
+                "uuid": "abcd123s",
+                "quantity": 2
+            }]
+        }]
+    }
+}
+```
 
 **Response**
 
@@ -748,28 +803,6 @@ Please keep in mind that you need to provide in your header the
 
         }
         ```
-
-## Create an Order using debit card [/search{?from,to,departure}]
-
-Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
-exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
-irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. 
-Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
-Tatra in sunt exercitation non.\
-
-### Create an Order using debit card [POST]
-    Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
-
-## Create an Order using PayPal [/search{?from,to,departure}]
-
-Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
-exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
-irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. 
-Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
-Tatra in sunt exercitation non.
-
-### Create an Order using PayPal [POST]
-    Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
 
 ## Update an Order [/search{?from,to,departure}]
 
