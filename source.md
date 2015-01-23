@@ -764,7 +764,6 @@ Based on each of the 3 valid payment methods:
 |**request.buyer.payment.meta.expiration** (required)|_string_|Credit card's expiration date, in format `yyyy-mm`.|`2016-02`|
 |**request.buyer.payment.meta.zipcode** (required)|_string_|Credit card owner's zip code, with only digits.|`12345678`|
 
-
 **Request - Example**
 
 - Create an Order with the following data:
@@ -846,7 +845,159 @@ Based on each of the 3 valid payment methods:
         }
         ```
 
+**2) Payment method: Debit Card**
+
+**Parameters**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**request.buyer.payment.method** (required)|_string_|Payment type: `debitcard`.|`debitcard`|
+|**request.buyer.payment.currency** (required)|_string_|Payment currency.|`BRL`|
+|**request.buyer.payment.total** (required)|_int_|Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, `1400` means `14.00`, and `6050` means `60.50`.|`1400`|
+|**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
+|**request.buyer.payment.meta** (required)|_object_|An object which requires the following data:||
+|**request.buyer.payment.meta.card** (required)|_string_|Debit card's number.|`1234567812345678`|
+|**request.buyer.payment.meta.code** (required)|_string_|Debit card's security code.|`065`|
+|**request.buyer.payment.meta.name** (required)|_string_|Debit card owner's name, in all upper case.|`CICRANO SILVA`|
+|**request.buyer.payment.meta.expiration** (required)|_string_|Debit card's expiration date, in format `yyyy-mm`.|`2016-02`|
+|**request.buyer.payment.meta.zipcode** (required)|_string_|Debit card owner's zip code, with only digits.|`12345678`|
+
+**Request - Example**
+
+- Create an Order with the following data:
+    - Created from a `store` called _NewWorld_;
+    - Selected 1 Seat for _Fulano da Silva_;
+    - Each item costs R$ 22.50, so the `request.buyer.payment.total` value is _2250_;
+    - The payment is settled to a single `installment`, using `debitcard`.
+
+        ```json
+        {
+            "meta": {
+                "model": "foo",
+                "store": "newworld",
+                "platform": "bar"
+            },
+            "request": {
+                "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+                "buyer": {
+                    "locale": "pt_BR",
+                    "firstName": "Cicrano",
+                    "lastName": "da Silva",
+                    "email": "cicrano@teste.com.br",
+                    "phone": "12934567890",
+                    "document": "123.456.789-00",
+                    "gender": "M",
+                    "birthday": "1986-05-17",
+                    "meta": {},
+                    "payment": {
+                        "method": "debitcard",
+                        "currency": "BRL",
+                        "total": 2250,
+                        "installment": "1",
+                        "meta": {
+                            "card": "1234567887654321",
+                            "code": "093",
+                            "name": "DELTRANO SILVA",
+                            "expiration": "2022-03",
+                            "zipcode": "12345678"
+                        }
+                    }
+                },
+                "orderItems": [
+                    {
+                        "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
+                        "passenger": {
+                            "firstName": "Fulano",
+                            "lastName": "da Silva",
+                            "email": "fulano@teste.com.br",
+                            "document": "123.123.123-01",
+                            "gender": "M",
+                            "birthday": "1986-05-17",
+                            "seat": "11",
+                            "meta": {}
+                        },
+                        "products": [{
+                            "uuid": "abcd123s",
+                            "quantity": 1
+                        }
+                    }
+                ]
+            }
+        }
+        ```
+
+**3) Payment method: PayPal**
+
+**Parameters**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**request.buyer.payment.method** (required)|_string_|Payment type: `paypal_hpp`.|`paypal_hpp`|
+|**request.buyer.payment.currency** (required)|_string_|Payment currency.|`BRL`|
+|**request.buyer.payment.total** (required)|_int_|Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, `1400` means `14.00`, and `6050` means `60.50`.|`1400`|
+|**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
+|**request.buyer.payment.meta** (required)|_object_|An empty object.||
+
+**Request - Example**
+
+- Create an Order with the following data:
+    - Created from a `store` called _NewWorld_;
+    - Selected 1 Seat for _Beltrano da Silva_;
+    - Each item costs R$ 30.00, so the `request.buyer.payment.total` value is _3000_;
+    - The payment is settled to a single `installment`, using `paypal_hpp`.
+
+        ```json
+        {
+            "meta": {
+                "model": "foo",
+                "store": "newworld",
+                "platform": "bar"
+            },
+            "request": {
+                "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+                "buyer": {
+                    "locale": "pt_BR",
+                    "firstName": "Cicrano",
+                    "lastName": "da Silva",
+                    "email": "cicrano@teste.com.br",
+                    "phone": "12934567890",
+                    "document": "123.456.789-00",
+                    "gender": "M",
+                    "birthday": "1986-05-17",
+                    "meta": {},
+                    "payment": {
+                        "method": "paypal_hpp",
+                        "currency": "BRL",
+                        "total": 3000,
+                        "installment": "1",
+                        "meta": {}
+                    }
+                },
+                "orderItems": [
+                    {
+                        "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
+                        "passenger": {
+                            "firstName": "Beltrano",
+                            "lastName": "da Silva",
+                            "email": "fulano@teste.com.br",
+                            "document": "123.123.123-01",
+                            "gender": "M",
+                            "birthday": "1986-05-17",
+                            "seat": "11",
+                            "meta": {}
+                        },
+                        "products": [{
+                            "uuid": "abcd123s",
+                            "quantity": 1
+                        }
+                    }
+                ]
+            }
+        }
+        ```
+
 **Response**
+
 
 
 

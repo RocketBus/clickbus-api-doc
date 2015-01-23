@@ -925,6 +925,161 @@ a.list-group-item.heading:hover {
 </span></span></code></pre></li>
 </ul></li>
 </ul>
+<p><strong>2) Payment method: Debit Card</strong></p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>request.buyer.payment.method</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment type: <code>debitcard</code>.</td><td style="text-align:left"><code>debitcard</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.currency</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment currency.</td><td style="text-align:left"><code>BRL</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.total</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, <code>1400</code> means <code>14.00</code>, and <code>6050</code> means <code>60.50</code>.</td><td style="text-align:left"><code>1400</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.installment</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Indicates on how many installments the payment is settled.</td><td style="text-align:left"><code>1</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An object which requires the following data:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.card</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Debit card’s number.</td><td style="text-align:left"><code>1234567812345678</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.code</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Debit card’s security code.</td><td style="text-align:left"><code>065</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.name</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Debit card owner’s name, in all upper case.</td><td style="text-align:left"><code>CICRANO SILVA</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.expiration</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Debit card’s expiration date, in format <code>yyyy-mm</code>.</td><td style="text-align:left"><code>2016-02</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.zipcode</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Debit card owner’s zip code, with only digits.</td><td style="text-align:left"><code>12345678</code></td></tr>
+</tbody>
+</table>
+<p><strong>Request - Example</strong></p>
+<ul>
+<li>Create an Order with the following data:
+<ul>
+<li><p>Created from a <code>store</code> called <em>NewWorld</em>;</p></li>
+<li><p>Selected 1 Seat for <em>Fulano da Silva</em>;</p></li>
+<li><p>Each item costs R$ 22.50, so the <code>request.buyer.payment.total</code> value is <em>2250</em>;</p></li>
+<li><p>The payment is settled to a single <code>installment</code>, using <code>debitcard</code>.</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
+        "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"newworld"</span></span>,
+        "<span class="hljs-attribute">platform</span>": <span class="hljs-value"><span class="hljs-string">"bar"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">request</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"oeccq3hugiknuj5f2luvvruvj7"</span></span>,
+        "<span class="hljs-attribute">buyer</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">locale</span>": <span class="hljs-value"><span class="hljs-string">"pt_BR"</span></span>,
+            "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Cicrano"</span></span>,
+            "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"da Silva"</span></span>,
+            "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"cicrano@teste.com.br"</span></span>,
+            "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"12934567890"</span></span>,
+            "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789-00"</span></span>,
+            "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">"M"</span></span>,
+            "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1986-05-17"</span></span>,
+            "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
+            "<span class="hljs-attribute">payment</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"debitcard"</span></span>,
+                "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">2250</span></span>,
+                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+                "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">card</span>": <span class="hljs-value"><span class="hljs-string">"1234567887654321"</span></span>,
+                    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"093"</span></span>,
+                    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"DELTRANO SILVA"</span></span>,
+                    "<span class="hljs-attribute">expiration</span>": <span class="hljs-value"><span class="hljs-string">"2022-03"</span></span>,
+                    "<span class="hljs-attribute">zipcode</span>": <span class="hljs-value"><span class="hljs-string">"12345678"</span>
+                </span>}
+            </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">orderItems</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">seatReservation</span>": <span class="hljs-value"><span class="hljs-string">"NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg=="</span></span>,
+                "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Fulano"</span></span>,
+                    "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"da Silva"</span></span>,
+                    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fulano@teste.com.br"</span></span>,
+                    "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.123.123-01"</span></span>,
+                    "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">"M"</span></span>,
+                    "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1986-05-17"</span></span>,
+                    "<span class="hljs-attribute">seat</span>": <span class="hljs-value"><span class="hljs-string">"11"</span></span>,
+                    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}
+                </span>}</span>,
+                "<span class="hljs-attribute">products</span>": <span class="hljs-value">[{
+                    "<span class="hljs-attribute">uuid</span>": <span class="hljs-value"><span class="hljs-string">"abcd123s"</span></span>,
+                    "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+                </span>}
+            }
+        ]
+    </span>}
+}
+</span></span></code></pre></li>
+</ul></li>
+</ul>
+<p><strong>3) Payment method: PayPal</strong></p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>request.buyer.payment.method</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment type: <code>paypal_hpp</code>.</td><td style="text-align:left"><code>paypal_hpp</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.currency</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment currency.</td><td style="text-align:left"><code>BRL</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.total</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, <code>1400</code> means <code>14.00</code>, and <code>6050</code> means <code>60.50</code>.</td><td style="text-align:left"><code>1400</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.installment</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Indicates on how many installments the payment is settled.</td><td style="text-align:left"><code>1</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object.</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<p><strong>Request - Example</strong></p>
+<ul>
+<li>Create an Order with the following data:
+<ul>
+<li><p>Created from a <code>store</code> called <em>NewWorld</em>;</p></li>
+<li><p>Selected 1 Seat for <em>Beltrano da Silva</em>;</p></li>
+<li><p>Each item costs R$ 30.00, so the <code>request.buyer.payment.total</code> value is <em>3000</em>;</p></li>
+<li><p>The payment is settled to a single <code>installment</code>, using <code>paypal_hpp</code>.</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
+        "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"newworld"</span></span>,
+        "<span class="hljs-attribute">platform</span>": <span class="hljs-value"><span class="hljs-string">"bar"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">request</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"oeccq3hugiknuj5f2luvvruvj7"</span></span>,
+        "<span class="hljs-attribute">buyer</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">locale</span>": <span class="hljs-value"><span class="hljs-string">"pt_BR"</span></span>,
+            "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Cicrano"</span></span>,
+            "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"da Silva"</span></span>,
+            "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"cicrano@teste.com.br"</span></span>,
+            "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"12934567890"</span></span>,
+            "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789-00"</span></span>,
+            "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">"M"</span></span>,
+            "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1986-05-17"</span></span>,
+            "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
+            "<span class="hljs-attribute">payment</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"paypal_hpp"</span></span>,
+                "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">3000</span></span>,
+                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+                "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}
+            </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">orderItems</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">seatReservation</span>": <span class="hljs-value"><span class="hljs-string">"NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg=="</span></span>,
+                "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Beltrano"</span></span>,
+                    "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"da Silva"</span></span>,
+                    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fulano@teste.com.br"</span></span>,
+                    "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.123.123-01"</span></span>,
+                    "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">"M"</span></span>,
+                    "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1986-05-17"</span></span>,
+                    "<span class="hljs-attribute">seat</span>": <span class="hljs-value"><span class="hljs-string">"11"</span></span>,
+                    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}
+                </span>}</span>,
+                "<span class="hljs-attribute">products</span>": <span class="hljs-value">[{
+                    "<span class="hljs-attribute">uuid</span>": <span class="hljs-value"><span class="hljs-string">"abcd123s"</span></span>,
+                    "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+                </span>}
+            }
+        ]
+    </span>}
+}
+</span></span></code></pre></li>
+</ul></li>
+</ul>
 <p><strong>Response</strong></p>
 <p><strong>Example</strong></p>
 <ul>
