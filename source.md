@@ -2,7 +2,7 @@ FORMAT: 1A
 
 # Clickbus Public API
 
-This is the documentation and samples for Clickbus Public API Also this can be used as mocked data to simply test API integration.
+This is the documentation and samples for Clickbus Public API. Also this can be used as mocked data to simply test API integration.
 
 In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (contato@clickubs.com.br for more commercial details).
 
