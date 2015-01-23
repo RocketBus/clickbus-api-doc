@@ -999,23 +999,6 @@ Based on each of the 3 valid payment methods:
 **Response**
 
 
-
-
-**Example**
-
- - Sucessfull request:
-
-    - URL:
-        ```
-        api/v1/session
-        ```
-    - Response:
-        ```json
-        {
-
-        }
-        ```
-
 ## Update an Order [/search{?from,to,departure}]
 
 Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
