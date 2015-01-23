@@ -1008,5 +1008,26 @@ Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tem
 Tatra in sunt exercitation non.
 
 ### Update an Order [PUT]
-    Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices Tatra in sunt exercitation non.
 
+**Parameters**
+
+_None_
+
+**Response**
+
+The given request returns a Response _201_, and the session ID on the Response Body, as follow:
+
+**Example**
+
+ - Sucessfull request:
+
+    - URL:
+        ```
+        api/v1/session
+        ```
+    - Response:
+        ```json
+        {
+            "content": "or8k5s91s66fsl3bp6ksu96qs7"
+        }
+        ```
