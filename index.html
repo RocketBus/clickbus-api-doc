@@ -801,19 +801,9 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:left"><strong>request.buyer.gender</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>M</code> stands for <em>Male</em>, and <code>F</code>, for <em>Female</em>.</td><td style="text-align:left"><code>M</code> or <code>F</code></td></tr>
 <tr><td style="text-align:left"><strong>request.buyer.birthday</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s birth date, in format <code>yyyy-mm-dd</code>.</td><td style="text-align:left"><code>1970-01-15</code></td></tr>
 <tr><td style="text-align:left"><strong>request.buyer.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object.</td><td style="text-align:left"><code>{}</code></td></tr>
-<tr><td style="text-align:left"><strong>request.buyer.payment</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An object containing:</td><td style="text-align:left"></td></tr>
-<tr><td style="text-align:left"><strong>request.buyer.payment.method</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment type: <code>creditcard</code>.</td><td style="text-align:left"><code>creditcard</code></td></tr>
-<tr><td style="text-align:left"><strong>request.buyer.payment.currency</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment currency.</td><td style="text-align:left"><code>BRL</code></td></tr>
-<tr><td style="text-align:left"><strong>request.buyer.payment.total</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, <code>1400</code> means <code>14.00</code>, and <code>6050</code> means <code>60.50</code>.</td><td style="text-align:left"><code>1400</code></td></tr>
-<tr><td style="text-align:left"><strong>request.buyer.payment.installment</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Indicates on how many installments the payment is settled.</td><td style="text-align:left"><code>1</code></td></tr>
-<tr><td style="text-align:left"><strong>request.buyer.payment.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An object which requires the following data:</td><td style="text-align:left"></td></tr>
-<tr><td style="text-align:left"><strong>request.buyer.payment.meta.card</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card’s number.</td><td style="text-align:left"><code>1234567812345678</code></td></tr>
-<tr><td style="text-align:left"><strong>request.buyer.payment.meta.code</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card’s security code.</td><td style="text-align:left"><code>065</code></td></tr>
-<tr><td style="text-align:left"><strong>request.buyer.payment.meta.name</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card owner’s name, in all upper case.</td><td style="text-align:left"><code>CICRANO SILVA</code></td></tr>
-<tr><td style="text-align:left"><strong>request.buyer.payment.meta.expiration</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card’s expiration date, in format <code>yyyy-mm</code>.</td><td style="text-align:left"><code>2016-02</code></td></tr>
-<tr><td style="text-align:left"><strong>request.buyer.payment.meta.zipcode</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card owner’s zip code, with only digits.</td><td style="text-align:left"><code>12345678</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An object containing all the required information according to the payment method.</td><td style="text-align:left"></td></tr>
 <tr><td style="text-align:left"><strong>request.orderItems</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A collection of objects, which may contain at least 1 and a maximum of N to be considered valid. Each object contains:</td><td style="text-align:left"></td></tr>
-<tr><td style="text-align:left"><strong>request.orderItems.seatReservation</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Schedule’s ID, obtained in the <strong>Seat</strong> process.</td><td style="text-align:left"><code>NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAw...</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.seatReservation</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Schedule’s ID, obtained in the <strong>Seat</strong> process.</td><td style="text-align:left"><code>NDAxNy0tMzkzNS0tMjAxNS0...</code></td></tr>
 <tr><td style="text-align:left"><strong>request.orderItems.passenger</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container, which have:</td><td style="text-align:left"></td></tr>
 <tr><td style="text-align:left"><strong>request.orderItems.passenger.firstName</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s first name.</td><td style="text-align:left"><code>Beltrano</code></td></tr>
 <tr><td style="text-align:left"><strong>request.orderItems.passenger.lastName</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s surname.</td><td style="text-align:left"><code>da Silva</code></td></tr>
@@ -825,18 +815,35 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:left"><strong>request.orderItems.passenger.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object.</td><td style="text-align:left"><code>{}</code></td></tr>
 <tr><td style="text-align:left"><strong>request.orderItems.products</strong> (optional)</td><td style="text-align:left"><em>array</em></td><td style="text-align:left">A collection of objects, which may have:</td><td style="text-align:left"><code>{}</code></td></tr>
 <tr><td style="text-align:left"><strong>request.orderItems.products.uuid</strong> (optional)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"></td><td style="text-align:left"><code>abcd123s</code></td></tr>
-<tr><td style="text-align:left"><strong>request.orderItems.products.quantity</strong> (optional)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">A collection of objects, which may have:</td><td style="text-align:left"><code>{}</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.products.quantity</strong> (optional)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left"></td><td style="text-align:left"><code>{}</code></td></tr>
 </tbody>
 </table>
-<p>except for <code>payment</code> block, which have the 3 valid following methods:</p>
+<p>Each <code>/booking</code> have the same structure block except for <code>payment</code> block, which have the 3 valid following methods:</p>
 <ul>
 <li><p><strong>Credit Card</strong></p></li>
 <li><p><strong>Debit Card</strong></p></li>
 <li><p><strong>PayPal</strong></p></li>
 </ul>
-<section id="booking-create-an-order-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Create an Order</span></div><div style="float:left"><a href="#booking-create-an-order-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/booking</code></div></div><div class="panel-body"><p>There are 3 valid payment methods, which are described below:</p>
+<section id="booking-create-an-order-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Create an Order</span></div><div style="float:left"><a href="#booking-create-an-order-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/booking</code></div></div><div class="panel-body"><p>Based on each of the 3 valid payment methods:</p>
 <p><strong>1) Payment method: Credit Card</strong></p>
 <p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>request.buyer.payment.method</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment type: <code>creditcard</code>.</td><td style="text-align:left"><code>creditcard</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.currency</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment currency.</td><td style="text-align:left"><code>BRL</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.total</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, <code>1400</code> means <code>14.00</code>, and <code>6050</code> means <code>60.50</code>.</td><td style="text-align:left"><code>1400</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.installment</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Indicates on how many installments the payment is settled.</td><td style="text-align:left"><code>1</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An object which requires the following data:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.card</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card’s number.</td><td style="text-align:left"><code>1234567812345678</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.code</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card’s security code.</td><td style="text-align:left"><code>065</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.name</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card owner’s name, in all upper case.</td><td style="text-align:left"><code>CICRANO SILVA</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.expiration</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card’s expiration date, in format <code>yyyy-mm</code>.</td><td style="text-align:left"><code>2016-02</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.zipcode</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card owner’s zip code, with only digits.</td><td style="text-align:left"><code>12345678</code></td></tr>
+</tbody>
+</table>
 <p><strong>Request - Example</strong></p>
 <ul>
 <li>Create an Order with the following data:
@@ -844,7 +851,7 @@ a.list-group-item.heading:hover {
 <li><p>Created from a <code>store</code> called <em>NewWorld</em>;</p></li>
 <li><p>Selected 1 Seat for <em>Fulano da Silva</em> and 1 Seat for <em>Beltrano da Silva</em> in the same Order;</p></li>
 <li><p>Each item costs R$ 12.35, so the <code>request.buyer.payment.total</code> value is <em>2470</em>;</p></li>
-<li><p>The payment is settled to a single <code>installment</code>.</p>
+<li><p>The payment is settled to a single <code>installment</code>, using <code>creditcard</code>.</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
@@ -855,18 +862,25 @@ a.list-group-item.heading:hover {
         "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"oeccq3hugiknuj5f2luvvruvj7"</span></span>,
         "<span class="hljs-attribute">buyer</span>": <span class="hljs-value">{
             "<span class="hljs-attribute">locale</span>": <span class="hljs-value"><span class="hljs-string">"pt_BR"</span></span>,
+            "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Cicrano"</span></span>,
+            "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"da Silva"</span></span>,
+            "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"cicrano@teste.com.br"</span></span>,
+            "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"12934567890"</span></span>,
+            "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789-00"</span></span>,
+            "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">"M"</span></span>,
+            "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1986-05-17"</span></span>,
             "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
             "<span class="hljs-attribute">payment</span>": <span class="hljs-value">{
                 "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"creditcard"</span></span>,
                 "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
-                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">3900</span></span>,
+                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">2470</span></span>,
                 "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
                 "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
-                    "<span class="hljs-attribute">card</span>": <span class="hljs-value"><span class="hljs-string">"4111111111111111"</span></span>,
-                    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"737"</span></span>,
-                    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"NOME SOBRENOME"</span></span>,
-                    "<span class="hljs-attribute">expiration</span>": <span class="hljs-value"><span class="hljs-string">"2017-03"</span></span>,
-                    "<span class="hljs-attribute">zipcode</span>": <span class="hljs-value"><span class="hljs-string">"08265390"</span>
+                    "<span class="hljs-attribute">card</span>": <span class="hljs-value"><span class="hljs-string">"1234567887654321"</span></span>,
+                    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"093"</span></span>,
+                    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"DELTRANO SILVA"</span></span>,
+                    "<span class="hljs-attribute">expiration</span>": <span class="hljs-value"><span class="hljs-string">"2022-03"</span></span>,
+                    "<span class="hljs-attribute">zipcode</span>": <span class="hljs-value"><span class="hljs-string">"12345678"</span>
                 </span>}
             </span>}
         </span>}</span>,

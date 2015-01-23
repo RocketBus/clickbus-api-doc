@@ -721,19 +721,9 @@ Every `/booking` Request have the same structure, as below:
 |**request.buyer.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
 |**request.buyer.birthday** (required)|_string_|Buyer's birth date, in format `yyyy-mm-dd`.|`1970-01-15`|
 |**request.buyer.meta** (required)|_object_|An empty object.|`{}`|
-|**request.buyer.payment** (required)|_object_|An object containing:||
-|**request.buyer.payment.method** (required)|_string_|Payment type: `creditcard`.|`creditcard`|
-|**request.buyer.payment.currency** (required)|_string_|Payment currency.|`BRL`|
-|**request.buyer.payment.total** (required)|_int_|Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, `1400` means `14.00`, and `6050` means `60.50`.|`1400`|
-|**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
-|**request.buyer.payment.meta** (required)|_object_|An object which requires the following data:||
-|**request.buyer.payment.meta.card** (required)|_string_|Credit card's number.|`1234567812345678`|
-|**request.buyer.payment.meta.code** (required)|_string_|Credit card's security code.|`065`|
-|**request.buyer.payment.meta.name** (required)|_string_|Credit card owner's name, in all upper case.|`CICRANO SILVA`|
-|**request.buyer.payment.meta.expiration** (required)|_string_|Credit card's expiration date, in format `yyyy-mm`.|`2016-02`|
-|**request.buyer.payment.meta.zipcode** (required)|_string_|Credit card owner's zip code, with only digits.|`12345678`|
+|**request.buyer.payment** (required)|_object_|An object containing all the required information according to the payment method.||
 |**request.orderItems** (required)|_object_|A collection of objects, which may contain at least 1 and a maximum of N to be considered valid. Each object contains:||
-|**request.orderItems.seatReservation** (required)|_string_|Schedule's ID, obtained in the **Seat** process.|`NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAw...`|
+|**request.orderItems.seatReservation** (required)|_string_|Schedule's ID, obtained in the **Seat** process.|`NDAxNy0tMzkzNS0tMjAxNS0...`|
 |**request.orderItems.passenger** (required)|_object_|A container, which have:||
 |**request.orderItems.passenger.firstName** (required)|_string_|Passenger's first name.|`Beltrano`|
 |**request.orderItems.passenger.lastName** (required)|_string_|Passenger's surname.|`da Silva`|
@@ -745,9 +735,9 @@ Every `/booking` Request have the same structure, as below:
 |**request.orderItems.passenger.meta** (required)|_object_|An empty object.|`{}`|
 |**request.orderItems.products** (optional)|_array_|A collection of objects, which may have:|`{}`|
 |**request.orderItems.products.uuid** (optional)|_string_||`abcd123s`|
-|**request.orderItems.products.quantity** (optional)|_int_|A collection of objects, which may have:|`{}`|
+|**request.orderItems.products.quantity** (optional)|_int_||`{}`|
 
-except for `payment` block, which have the 3 valid following methods:
+Each `/booking` have the same structure block except for `payment` block, which have the 3 valid following methods:
 
 - **Credit Card**
 - **Debit Card**
@@ -755,12 +745,24 @@ except for `payment` block, which have the 3 valid following methods:
 
 ### Create an Order [POST]
 
-There are 3 valid payment methods, which are described below:
+Based on each of the 3 valid payment methods:
 
 **1) Payment method: Credit Card**
 
 **Parameters**
 
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**request.buyer.payment.method** (required)|_string_|Payment type: `creditcard`.|`creditcard`|
+|**request.buyer.payment.currency** (required)|_string_|Payment currency.|`BRL`|
+|**request.buyer.payment.total** (required)|_int_|Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, `1400` means `14.00`, and `6050` means `60.50`.|`1400`|
+|**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
+|**request.buyer.payment.meta** (required)|_object_|An object which requires the following data:||
+|**request.buyer.payment.meta.card** (required)|_string_|Credit card's number.|`1234567812345678`|
+|**request.buyer.payment.meta.code** (required)|_string_|Credit card's security code.|`065`|
+|**request.buyer.payment.meta.name** (required)|_string_|Credit card owner's name, in all upper case.|`CICRANO SILVA`|
+|**request.buyer.payment.meta.expiration** (required)|_string_|Credit card's expiration date, in format `yyyy-mm`.|`2016-02`|
+|**request.buyer.payment.meta.zipcode** (required)|_string_|Credit card owner's zip code, with only digits.|`12345678`|
 
 
 **Request - Example**
@@ -769,7 +771,7 @@ There are 3 valid payment methods, which are described below:
     - Created from a `store` called _NewWorld_;
     - Selected 1 Seat for _Fulano da Silva_ and 1 Seat for _Beltrano da Silva_ in the same Order;
     - Each item costs R$ 12.35, so the `request.buyer.payment.total` value is _2470_;
-    - The payment is settled to a single `installment`.
+    - The payment is settled to a single `installment`, using `creditcard`.
 
         ```json
         {
@@ -782,18 +784,25 @@ There are 3 valid payment methods, which are described below:
                 "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
                 "buyer": {
                     "locale": "pt_BR",
+                    "firstName": "Cicrano",
+                    "lastName": "da Silva",
+                    "email": "cicrano@teste.com.br",
+                    "phone": "12934567890",
+                    "document": "123.456.789-00",
+                    "gender": "M",
+                    "birthday": "1986-05-17",
                     "meta": {},
                     "payment": {
                         "method": "creditcard",
                         "currency": "BRL",
-                        "total": 3900,
+                        "total": 2470,
                         "installment": "1",
                         "meta": {
-                            "card": "4111111111111111",
-                            "code": "737",
-                            "name": "NOME SOBRENOME",
-                            "expiration": "2017-03",
-                            "zipcode": "08265390"
+                            "card": "1234567887654321",
+                            "code": "093",
+                            "name": "DELTRANO SILVA",
+                            "expiration": "2022-03",
+                            "zipcode": "12345678"
                         }
                     }
                 },
