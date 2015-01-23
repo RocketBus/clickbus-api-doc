@@ -689,9 +689,11 @@ This request, with all correct params, will return a Response _202_, with the fo
 
 When you have selected all the Seats, then you may proceed to create an Order, which will start the payment process.
 
-Please keep in mind that you need to provide in your header the `PHPSESSID` key with the Session's ID in the Cookie, as below:
+**NOTES:**
 
-    Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
+- For every Response, please remember to keep the `content.localizer` content; this value is required for any **Update Order** Request;
+- Please keep in mind that you need to provide in your header the `PHPSESSID` key with the Session's ID in the Cookie, as below:
+    > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
 
 To create an Order, the request's body requires a range of data, which, for a better understanding, we will divide in the following blocks below:
 
@@ -701,14 +703,14 @@ To create an Order, the request's body requires a range of data, which, for a be
         - **request.buyer.payment** contains all the Buyer's payment data;
     - **request.orderItems** contains all the Seats, along with their information, added to the Order.
 
-Every `/booking` Request have the same structure, as below:
+Each `/booking` have the same structure block except for `payment` block, which is based on each payment method (see details below):
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
 |**meta** (required)|_object_|An empty object. Partners can use this parameter to provide:|`{}`|
-|**meta.model** (required)|_object_|Partner's `model` data. |`retail`|
-|**meta.store** (required)|_object_|Partner's `store` data. |`newstore`|
-|**meta.platform** (required)|_object_|Partner's `platform` data. |`web`|
+|**meta.model** (required)|_string_|Partner's `model` data. |`retail`|
+|**meta.store** (required)|_string_|Partner's `store` data. |`newstore`|
+|**meta.platform** (required)|_string_|Partner's `platform` data. |`web`|
 |**request** (required)|_object_|A container which requires: ||
 |**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
 |**request.buyer** (required)|_object_|A container which requires: ||
@@ -737,7 +739,7 @@ Every `/booking` Request have the same structure, as below:
 |**request.orderItems.products.uuid** (optional)|_string_||`abcd123s`|
 |**request.orderItems.products.quantity** (optional)|_int_||`{}`|
 
-Each `/booking` have the same structure block except for `payment` block, which have the 3 valid following methods:
+ The `/booking` request have the 3 valid payment methods:
 
 - **Credit Card**
 - **Debit Card**
@@ -845,6 +847,85 @@ Based on each of the 3 valid payment methods:
         }
         ```
 
+**Response**
+
+The following Request, with all correct parameters, will return a _201_ Response, with all details from the Order, as the example below.
+
+```json
+{
+    "meta": {
+        "model": "corporate",
+        "store": "clickbus",
+        "platform": "Web"
+    },
+    "content": {
+        "id": "1062",
+        "status": "order_finalized_successfully",
+        "localizer": "5EBP2M",
+        "uuid": "",
+        "payment": {
+            "method": "payment.creditcard",
+            "total": "6.3",
+            "currency": "BRL",
+            "status": "order_finalized_successfully",
+            "meta": {
+                "card": "4111-XXXX-XXXX-1111",
+                "code": "XXX",
+                "name": "ALFRED PENNYWORTH",
+                "expiration": "XXXX-XX-XX",
+                "postbackUrl": "",
+                "callbackUrl": ""
+            }
+        },
+        "items": [{
+            "trip_id": "4321",
+            "localizer": "KPFHNB",
+            "context": "departure",
+            "order_item": "1228",
+            "serviceClass": "Convencional",
+            "departure": {
+                "waypoint": "4017",
+                "schedule": {
+                    "id": "",
+                    "date": "2015-02-11",
+                    "time": "01:00",
+                    "timezone": "America/Sao_Paulo"
+                }
+            },
+            "arrival": {
+                "waypoint": "3935",
+                "schedule": {
+                    "id": "",
+                    "date": "2015-02-11",
+                    "time": "03:00",
+                    "timezone": "America/Sao_Paulo"
+                }
+            },
+            "seat": {
+                "id": "42",
+                "name": "42",
+                "price": "6.30",
+                "status": "reserved",
+                "currency": "BRL",
+                "type": {}
+            },
+            "passenger": {
+                "firstName": "Bruce Wayne",
+                "lastName": "",
+                "email": "alfred@batima.com.br",
+                "document": "123.456.789-00",
+                "gender": "",
+                "birthday": "",
+                "meta": {}
+            },
+            "products": [],
+            "subtotal": "6.30"
+        }],
+        "createdAt": "2015-01-23"
+    }
+}
+```
+
 **2) Payment method: Debit Card**
 
 **Parameters**
@@ -928,6 +1009,8 @@ Based on each of the 3 valid payment methods:
 
 **3) Payment method: PayPal**
 
+This payment method provides a redirect link in the Response body, provided after PayPal's request.
+
 **Parameters**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
@@ -942,8 +1025,8 @@ Based on each of the 3 valid payment methods:
 
 - Create an Order with the following data:
     - Created from a `store` called _NewWorld_;
-    - Selected 1 Seat for _Beltrano da Silva_;
-    - Each item costs R$ 30.00, so the `request.buyer.payment.total` value is _3000_;
+    - Selected 1 Seat for _Charles Bukowski_;
+    - Each item costs R$ 6.30, so the `request.buyer.payment.total` value is _630_;
     - The payment is settled to a single `installment`, using `paypal_hpp`.
 
         ```json
@@ -968,7 +1051,7 @@ Based on each of the 3 valid payment methods:
                     "payment": {
                         "method": "paypal_hpp",
                         "currency": "BRL",
-                        "total": 3000,
+                        "total": 630,
                         "installment": "1",
                         "meta": {}
                     }
@@ -977,13 +1060,13 @@ Based on each of the 3 valid payment methods:
                     {
                         "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
                         "passenger": {
-                            "firstName": "Beltrano",
-                            "lastName": "da Silva",
-                            "email": "fulano@teste.com.br",
+                            "firstName": "Charles",
+                            "lastName": "Bukowski",
+                            "email": "teste@novo.com.br",
                             "document": "123.123.123-01",
                             "gender": "M",
                             "birthday": "1986-05-17",
-                            "seat": "11",
+                            "seat": "26",
                             "meta": {}
                         },
                         "products": [{
@@ -998,36 +1081,194 @@ Based on each of the 3 valid payment methods:
 
 **Response**
 
+```json
+{
+    "meta": {
+        "model": "foo",
+        "store": "newworld",
+        "platform": "bar"
+    },
+    "content": {
+        "id": "1063",
+        "status": "order_pending",
+        "localizer": "GXGTWNM6A",
+        "uuid": "",
+        "payment": {
+            "method": "payment.paypal_hpp",
+            "total": "6.3",
+            "currency": "BRL",
+            "status": "order_pending",
+            "meta": {
+                "postUrl": "https://www.paypal.com/cgi-bin/webscr",
+                "postData": {
+                    "cmd": "_xclick",
+                    "business": "contato@clickbus.com.br",
+                    "item_name": "Passagem de onibus - Clickbus",
+                    "amount": "6.30",
+                    "currency_code": "BRL",
+                    "button_subtype": "services",
+                    "bn": "PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted",
+                    "invoice": "1063",
+                    "custom": "pt",
+                    "return": "http://api-evaluation.clickbus.com.br/api/v1/booking/payment?orderId=1063",
+                    "lc": "BR"
+                },
+                "postbackUrl": "",
+                "callbackUrl": ""
+            }
+        },
+        "items": [{
+            "trip_id": "4321",
+            "context": "departure",
+            "order_item": "1229",
+            "serviceClass": "Convencional",
+            "departure": {
+                "waypoint": "4017",
+                "schedule": {
+                    "id": "",
+                    "date": "2015-02-11",
+                    "time": "01:00",
+                    "timezone": "America/Sao_Paulo"
+                }
+            },
+            "arrival": {
+                "waypoint": "3935",
+                "schedule": {
+                    "id": "",
+                    "date": "2015-02-11",
+                    "time": "03:00",
+                    "timezone": "America/Sao_Paulo"
+                }
+            },
+            "seat": {
+                "id": "29",
+                "name": "29",
+                "price": "6.30",
+                "status": "reserved",
+                "currency": "BRL",
+                "type": {}
+            },
+            "passenger": {
+                "firstName": "Charles Bukowski",
+                "lastName": "",
+                "email": "teste@teste.com.br",
+                "document": "123.456.789-00",
+                "gender": "",
+                "birthday": "",
+                "meta": {}
+            },
+            "products": [],
+            "subtotal": "6.30"
+        }],
+        "createdAt": "2015-01-23"
+    }
+}
+```
 
-## Update an Order [/search{?from,to,departure}]
+## Update an Order Status [/booking]
 
-Evil Dead ipsum dolor sit amet manor Klaatu woods, human flesh esse Nickel deroza darobza culpa. Forest anim human blood eu, 
-exercitation nostrud danz Mortis et. Laborum Naturam id ansobar ut cupidatat adipisicing nisi. Fugiat Nikto Neckturn, dolore 
-irure dolor consectetur. Montum boomstick exercitation, veniam human blood irure sunt Ash do Groovy Dead excepteur non ut. 
-Cupidatat darobza elit esse Nickel ad labore nisi Book irure amistrobin anim tempor De. Occaecat elit Groovy the, practices 
-Tatra in sunt exercitation non.
+This Request aims to update an Order Status to one of these 2 options, as below:
 
-### Update an Order [PUT]
+- `order_finalized_successfully` means that the Order has been successfully accomplished;
+- `order_canceled` means that the Order has been sucessfully canceled.
+
+**ATTENTION:** Once an Order status is settled to `order_canceled`, the action is irreversible.
+
+### Update an Order Status [PUT]
 
 **Parameters**
 
-_None_
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**request** (required)|_object_|A container which requires:||
+|**request.localizer** (required)|_string_|A localizer which points to your Order, obtained while creating an **Order**.|`53347e09aee47`|
+|**request.status** (required)|_string_|One of the following Status: `order_finalized_successfully` or `order_canceled`||
+
+**Request**
+
+```json
+{
+    "request": {
+      "localizer": "53347e09aee47",
+      "status": "order_finalized_successfully"
+    }
+}
+```
 
 **Response**
 
-The given request returns a Response _201_, and the session ID on the Response Body, as follow:
+The given request returns a Response _201_, with all Order details in the Response body:
 
-**Example**
-
- - Sucessfull request:
-
-    - URL:
-        ```
-        api/v1/session
-        ```
-    - Response:
-        ```json
-        {
-            "content": "or8k5s91s66fsl3bp6ksu96qs7"
-        }
-        ```
+```json
+{
+    "meta": {
+        "model": "model",
+        "store": "store",
+        "platform": "platform"
+    },
+    "content": {
+        "id": "1059",
+        "status": "cancelation_booking_engine_confirmation_successful",
+        "localizer": "53347e09aee47",
+        "uuid": "",
+        "payment": {
+            "method": "payment.creditcard",
+            "total": "6.30",
+            "currency": "BRL",
+            "status": "cancelation_booking_engine_confirmation_successful",
+            "meta": {
+                "card": "1234567887654321",
+                "code": "093",
+                "name": "DELTRANO SILVA",
+                "expiration": "2022-03",
+                "zipcode": "12345678"
+            }
+        },
+        "items": [{
+            "trip_id": "4322",
+            "localizer": "PPNPNT",
+            "context": "departure",
+            "order_item": "1225",
+            "serviceClass": "Convencional",
+            "departure": {
+                "waypoint": "4017",
+                "schedule": {
+                    "id": "",
+                    "date": "2015-02-11",
+                    "time": "01:00",
+                    "timezone": "America/Sao_Paulo"
+                }
+            },
+            "arrival": {
+                "waypoint": "3935",
+                "schedule": {
+                    "id": "",
+                    "date": "2015-02-11",
+                    "time": "03:00",
+                    "timezone": "America/Sao_Paulo"
+                }
+            },
+            "seat": {
+                "id": "07",
+                "name": "07",
+                "price": "6.30",
+                "status": "reserved",
+                "currency": "BRL",
+                "type": {}
+            },
+            "passenger": {
+                "firstName": "Fulano da Silva",
+                "lastName": "",
+                "email": "fulano@teste.com.br",
+                "document": "12345678900",
+                "gender": "",
+                "birthday": "",
+                "meta": {}
+            },
+            "products": [],
+            "subtotal": "6.30"
+        }],
+        "createdAt": "2015-02-23"
+    }
+}
+```
