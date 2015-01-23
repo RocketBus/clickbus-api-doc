@@ -717,6 +717,11 @@ a.list-group-item.heading:hover {
     </span>}]
 </span>}
 </code></pre>
+<p><strong>NOTE:</strong> If, while a Request to create a Seat Block, the selected Seat is already blocked by other Request executed previously, you may receive the following <em>400</em> Response:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">message</span>":<span class="hljs-value"><span class="hljs-string">"Busy seat"</span>
+</span>}
+</code></pre>
 </div><ul class="list-group"></ul></section><h4 id="seat-block-remove-a-block-in-a-seat">Remove a block in a Seat&nbsp;<a href="#seat-block-remove-a-block-in-a-seat"><i class="fa fa-link"></i></a></h4><p>As opposed to the Create proccess, the Remove will delete a block created on a Seat, which automatically turns a Seat available for all passengers.</p>
 <section id="seat-block-remove-a-block-in-a-seat-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Remove a block in a Seat</span></div><div style="float:left"><a href="#seat-block-remove-a-block-in-a-seat-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/seat-block</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
 <table>
@@ -1088,6 +1093,81 @@ a.list-group-item.heading:hover {
 </span></span></code></pre></li>
 </ul></li>
 </ul>
+<p><strong>Response</strong></p>
+<p>Attention to <code>content.payment.meta.continuePaymentURL</code>, which contains the URL to redirect after payment.</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
+        "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"newworld"</span></span>,
+        "<span class="hljs-attribute">platform</span>": <span class="hljs-value"><span class="hljs-string">"bar"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1064"</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"clarify_debit_card_payment_pending"</span></span>,
+        "<span class="hljs-attribute">localizer</span>": <span class="hljs-value"><span class="hljs-string">"EXQMD5"</span></span>,
+        "<span class="hljs-attribute">uuid</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">payment</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"payment.debitcard"</span></span>,
+            "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-string">"6.3"</span></span>,
+            "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+            "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"clarify_debit_card_payment_pending"</span></span>,
+            "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">continuePaymentURL</span>": <span class="hljs-value"><span class="hljs-string">"https://qasecommerce.cielo.com.br/web/index.cbmp?id=43b07288a66a8e2fd86bb693d4af426b"</span></span>,
+                "<span class="hljs-attribute">card</span>": <span class="hljs-value"><span class="hljs-string">"4111-XXXX-XXXX-1111"</span></span>,
+                "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"XXX"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"NOME SOBRENOME"</span></span>,
+                "<span class="hljs-attribute">expiration</span>": <span class="hljs-value"><span class="hljs-string">"XXXX-XX-XX"</span></span>,
+                "<span class="hljs-attribute">postbackUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                "<span class="hljs-attribute">callbackUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+            </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">items</span>": <span class="hljs-value">[{
+            "<span class="hljs-attribute">trip_id</span>": <span class="hljs-value"><span class="hljs-string">"2311"</span></span>,
+            "<span class="hljs-attribute">context</span>": <span class="hljs-value"><span class="hljs-string">"departure"</span></span>,
+            "<span class="hljs-attribute">order_item</span>": <span class="hljs-value"><span class="hljs-string">"1230"</span></span>,
+            "<span class="hljs-attribute">serviceClass</span>": <span class="hljs-value"><span class="hljs-string">"Convencional"</span></span>,
+            "<span class="hljs-attribute">departure</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">waypoint</span>": <span class="hljs-value"><span class="hljs-string">"4017"</span></span>,
+                "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
+                    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"02:00"</span></span>,
+                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                </span>}
+            </span>}</span>,
+            "<span class="hljs-attribute">arrival</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">waypoint</span>": <span class="hljs-value"><span class="hljs-string">"3935"</span></span>,
+                "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
+                    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"12:15"</span></span>,
+                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                </span>}
+            </span>}</span>,
+            "<span class="hljs-attribute">seat</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+                "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-string">"6.30"</span></span>,
+                "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"reserved"</span></span>,
+                "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value">{}
+            </span>}</span>,
+            "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Charles Bukowski"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"teste@clickbus.com.br"</span></span>,
+                "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789-00"</span></span>,
+                "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}
+            </span>}</span>,
+            "<span class="hljs-attribute">products</span>": <span class="hljs-value">[]</span>,
+            "<span class="hljs-attribute">subtotal</span>": <span class="hljs-value"><span class="hljs-string">"6.30"</span>
+        </span>}]</span>,
+        "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-23"</span>
+    </span>}
+</span>}
+</code></pre>
 <p><strong>3) Payment method: PayPal</strong></p>
 <p>This payment method provides a redirect link in the Response body, provided after PayPal’s request.</p>
 <p><strong>Parameters</strong></p>

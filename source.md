@@ -626,6 +626,14 @@ This request, with all correct params and being executed before the Seat block's
 }
 ```
 
+**NOTE:** If, while a Request to create a Seat Block, the selected Seat is already blocked by other Request executed previously, you may receive the following _400_ Response:
+
+```json
+{
+    "message":"Busy seat"
+}
+```
+
 ## Remove a block in a Seat [/seat-block]
 
 As opposed to the Create proccess, the Remove will delete a block created on a Seat, which automatically turns a Seat available for all passengers.
@@ -1006,6 +1014,85 @@ The following Request, with all correct parameters, will return a _201_ Response
             }
         }
         ```
+
+**Response**
+
+Attention to `content.payment.meta.continuePaymentURL`, which contains the URL to redirect after payment.
+
+```json
+{
+    "meta": {
+        "model": "foo",
+        "store": "newworld",
+        "platform": "bar"
+    },
+    "content": {
+        "id": "1064",
+        "status": "clarify_debit_card_payment_pending",
+        "localizer": "EXQMD5",
+        "uuid": "",
+        "payment": {
+            "method": "payment.debitcard",
+            "total": "6.3",
+            "currency": "BRL",
+            "status": "clarify_debit_card_payment_pending",
+            "meta": {
+                "continuePaymentURL": "https://qasecommerce.cielo.com.br/web/index.cbmp?id=43b07288a66a8e2fd86bb693d4af426b",
+                "card": "4111-XXXX-XXXX-1111",
+                "code": "XXX",
+                "name": "NOME SOBRENOME",
+                "expiration": "XXXX-XX-XX",
+                "postbackUrl": "",
+                "callbackUrl": ""
+            }
+        },
+        "items": [{
+            "trip_id": "2311",
+            "context": "departure",
+            "order_item": "1230",
+            "serviceClass": "Convencional",
+            "departure": {
+                "waypoint": "4017",
+                "schedule": {
+                    "id": "",
+                    "date": "2015-02-11",
+                    "time": "02:00",
+                    "timezone": "America/Sao_Paulo"
+                }
+            },
+            "arrival": {
+                "waypoint": "3935",
+                "schedule": {
+                    "id": "",
+                    "date": "2015-02-11",
+                    "time": "12:15",
+                    "timezone": "America/Sao_Paulo"
+                }
+            },
+            "seat": {
+                "id": "14",
+                "name": "14",
+                "price": "6.30",
+                "status": "reserved",
+                "currency": "BRL",
+                "type": {}
+            },
+            "passenger": {
+                "firstName": "Charles Bukowski",
+                "lastName": "",
+                "email": "teste@clickbus.com.br",
+                "document": "123.456.789-00",
+                "gender": "",
+                "birthday": "",
+                "meta": {}
+            },
+            "products": [],
+            "subtotal": "6.30"
+        }],
+        "createdAt": "2015-01-23"
+    }
+}
+```
 
 **3) Payment method: PayPal**
 
