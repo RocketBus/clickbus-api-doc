@@ -123,10 +123,7 @@ The resource `/search` provides a list with all available trips, with all sort o
 |**from** (required)|_string_|A destination from where a trip starts.|`sao-paulo-jabaquara-sp`|
 |**to** (required)|_string_|A destination to where a trip ends.|`santos-sp`|
 |**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
-|**store** (required)|_string_|A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`clickbus`|
-|**model** (required)|_string_|A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`retail`|
-|**platform** (required)|_string_|A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`web`|
-|**engine** (optional)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
+|**engine** (required)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
 |**quantity** (optional)|_int_|The minimum ammount of avaliable seats.|`10`|
 |**locale** (optional)|_string_|The locale you want to perform the search. If you provide no value for this param, the system will try to search in all languages avaliables on the server (which can take more time to return the results).|`pt_BR`|
 
