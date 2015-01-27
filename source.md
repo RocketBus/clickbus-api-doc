@@ -771,6 +771,8 @@ When you have selected all the Seats, then you may proceed to create an Order, w
 - Please keep in mind that you need to provide in your header the `PHPSESSID` key with the Session's ID in the Cookie, as below:
     > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
 
+### Create an Order [POST]
+
 To create an Order, the request's body requires a range of data, which, for a better understanding, we will divide in the following blocks below:
 
 - **meta**, which contains the params `model`, `store` and `platform` for each Partner;
@@ -820,8 +822,6 @@ Each `/booking` have the same structure block except for `payment` block, which 
 - **Credit Card**
 - **Debit Card**
 - **PayPal**
-
-### Create an Order [POST]
 
 Based on each of the 3 valid payment methods:
 
