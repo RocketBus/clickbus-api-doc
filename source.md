@@ -10,6 +10,7 @@ In this documentation you may find both how to integrate with Clickbus API for a
 
 Below are the topic Groups to perform every task for your applications:
 
+- Obtain a list with all **Places**;
 - **Search** for any routes and travels;
 - Obtain **Trip Details** from each route;
 - **Seat Block** to lock or unlock seat reservations;
@@ -31,6 +32,79 @@ Below are the topic Groups to perform every task for your applications:
 4. The params **store**, **model** and **platform** are required and singular for each partner. To obtain these credentials, please contact our commercial department at contato@clickbus.com.br.
 
 ## **Groups**
+
+# Group Places
+
+## Get All Places [/places]
+
+The resource `/places` retrieves all the available Places, where each Place can be used as a destination point to our travels and routes.
+
+One of the most important values on this resource is the `slug`, which contains the name to use when referencing to a Place in a **Search** request.
+
+### Get All Places [GET]
+
+**Parameters**
+
+_None_
+
+**Response**
+
+The given request returns a Response _200_, with a list in JSON format filled with all Places:
+
+**Example**
+
+ ```json
+ {
+    "meta": "",
+    "items": [{
+        "id": 4017,
+        "station_id": 34523,
+        "slug": "sao-paulo-tiete-sp",
+        "locale": "pt-BR",
+        "name": "",
+        "is_primary": "true",
+        "created_at": "2014-09-05 13:04:27",
+        "updated_at": "2014-09-05 13:04:59",
+        "place": {
+            "id": 34523,
+            "place_id": 4017,
+            "locale": "pt-BR",
+            "name": "Sao Paulo, SP - Tiete",
+            "created_at": "2014-09-05 13:04:27",
+            "updated_at": "2014-09-05 13:04:59",
+            "latitude": "",
+            "longitude": "",
+            "state": {
+                "code": "",
+                "name": "Sao Paulo, SP - Tiete"
+            }
+        }
+    }, {
+        "id": 9209,
+        "station_id": 7648,
+        "slug": "santos-sp",
+        "locale": "pt-BR",
+        "name": "Santos, SP",
+        "is_primary": "true",
+        "created_at": "2014-05-26 16:19:36",
+        "updated_at": "2014-05-26 16:38:32",
+        "place": {
+            "id": 7648,
+            "place_id": 7648,
+            "locale": "pt-BR",
+            "name": "Santos, SP",
+            "created_at": "2014-05-26 16:19:36",
+            "updated_at": "2014-05-26 16:38:32",
+            "latitude": "",
+            "longitude": "",
+            "state": {
+                "code": "",
+                "name": "Santos, SP"
+            }
+        }
+    }, {...}]
+}
+ ```
 
 # Group Search
 
@@ -505,39 +579,6 @@ So, if you have the following coordinates (X: 3, Y: 3), you have selected the Se
 
 ![Seat Selection - source: http://www.clickbus.com.br](img/3_selected_seat.png)
 
-
-# Group Session
-
-## Get Session [/session]
-
-The resource `/session` retrieves the current Session ID, which is useful to obtain data from the current session, like add a reservation by locking a seat using the **Seat Block** resource.
-
-**NOTE:** The token have a lifetime of ~15 minutes. After that, the token is expired, so you have to execute a new request to `/session` to generate a new token.
-
-### Get Session [GET]
-
-**Parameters**
-
-_None_
-
-**Response**
-
-The given request returns a Response _201_, and the session ID on the Response Body, as follow:
-
-**Example**
-
- - Sucessfull request:
-
-    - URL:
-        ```
-        api/v1/session
-        ```
-    - Response:
-        ```json
-        {
-            "content": "or8k5s91s66fsl3bp6ksu96qs7"
-        }
-        ```
 
 # Group Seat Block
 
