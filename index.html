@@ -139,7 +139,7 @@ a.list-group-item.heading:hover {
   }
 }
 </style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a data-toggle="" data-target="#places-menu" href="#places" class="list-group-item heading collapsed">Places</a><div id="places-menu"><a href="#places-get-all-places" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get All Places</a></div></div><div class="list-group"><a data-toggle="" data-target="#search-menu" href="#search" class="list-group-item heading collapsed">Search</a><div id="search-menu"><a href="#search-get-avaliable-trips" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Avaliable Trips</a></div></div><div class="list-group"><a data-toggle="" data-target="#trip-details-menu" href="#trip-details" class="list-group-item heading collapsed">Trip Details</a><div id="trip-details-menu"><a href="#trip-details-get-trip-details" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Trip Details</a><a href="#trip-details-how-seat-position-works" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">How Seat Position works</a></div></div><div class="list-group"><a data-toggle="" data-target="#seat-block-menu" href="#seat-block" class="list-group-item heading collapsed">Seat Block</a><div id="seat-block-menu"><a href="#seat-block-create-a-block-in-a-seat" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span>Create a block in a Seat</a><a href="#seat-block-remove-a-block-in-a-seat" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-danger"><i class="fa fa-times"></i></span>Remove a block in a Seat</a></div></div><div class="list-group"><a data-toggle="" data-target="#booking-menu" href="#booking" class="list-group-item heading collapsed">Booking</a><div id="booking-menu"><a href="#booking-create-an-order" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span>Create an Order</a><a href="#booking-update-an-order-status" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span>Update an Order Status</a></div></div></nav></div><div class="col-md-8"><div><header><div class="page-header"><h1 id="top">Clickbus Public API</h1></div></header><div class="description"><p>This is the documentation and samples for Clickbus Public API. Also this can be used as mocked data to simply test API integration.</p>
-<p>In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (<a href="mailto:contato@clickubs.com.br">contato@clickubs.com.br</a> for more commercial details).</p>
+<p>In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (<a href="mailto:contacto@clickubs.com.mx">contacto@clickubs.com.mx</a> for more commercial details).</p>
 <h3><strong>Overview</strong></h3>
 <p>Below are the topic Groups to perform every task for your applications:</p>
 <ul>
@@ -160,7 +160,7 @@ a.list-group-item.heading:hover {
 </span>}
 </code></pre></li>
 <li><p>The <strong>Evaluation</strong> environment (<a href="http://api-evaluation.clickbus.com.br/api/v1">http://api-evaluation.clickbus.com.br/api/v1</a>) have only 1 possible trip: from <strong>Sao Paulo, Tiete</strong> (<code>sao-paulo-tiete-sp</code>) to <strong>Santos, SP</strong> (<code>santos-sp</code>), and vice-versa.</p></li>
-<li><p>The params <strong>store</strong>, <strong>model</strong> and <strong>platform</strong> are required and singular for each partner. To obtain these credentials, please contact our commercial department at <a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a>.</p></li>
+<li><p>The params <strong>store</strong>, <strong>model</strong> and <strong>platform</strong> are required and singular for each partner. To obtain these credentials, please contact our commercial department at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a>.</p></li>
 </ol>
 <h2><strong>Groups</strong></h2>
 </div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="places">Places&nbsp;<a href="#places"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="places-get-all-places">Get All Places&nbsp;<a href="#places-get-all-places"><i class="fa fa-link"></i></a></h4><p>The resource <code>/places</code> retrieves all the available Places, where each Place can be used as a destination point to our travels and routes.</p>
@@ -242,7 +242,7 @@ a.list-group-item.heading:hover {
 <ul>
 <li><p><code>paymentSettings</code>, like:</p>
 <ul>
-<li><code>creditcard</code>, with it’s own <code>serviceFee</code> and <code>serviceFeePercentage</code> which is attributed for each partner (contact ClickBus at <a href="mailto:contato@clickubs.com.br">contato@clickubs.com.br</a> for more commercial details);</li>
+<li><code>creditcard</code>, with it’s own <code>serviceFee</code> and <code>serviceFeePercentage</code> which is attributed for each partner (contact ClickBus at <a href="mailto:contacto@clickubs.com.mx">contacto@clickubs.com.mx</a> for more commercial details);</li>
 <li><code>debitcard</code>, <code>paypal_hpp</code> and <code>banktransfer</code> information;</li>
 </ul></li>
 <li><p><code>items</code>, which have:</p>
@@ -662,9 +662,9 @@ a.list-group-item.heading:hover {
 <li><p><code>z</code>, which we may disconsider by now (it’s only applied for double-decker vehicles).</p></li>
 </ul>
 <p>Consider the image below:</p>
-<p><img src="img/1_bus_seats.png" alt="Seat Selection - source: http://www.clickbus.com.br"></p>
+<p><img src="img/1_bus.png" alt="Seat Selection - source: http://www.clickbus.com.br"></p>
 <p>In this image, we can represent the Seat manipulation as an array, with X and Y axis:</p>
-<p><img src="img/2_array_example.png" alt="Seat Selection - source: http://www.clickbus.com.br"></p>
+<p><img src="img/2_array.png" alt="Seat Selection - source: http://www.clickbus.com.br"></p>
 <p>So, if you have the following coordinates (X: 3, Y: 3), you have selected the Seat <code>&quot;name&quot;: &quot;16&quot;</code>, as follow:</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">position</span>": <span class="hljs-value">{
@@ -674,7 +674,7 @@ a.list-group-item.heading:hover {
     </span>}
 </span>}
 </code></pre>
-<p><img src="img/3_selected_seat.png" alt="Seat Selection - source: http://www.clickbus.com.br"></p>
+<p><img src="img/3_seats.png" alt="Seat Selection - source: http://www.clickbus.com.br"></p>
 </div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="seat-block">Seat Block&nbsp;<a href="#seat-block"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="seat-block-create-a-block-in-a-seat">Create a block in a Seat&nbsp;<a href="#seat-block-create-a-block-in-a-seat"><i class="fa fa-link"></i></a></h4><p>This request creates a block in a Seat, which indicates that this Seat is now unavailable for other passengers.</p>
 <p><strong>NOTES:</strong></p>
 <ol>
@@ -1298,7 +1298,7 @@ a.list-group-item.heading:hover {
                 "<span class="hljs-attribute">postUrl</span>": <span class="hljs-value"><span class="hljs-string">"https://www.paypal.com/cgi-bin/webscr"</span></span>,
                 "<span class="hljs-attribute">postData</span>": <span class="hljs-value">{
                     "<span class="hljs-attribute">cmd</span>": <span class="hljs-value"><span class="hljs-string">"_xclick"</span></span>,
-                    "<span class="hljs-attribute">business</span>": <span class="hljs-value"><span class="hljs-string">"contato@clickbus.com.br"</span></span>,
+                    "<span class="hljs-attribute">business</span>": <span class="hljs-value"><span class="hljs-string">"contacto@clickbus.com.mx"</span></span>,
                     "<span class="hljs-attribute">item_name</span>": <span class="hljs-value"><span class="hljs-string">"Passagem de onibus - Clickbus"</span></span>,
                     "<span class="hljs-attribute">amount</span>": <span class="hljs-value"><span class="hljs-string">"6.30"</span></span>,
                     "<span class="hljs-attribute">currency_code</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,

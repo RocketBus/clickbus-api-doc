@@ -4,7 +4,7 @@ FORMAT: 1A
 
 This is the documentation and samples for Clickbus Public API. Also this can be used as mocked data to simply test API integration.
 
-In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (contato@clickubs.com.br for more commercial details).
+In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (contacto@clickubs.com.mx for more commercial details).
 
 ### **Overview**
 
@@ -29,7 +29,7 @@ Below are the topic Groups to perform every task for your applications:
     }
     ```
 3. The **Evaluation** environment (http://api-evaluation.clickbus.com.br/api/v1) have only 1 possible trip: from **Sao Paulo, Tiete** (`sao-paulo-tiete-sp`) to **Santos, SP** (`santos-sp`), and vice-versa.
-4. The params **store**, **model** and **platform** are required and singular for each partner. To obtain these credentials, please contact our commercial department at contato@clickbus.com.br.
+4. The params **store**, **model** and **platform** are required and singular for each partner. To obtain these credentials, please contact our commercial department at contacto@clickbus.com.mx.
 
 ## **Groups**
 
@@ -132,7 +132,7 @@ The resource `/search` provides a list with all available trips, with all sort o
 With the correct params, this resource returns a Response _200_ and a list, in JSON format, with these details as follow:
 
 - `paymentSettings`, like:
-    - `creditcard`, with it's own `serviceFee` and `serviceFeePercentage` which is attributed for each partner (contact ClickBus at contato@clickubs.com.br for more commercial details);
+    - `creditcard`, with it's own `serviceFee` and `serviceFeePercentage` which is attributed for each partner (contact ClickBus at contacto@clickubs.com.mx for more commercial details);
     - `debitcard`, `paypal_hpp` and `banktransfer` information;
 - `items`, which have:
     - `from` and `to` destinations;
@@ -1227,7 +1227,7 @@ This payment method provides a redirect link in the Response body, provided afte
                 "postUrl": "https://www.paypal.com/cgi-bin/webscr",
                 "postData": {
                     "cmd": "_xclick",
-                    "business": "contato@clickbus.com.br",
+                    "business": "contacto@clickbus.com.mx",
                     "item_name": "Passagem de onibus - Clickbus",
                     "amount": "6.30",
                     "currency_code": "BRL",
