@@ -139,7 +139,7 @@ a.list-group-item.heading:hover {
   }
 }
 </style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a data-toggle="" data-target="#places-menu" href="#places" class="list-group-item heading collapsed">Places</a><div id="places-menu"><a href="#places-get-all-places" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get All Places</a></div></div><div class="list-group"><a data-toggle="" data-target="#search-menu" href="#search" class="list-group-item heading collapsed">Search</a><div id="search-menu"><a href="#search-get-avaliable-trips" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Avaliable Trips</a></div></div><div class="list-group"><a data-toggle="" data-target="#trip-details-menu" href="#trip-details" class="list-group-item heading collapsed">Trip Details</a><div id="trip-details-menu"><a href="#trip-details-get-trip-details" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Trip Details</a><a href="#trip-details-how-seat-position-works" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">How Seat Position works</a></div></div><div class="list-group"><a data-toggle="" data-target="#seat-block-menu" href="#seat-block" class="list-group-item heading collapsed">Seat Block</a><div id="seat-block-menu"><a href="#seat-block-create-a-block-in-a-seat" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span>Create a block in a Seat</a><a href="#seat-block-remove-a-block-in-a-seat" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-danger"><i class="fa fa-times"></i></span>Remove a block in a Seat</a></div></div><div class="list-group"><a data-toggle="" data-target="#booking-menu" href="#booking" class="list-group-item heading collapsed">Booking</a><div id="booking-menu"><a href="#booking-create-an-order" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span>Create an Order</a><a href="#booking-update-an-order-status" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span>Update an Order Status</a></div></div></nav></div><div class="col-md-8"><div><header><div class="page-header"><h1 id="top">Clickbus Public API</h1></div></header><div class="description"><p>This is the documentation and samples for Clickbus Public API. Also this can be used as mocked data to simply test API integration.</p>
-<p>In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (<a href="mailto:contacto@clickubs.com.mx">contacto@clickubs.com.mx</a> for more commercial details).</p>
+<p>In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (<a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details).</p>
 <h3><strong>Overview</strong></h3>
 <p>Below are the topic Groups to perform every task for your applications:</p>
 <ul>
@@ -147,20 +147,13 @@ a.list-group-item.heading:hover {
 <li><p><strong>Search</strong> for any routes and travels;</p></li>
 <li><p>Obtain <strong>Trip Details</strong> from each route;</p></li>
 <li><p><strong>Seat Block</strong> to lock or unlock seat reservations;</p></li>
-<li><p><strong>Booking</strong> orders;</p></li>
-<li><p>Sign your actions with an ID provided by <strong>Session</strong>.</p></li>
+<li><p><strong>Booking</strong> orders.</p></li>
 </ul>
 <h1>API Reference</h1>
 <h2><strong>Predicates</strong></h2>
 <ol>
 <li><p>All sucessfull requests return a <strong>20</strong>* Response header;</p></li>
-<li><p>All requests that may lack a given parameter, which is required, will return a <strong>400</strong> Response header, along with a body message as below:</p>
-<pre><code class="language-json">{
-    "<span class="hljs-attribute">message</span>":<span class="hljs-value"><span class="hljs-string">"Invalid Parameters"</span>
-</span>}
-</code></pre></li>
-<li><p>The <strong>Evaluation</strong> environment (<a href="http://api-evaluation.clickbus.com.br/api/v1">http://api-evaluation.clickbus.com.br/api/v1</a>) have only 1 possible trip: from <strong>Sao Paulo, Tiete</strong> (<code>sao-paulo-tiete-sp</code>) to <strong>Santos, SP</strong> (<code>santos-sp</code>), and vice-versa.</p></li>
-<li><p>The params <strong>store</strong>, <strong>model</strong> and <strong>platform</strong> are required and singular for each partner. To obtain these credentials, please contact our commercial department at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a>.</p></li>
+<li><p>The params <strong>store</strong>, <strong>model</strong> and <strong>platform</strong> are created for each partner. To obtain these credentials, please contact our commercial department at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a>.</p></li>
 </ol>
 <h2><strong>Groups</strong></h2>
 </div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="places">Places&nbsp;<a href="#places"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="places-get-all-places">Get All Places&nbsp;<a href="#places-get-all-places"><i class="fa fa-link"></i></a></h4><p>The resource <code>/places</code> retrieves all the available Places, where each Place can be used as a destination point to our travels and routes.</p>
@@ -233,8 +226,6 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:left"><strong>to</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination to where a trip ends.</td><td style="text-align:left"><code>santos-sp</code></td></tr>
 <tr><td style="text-align:left"><strong>departure</strong> (required)</td><td style="text-align:left"><em>date</em></td><td style="text-align:left">Any valid date, in format <code>yyyy-mm-dd</code>.</td><td style="text-align:left"><code>2015-02-11</code></td></tr>
 <tr><td style="text-align:left"><strong>engine</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.</td><td style="text-align:left"><code>5411E7D726991</code></td></tr>
-<tr><td style="text-align:left"><strong>quantity</strong> (optional)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">The minimum ammount of avaliable seats.</td><td style="text-align:left"><code>10</code></td></tr>
-<tr><td style="text-align:left"><strong>locale</strong> (optional)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">The locale you want to perform the search. If you provide no value for this param, the system will try to search in all languages avaliables on the server (which can take more time to return the results).</td><td style="text-align:left"><code>pt_BR</code></td></tr>
 </tbody>
 </table>
 <p><strong>Response</strong></p>

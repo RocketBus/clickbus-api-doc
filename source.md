@@ -4,7 +4,7 @@ FORMAT: 1A
 
 This is the documentation and samples for Clickbus Public API. Also this can be used as mocked data to simply test API integration.
 
-In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (contacto@clickubs.com.mx for more commercial details).
+In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (contacto@clickbus.com.mx for more commercial details).
 
 ### **Overview**
 
@@ -14,22 +14,14 @@ Below are the topic Groups to perform every task for your applications:
 - **Search** for any routes and travels;
 - Obtain **Trip Details** from each route;
 - **Seat Block** to lock or unlock seat reservations;
-- **Booking** orders;
-- Sign your actions with an ID provided by **Session**.
+- **Booking** orders.
 
 # API Reference
 
 ## **Predicates**
 
 1. All sucessfull requests return a **20*** Response header;
-2. All requests that may lack a given parameter, which is required, will return a **400** Response header, along with a body message as below:
-    ```json
-    {
-        "message":"Invalid Parameters"
-    }
-    ```
-3. The **Evaluation** environment (http://api-evaluation.clickbus.com.br/api/v1) have only 1 possible trip: from **Sao Paulo, Tiete** (`sao-paulo-tiete-sp`) to **Santos, SP** (`santos-sp`), and vice-versa.
-4. The params **store**, **model** and **platform** are required and singular for each partner. To obtain these credentials, please contact our commercial department at contacto@clickbus.com.mx.
+2. The params **store**, **model** and **platform** are created for each partner. To obtain these credentials, please contact our commercial department at contacto@clickbus.com.mx.
 
 ## **Groups**
 
@@ -124,8 +116,6 @@ The resource `/search` provides a list with all available trips, with all sort o
 |**to** (required)|_string_|A destination to where a trip ends.|`santos-sp`|
 |**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
 |**engine** (required)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
-|**quantity** (optional)|_int_|The minimum ammount of avaliable seats.|`10`|
-|**locale** (optional)|_string_|The locale you want to perform the search. If you provide no value for this param, the system will try to search in all languages avaliables on the server (which can take more time to return the results).|`pt_BR`|
 
 **Response**
 
