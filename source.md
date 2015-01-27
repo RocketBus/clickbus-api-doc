@@ -556,11 +556,11 @@ The concept here is pretty simple: in the `position` node, we have 3 different v
 
 Consider the image below:
 
-![Seat Selection - source: http://www.clickbus.com.br](img/1_bus_seats.png)
+![Seat Selection - source: http://www.clickbus.com.br](img/1_bus.png)
 
 In this image, we can represent the Seat manipulation as an array, with X and Y axis:
 
-![Seat Selection - source: http://www.clickbus.com.br](img/2_array_example.png)
+![Seat Selection - source: http://www.clickbus.com.br](img/2_array.png)
 
 So, if you have the following coordinates (X: 3, Y: 3), you have selected the Seat `"name": "16"`, as follow:
 
@@ -574,7 +574,7 @@ So, if you have the following coordinates (X: 3, Y: 3), you have selected the Se
 }
 ```
 
-![Seat Selection - source: http://www.clickbus.com.br](img/3_selected_seat.png)
+![Seat Selection - source: http://www.clickbus.com.br](img/3_seats.png)
 
 
 # Group Seat Block
