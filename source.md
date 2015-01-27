@@ -10,6 +10,7 @@ In this documentation you may find both how to integrate with Clickbus API for a
 
 Below are the topic Groups to perform every task for your applications:
 
+- Obtain a list with all **Places**;
 - **Search** for any routes and travels;
 - Obtain **Trip Details** from each route;
 - **Seat Block** to lock or unlock seat reservations;
@@ -31,6 +32,79 @@ Below are the topic Groups to perform every task for your applications:
 4. The params **store**, **model** and **platform** are required and singular for each partner. To obtain these credentials, please contact our commercial department at contato@clickbus.com.br.
 
 ## **Groups**
+
+# Group Places
+
+## Get All Places [/places]
+
+The resource `/places` retrieves all the available Places, where each Place can be used as a destination point to our travels and routes.
+
+One of the most important values on this resource is the `slug`, which contains the name to use when referencing to a Place in a **Search** request.
+
+### Get All Places [GET]
+
+**Parameters**
+
+_None_
+
+**Response**
+
+The given request returns a Response _200_, with a list in JSON format filled with all Places:
+
+**Example**
+
+ ```json
+ {
+    "meta": "",
+    "items": [{
+        "id": 4017,
+        "station_id": 34523,
+        "slug": "sao-paulo-tiete-sp",
+        "locale": "pt-BR",
+        "name": "",
+        "is_primary": "true",
+        "created_at": "2014-09-05 13:04:27",
+        "updated_at": "2014-09-05 13:04:59",
+        "place": {
+            "id": 34523,
+            "place_id": 4017,
+            "locale": "pt-BR",
+            "name": "Sao Paulo, SP - Tiete",
+            "created_at": "2014-09-05 13:04:27",
+            "updated_at": "2014-09-05 13:04:59",
+            "latitude": "",
+            "longitude": "",
+            "state": {
+                "code": "",
+                "name": "Sao Paulo, SP - Tiete"
+            }
+        }
+    }, {
+        "id": 9209,
+        "station_id": 7648,
+        "slug": "santos-sp",
+        "locale": "pt-BR",
+        "name": "Santos, SP",
+        "is_primary": "true",
+        "created_at": "2014-05-26 16:19:36",
+        "updated_at": "2014-05-26 16:38:32",
+        "place": {
+            "id": 7648,
+            "place_id": 7648,
+            "locale": "pt-BR",
+            "name": "Santos, SP",
+            "created_at": "2014-05-26 16:19:36",
+            "updated_at": "2014-05-26 16:38:32",
+            "latitude": "",
+            "longitude": "",
+            "state": {
+                "code": "",
+                "name": "Santos, SP"
+            }
+        }
+    }, {...}]
+}
+ ```
 
 # Group Search
 
@@ -485,25 +559,19 @@ The concept here is pretty simple: in the `position` node, we have 3 different v
 
 Consider the image below:
 
-![Seat Selection - source: http://www.clickbus.com.br](img/1_bus_seats.png)
+![Seat Selection - source: http://www.clickbus.com.br](img/1_bus.png)
 
 In this image, we can represent the Seat manipulation as an array, with X and Y axis:
 
-![Seat Selection - source: http://www.clickbus.com.br](img/2_array_example.png)
+![Seat Selection - source: http://www.clickbus.com.br](img/2_array.png)
 
-So, if you have the following coordinates (X: 3, Y: 3), you have selected the Seat `"name": "16"`, as follow:
+So, if you have the following coordinates: `{(X: 3, Y: 3),(X: 3, Y: 4),(X: 7, Y: 1)}`, you have selected the the following Seats, in sequence:
 
-```json
-{
-    "position": {
-        "x": "3",
-        "y": "3",
-        "z": ""
-    }
-}
-```
+- `(X: 3, Y: 3)` stands for Seat `"name": "16"`;
+- `(X: 3, Y: 4)` stands for Seat `"name": "15"`;
+- `(X: 7, Y: 1)` stands for Seat `"name": "30"`;
 
-![Seat Selection - source: http://www.clickbus.com.br](img/3_selected_seat.png)
+![Seat Selection - source: http://www.clickbus.com.br](img/3_seats.png)
 
 
 # Group Session
