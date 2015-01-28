@@ -139,7 +139,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 
     - URL:
         ```
-        api/v1/search?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=2015-02-11&store=clickbus&platform=web&model=retail
+        /api/v1/search?departure=2015-02-05&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
         ```
     - Response:
         ```json
@@ -148,13 +148,10 @@ With the correct params, this resource returns a Response _200_ and a list, in J
             "paymentSettings": {
                 "bankslip": {
                     "total": "0.00",
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
                     "fixedValue": 0,
+                    "savings": 0,
                     "serviceFee": 0,
-                    "serviceFeePercentage": 0
+                    "serviceFeePercentage": "11.00"
                 },
                 "creditcard": {
                     "total": {
@@ -163,32 +160,17 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                         "3": "0.00",
                         "4": "0.00",
                         "5": "0.00",
-                        "6": "0.00",
-                        "7": "0.00",
-                        "8": "0.00",
-                        "9": "0.00",
-                        "10": "0.00",
-                        "11": "0.00",
-                        "12": "0.00"
+                        "6": "0.00"
                     },
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
                     "fixedValue": 0,
+                    "savings": 0,
                     "serviceFee": {
                         "1": 0,
                         "2": 0,
                         "3": 0,
                         "4": 0,
                         "5": 0,
-                        "6": 0,
-                        "7": 0,
-                        "8": 0,
-                        "9": 0,
-                        "10": 0,
-                        "11": 0,
-                        "12": 0
+                        "6": 0
                     },
                     "serviceFeePercentage": {
                         "1": "0.00",
@@ -196,20 +178,18 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                         "3": "0.00",
                         "4": "0.00",
                         "5": "0.00",
-                        "6": "0.00",
-                        "7": "0.00",
-                        "8": "0.00",
-                        "9": "0.00",
-                        "10": "0.00",
-                        "11": "0.00",
-                        "12": "0.00"
+                        "6": "0.00"
                     }
                 },
-                "debitcard": {
+                "banktransfer": {
                     "total": "0.00",
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
+                    "fixedValue": 0,
+                    "savings": 0,
+                    "serviceFee": 0,
+                    "serviceFeePercentage": "11.00"
+                },
+                "debitcard": {
+                    "total": [],
                     "savings": 0,
                     "fixedValue": 0,
                     "serviceFee": 0,
@@ -217,54 +197,49 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                 },
                 "paypal_hpp": {
                     "total": "0.00",
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
+                    "savings": "0",
                     "fixedValue": 0,
                     "serviceFee": 0,
-                    "serviceFeePercentage": 0
+                    "serviceFeePercentage": "0.00"
                 },
-                "banktransfer": {
+                "paypal_debit_hpp": {
                     "total": "0.00",
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
+                    "savings": "0",
                     "fixedValue": 0,
                     "serviceFee": 0,
-                    "serviceFeePercentage": "13.00"
+                    "serviceFeePercentage": "0.00"
                 }
             },
+            "bookingEngine": "GFA",
             "items": [{
-                "from": "Sao Paulo, SP - Jabaquara",
-                "to": "Santos, SP",
+                "from": "Querétaro, QRO.",
+                "to": "Guadalajara, JAL.",
                 "parts": [{
-                    "trip_id": "2949",
+                    "trip_id": "50",
                     "departure": {
-                        "price": "2191",
+                        "price": "50000",
                         "waypoint": {
-                            "id": "4016",
+                            "id": "5068",
                             "prices": [{
-                                "waypoint": "3935",
-                                "price": "2191"
+                                "waypoint": "5029",
+                                "price": "50000"
                             }],
                             "schedule": {
-                                "id": "NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==",
-                                "date": "2015-02-11",
-                                "time": "01:00",
+                                "id": "e4479611acd114b958871fe4cb8130af",
+                                "date": "2015-02-05",
+                                "time": "07:20",
                                 "timezone": "America/Sao_Paulo"
                             },
                             "context": "departure",
                             "place": {
-                                "country": "BRA",
+                                "country": "MX",
                                 "state": "",
-                                "city": "Sao Paulo, SP - Jabaquara",
+                                "city": "Querétaro, QRO.",
                                 "station": {
                                     "current": {
-                                        "id": "4016",
-                                        "name": "Sao Paulo, SP - Jabaquara",
-                                        "locale": "en_US"
+                                        "id": "5068",
+                                        "name": "Querétaro, QRO.",
+                                        "locale": "es"
                                     },
                                     "default": {
                                         "id": "",
@@ -272,82 +247,82 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                                         "locale": ""
                                     }
                                 },
-                                "locale": "pt_BR",
-                                "id": "4016"
+                                "locale": "es",
+                                "id": "5068"
                             },
                             "isDeparture": "true",
                             "position": "0"
                         }
                     },
                     "arrival": {
-                        "price": "2191",
+                        "price": "50000",
                         "waypoint": {
-                            "id": "3935",
+                            "id": "5029",
                             "prices": [{
                                 "waypoint": "",
                                 "price": ""
                             }],
                             "schedule": {
-                                "id": "NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==",
-                                "date": "2015-02-11",
-                                "time": "02:10",
+                                "id": "e4479611acd114b958871fe4cb8130af",
+                                "date": "2015-02-05",
+                                "time": "12:35",
                                 "timezone": "America/Sao_Paulo"
                             },
                             "context": "arrival",
                             "place": {
-                                "country": "BRA",
+                                "country": "MX",
                                 "state": "",
-                                "city": "Santos, SP",
+                                "city": "Guadalajara, JAL.",
                                 "station": {
                                     "current": {
                                         "id": "111",
-                                        "name": "Santos, SP",
-                                        "locale": "pt_BR"
+                                        "name": "Guadalajara, JAL.",
+                                        "locale": "es"
                                     },
                                     "default": {
                                         "id": "",
                                         "name": "",
-                                        "locale": ""
+                                        "locale": "es"
                                     }
                                 },
-                                "locale": "pt_BR",
-                                "id": "3935"
+                                "locale": "es",
+                                "id": "5029"
                             },
                             "isDeparture": "false",
                             "position": "0"
                         }
                     },
                     "busCompany": {
-                        "name": "Cometa",
-                        "id": "7"
+                        "name": "Primera Plus",
+                        "id": "33"
                     },
                     "bus": {
-                        "serviceClass": "Convencional",
-                        "name": "Convencional",
+                        "serviceClass": "Primera",
+                        "name": "Primera",
                         "id": "1"
                     },
                     "waypoints": [{
-                        "id": "4016",
+                        "id": "5068",
                         "prices": [{
-                            "waypoint": "3935",
-                            "price": "2191"
+                            "waypoint": "5029",
+                            "price": "50000"
                         }],
                         "schedule": {
-                            "id": "NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==",
-                            "date": "2015-02-11",
-                            "time": "01:00",
+                            "id": "e4479611acd114b958871fe4cb8130af",
+                            "date": "2015-02-05",
+                            "time": "07:20",
                             "timezone": "America/Sao_Paulo"
                         },
                         "context": "departure",
                         "place": {
-                            "country": "BRA",
-                            "state": "SÃ£o Paulo",
-                            "city": "SÃ£o Paulo",
+                            "country": "MX",
+                            "state": "Ankara",
+                            "city": "Ankara",
                             "station": {
                                 "current": {
-                                    "id": "4016",
-                                    "name": "Sao Paulo, SP - Jabaquara",
-                                    "locale": "pt_BR"
+                                    "id": "5068",
+                                    "name": "Querétaro, QRO.",
+                                    "locale": "es"
                                 },
                                 "default": {
                                     "id": "",
@@ -355,42 +330,41 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                                     "locale": ""
                                 }
                             },
-                            "locale": "pt_BR",
+                            "locale": "es",
                             "id": "123"
                         },
                         "isDeparture": "true",
                         "position": "0"
-                    },
-                    {
-                        "id": "3935",
+                    }, {
+                        "id": "5029",
                         "prices": [{
                             "waypoint": "",
-                            "price": "2191"
+                            "price": "50000"
                         }],
                         "schedule": {
-                            "id": "NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==",
-                            "date": "2015-02-11",
-                            "time": "01:00",
+                            "id": "e4479611acd114b958871fe4cb8130af",
+                            "date": "2015-02-05",
+                            "time": "07:20",
                             "timezone": "America/Sao_Paulo"
                         },
                         "context": "arrival",
                         "place": {
-                            "country": "BRA",
-                            "state": "",
-                            "city": "Santos, SP",
+                            "country": "MX",
+                            "state": "Ankara",
+                            "city": "Guadalajara, JAL.",
                             "station": {
                                 "current": {
-                                    "id": "3935",
-                                    "name": "Santos, SP",
-                                    "locale": "pt_BR"
+                                    "id": "5029",
+                                    "name": "Guadalajara, JAL.",
+                                    "locale": "es"
                                 },
                                 "default": {
                                     "id": "",
                                     "name": "",
-                                    "locale": ""
+                                    "locale": "es"
                                 }
                             },
-                            "locale": "pt_BR",
+                            "locale": "es",
                             "id": ""
                         },
                         "isDeparture": false,
@@ -398,12 +372,12 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                     }],
                     "seatTypes": [],
                     "products": [],
-                    "availableSeats": "44"
+                    "availableSeats": "30"
                 }]
-            }]
+            }, {...}]
         }
         ```
-- Searching for travels from _Sao Paulo - Brazil_ to _Santos - Brazil_ using an incorrect or even an unavailable date value on _departure_:
+- Searching for travels from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico using an incorrect or even an unavailable date value on _departure_:
     - URL:
         
         For an incorrect value, like `99/99/9999`:
