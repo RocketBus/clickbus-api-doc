@@ -112,8 +112,8 @@ The resource `/search` provides a list with all available trips, with all sort o
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
-|**from** (required)|_string_|A destination from where a trip starts.|`sao-paulo-jabaquara-sp`|
-|**to** (required)|_string_|A destination to where a trip ends.|`santos-sp`|
+|**from** (required)|_string_|A destination from where a trip starts.|`quertaro-qro`|
+|**to** (required)|_string_|A destination to where a trip ends.|`guadalajara-jal`|
 |**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
 |**engine** (required)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
 
@@ -135,11 +135,11 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 
 **Examples**
 
- - Searching for travels from _Sao Paulo - Brazil_ to _Santos - Brazil_ in _11th Feb 2015_, with all correct params:
+ - Searching for travels from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ in _11th Feb 2015_, with all correct params:
 
     - URL:
         ```
-        /api/v1/search?departure=2015-02-05&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
+        /api/v1/search?departure=2015-02-11&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
         ```
     - Response:
         ```json
@@ -377,16 +377,16 @@ With the correct params, this resource returns a Response _200_ and a list, in J
             }, {...}]
         }
         ```
-- Searching for travels from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico using an incorrect or even an unavailable date value on _departure_:
+- Searching for travels from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ using an incorrect or even an unavailable date value on _departure_:
     - URL:
         
         For an incorrect value, like `99/99/9999`:
         ```
-        api/v1/search?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=9999-99-99&store=clickbus&platform=web&model=retail
+        /api/v1/search?departure=9999-99-99&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
         ``` 
         For an unavailable value, like `1th January, 2010`:
         ```
-        api/v1/search?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=2010-01-01&store=clickbus&platform=web&model=retail
+        /api/v1/search?departure=2010-01-01&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
         ``` 
     - Response:
         ```json

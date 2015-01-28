@@ -222,8 +222,8 @@ a.list-group-item.heading:hover {
 <tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left"><strong>from</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination from where a trip starts.</td><td style="text-align:left"><code>sao-paulo-jabaquara-sp</code></td></tr>
-<tr><td style="text-align:left"><strong>to</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination to where a trip ends.</td><td style="text-align:left"><code>santos-sp</code></td></tr>
+<tr><td style="text-align:left"><strong>from</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination from where a trip starts.</td><td style="text-align:left"><code>quertaro-qro</code></td></tr>
+<tr><td style="text-align:left"><strong>to</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination to where a trip ends.</td><td style="text-align:left"><code>guadalajara-jal</code></td></tr>
 <tr><td style="text-align:left"><strong>departure</strong> (required)</td><td style="text-align:left"><em>date</em></td><td style="text-align:left">Any valid date, in format <code>yyyy-mm-dd</code>.</td><td style="text-align:left"><code>2015-02-11</code></td></tr>
 <tr><td style="text-align:left"><strong>engine</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.</td><td style="text-align:left"><code>5411E7D726991</code></td></tr>
 </tbody>
@@ -250,10 +250,10 @@ a.list-group-item.heading:hover {
 <p><strong>WARNING:</strong> The data returned on <code>paymentSettings</code> is deprecated since 19th January, 2015.</p>
 <p><strong>Examples</strong></p>
 <ul>
-<li><p>Searching for travels from <em>Sao Paulo - Brazil</em> to <em>Santos - Brazil</em> in <em>11th Feb 2015</em>, with all correct params:</p>
+<li><p>Searching for travels from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> in <em>11th Feb 2015</em>, with all correct params:</p>
 <ul>
 <li>URL:
-<pre><code>/api/v1/search?<span class="hljs-variable">departure=</span><span class="hljs-number">2015</span>-<span class="hljs-number">02</span>-<span class="hljs-number">05</span>&amp;<span class="hljs-variable">from=</span>quertaro-qro&amp;<span class="hljs-variable">to=</span>guadalajara-jal&amp;<span class="hljs-variable">engine=</span><span class="hljs-number">5411</span>E7D726991
+<pre><code>/api/v1/search?<span class="hljs-variable">departure=</span><span class="hljs-number">2015</span>-<span class="hljs-number">02</span>-<span class="hljs-number">11</span>&amp;<span class="hljs-variable">from=</span>quertaro-qro&amp;<span class="hljs-variable">to=</span>guadalajara-jal&amp;<span class="hljs-variable">engine=</span><span class="hljs-number">5411</span>E7D726991
 </code></pre></li>
 <li>Response:
 <pre><code class="language-json">{
@@ -491,14 +491,14 @@ a.list-group-item.heading:hover {
 }
 </code></pre></li>
 </ul></li>
-<li><p>Searching for travels from <em>Querétaro, QRO. - Mexico</em> to _Guadalajara, JAL. - Mexico using an incorrect or even an unavailable date value on <em>departure</em>:</p>
+<li><p>Searching for travels from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> using an incorrect or even an unavailable date value on <em>departure</em>:</p>
 <ul>
 <li><p>URL:</p>
 <p>For an incorrect value, like <code>99/99/9999</code>:</p>
-<pre><code>api/v1/search?<span class="hljs-variable">from=</span>sao-paulo-jabaquara-sp&amp;<span class="hljs-variable">to=</span>santos-sp&amp;<span class="hljs-variable">departure=</span><span class="hljs-number">9999</span>-<span class="hljs-number">99</span>-<span class="hljs-number">99</span>&amp;<span class="hljs-variable">store=</span>clickbus&amp;<span class="hljs-variable">platform=</span>web&amp;<span class="hljs-variable">model=</span>retail
+<pre><code>/api/v1/search?<span class="hljs-variable">departure=</span><span class="hljs-number">9999</span>-<span class="hljs-number">99</span>-<span class="hljs-number">99</span>&amp;<span class="hljs-variable">from=</span>quertaro-qro&amp;<span class="hljs-variable">to=</span>guadalajara-jal&amp;<span class="hljs-variable">engine=</span><span class="hljs-number">5411</span>E7D726991
 </code></pre>
 <p>For an unavailable value, like <code>1th January, 2010</code>:</p>
-<pre><code>api/v1/search?<span class="hljs-variable">from=</span>sao-paulo-jabaquara-sp&amp;<span class="hljs-variable">to=</span>santos-sp&amp;<span class="hljs-variable">departure=</span><span class="hljs-number">2010</span>-<span class="hljs-number">01</span>-<span class="hljs-number">01</span>&amp;<span class="hljs-variable">store=</span>clickbus&amp;<span class="hljs-variable">platform=</span>web&amp;<span class="hljs-variable">model=</span>retail
+<pre><code>/api/v1/search?<span class="hljs-variable">departure=</span><span class="hljs-number">2010</span>-<span class="hljs-number">01</span>-<span class="hljs-number">01</span>&amp;<span class="hljs-variable">from=</span>quertaro-qro&amp;<span class="hljs-variable">to=</span>guadalajara-jal&amp;<span class="hljs-variable">engine=</span><span class="hljs-number">5411</span>E7D726991
 </code></pre></li>
 <li><p>Response:</p>
 <pre><code class="language-json">{
