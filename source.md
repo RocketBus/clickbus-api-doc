@@ -403,6 +403,9 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 
 The resource `/trip` return all information related to a specific trip, based on a given schedule ID (check **Search** resource for more details).
 
+- **WARNING:**
+    > One of the most important values obtained in the `/trip`s Response is `sessionId`. **Remember to keep this value**.
+
 ### Get Trip Details [GET]
 
 **Parameters**
