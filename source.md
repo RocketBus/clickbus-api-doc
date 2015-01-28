@@ -131,8 +131,6 @@ With the correct params, this resource returns a Response _200_ and a list, in J
         - Which `busCompany` offer these travels;
         - `availableSeats` provides how many seats are available.
 
-**WARNING:** The data returned on `paymentSettings` is deprecated since 19th January, 2015.
-
 **Examples**
 
  - Searching for travels from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ in _11th Feb 2015_, with all correct params:
@@ -424,12 +422,11 @@ Using a valid `scheduleId`, the request will return a _200_ Response, with the s
         - The `busCompany` name;
         - The `bus` vehicle itself;
         - The `seat_type` which describes all types of different Seats offered by the bus company:
+            - `children` applies to individuals under _Y_ years old;
             - `adult` applies to individuals between _X_ and _Y_ years old;
-            - `elderly` applies to individuals between _X_ and _Y_ years old;
-            - `children` applies to individuals between _X_ and _Y_ years old;
-            - Holidays: 
-                - `teacher`
-                - `student`
+            - `elderly` applies to individuals over _X_ years old;
+            - There is also some specific seat types, which lasts only during specific seasons: 
+                - `teacher` and `student` stands for the school's vacation period.
         - Each bus seat is listed on `seats`, with:
             - A single `id`;
             - The seat's `name`;
@@ -437,7 +434,7 @@ Using a valid `scheduleId`, the request will return a _200_ Response, with the s
             - The seat `position`, which is useful to understand how the **Seat** proccess works, distributed in:
                 - `x` is for the horizontal axis;
                 - `y` is for the vertical axis;
-                - **NOTE:** the `z` value is only required for double-decker vehicles.
+                - **NOTE:** the `z` value is only required for double-decker vehicles; this value indicates in which floor the Seat is located.
             - The seat `details`, which provides:
                 - Seat's `price`, `currency` and `seatTypes`.
 

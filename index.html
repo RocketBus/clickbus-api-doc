@@ -247,7 +247,6 @@ a.list-group-item.heading:hover {
 </ul></li>
 </ul></li>
 </ul>
-<p><strong>WARNING:</strong> The data returned on <code>paymentSettings</code> is deprecated since 19th January, 2015.</p>
 <p><strong>Examples</strong></p>
 <ul>
 <li><p>Searching for travels from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> in <em>11th Feb 2015</em>, with all correct params:</p>
@@ -537,13 +536,12 @@ a.list-group-item.heading:hover {
 <li>The <code>bus</code> vehicle itself;</li>
 <li>The <code>seat_type</code> which describes all types of different Seats offered by the bus company:
 <ul>
+<li><code>children</code> applies to individuals under <em>Y</em> years old;</li>
 <li><code>adult</code> applies to individuals between <em>X</em> and <em>Y</em> years old;</li>
-<li><code>elderly</code> applies to individuals between <em>X</em> and <em>Y</em> years old;</li>
-<li><code>children</code> applies to individuals between <em>X</em> and <em>Y</em> years old;</li>
-<li>Holidays:
+<li><code>elderly</code> applies to individuals over <em>X</em> years old;</li>
+<li>There is also some specific seat types, which lasts only during specific seasons:
 <ul>
-<li><code>teacher</code></li>
-<li><code>student</code></li>
+<li><code>teacher</code> and <code>student</code> stands for the school’s vacation period.</li>
 </ul></li>
 </ul></li>
 <li>Each bus seat is listed on <code>seats</code>, with:
@@ -555,7 +553,7 @@ a.list-group-item.heading:hover {
 <ul>
 <li><code>x</code> is for the horizontal axis;</li>
 <li><code>y</code> is for the vertical axis;</li>
-<li><strong>NOTE:</strong> the <code>z</code> value is only required for double-decker vehicles.</li>
+<li><strong>NOTE:</strong> the <code>z</code> value is only required for double-decker vehicles; this value indicates in which floor the Seat is located.</li>
 </ul></li>
 <li>The seat <code>details</code>, which provides:
 <ul>
