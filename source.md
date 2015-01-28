@@ -412,7 +412,7 @@ The resource `/trip` return all information related to a specific trip, based on
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
-|**scheduleId** (required)|_string_|A given hash from a search part. See on **Search** resource, in the output, into each `items` part, the value on `departure.waypoint.schedule.id` node. |`NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwM...`|
+|**scheduleId** (required)|_string_|A given hash from a search part. See on **Search** resource, in the output, into each `items` part, the value on `departure.waypoint.schedule.id` node. |`e4479611acd114b9...`|
 
 **Response**
 
@@ -423,6 +423,13 @@ Using a valid `scheduleId`, the request will return a _200_ Response, with the s
         - `trip_id` which is the trip ID (each trip has it's own ID);
         - The `busCompany` name;
         - The `bus` vehicle itself;
+        - The `seat_type` which describes all types of different Seats offered by the bus company:
+            - `adult` applies to individuals between _X_ and _Y_ years old;
+            - `elderly` applies to individuals between _X_ and _Y_ years old;
+            - `children` applies to individuals between _X_ and _Y_ years old;
+            - Holidays: 
+                - `teacher`
+                - `student`
         - Each bus seat is listed on `seats`, with:
             - A single `id`;
             - The seat's `name`;
@@ -436,54 +443,64 @@ Using a valid `scheduleId`, the request will return a _200_ Response, with the s
 
 **Examples**
 
-- Get the trip details from _Sao Paulo - Brazil_ to _Santos - Brazil_ in _11th Feb 2015_ from a single part of this search.
+- Get the trip details from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ in _11th Feb 2015_ from a single part of this search.
 
     - URL:
         ```
-        api/v1/trip?scheduleId=NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==
+        api/v1/trip?scheduleId=e4479611acd114b958871fe4cb8130af
         ```
     - Response:
         ```json
         {
             "meta": {},
-            "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+            "sessionId": "tofnv14ro2usflh75ragok18q5",
             "content": {
-                "trip_id": "2949",
+                "trip_id": "50",
                 "busCompany": {
-                    "name": "Cometa"
+                    "name": "Primera Plus"
                 },
                 "bus": {
                     "id": "",
                     "name": ""
                 },
+                "seat_type": [{
+                    "seat_type.adult": {
+                        "price": "500"
+                    },
+                    "seat_type.elderly": {
+                        "price": "250"
+                    },
+                    "seat_type.children": {
+                        "price": "250"
+                    }
+                }],
                 "seats": [{
-                    "id": "01",
-                    "name": "01",
-                    "available": "",
+                    "id": "1",
+                    "name": "1",
+                    "available": "1",
                     "position": {
-                        "x": "1",
+                        "x": "0",
                         "y": "0",
                         "z": ""
                     },
                     "details": {
-                        "price": "2191",
-                        "currency": "R$",
+                        "price": "50000",
+                        "currency": "MXN",
                         "seatTypes": []
                     }
-                }, {...}
-                ]
+                }, {...}]
             }
         }
         ```
 - Incorrect request (using a invalid or incorrect schedule ID):
     - URL:
         ```
-        api/v1/trip?scheduleId=0123456789abcdefghijklmnopqrstuvxz
+        api/v1/trip?scheduleId=0123456789abc
         ``` 
     - Response (status code: _400_):
         ```json
         {
-            "message": "Invalid Parameters"
+            "message": "seat_reservation.errors.parameters.scheduleId_not_saved"
         }
         ```
 

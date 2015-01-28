@@ -522,7 +522,7 @@ a.list-group-item.heading:hover {
 <tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left"><strong>scheduleId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A given hash from a search part. See on <strong>Search</strong> resource, in the output, into each <code>items</code> part, the value on <code>departure.waypoint.schedule.id</code> node.</td><td style="text-align:left"><code>NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwM...</code></td></tr>
+<tr><td style="text-align:left"><strong>scheduleId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A given hash from a search part. See on <strong>Search</strong> resource, in the output, into each <code>items</code> part, the value on <code>departure.waypoint.schedule.id</code> node.</td><td style="text-align:left"><code>e4479611acd114b9...</code></td></tr>
 </tbody>
 </table>
 <p><strong>Response</strong></p>
@@ -535,6 +535,17 @@ a.list-group-item.heading:hover {
 <li><code>trip_id</code> which is the trip ID (each trip has it’s own ID);</li>
 <li>The <code>busCompany</code> name;</li>
 <li>The <code>bus</code> vehicle itself;</li>
+<li>The <code>seat_type</code> which describes all types of different Seats offered by the bus company:
+<ul>
+<li><code>adult</code> applies to individuals between <em>X</em> and <em>Y</em> years old;</li>
+<li><code>elderly</code> applies to individuals between <em>X</em> and <em>Y</em> years old;</li>
+<li><code>children</code> applies to individuals between <em>X</em> and <em>Y</em> years old;</li>
+<li>Holidays:
+<ul>
+<li><code>teacher</code></li>
+<li><code>student</code></li>
+</ul></li>
+</ul></li>
 <li>Each bus seat is listed on <code>seats</code>, with:
 <ul>
 <li>A single <code>id</code>;</li>
@@ -556,40 +567,50 @@ a.list-group-item.heading:hover {
 </ul>
 <p><strong>Examples</strong></p>
 <ul>
-<li><p>Get the trip details from <em>Sao Paulo - Brazil</em> to <em>Santos - Brazil</em> in <em>11th Feb 2015</em> from a single part of this search.</p>
+<li><p>Get the trip details from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> in <em>11th Feb 2015</em> from a single part of this search.</p>
 <ul>
 <li>URL:
-<pre><code>api/v<span class="hljs-number">1</span>/trip?scheduleId=<span class="hljs-label">NDAxNi0</span>tMzkz<span class="hljs-label">NS0</span>tMjAx<span class="hljs-label">NS0</span>wMi<span class="hljs-number">0</span>xMSAwMTowMC<span class="hljs-number">0</span>t<span class="hljs-label">Ny0</span>tMjk<span class="hljs-number">0</span>OS<span class="hljs-number">0</span>tMS<span class="hljs-number">0</span>tMS<span class="hljs-number">0</span>tMS<span class="hljs-number">0</span>tQ<span class="hljs-number">09</span>OVg==
-</code></pre></li>
+<pre><code><span class="hljs-attribute">api/v1/trip?scheduleId</span>=<span class="hljs-string">e4479611acd114b958871fe4cb8130af
+</span></code></pre></li>
 <li>Response:
 <pre><code class="language-json">{
     "meta": {},
-    "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+    "sessionId": "tofnv14ro2usflh75ragok18q5",
     "content": {
-        "trip_id": "2949",
+        "trip_id": "50",
         "busCompany": {
-            "name": "Cometa"
+            "name": "Primera Plus"
         },
         "bus": {
             "id": "",
             "name": ""
         },
+        "seat_type": [{
+            "seat_type.adult": {
+                "price": "500"
+            },
+            "seat_type.elderly": {
+                "price": "250"
+            },
+            "seat_type.children": {
+                "price": "250"
+            }
+        }],
         "seats": [{
-            "id": "01",
-            "name": "01",
-            "available": "",
+            "id": "1",
+            "name": "1",
+            "available": "1",
             "position": {
-                "x": "1",
+                "x": "0",
                 "y": "0",
                 "z": ""
             },
             "details": {
-                "price": "2191",
-                "currency": "R$",
+                "price": "50000",
+                "currency": "MXN",
                 "seatTypes": []
             }
-        }, {...}
-        ]
+        }, {...}]
     }
 }
 </code></pre></li>
@@ -597,11 +618,11 @@ a.list-group-item.heading:hover {
 <li><p>Incorrect request (using a invalid or incorrect schedule ID):</p>
 <ul>
 <li>URL:
-<pre><code><span class="hljs-attribute">api/v1/trip?scheduleId</span>=<span class="hljs-string">0123456789abcdefghijklmnopqrstuvxz
+<pre><code><span class="hljs-attribute">api/v1/trip?scheduleId</span>=<span class="hljs-string">0123456789abc
 </span></code></pre></li>
 <li>Response (status code: <em>400</em>):
 <pre><code class="language-json">{
-    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Invalid Parameters"</span>
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"seat_reservation.errors.parameters.scheduleId_not_saved"</span>
 </span>}
 </code></pre></li>
 </ul></li>
