@@ -11,7 +11,8 @@ In this documentation you may find both how to integrate with Clickbus API for a
 Below are the topic Groups to perform every task for your applications:
 
 - Obtain a list with all **Places**;
-- **Search** for any routes and travels;
+- Search any of our **Trips**;
+- Get all information about the available **Payment** methods;
 - Obtain **Trip Details** from each route;
 - **Seat Block** to lock or unlock seat reservations;
 - **Booking** orders;
