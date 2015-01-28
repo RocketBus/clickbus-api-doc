@@ -752,7 +752,7 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:left"><strong>request.passenger</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which contains multiple items, one for each passenger:</td><td style="text-align:left"></td></tr>
 <tr><td style="text-align:left"><strong>request.passenger.name</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s name.</td><td style="text-align:left"><code>Fulano da Silva</code></td></tr>
 <tr><td style="text-align:left"><strong>request.passenger.document</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s document.</td><td style="text-align:left"><code>123.456.789-00</code></td></tr>
-<tr><td style="text-align:left"><strong>request.passenger.documentType</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"></td><td style="text-align:left"><code>&quot;&quot;</code></td></tr>
+<tr><td style="text-align:left"><strong>request.passenger.documentType</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Type of the passenger’s <code>document</code>.</td><td style="text-align:left"><code>&quot;cpf&quot;</code></td></tr>
 <tr><td style="text-align:left"><strong>request.passenger.gender</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>M</code> stands for <em>Male</em>, and <code>F</code>, for <em>Female</em>.</td><td style="text-align:left"><code>M</code> or <code>F</code></td></tr>
 <tr><td style="text-align:left"><strong>request.schedule</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
 <tr><td style="text-align:left"><strong>request.schedule.id</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Schedule’s ID, obtained from <strong>Trip Details</strong>.</td><td style="text-align:left"><code>NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw...</code></td></tr>
@@ -774,7 +774,7 @@ a.list-group-item.heading:hover {
         "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
             "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fulano da Silva"</span></span>,
             "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789-00"</span></span>,
-            "<span class="hljs-attribute">documentType</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+            "<span class="hljs-attribute">documentType</span>": <span class="hljs-value"><span class="hljs-string">"cpf"</span></span>,
             "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">"M"</span>
         </span>}</span>,
         "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{

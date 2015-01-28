@@ -671,7 +671,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 |**request.passenger** (required)|_object_|A container which contains multiple items, one for each passenger: ||
 |**request.passenger.name** (required)|_string_|Passenger's name.|`Fulano da Silva`|
 |**request.passenger.document** (required)|_string_|Passenger's document.|`123.456.789-00`|
-|**request.passenger.documentType** (required)|_string_||`""`|
+|**request.passenger.documentType** (required)|_string_|Type of the passenger's `document`.|`"cpf"`|
 |**request.passenger.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
 |**request.schedule** (required)|_object_|A container which requires: ||
 |**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw...`|
@@ -694,7 +694,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
             "passenger": {
                 "name": "Fulano da Silva",
                 "document": "123.456.789-00",
-                "documentType": "",
+                "documentType": "cpf",
                 "gender": "M"
             },
             "schedule": {
