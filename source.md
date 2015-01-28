@@ -497,7 +497,8 @@ Using a valid `scheduleId`, the request will return a _200_ Response, with the s
         - Each bus seat is listed on `seats`, with:
             - A single `id`;
             - The seat's `name`;
-            - If this given seat is `available` or not;
+            - If the seat is `available` or not:
+                - `"1"` if the Seat is available; otherwise, it will return an empty string (`""`).
             - The seat `position`, which is useful to understand how the **Seat** proccess works, distributed in:
                 - `x` is for the horizontal axis;
                 - `y` is for the vertical axis;
@@ -740,6 +741,11 @@ This request, with all correct params and being executed before the Seat block's
 ## Remove a block in a Seat [/seat-block]
 
 As opposed to the Create proccess, the Remove will delete a block created on a Seat, which automatically turns a Seat available for all passengers.
+
+**NOTE:**
+
+- Every Request's header shall declare the key `PHPSESSID`, along with it's value, Session's ID (obtained on **Session**), as follow:
+    > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
 
 ### Remove a block in a Seat [DELETE]
 
@@ -1355,16 +1361,13 @@ This payment method provides a redirect link in the Response body, provided afte
 }
 ```
 
-## Update an Order Status [/booking]
+## Cancel an Order [/booking]
 
-This Request aims to update an Order Status to one of these 2 options, as below:
-
-- `order_finalized_successfully` means that the Order has been successfully accomplished;
-- `order_canceled` means that the Order has been sucessfully canceled.
+This Request aims to update an Order Status to `order_canceled`, which means that the Order has been sucessfully canceled.
 
 **ATTENTION:** Once an Order status is settled to `order_canceled`, the action is irreversible.
 
-### Update an Order Status [PUT]
+### Cancel an Order [PUT]
 
 **Parameters**
 
@@ -1372,7 +1375,7 @@ This Request aims to update an Order Status to one of these 2 options, as below:
 |:----|:----|:----|:----|
 |**request** (required)|_object_|A container which requires:||
 |**request.localizer** (required)|_string_|A localizer which points to your Order, obtained while creating an **Order**.|`53347e09aee47`|
-|**request.status** (required)|_string_|One of the following Status: `order_finalized_successfully` or `order_canceled`||
+|**request.status** (required)|_string_|**Cancel** status.|`order_canceled`|
 
 **Request**
 
@@ -1380,7 +1383,7 @@ This Request aims to update an Order Status to one of these 2 options, as below:
 {
     "request": {
       "localizer": "53347e09aee47",
-      "status": "order_finalized_successfully"
+      "status": "order_canceled"
     }
 }
 ```
