@@ -127,8 +127,6 @@ The resource `/search` provides a list with all available trips, with all sort o
 |**model** (required)|_string_|A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`retail`|
 |**platform** (required)|_string_|A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`web`|
 |**engine** (optional)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
-|**quantity** (optional)|_int_|The minimum ammount of avaliable seats.|`10`|
-|**locale** (optional)|_string_|The locale you want to perform the search. If you provide no value for this param, the system will try to search in all languages avaliables on the server (which can take more time to return the results).|`pt_BR`|
 
 **Response**
 
@@ -143,8 +141,6 @@ With the correct params, this resource returns a Response _200_ and a list, in J
         - `waypoint` information, such as `schedule` for each waypoint, including `price`, `date` and `time`;
         - Which `busCompany` offer these travels;
         - `availableSeats` provides how many seats are available.
-
-**WARNING:** The data returned on `paymentSettings` is deprecated since 19th January, 2015.
 
 **Examples**
 
