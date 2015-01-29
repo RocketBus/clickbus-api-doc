@@ -29,7 +29,7 @@ Below are the topic Groups to perform every task for your applications:
         "message":"Invalid Parameters"
     }
     ```
-3. The **Evaluation** environment (http://api-evaluation.clickbus.com.br/api/v1) have only 1 possible trip: from **Sao Paulo, Tiete** (`sao-paulo-tiete-sp`) to **Santos, SP** (`santos-sp`), and vice-versa.
+3. The **Evaluation** environment (https://api-evaluation.clickbus.com.br/api/v1) have only 1 possible trip: from **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`) to **Santos, SP** (`santos-sp`), and vice-versa.
 4. The params **store**, **model** and **platform** are required and singular for each partner. To obtain these credentials, please contact our commercial department at contato@clickbus.com.br.
 
 ## **Groups**
