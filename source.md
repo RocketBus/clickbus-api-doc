@@ -11,7 +11,8 @@ In this documentation you may find both how to integrate with Clickbus API for a
 Below are the topic Groups to perform every task for your applications:
 
 - Obtain a list with all **Places**;
-- **Search** for any routes and travels;
+- Search any of our **Trips**;
+- Get all information about the available **Payment** methods;
 - Obtain **Trip Details** from each route;
 - **Seat Block** to lock or unlock seat reservations;
 - **Booking** orders.
@@ -31,7 +32,7 @@ Below are the topic Groups to perform every task for your applications:
 
 The resource `/places` retrieves all the available Places, where each Place can be used as a destination point to our travels and routes.
 
-One of the most important values on this resource is the `slug`, which contains the name to use when referencing to a Place in a **Search** request.
+One of the most important values on this resource is the `slug`, which contains the name to use when referencing to a Place in a **Trips** request.
 
 ### Get All Places [GET]
 
@@ -98,46 +99,43 @@ The given request returns a Response _200_, with a list in JSON format filled wi
 }
  ```
 
-# Group Search
+# Group Payment
 
-## Get Avaliable Trips [/search]
+## Get all Payment settings [/payment]
 
-The resource `/search` provides a list with all available trips, with all sort of details you may need.
+The resource `/payment` retrieves all the information that you need according to your `meta` parameters, which are:
 
-**ADVICE:** Remember that each request to `/search` will erase all itens stored in your Pre-Order, so, if you don't have confirmed your Order yet, all the items added to the Pre-Order will be lost.
+- `model`
+- `store`
+- `platform`
 
-### Get Avaliable Trips [GET]
+These parameters are created for each partner, and they are required for each request. If you have any doubts or questions about how to obtain these values, please contact our commercial department at contacto@clickbus.com.mx.
+
+### Get all Payment settings [GET]
 
 **Parameters**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
-|**from** (required)|_string_|A destination from where a trip starts.|`quertaro-qro`|
-|**to** (required)|_string_|A destination to where a trip ends.|`guadalajara-jal`|
-|**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
-|**engine** (required)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
+|**store** (required)|_string_|`store` parameter. A specific param for each partner. Please contact ClickBus at contacto@clickbus.com.mx for more commercial details.|`clickbus`|
+|**model** (required)|_string_|`model` parameter. A specific param for each partner. Please contact ClickBus at contacto@clickbus.com.mx for more commercial details.|`retail`|
+|**platform** (required)|_string_|`platform` parameter. A specific param for each partner. Please contact ClickBus at contacto@clickbus.com.mx for more commercial details.|`web`|
 
 **Response**
 
 With the correct params, this resource returns a Response _200_ and a list, in JSON format, with these details as follow:
 
 - `paymentSettings`, like:
-    - `creditcard`, with it's own `serviceFee` and `serviceFeePercentage` which is attributed for each partner (contact ClickBus at contacto@clickubs.com.mx for more commercial details);
+    - `creditcard`, with it's own `serviceFee` and `serviceFeePercentage` which is attributed for each partner (contact ClickBus at contacto@clickbus.com.mx for more commercial details);
     - `debitcard`, `paypal_hpp` and `banktransfer` information;
-- `items`, which have:
-    - `from` and `to` destinations;
-    - `parts` section, which contains:
-        - `waypoint` information, such as `schedule` for each waypoint, including `price`, `date` and `time`;
-        - Which `busCompany` offer these travels;
-        - `availableSeats` provides how many seats are available.
 
 **Examples**
 
- - Searching for travels from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ in _11th Feb 2015_, with all correct params:
+- A request, with all valid parameters:
 
     - URL:
         ```
-        /api/v1/search?departure=2015-02-11&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
+        /api/v1/payment?store=clickbus&platform=web&model=retail
         ```
     - Response:
         ```json
@@ -207,8 +205,57 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                     "serviceFee": 0,
                     "serviceFeePercentage": "0.00"
                 }
-            },
-            "bookingEngine": "GFA",
+            }
+        }
+        ```
+
+# Group Trips
+
+## Get all available Trips [/trips]
+
+The resource `/trips` provides a list with all available trips, with all sort of details you may need.
+
+**ADVICES:**
+
+- Remember that each request to `/trips` will erase all itens stored in your Pre-Order, so, if you don't have confirmed your Order yet, all the items added to the Pre-Order will be lost.
+- The `bookingEngine` value, provided in the sucessfull Response, is one of the most important values on this resource: when you request the return trip, you have to provide in the `engine` parameter the exact same `bookingEngine` obtained in the departure trip.
+
+### Get all available Trips [GET]
+
+**Parameters**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**from** (required)|_string_|A destination from where a trip starts.|`quertaro-qro`|
+|**to** (required)|_string_|A destination to where a trip ends.|`guadalajara-jal`|
+|**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
+|**engine** (required)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
+
+**Response**
+
+With the correct params, this resource returns a Response _200_ and a list, in JSON format, with these details as follow:
+
+- `bookingEngine`, which is the booking engine where the results are based on;
+- `items`, a list with the results from the requested `bookingEngine`, which contain:
+    - `from` and `to` destinations;
+    - `parts` section, which contains:
+        - `waypoint` information, such as `schedule` for each waypoint, including `price`, `date` and `time`;
+        - Which `busCompany` offer these travels;
+        - `availableSeats` provides how many seats are available.
+
+**Examples**
+
+ - Searching for travels from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ in _11th Feb 2015_, with all correct params:
+
+    - URL:
+        ```
+        api/v1/trips?from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991&departure=2015-02-11
+        ```
+    - Response:
+        ```json
+        {
+            "meta": "",
+            "bookingEngine": "5411E7D726991",
             "items": [{
                 "from": "Querétaro, QRO.",
                 "to": "Guadalajara, JAL.",
@@ -399,7 +446,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 
 ## Get Trip Details [/trip]
 
-The resource `/trip` return all information related to a specific trip, based on a given schedule ID (check **Search** resource for more details).
+The resource `/trip` return all information related to a specific trip, based on a given schedule ID (check **Trips** resource for more details).
 
 - **WARNING:**
     > One of the most important values obtained in the `/trip`s Response is `sessionId`. **Remember to keep this value**.
@@ -410,7 +457,7 @@ The resource `/trip` return all information related to a specific trip, based on
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
-|**scheduleId** (required)|_string_|A given hash from a search part. See on **Search** resource, in the output, into each `items` part, the value on `departure.waypoint.schedule.id` node. |`e4479611acd114b9...`|
+|**scheduleId** (required)|_string_|A given hash from a search part. See on **Trips** resource, in the output, into each `items` part, the value on `departure.waypoint.schedule.id` node. |`e4479611acd114b9...`|
 
 **Response**
 
@@ -580,8 +627,8 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 |:----|:----|:----|:----|
 |**meta** (required)|_object_|An empty object. Partners can use this parameter to provide their own `meta` information: `store`, `platform` and `model`. |`{}`|
 |**request** (required)|_object_|A container which requires: ||
-|**request.from** (required)|_string_|A destination from where a trip starts. Same value used on **Search**.|`sao-paulo-tiete-sp`|
-|**request.to** (required)|_string_|A destination to where a trip ends. Same value used on **Search**.|`santos-sp`|
+|**request.from** (required)|_string_|A destination from where a trip starts. Same value used on **Trips**.|`sao-paulo-tiete-sp`|
+|**request.to** (required)|_string_|A destination to where a trip ends. Same value used on **Trips**.|`santos-sp`|
 |**request.seat** (required)|_string_|The seat’s `name`, obtained on **Trip Details**.|`07`|
 |**request.passenger** (required)|_object_|A container which contains multiple items, one for each passenger: ||
 |**request.passenger.name** (required)|_string_|Passenger's name.|`Fulano da Silva`|
@@ -590,7 +637,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 |**request.passenger.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
 |**request.schedule** (required)|_object_|A container which requires: ||
 |**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw...`|
-|**request.schedule.date** (required)|_string_|Any valid date, in format `yyyy-mm-dd`. Use the same value applied on **Search**.|`2015-01-27`|
+|**request.schedule.date** (required)|_string_|Any valid date, in format `yyyy-mm-dd`. Use the same value applied on **Trips**.|`2015-01-27`|
 |**request.schedule.time** (required)|_string_|Any valid time between `00:00` and `23:59`, in format `HH:ii`.|`10:30`|
 |**request.schedule.timezone** (required)|_string_|Timezone information, based on actual country.|`America/Sao_Paulo`|
 |**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
