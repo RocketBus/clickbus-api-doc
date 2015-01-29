@@ -107,142 +107,6 @@ The given request returns a Response _200_, with a list in JSON format filled wi
 }
  ```
 
-# Group Payment
-
-## Get all Payment settings [/payment]
-
-The resource `/payment` retrieves all the information that you need according to your `meta` parameters, which are:
-
-- `model`
-- `store`
-- `platform`
-
-These parameters are created for each partner, and they are required for each request. If you have any doubts or questions about how to obtain these values, please contact our commercial department at contato@clickubs.com.br.
-
-### Get all Payment settings [GET]
-
-**Parameters**
-
-|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
-|:----|:----|:----|:----|
-|**store** (required)|_string_|`store` parameter. A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`clickbus`|
-|**model** (required)|_string_|`model` parameter. A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`retail`|
-|**platform** (required)|_string_|`platform` parameter. A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`web`|
-
-**Response**
-
-With the correct params, this resource returns a Response _200_ and a list, in JSON format, with these details as follow:
-
-- `paymentSettings`, like:
-    - `creditcard`, with it's own `serviceFee` and `serviceFeePercentage` which is attributed for each partner (contact ClickBus at contato@clickubs.com.br for more commercial details);
-    - `debitcard`, `paypal_hpp` and `banktransfer` information;
-
-**Examples**
-
-- A request, with all valid parameters:
-
-    - URL:
-        ```
-        /api/v1/payment?store=clickbus&platform=web&model=retail
-        ```
-    - Response:
-        ```json
-        {
-            "meta": {},
-            "paymentSettings": {
-                "bankslip": {
-                    "total": "0.00",
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
-                    "fixedValue": 0,
-                    "serviceFee": 0,
-                    "serviceFeePercentage": 0
-                },
-                "creditcard": {
-                    "total": {
-                        "1": "0.00",
-                        "2": "0.00",
-                        "3": "0.00",
-                        "4": "0.00",
-                        "5": "0.00",
-                        "6": "0.00",
-                        "7": "0.00",
-                        "8": "0.00",
-                        "9": "0.00",
-                        "10": "0.00",
-                        "11": "0.00",
-                        "12": "0.00"
-                    },
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
-                    "fixedValue": 0,
-                    "serviceFee": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0,
-                        "6": 0,
-                        "7": 0,
-                        "8": 0,
-                        "9": 0,
-                        "10": 0,
-                        "11": 0,
-                        "12": 0
-                    },
-                    "serviceFeePercentage": {
-                        "1": "0.00",
-                        "2": "0.00",
-                        "3": "0.00",
-                        "4": "0.00",
-                        "5": "0.00",
-                        "6": "0.00",
-                        "7": "0.00",
-                        "8": "0.00",
-                        "9": "0.00",
-                        "10": "0.00",
-                        "11": "0.00",
-                        "12": "0.00"
-                    }
-                },
-                "debitcard": {
-                    "total": "0.00",
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
-                    "fixedValue": 0,
-                    "serviceFee": 0,
-                    "serviceFeePercentage": 0
-                },
-                "paypal_hpp": {
-                    "total": "0.00",
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
-                    "fixedValue": 0,
-                    "serviceFee": 0,
-                    "serviceFeePercentage": 0
-                },
-                "banktransfer": {
-                    "total": "0.00",
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
-                    "fixedValue": 0,
-                    "serviceFee": 0,
-                    "serviceFeePercentage": "13.00"
-                }
-            }
-        }
-        ```
-
 # Group Trips
 
 ## Get all available Trips [/trips]
@@ -799,6 +663,142 @@ This request, with all correct params, will return a Response _202_, with the fo
     "message": "Invalid Parameters"
 }
 ```
+
+# Group Payment
+
+## Get all Payment settings [/payment]
+
+The resource `/payment` retrieves all the information that you need according to your `meta` parameters, which are:
+
+- `model`
+- `store`
+- `platform`
+
+These parameters are created for each partner, and they are required for each request. If you have any doubts or questions about how to obtain these values, please contact our commercial department at contato@clickubs.com.br.
+
+### Get all Payment settings [GET]
+
+**Parameters**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**store** (required)|_string_|`store` parameter. A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`clickbus`|
+|**model** (required)|_string_|`model` parameter. A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`retail`|
+|**platform** (required)|_string_|`platform` parameter. A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`web`|
+
+**Response**
+
+With the correct params, this resource returns a Response _200_ and a list, in JSON format, with these details as follow:
+
+- `paymentSettings`, like:
+    - `creditcard`, with it's own `serviceFee` and `serviceFeePercentage` which is attributed for each partner (contact ClickBus at contato@clickubs.com.br for more commercial details);
+    - `debitcard`, `paypal_hpp` and `banktransfer` information;
+
+**Examples**
+
+- A request, with all valid parameters:
+
+    - URL:
+        ```
+        /api/v1/payment?store=clickbus&platform=web&model=retail
+        ```
+    - Response:
+        ```json
+        {
+            "meta": {},
+            "paymentSettings": {
+                "bankslip": {
+                    "total": "0.00",
+                    "discount_id": 0,
+                    "discount_type": 0,
+                    "discount_value": 0,
+                    "savings": 0,
+                    "fixedValue": 0,
+                    "serviceFee": 0,
+                    "serviceFeePercentage": 0
+                },
+                "creditcard": {
+                    "total": {
+                        "1": "0.00",
+                        "2": "0.00",
+                        "3": "0.00",
+                        "4": "0.00",
+                        "5": "0.00",
+                        "6": "0.00",
+                        "7": "0.00",
+                        "8": "0.00",
+                        "9": "0.00",
+                        "10": "0.00",
+                        "11": "0.00",
+                        "12": "0.00"
+                    },
+                    "discount_id": 0,
+                    "discount_type": 0,
+                    "discount_value": 0,
+                    "savings": 0,
+                    "fixedValue": 0,
+                    "serviceFee": {
+                        "1": 0,
+                        "2": 0,
+                        "3": 0,
+                        "4": 0,
+                        "5": 0,
+                        "6": 0,
+                        "7": 0,
+                        "8": 0,
+                        "9": 0,
+                        "10": 0,
+                        "11": 0,
+                        "12": 0
+                    },
+                    "serviceFeePercentage": {
+                        "1": "0.00",
+                        "2": "0.00",
+                        "3": "0.00",
+                        "4": "0.00",
+                        "5": "0.00",
+                        "6": "0.00",
+                        "7": "0.00",
+                        "8": "0.00",
+                        "9": "0.00",
+                        "10": "0.00",
+                        "11": "0.00",
+                        "12": "0.00"
+                    }
+                },
+                "debitcard": {
+                    "total": "0.00",
+                    "discount_id": 0,
+                    "discount_type": 0,
+                    "discount_value": 0,
+                    "savings": 0,
+                    "fixedValue": 0,
+                    "serviceFee": 0,
+                    "serviceFeePercentage": 0
+                },
+                "paypal_hpp": {
+                    "total": "0.00",
+                    "discount_id": 0,
+                    "discount_type": 0,
+                    "discount_value": 0,
+                    "savings": 0,
+                    "fixedValue": 0,
+                    "serviceFee": 0,
+                    "serviceFeePercentage": 0
+                },
+                "banktransfer": {
+                    "total": "0.00",
+                    "discount_id": 0,
+                    "discount_type": 0,
+                    "discount_value": 0,
+                    "savings": 0,
+                    "fixedValue": 0,
+                    "serviceFee": 0,
+                    "serviceFeePercentage": "13.00"
+                }
+            }
+        }
+        ```
 
 # Group Booking
 
