@@ -257,7 +257,7 @@ The resource `/trips` provides a list with all available trips, with all sort of
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
-|**from** (required)|_string_|A destination from where a trip starts.|`sao-paulo-jabaquara-sp`|
+|**from** (required)|_string_|A destination from where a trip starts.|`sao-paulo-tiete-sp`|
 |**to** (required)|_string_|A destination to where a trip ends.|`santos-sp`|
 |**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
 |**engine** (optional)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
@@ -275,18 +275,18 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 
 **Examples**
 
- - Searching for travels from _Sao Paulo - Brazil_ to _Santos - Brazil_ in _11th Feb 2015_, with all correct params:
+ - Searching for travels from _Sao Paulo, SP - Tiete_ to _Santos - Brazil_ in _11th Feb 2015_, with all correct params:
 
     - URL:
         ```
-        api/v1/trips?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=2015-02-11
+        api/v1/trips?from=sao-paulo-tiete-sp&to=santos-sp&departure=2015-02-11
         ```
     - Response:
         ```json
         {
             "meta": "",
             "items": [{
-                "from": "Sao Paulo, SP - Jabaquara",
+                "from": "Sao Paulo, SP - Tiete",
                 "to": "Santos, SP",
                 "parts": [{
                     "trip_id": "2949",
@@ -308,11 +308,11 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                             "place": {
                                 "country": "BRA",
                                 "state": "",
-                                "city": "Sao Paulo, SP - Jabaquara",
+                                "city": "Sao Paulo, SP - Tiete",
                                 "station": {
                                     "current": {
                                         "id": "4016",
-                                        "name": "Sao Paulo, SP - Jabaquara",
+                                        "name": "Sao Paulo, SP - Tiete",
                                         "locale": "en_US"
                                     },
                                     "default": {
@@ -395,7 +395,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                             "station": {
                                 "current": {
                                     "id": "4016",
-                                    "name": "Sao Paulo, SP - Jabaquara",
+                                    "name": "Sao Paulo, SP - Tiete",
                                     "locale": "pt_BR"
                                 },
                                 "default": {
@@ -457,11 +457,11 @@ With the correct params, this resource returns a Response _200_ and a list, in J
         
         For an incorrect value, like `99/99/9999`:
         ```
-        api/v1/trips?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=9999-99-99
+        api/v1/trips?from=sao-paulo-tiete-sp&to=santos-sp&departure=9999-99-99
         ``` 
         For an unavailable value, like `1th January, 2010`:
         ```
-        api/v1/trips?from=sao-paulo-jabaquara-sp&to=santos-sp&departure=2010-01-01
+        api/v1/trips?from=sao-paulo-tiete-sp&to=santos-sp&departure=2010-01-01
         ``` 
     - Response:
         ```json
@@ -988,7 +988,7 @@ The following Request, with all correct parameters, will return a _201_ Response
             "meta": {
                 "card": "4111-XXXX-XXXX-1111",
                 "code": "XXX",
-                "name": "ALFRED PENNYWORTH",
+                "name": "NOME DE TESTE DA COMPRA",
                 "expiration": "XXXX-XX-XX",
                 "postbackUrl": "",
                 "callbackUrl": ""
@@ -1027,9 +1027,9 @@ The following Request, with all correct parameters, will return a _201_ Response
                 "type": {}
             },
             "passenger": {
-                "firstName": "Bruce Wayne",
+                "firstName": "Nome Passageiro",
                 "lastName": "",
-                "email": "alfred@batima.com.br",
+                "email": "passageiro@teste.com.br",
                 "document": "123.456.789-00",
                 "gender": "",
                 "birthday": "",

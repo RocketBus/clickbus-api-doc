@@ -362,7 +362,7 @@ a.list-group-item.heading:hover {
 <tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left"><strong>from</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination from where a trip starts.</td><td style="text-align:left"><code>sao-paulo-jabaquara-sp</code></td></tr>
+<tr><td style="text-align:left"><strong>from</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination from where a trip starts.</td><td style="text-align:left"><code>sao-paulo-tiete-sp</code></td></tr>
 <tr><td style="text-align:left"><strong>to</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination to where a trip ends.</td><td style="text-align:left"><code>santos-sp</code></td></tr>
 <tr><td style="text-align:left"><strong>departure</strong> (required)</td><td style="text-align:left"><em>date</em></td><td style="text-align:left">Any valid date, in format <code>yyyy-mm-dd</code>.</td><td style="text-align:left"><code>2015-02-11</code></td></tr>
 <tr><td style="text-align:left"><strong>engine</strong> (optional)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.</td><td style="text-align:left"><code>5411E7D726991</code></td></tr>
@@ -384,16 +384,16 @@ a.list-group-item.heading:hover {
 </ul>
 <p><strong>Examples</strong></p>
 <ul>
-<li><p>Searching for travels from <em>Sao Paulo - Brazil</em> to <em>Santos - Brazil</em> in <em>11th Feb 2015</em>, with all correct params:</p>
+<li><p>Searching for travels from <em>Sao Paulo, SP - Tiete</em> to <em>Santos - Brazil</em> in <em>11th Feb 2015</em>, with all correct params:</p>
 <ul>
 <li>URL:
-<pre><code>api/v1/trips?<span class="hljs-variable">from=</span>sao-paulo-jabaquara-sp&amp;<span class="hljs-variable">to=</span>santos-sp&amp;<span class="hljs-variable">departure=</span><span class="hljs-number">2015</span>-<span class="hljs-number">02</span>-<span class="hljs-number">11</span>
+<pre><code>api/v1/trips?<span class="hljs-variable">from=</span>sao-paulo-tiete-sp&amp;<span class="hljs-variable">to=</span>santos-sp&amp;<span class="hljs-variable">departure=</span><span class="hljs-number">2015</span>-<span class="hljs-number">02</span>-<span class="hljs-number">11</span>
 </code></pre></li>
 <li>Response:
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
     "<span class="hljs-attribute">items</span>": <span class="hljs-value">[{
-        "<span class="hljs-attribute">from</span>": <span class="hljs-value"><span class="hljs-string">"Sao Paulo, SP - Jabaquara"</span></span>,
+        "<span class="hljs-attribute">from</span>": <span class="hljs-value"><span class="hljs-string">"Sao Paulo, SP - Tiete"</span></span>,
         "<span class="hljs-attribute">to</span>": <span class="hljs-value"><span class="hljs-string">"Santos, SP"</span></span>,
         "<span class="hljs-attribute">parts</span>": <span class="hljs-value">[{
             "<span class="hljs-attribute">trip_id</span>": <span class="hljs-value"><span class="hljs-string">"2949"</span></span>,
@@ -415,11 +415,11 @@ a.list-group-item.heading:hover {
                     "<span class="hljs-attribute">place</span>": <span class="hljs-value">{
                         "<span class="hljs-attribute">country</span>": <span class="hljs-value"><span class="hljs-string">"BRA"</span></span>,
                         "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
-                        "<span class="hljs-attribute">city</span>": <span class="hljs-value"><span class="hljs-string">"Sao Paulo, SP - Jabaquara"</span></span>,
+                        "<span class="hljs-attribute">city</span>": <span class="hljs-value"><span class="hljs-string">"Sao Paulo, SP - Tiete"</span></span>,
                         "<span class="hljs-attribute">station</span>": <span class="hljs-value">{
                             "<span class="hljs-attribute">current</span>": <span class="hljs-value">{
                                 "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"4016"</span></span>,
-                                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Sao Paulo, SP - Jabaquara"</span></span>,
+                                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Sao Paulo, SP - Tiete"</span></span>,
                                 "<span class="hljs-attribute">locale</span>": <span class="hljs-value"><span class="hljs-string">"en_US"</span>
                             </span>}</span>,
                             "<span class="hljs-attribute">default</span>": <span class="hljs-value">{
@@ -502,7 +502,7 @@ a.list-group-item.heading:hover {
                     "<span class="hljs-attribute">station</span>": <span class="hljs-value">{
                         "<span class="hljs-attribute">current</span>": <span class="hljs-value">{
                             "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"4016"</span></span>,
-                            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Sao Paulo, SP - Jabaquara"</span></span>,
+                            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Sao Paulo, SP - Tiete"</span></span>,
                             "<span class="hljs-attribute">locale</span>": <span class="hljs-value"><span class="hljs-string">"pt_BR"</span>
                         </span>}</span>,
                         "<span class="hljs-attribute">default</span>": <span class="hljs-value">{
@@ -564,10 +564,10 @@ a.list-group-item.heading:hover {
 <ul>
 <li><p>URL:</p>
 <p>For an incorrect value, like <code>99/99/9999</code>:</p>
-<pre><code>api/v1/trips?<span class="hljs-variable">from=</span>sao-paulo-jabaquara-sp&amp;<span class="hljs-variable">to=</span>santos-sp&amp;<span class="hljs-variable">departure=</span><span class="hljs-number">9999</span>-<span class="hljs-number">99</span>-<span class="hljs-number">99</span>
+<pre><code>api/v1/trips?<span class="hljs-variable">from=</span>sao-paulo-tiete-sp&amp;<span class="hljs-variable">to=</span>santos-sp&amp;<span class="hljs-variable">departure=</span><span class="hljs-number">9999</span>-<span class="hljs-number">99</span>-<span class="hljs-number">99</span>
 </code></pre>
 <p>For an unavailable value, like <code>1th January, 2010</code>:</p>
-<pre><code>api/v1/trips?<span class="hljs-variable">from=</span>sao-paulo-jabaquara-sp&amp;<span class="hljs-variable">to=</span>santos-sp&amp;<span class="hljs-variable">departure=</span><span class="hljs-number">2010</span>-<span class="hljs-number">01</span>-<span class="hljs-number">01</span>
+<pre><code>api/v1/trips?<span class="hljs-variable">from=</span>sao-paulo-tiete-sp&amp;<span class="hljs-variable">to=</span>santos-sp&amp;<span class="hljs-variable">departure=</span><span class="hljs-number">2010</span>-<span class="hljs-number">01</span>-<span class="hljs-number">01</span>
 </code></pre></li>
 <li><p>Response:</p>
 <pre><code class="language-json">{
@@ -1052,7 +1052,7 @@ a.list-group-item.heading:hover {
             "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
                 "<span class="hljs-attribute">card</span>": <span class="hljs-value"><span class="hljs-string">"4111-XXXX-XXXX-1111"</span></span>,
                 "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"XXX"</span></span>,
-                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"ALFRED PENNYWORTH"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"NOME DE TESTE DA COMPRA"</span></span>,
                 "<span class="hljs-attribute">expiration</span>": <span class="hljs-value"><span class="hljs-string">"XXXX-XX-XX"</span></span>,
                 "<span class="hljs-attribute">postbackUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
                 "<span class="hljs-attribute">callbackUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span>
@@ -1091,9 +1091,9 @@ a.list-group-item.heading:hover {
                 "<span class="hljs-attribute">type</span>": <span class="hljs-value">{}
             </span>}</span>,
             "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Bruce Wayne"</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Nome Passageiro"</span></span>,
                 "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
-                "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"alfred@batima.com.br"</span></span>,
+                "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"passageiro@teste.com.br"</span></span>,
                 "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789-00"</span></span>,
                 "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
                 "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
@@ -1515,7 +1515,7 @@ a.list-group-item.heading:hover {
     </span>}
 </span>}
 </code></pre>
-</div><ul class="list-group"></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 28 Jan 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+</div><ul class="list-group"></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 29 Jan 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
 
 </div></body><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script>(function() {
   if (location.protocol === 'file:') {
