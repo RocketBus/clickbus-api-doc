@@ -449,7 +449,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 The resource `/trip` return all information related to a specific trip, based on a given schedule ID (check **Trips** resource for more details).
 
 - **WARNING:**
-    > One of the most important values obtained in the `/trip`s Response is `sessionId`. **Remember to keep this value**.
+    > One of the most important values obtained in the `/trip`s Response is `sessionId`. **Remember to keep this value**: it's required for most of your requests.
 
 ### Get Trip Details [GET]
 
@@ -481,9 +481,9 @@ Using a valid `scheduleId`, the request will return a _200_ Response, with the s
             - The seat `position`, which is useful to understand how the **Seat** proccess works, distributed in:
                 - `x` is for the horizontal axis;
                 - `y` is for the vertical axis;
-                - **NOTE:** the `z` value is only required for double-decker vehicles; this value indicates in which floor the Seat is located.
+                - `z` indicates on which floor the **Seat** is located (only for double-decker vehicles).
             - The seat `details`, which provides:
-                - Seat's `price`, `currency` and `seatTypes`.
+                - **Seat**'s `price`, `currency` and `seatTypes`.
 
 **Examples**
 
@@ -559,17 +559,17 @@ Let's have a look back to our `seats` node, found inside the `/trip` Response:
 ```json
 {
     "seats": [{
-        "id": "01",
-        "name": "01",
-        "available": "",
+        "id": "1",
+        "name": "14",
+        "available": "1",
         "position": {
-            "x": "1",
-            "y": "0",
-            "z": ""
+            "x": "2",
+            "y": "1",
+            "z": "1"
         },
         "details": {
-            "price": "2191",
-            "currency": "R$",
+            "price": "10000",
+            "currency": "MXN",
             "seatTypes": []
         }
     }]
@@ -580,29 +580,23 @@ The concept here is pretty simple: in the `position` node, we have 3 different v
 
 - `x`, which represents the horizontal axis;
 - `y`, which represents the horizontal axis;
-- `z`, which we may disconsider by now (it's only applied for double-decker vehicles).
+- `z`, which indicates the **Seat**'s floor (only for double-decker vehicles).
 
 Consider the image below:
 
-![Seat Selection - source: http://www.clickbus.com.br](img/1_bus.png)
+![Seat Selection - source: http://www.clickbus.com.mx](img/1_bus.png)
 
 In this image, we can represent the Seat manipulation as an array, with X and Y axis:
 
-![Seat Selection - source: http://www.clickbus.com.br](img/2_array.png)
+![Seat Selection - source: http://www.clickbus.com.mx](img/2_array.png)
 
-So, if you have the following coordinates (X: 3, Y: 3), you have selected the Seat `"name": "16"`, as follow:
+So, if you have the following coordinates: `{(X: 3, Y: 3),(X: 3, Y: 4),(X: 7, Y: 1)}`, you have selected the the following Seats, in sequence:
 
-```json
-{
-    "position": {
-        "x": "3",
-        "y": "3",
-        "z": ""
-    }
-}
-```
+- `(X: 3, Y: 3, Z: 1)` stands for Seat `"name": "16"`, 1rst floor;
+- `(X: 3, Y: 4, Z: 1)` stands for Seat `"name": "15"`, 1rst floor;
+- `(X: 7, Y: 1, Z: 1)` stands for Seat `"name": "30"`, 1rst floor;
 
-![Seat Selection - source: http://www.clickbus.com.br](img/3_seats.png)
+![Seat Selection - source: http://www.clickbus.com.mx](img/3_seats.png)
 
 
 # Group Seat Block

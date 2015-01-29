@@ -554,7 +554,7 @@ a.list-group-item.heading:hover {
 <ul>
 <li><strong>WARNING:</strong>
 <blockquote>
-<p>One of the most important values obtained in the <code>/trip</code>s Response is <code>sessionId</code>. <strong>Remember to keep this value</strong>.</p>
+<p>One of the most important values obtained in the <code>/trip</code>s Response is <code>sessionId</code>. <strong>Remember to keep this value</strong>: it’s required for most of your requests.</p>
 </blockquote></li>
 </ul>
 <section id="trip-details-get-trip-details-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Trip Details</span></div><div style="float:left"><a href="#trip-details-get-trip-details-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/trip</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
@@ -595,11 +595,11 @@ a.list-group-item.heading:hover {
 <ul>
 <li><code>x</code> is for the horizontal axis;</li>
 <li><code>y</code> is for the vertical axis;</li>
-<li><strong>NOTE:</strong> the <code>z</code> value is only required for double-decker vehicles; this value indicates in which floor the Seat is located.</li>
+<li><code>z</code> indicates on which floor the <strong>Seat</strong> is located (only for double-decker vehicles).</li>
 </ul></li>
 <li>The seat <code>details</code>, which provides:
 <ul>
-<li>Seat’s <code>price</code>, <code>currency</code> and <code>seatTypes</code>.</li>
+<li><strong>Seat</strong>'s <code>price</code>, <code>currency</code> and <code>seatTypes</code>.</li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -691,7 +691,7 @@ a.list-group-item.heading:hover {
 <ul>
 <li><p><code>x</code>, which represents the horizontal axis;</p></li>
 <li><p><code>y</code>, which represents the horizontal axis;</p></li>
-<li><p><code>z</code>, which we may disconsider by now (it’s only applied for double-decker vehicles).</p></li>
+<li><p><code>z</code>, which indicates the <strong>Seat</strong>'s floor (only for double-decker vehicles).</p></li>
 </ul>
 <p>Consider the image below:</p>
 <p><img src="img/1_bus.png" alt="Seat Selection - source: http://www.clickbus.com.br"></p>
