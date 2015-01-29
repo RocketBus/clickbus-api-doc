@@ -437,7 +437,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
         ```json
         {
             "meta": "",
-            "paymentSettings": {...},
+            "bookingEngine": "5411E7D726991",
             "items": []
         }
         ```
