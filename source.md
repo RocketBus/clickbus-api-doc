@@ -163,7 +163,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                                 "id": "e4479611acd114b958871fe4cb8130af",
                                 "date": "2015-02-05",
                                 "time": "07:20",
-                                "timezone": "America/Sao_Paulo"
+                                "timezone": "America/Mexico_City"
                             },
                             "context": "departure",
                             "place": {
@@ -201,7 +201,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                                 "id": "e4479611acd114b958871fe4cb8130af",
                                 "date": "2015-02-05",
                                 "time": "12:35",
-                                "timezone": "America/Sao_Paulo"
+                                "timezone": "America/Mexico_City"
                             },
                             "context": "arrival",
                             "place": {
@@ -246,7 +246,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                             "id": "e4479611acd114b958871fe4cb8130af",
                             "date": "2015-02-05",
                             "time": "07:20",
-                            "timezone": "America/Sao_Paulo"
+                            "timezone": "America/Mexico_City"
                         },
                         "context": "departure",
                         "place": {
@@ -280,7 +280,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                             "id": "e4479611acd114b958871fe4cb8130af",
                             "date": "2015-02-05",
                             "time": "07:20",
-                            "timezone": "America/Sao_Paulo"
+                            "timezone": "America/Mexico_City"
                         },
                         "context": "arrival",
                         "place": {
@@ -438,8 +438,6 @@ Using a valid `scheduleId`, the request will return a _200_ Response, with the s
         }
         ```
 
-
-
 ## How Seat Position works [/trip]
 
 According to the explanation about the `seats` node information, retrieved on `/trip` resource, the Seat manipulation is as follow:
@@ -528,7 +526,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 |**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw...`|
 |**request.schedule.date** (required)|_string_|Any valid date, in format `yyyy-mm-dd`. Use the same value applied on **Trips**.|`2015-01-27`|
 |**request.schedule.time** (required)|_string_|Any valid time between `00:00` and `23:59`, in format `HH:ii`.|`10:30`|
-|**request.schedule.timezone** (required)|_string_|Timezone information, based on actual country.|`America/Sao_Paulo`|
+|**request.schedule.timezone** (required)|_string_|Timezone information, based on actual country.|`America/Mexico_City`|
 |**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
 
 **Request**
@@ -539,22 +537,25 @@ This request creates a block in a Seat, which indicates that this Seat is now un
     {
         "meta": {},
         "request": {
-            "from": "sao-paulo-tiete-sp",
-            "to": "santos-sp",
-            "seat": "07",
+            "from": "",
+            "to": "",
+            "seat": {
+                "name": "10",
+                "type": "seat_type.adult"
+            },
             "passenger": {
-                "name": "Fulano da Silva",
-                "document": "123.456.789-00",
+                "name": "Teste de Passageiro",
+                "document": "",
                 "documentType": "",
-                "gender": "M"
+                "gender": ""
             },
             "schedule": {
-                "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg==",
-                "date": "2015-01-27",
-                "time": "10:30",
-                "timezone": "America/Sao_Paulo"
+                "id": "e4479611acd114b958871fe4cb8130af",
+                "date": "",
+                "time": "",
+                "timezone": "America/Mexico_City"
             },
-            "sessionId": "dnlfm8aecg2omtjaang62fvla5"
+            "sessionId": "q2s1e9hdaik9lfnghsd6q32nk6"
         }
     }
     ```
@@ -567,15 +568,15 @@ This request, with all correct params and being executed before the Seat block's
 {
     "meta": {},
     "items": [{
-        "seat": "07",
+        "seat": "10",
         "schedule": {
-            "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg==",
+            "id": "c142582e8937db0438ef67dd3897c451",
             "date": "",
             "time": "",
-            "timezone": "America/Sao_Paulo"
+            "timezone": "America/Mexico_City"
         },
         "status": "blocked",
-        "sessionId": "dnlfm8aecg2omtjaang62fvla5",
+        "sessionId": "2h3mj1hintudqn4vj5u95fnhp0",
         "expireAt": "2015-01-20 17:46"
     }]
 }
@@ -962,7 +963,7 @@ The following Request, with all correct parameters, will return a _201_ Response
                     "id": "",
                     "date": "2015-02-11",
                     "time": "01:00",
-                    "timezone": "America/Sao_Paulo"
+                    "timezone": "America/Mexico_City"
                 }
             },
             "arrival": {
@@ -971,7 +972,7 @@ The following Request, with all correct parameters, will return a _201_ Response
                     "id": "",
                     "date": "2015-02-11",
                     "time": "03:00",
-                    "timezone": "America/Sao_Paulo"
+                    "timezone": "America/Mexico_City"
                 }
             },
             "seat": {
@@ -1122,7 +1123,7 @@ Attention to `content.payment.meta.continuePaymentURL`, which contains the URL t
                     "id": "",
                     "date": "2015-02-11",
                     "time": "02:00",
-                    "timezone": "America/Sao_Paulo"
+                    "timezone": "America/Mexico_City"
                 }
             },
             "arrival": {
@@ -1131,7 +1132,7 @@ Attention to `content.payment.meta.continuePaymentURL`, which contains the URL t
                     "id": "",
                     "date": "2015-02-11",
                     "time": "12:15",
-                    "timezone": "America/Sao_Paulo"
+                    "timezone": "America/Mexico_City"
                 }
             },
             "seat": {
@@ -1280,7 +1281,7 @@ This payment method provides a redirect link in the Response body, provided afte
                     "id": "",
                     "date": "2015-02-11",
                     "time": "01:00",
-                    "timezone": "America/Sao_Paulo"
+                    "timezone": "America/Mexico_City"
                 }
             },
             "arrival": {
@@ -1289,7 +1290,7 @@ This payment method provides a redirect link in the Response body, provided afte
                     "id": "",
                     "date": "2015-02-11",
                     "time": "03:00",
-                    "timezone": "America/Sao_Paulo"
+                    "timezone": "America/Mexico_City"
                 }
             },
             "seat": {
@@ -1388,7 +1389,7 @@ The given request returns a Response _201_, with all Order details in the Respon
                     "id": "",
                     "date": "2015-02-11",
                     "time": "01:00",
-                    "timezone": "America/Sao_Paulo"
+                    "timezone": "America/Mexico_City"
                 }
             },
             "arrival": {
@@ -1397,7 +1398,7 @@ The given request returns a Response _201_, with all Order details in the Respon
                     "id": "",
                     "date": "2015-02-11",
                     "time": "03:00",
-                    "timezone": "America/Sao_Paulo"
+                    "timezone": "America/Mexico_City"
                 }
             },
             "seat": {

@@ -276,7 +276,7 @@ a.list-group-item.heading:hover {
                         "id": "e4479611acd114b958871fe4cb8130af",
                         "date": "2015-02-05",
                         "time": "07:20",
-                        "timezone": "America/Sao_Paulo"
+                        "timezone": "America/Mexico_City"
                     },
                     "context": "departure",
                     "place": {
@@ -314,7 +314,7 @@ a.list-group-item.heading:hover {
                         "id": "e4479611acd114b958871fe4cb8130af",
                         "date": "2015-02-05",
                         "time": "12:35",
-                        "timezone": "America/Sao_Paulo"
+                        "timezone": "America/Mexico_City"
                     },
                     "context": "arrival",
                     "place": {
@@ -359,7 +359,7 @@ a.list-group-item.heading:hover {
                     "id": "e4479611acd114b958871fe4cb8130af",
                     "date": "2015-02-05",
                     "time": "07:20",
-                    "timezone": "America/Sao_Paulo"
+                    "timezone": "America/Mexico_City"
                 },
                 "context": "departure",
                 "place": {
@@ -393,7 +393,7 @@ a.list-group-item.heading:hover {
                     "id": "e4479611acd114b958871fe4cb8130af",
                     "date": "2015-02-05",
                     "time": "07:20",
-                    "timezone": "America/Sao_Paulo"
+                    "timezone": "America/Mexico_City"
                 },
                 "context": "arrival",
                 "place": {
@@ -638,7 +638,7 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:left"><strong>request.schedule.id</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Schedule’s ID, obtained from <strong>Trip Details</strong>.</td><td style="text-align:left"><code>NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw...</code></td></tr>
 <tr><td style="text-align:left"><strong>request.schedule.date</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Any valid date, in format <code>yyyy-mm-dd</code>. Use the same value applied on <strong>Trips</strong>.</td><td style="text-align:left"><code>2015-01-27</code></td></tr>
 <tr><td style="text-align:left"><strong>request.schedule.time</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Any valid time between <code>00:00</code> and <code>23:59</code>, in format <code>HH:ii</code>.</td><td style="text-align:left"><code>10:30</code></td></tr>
-<tr><td style="text-align:left"><strong>request.schedule.timezone</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Timezone information, based on actual country.</td><td style="text-align:left"><code>America/Sao_Paulo</code></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule.timezone</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Timezone information, based on actual country.</td><td style="text-align:left"><code>America/Mexico_City</code></td></tr>
 <tr><td style="text-align:left"><strong>request.sessionId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Session’s ID, obtained from <strong>Session</strong>.</td><td style="text-align:left"><code>dnlfm8aecg2omtjaang62fvla5</code></td></tr>
 </tbody>
 </table>
@@ -648,22 +648,25 @@ a.list-group-item.heading:hover {
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
     "<span class="hljs-attribute">request</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">from</span>": <span class="hljs-value"><span class="hljs-string">"sao-paulo-tiete-sp"</span></span>,
-        "<span class="hljs-attribute">to</span>": <span class="hljs-value"><span class="hljs-string">"santos-sp"</span></span>,
-        "<span class="hljs-attribute">seat</span>": <span class="hljs-value"><span class="hljs-string">"07"</span></span>,
+        "<span class="hljs-attribute">from</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">to</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">seat</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"10"</span></span>,
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"seat_type.adult"</span>
+        </span>}</span>,
         "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fulano da Silva"</span></span>,
-            "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789-00"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Teste de Passageiro"</span></span>,
+            "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
             "<span class="hljs-attribute">documentType</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
-            "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">"M"</span>
+            "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">""</span>
         </span>}</span>,
         "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg=="</span></span>,
-            "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-27"</span></span>,
-            "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"10:30"</span></span>,
-            "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"e4479611acd114b958871fe4cb8130af"</span></span>,
+            "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+            "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+            "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
         </span>}</span>,
-        "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"dnlfm8aecg2omtjaang62fvla5"</span>
+        "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"q2s1e9hdaik9lfnghsd6q32nk6"</span>
     </span>}
 </span>}
 </code></pre></li>
@@ -673,15 +676,15 @@ a.list-group-item.heading:hover {
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
     "<span class="hljs-attribute">items</span>": <span class="hljs-value">[{
-        "<span class="hljs-attribute">seat</span>": <span class="hljs-value"><span class="hljs-string">"07"</span></span>,
+        "<span class="hljs-attribute">seat</span>": <span class="hljs-value"><span class="hljs-string">"10"</span></span>,
         "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg=="</span></span>,
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"c142582e8937db0438ef67dd3897c451"</span></span>,
             "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
             "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
-            "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+            "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
         </span>}</span>,
         "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"blocked"</span></span>,
-        "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"dnlfm8aecg2omtjaang62fvla5"</span></span>,
+        "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"2h3mj1hintudqn4vj5u95fnhp0"</span></span>,
         "<span class="hljs-attribute">expireAt</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-20 17:46"</span>
     </span>}]
 </span>}
@@ -1049,7 +1052,7 @@ a.list-group-item.heading:hover {
                     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
                     "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
                     "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"01:00"</span></span>,
-                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
                 </span>}
             </span>}</span>,
             "<span class="hljs-attribute">arrival</span>": <span class="hljs-value">{
@@ -1058,7 +1061,7 @@ a.list-group-item.heading:hover {
                     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
                     "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
                     "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"03:00"</span></span>,
-                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
                 </span>}
             </span>}</span>,
             "<span class="hljs-attribute">seat</span>": <span class="hljs-value">{
@@ -1207,7 +1210,7 @@ a.list-group-item.heading:hover {
                     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
                     "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
                     "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"02:00"</span></span>,
-                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
                 </span>}
             </span>}</span>,
             "<span class="hljs-attribute">arrival</span>": <span class="hljs-value">{
@@ -1216,7 +1219,7 @@ a.list-group-item.heading:hover {
                     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
                     "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
                     "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"12:15"</span></span>,
-                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
                 </span>}
             </span>}</span>,
             "<span class="hljs-attribute">seat</span>": <span class="hljs-value">{
@@ -1363,7 +1366,7 @@ a.list-group-item.heading:hover {
                     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
                     "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
                     "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"01:00"</span></span>,
-                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
                 </span>}
             </span>}</span>,
             "<span class="hljs-attribute">arrival</span>": <span class="hljs-value">{
@@ -1372,7 +1375,7 @@ a.list-group-item.heading:hover {
                     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
                     "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
                     "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"03:00"</span></span>,
-                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
                 </span>}
             </span>}</span>,
             "<span class="hljs-attribute">seat</span>": <span class="hljs-value">{
@@ -1462,7 +1465,7 @@ a.list-group-item.heading:hover {
                     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
                     "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
                     "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"01:00"</span></span>,
-                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
                 </span>}
             </span>}</span>,
             "<span class="hljs-attribute">arrival</span>": <span class="hljs-value">{
@@ -1471,7 +1474,7 @@ a.list-group-item.heading:hover {
                     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
                     "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
                     "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"03:00"</span></span>,
-                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
                 </span>}
             </span>}</span>,
             "<span class="hljs-attribute">seat</span>": <span class="hljs-value">{
