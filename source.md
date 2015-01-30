@@ -503,7 +503,14 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 1. This block may last ~10 minutes. After that, the seat is available again;
 2. Every Request's header shall declare the key `PHPSESSID`, along with it's value, Session's ID (obtained on **Session**), as follow:
     > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
-3. You can create up to 5 Seat blocks per Order.
+3. You can create up to 5 Seat blocks per Order;
+4. According to Mexico's bus companies, no children is allowed to travel alone. In order to follow this requirement, every request for this resource to create the first Seat Block for any Order can only use `adult` or `elderly` as valid `seat_type`. In order to follow this rule, if you try to select first a `children` for a new **Seat Block**, you will receive a _400_ Response with the following message:
+    ```json
+    {
+        "message":"adult_first"
+    }
+    ```
+  After you've created a **Seat Block** for at least one of these two `seat_type` then you can proceed to create a **Seat Block** using the `children` `seat_type`.
 
 
 ### Create a block in a Seat [PUT]
