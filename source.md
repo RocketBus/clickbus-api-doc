@@ -139,7 +139,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 
 **Examples**
 
- - Searching for travels from _Sao Paulo, SP - Tiete_ to _Santos - Brazil_ in _11th Feb 2015_, with all correct params:
+ - Searching for travels from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _11th Feb 2015_, with all correct params:
 
     - URL:
         ```
@@ -316,7 +316,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
             }]
         }
         ```
-- Searching for travels from _Sao Paulo - Brazil_ to _Santos - Brazil_ using an incorrect or even an unavailable date value on _departure_:
+- Searching for travels from _Sao Paulo, SP - Tiete_ to _Santos, SP_ using an incorrect or even an unavailable date value on _departure_:
     - URL:
         
         For an incorrect value, like `99/99/9999`:
@@ -372,7 +372,7 @@ Using a valid `scheduleId`, the request will return a _200_ Response, with the s
 
 **Examples**
 
-- Get the trip details from _Sao Paulo - Brazil_ to _Santos - Brazil_ in _11th Feb 2015_ from a single part of this search.
+- Get the trip details from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _11th Feb 2015_ from a single part of this search.
 
     - URL:
         ```
@@ -546,7 +546,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 
 **Request**
 
-- Created a block for a Seat, named _07_, on a travel from _Sao Paulo - Brazil_ to _Santos - Brazil_ in _27th January 2015_, with all params correct:
+- Created a block for a Seat, named _07_, on a travel from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _27th January 2015_, with all params correct:
 
     ```json
     {
@@ -626,7 +626,7 @@ As opposed to the Create proccess, the Remove will delete a block created on a S
 
 **Request**
 
-- Removing the Seat block, named _07_, on a travel from _Sao Paulo - Brazil_ to _Santos - Brazil_ in _27th January 2015_, with all params correct:
+- Removing the Seat block, named _07_, on a travel from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _27th January 2015_, with all params correct:
 
     ```json
     {
