@@ -617,7 +617,7 @@ a.list-group-item.heading:hover {
 <p>Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3</p>
 </blockquote></li>
 <li><p>You can create up to 5 Seat blocks per Order;</p></li>
-<li><p>According to Mexico’s bus companies, no children is allowed to travel unaccompanied by and adult. In order to follow this requirement, every request for this resource to create the first <strong>Seat Block</strong> for any Order can only use <code>adult</code>, <code>elderly</code> or <code>teacher</code> as valid <code>seat_type</code>. In order to follow this rule, if you try to select a <code>children</code> as the first <strong>Seat Block</strong>, you will receive a <em>400</em> Response with the following message:</p>
+<li><p>According to Mexico’s bus companies, no children is allowed to travel unaccompanied by and adult. In order to follow this requirement, every request for this resource to create the first <strong>Seat Block</strong> for any Order can only use <code>adult</code>, <code>elderly</code> or <code>teacher</code> as valid <code>seat_type</code>. In order to follow this rule, if you try to select a <code>children</code> as the first <strong>Seat Block</strong>, you may receive a <em>400</em> Response with the following message:</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">message</span>":<span class="hljs-value"><span class="hljs-string">"adult_first"</span>
 </span>}
@@ -703,6 +703,13 @@ a.list-group-item.heading:hover {
 </span>}
 </code></pre>
 </div><ul class="list-group"></ul></section><h4 id="seat-block-remove-a-block-in-a-seat">Remove a block in a Seat&nbsp;<a href="#seat-block-remove-a-block-in-a-seat"><i class="fa fa-link"></i></a></h4><p>As opposed to the Create proccess, the Remove will delete a block created on a Seat, which automatically turns a Seat available for all passengers.</p>
+<p><strong>NOTE:</strong></p>
+<ul>
+<li>Every Request’s header shall declare the key <code>PHPSESSID</code>, along with it’s value, Session’s ID (obtained on <strong>Session</strong>), as follow:
+<blockquote>
+<p>Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3</p>
+</blockquote></li>
+</ul>
 <section id="seat-block-remove-a-block-in-a-seat-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Remove a block in a Seat</span></div><div style="float:left"><a href="#seat-block-remove-a-block-in-a-seat-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/seat-block</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -987,12 +994,12 @@ a.list-group-item.heading:hover {
         "<span class="hljs-attribute">payment</span>": <span class="hljs-value">{
             "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"payment.creditcard"</span></span>,
             "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-string">"6.3"</span></span>,
-            "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+            "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"MXN"</span></span>,
             "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"order_finalized_successfully"</span></span>,
             "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
                 "<span class="hljs-attribute">card</span>": <span class="hljs-value"><span class="hljs-string">"4111-XXXX-XXXX-1111"</span></span>,
                 "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"XXX"</span></span>,
-                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"ALFRED PENNYWORTH"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"NOME DE TESTE DA COMPRA"</span></span>,
                 "<span class="hljs-attribute">expiration</span>": <span class="hljs-value"><span class="hljs-string">"XXXX-XX-XX"</span></span>,
                 "<span class="hljs-attribute">postbackUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
                 "<span class="hljs-attribute">callbackUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span>
@@ -1027,13 +1034,13 @@ a.list-group-item.heading:hover {
                 "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"42"</span></span>,
                 "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-string">"6.30"</span></span>,
                 "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"reserved"</span></span>,
-                "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+                "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"MXN"</span></span>,
                 "<span class="hljs-attribute">type</span>": <span class="hljs-value">{}
             </span>}</span>,
             "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Bruce Wayne"</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Nome Passageiro"</span></span>,
                 "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
-                "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"alfred@batima.com.br"</span></span>,
+                "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"passageiro@teste.com.br"</span></span>,
                 "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789-00"</span></span>,
                 "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
                 "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,

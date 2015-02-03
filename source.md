@@ -504,7 +504,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 2. Every Request's header shall declare the key `PHPSESSID`, along with it's value, Session's ID (obtained on **Trip Details**), as follow:
     > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
 3. You can create up to 5 Seat blocks per Order;
-4. According to Mexico's bus companies, no children is allowed to travel unaccompanied by and adult. In order to follow this requirement, every request for this resource to create the first **Seat Block** for any Order can only use `adult`, `elderly` or `teacher` as valid `seat_type`. In order to follow this rule, if you try to select a `children` as the first **Seat Block**, you will receive a _400_ Response with the following message:
+4. According to Mexico's bus companies, no children is allowed to travel unaccompanied by and adult. In order to follow this requirement, every request for this resource to create the first **Seat Block** for any Order can only use `adult`, `elderly` or `teacher` as valid `seat_type`. In order to follow this rule, if you try to select a `children` as the first **Seat Block**, you may receive a _400_ Response with the following message:
     ```json
     {
         "message":"adult_first"
@@ -602,6 +602,11 @@ This request, with all correct params and being executed before the Seat block's
 ## Remove a block in a Seat [/seat-block]
 
 As opposed to the Create proccess, the Remove will delete a block created on a Seat, which automatically turns a Seat available for all passengers.
+
+**NOTE:**
+
+- Every Request's header shall declare the key `PHPSESSID`, along with it's value, Session's ID (obtained on **Session**), as follow:
+    > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
 
 ### Remove a block in a Seat [DELETE]
 
@@ -900,12 +905,12 @@ The following Request, with all correct parameters, will return a _201_ Response
         "payment": {
             "method": "payment.creditcard",
             "total": "6.3",
-            "currency": "BRL",
+            "currency": "MXN",
             "status": "order_finalized_successfully",
             "meta": {
                 "card": "4111-XXXX-XXXX-1111",
                 "code": "XXX",
-                "name": "ALFRED PENNYWORTH",
+                "name": "NOME DE TESTE DA COMPRA",
                 "expiration": "XXXX-XX-XX",
                 "postbackUrl": "",
                 "callbackUrl": ""
@@ -940,13 +945,13 @@ The following Request, with all correct parameters, will return a _201_ Response
                 "name": "42",
                 "price": "6.30",
                 "status": "reserved",
-                "currency": "BRL",
+                "currency": "MXN",
                 "type": {}
             },
             "passenger": {
-                "firstName": "Bruce Wayne",
+                "firstName": "Nome Passageiro",
                 "lastName": "",
-                "email": "alfred@batima.com.br",
+                "email": "passageiro@teste.com.br",
                 "document": "123.456.789-00",
                 "gender": "",
                 "birthday": "",
