@@ -540,28 +540,28 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 
 **Request**
 
-- Created a block for a Seat, named _01_, on a travel from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ in _11th Feb 2015_, with all params correct:
+- Created a block for a Seat, named _01_, for an _Adult_, on a travel from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ in _11th Feb 2015_, with all params correct:
 
     ```json
     {
         "meta": {},
         "request": {
-            "from": "",
-            "to": "",
+            "from": "quertaro-qro",
+            "to": "guadalajara-jal",
             "seat": {
                 "name": "01",
                 "type": "seat_type.adult"
             },
             "passenger": {
                 "name": "Teste de Passageiro",
-                "document": "",
-                "documentType": "",
-                "gender": ""
+                "document": "123.456.789-00",
+                "documentType": "id",
+                "gender": "M"
             },
             "schedule": {
                 "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw",
-                "date": "",
-                "time": "",
+                "date": "2015-02-11",
+                "time": "10:30",
                 "timezone": "America/Mexico_City"
             },
             "sessionId": "dnlfm8aecg2omtjaang62fvla5"
