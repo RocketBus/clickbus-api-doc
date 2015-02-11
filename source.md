@@ -964,3 +964,19 @@ The following Request, with all correct parameters, will return a _201_ Response
     }
 }
 ```
+
+## Credit Card Rejection [/booking]
+
+If, for any circunstances listed above, the Request detects any kind of problem related to the given credit card, as above:
+
+- The maximum credit limit was reached;
+- The credit, for any reason, is blocked;
+- There is an error with any of the credit card's data. 
+
+If this happens, then the API will return a _400_ Response with the following content:
+
+```json
+{
+    "message": "Credit card was rejected."
+}
+```
