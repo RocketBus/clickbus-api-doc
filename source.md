@@ -1361,6 +1361,23 @@ This payment method provides a redirect link in the Response body, provided afte
 }
 ```
 
+## Credit/Debit Card Rejection [/booking]
+
+If, for any circunstances listed above, the Request detects any kind of problem related to the given credit/debit card, as above:
+
+- The maximum credit limit was reached;
+- The credit, for any reason, is blocked;
+- There is an error with any of the credit/debit card's data. 
+
+If this happens, then the API will return a _400_ Response with the following content:
+
+```json
+{
+    "message": "Credit card was rejected."
+}
+```
+
+
 ## Cancel an Order [/booking]
 
 This Request aims to update an Order Status to `order_canceled`, which means that the Order has been sucessfully canceled.
