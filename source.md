@@ -335,6 +335,39 @@ With the correct params, this resource returns a Response _200_ and a list, in J
         }
         ```
 
+# Group Session
+
+## Get Session [/session]
+
+The resource `/session` retrieves the current Session ID, which is useful to obtain data from the current session, like add a reservation by locking a seat using the **Seat Block** resource.
+
+**NOTE:** The token have a lifetime of ~15 minutes. After that, the token is expired, so you have to execute a new request to `/session` to generate a new token.
+
+### Get Session [GET]
+
+**Parameters**
+
+_None_
+
+**Response**
+
+The given request returns a Response _201_, and the session ID on the Response Body, as follow:
+
+**Example**
+
+ - Sucessfull request:
+
+    - URL:
+        ```
+        api/v1/session
+        ```
+    - Response:
+        ```json
+        {
+            "content": "or8k5s91s66fsl3bp6ksu96qs7"
+        }
+        ```
+
 # Group Trip Details
 
 ## Get Trip Details [/trip]
@@ -473,39 +506,6 @@ So, if you have the following coordinates: `{(X: 3, Y: 3),(X: 3, Y: 4),(X: 7, Y:
 
 ![Seat Selection - source: http://www.clickbus.com.br](img/3_seats.png)
 
-
-# Group Session
-
-## Get Session [/session]
-
-The resource `/session` retrieves the current Session ID, which is useful to obtain data from the current session, like add a reservation by locking a seat using the **Seat Block** resource.
-
-**NOTE:** The token have a lifetime of ~15 minutes. After that, the token is expired, so you have to execute a new request to `/session` to generate a new token.
-
-### Get Session [GET]
-
-**Parameters**
-
-_None_
-
-**Response**
-
-The given request returns a Response _201_, and the session ID on the Response Body, as follow:
-
-**Example**
-
- - Sucessfull request:
-
-    - URL:
-        ```
-        api/v1/session
-        ```
-    - Response:
-        ```json
-        {
-            "content": "or8k5s91s66fsl3bp6ksu96qs7"
-        }
-        ```
 
 # Group Seat Block
 
