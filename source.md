@@ -73,8 +73,8 @@ The given request returns a Response _200_, with a list in JSON format filled wi
             "name": "Sao Paulo, SP - Tiete",
             "created_at": "2014-09-05 13:04:27",
             "updated_at": "2014-09-05 13:04:59",
-            "latitude": "",
-            "longitude": "",
+            "latitude": "-9.0237964",
+            "longitude": "-70.8119953",
             "state": {
                 "code": "",
                 "name": "Sao Paulo, SP - Tiete"
@@ -232,7 +232,8 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                     },
                     "busCompany": {
                         "name": "Cometa",
-                        "id": "7"
+                        "id": "7",
+                        "logo": "api-evaluation.clickbus.com.br/bundles/frontend/img/logos/buslines/small/bl-demon-s.png"
                     },
                     "bus": {
                         "serviceClass": "Convencional",
