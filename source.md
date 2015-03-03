@@ -4,7 +4,7 @@ FORMAT: 1A
 
 This is the documentation and samples for Clickbus Public API. Also this can be used as mocked data to simply test API integration.
 
-In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (contato@clickubs.com.br for more commercial details).
+In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (contato@clickbus.com.br for more commercial details).
 
 ### **Overview**
 
@@ -16,21 +16,16 @@ Below are the topic Groups to perform every task for your applications:
 - Obtain **Trip Details** from each route;
 - **Seat Block** to lock or unlock seat reservations;
 - **Booking** orders;
-- Sign your actions with an ID provided by **Session**.
+- Sign your actions with an ID provided by **Session**;
+- Check your **Order** status.
 
 # API Reference
 
 ## **Predicates**
 
 1. All sucessfull requests return a **20*** Response header;
-2. All requests that may lack a given parameter, which is required, will return a **400** Response header, along with a body message as below:
-    ```json
-    {
-        "message":"Invalid Parameters"
-    }
-    ```
-3. The **Evaluation** environment (https://api-evaluation.clickbus.com.br/api/v1) have only 1 possible trip: from **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`) to **Santos, SP** (`santos-sp`), and vice-versa.
-4. The params **store**, **model** and **platform** are required and singular for each partner. To obtain these credentials, please contact our commercial department at contato@clickbus.com.br.
+2. The **Evaluation** environment (https://api-evaluation.clickbus.com.br/api/v1) have only 1 possible trip: from **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`) to **Santos, SP** (`santos-sp`), and vice-versa.
+3. The params **store**, **model** and **platform** are required and singular for each partner. To obtain these credentials, please contact our commercial department at contato@clickbus.com.br.
 
 ## **Groups**
 
@@ -106,6 +101,15 @@ The given request returns a Response _200_, with a list in JSON format filled wi
     }, {...}]
 }
  ```
+
+
+ **Errors**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**F1**|_The Application encountered a temporary error and could not complete your request._|An error occurred while proccessing your Request.|
+|**F2**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request.|
+ 
 
 # Group Trips
 
@@ -233,7 +237,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                     "busCompany": {
                         "name": "Cometa",
                         "id": "7",
-                        "logo": "api-evaluation.clickbus.com.br/bundles/frontend/img/logos/buslines/small/bl-demon-s.png"
+                        "logo": "https://api-evaluation.clickbus.com.br/bundles/frontend/img/logos/buslines/small/bl-demon-s.png"
                     },
                     "bus": {
                         "serviceClass": "Convencional",
@@ -335,6 +339,19 @@ With the correct params, this resource returns a Response _200_ and a list, in J
             "items": []
         }
         ```
+
+**Errors**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**J1**|_Please provide the `from` parameter._|The parameter `from` is missing from the Request.|
+|**J2**|_Please provide the `to` parameter._|The parameter `to` is missing from the Request.|
+|**J3**|_Please provide the `departure` parameter._|The parameter `departure` is missing from the Request.|
+|**J4**|_The given `from` value is invalid or incorrect._|The provided value for `from` is not a valid **Place**.|
+|**J5**|_The given `to` value is invalid or incorrect._|The provided value for `to` is not a valid **Place**.|
+|**J6**|_The Application encountered a temporary error and could not complete your request._|An error occurred while proccessing your Request before it's sent to the booking engine.|
+|**J7**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request to the booking engine.|
+
 
 # Group Session
 
@@ -453,10 +470,24 @@ Using a valid `scheduleId`, the request will return a _200_ Response, with the s
     - Response (status code: _400_):
         ```json
         {
-            "message": "Invalid Parameters"
+            "error": [
+                {
+                    "code": "I2",
+                    "type": "Invalid Parameters",
+                    "message": "The given 'scheduleId' is invalid."
+                }
+            ]
         }
         ```
 
+**Errors**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**I1**|_Please provide the `scheduleId`._|The parameter `scheduleId` is missing from the Request.|
+|**I2**|_The given `scheduleId` is invalid._|The value for `scheduleId` is invalid or incorrect.|
+|**I3**|_Application Error_|The Application encountered a temporary error and could not complete your request.|
+|**I4**|_Server Error_|The Server encountered a temporary error and could not complete your request.|
 
 
 ## How Seat Position works [/trip]
@@ -599,9 +630,34 @@ This request, with all correct params and being executed before the Seat block's
 
 ```json
 {
-    "message":"Busy seat"
+    "error": [
+        {
+            "code": "H13",
+            "type": "Busy Seat",
+            "message": "Busy seat."
+        }
+    ]
 }
 ```
+
+**Errors**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**H1**|_Please provide the passenger's `name`._|The Passenger's `name` is missing.|
+|**H2**|_Please provide a value for the passenger's `name`._|The Passenger's `name` is empty.|
+|**H3**|_Please provide the passengers `document`._|The Passenger's `document` is missing.|
+|**H4**|_Please provide a value for the passenger's `document`._|The Passenger's `document` is empty.|
+|**H5**|_Please provide the passenger's `gender`._|The Passenger's `gender` is missing. Use `M` for _Male_, and `F`, for _Female_.|
+|**H6**|_Please provide a valid option for the passenger's `gender`._|The parameter `scheduleId` is missing from the Request.|
+|**H7**|_Please provide a `sessionId`._|The parameter `sessionId` is missing from the Request.|
+|**H8**|_The given `sessionId` has expired._|The value for `sessionId` has expired and is no longer valid. Please request a new value in **Session**.|
+|**H9**|_Please provide the `scheduleId`._|The parameter `scheduleId` is missing from the Request.|
+|**H10**|_The given `scheduleId` is invalid._|The value for `scheduleId` has expired and is no longer valid. Please request a new value in **Trips**.|
+|**H11**|_The Application encountered a temporary error and could not complete your request._|An error occurred while proccessing your Request before it's sent to the booking engine.|
+|**H12**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request to the booking engine.|
+|**H13**|_Busy seat._|The selected Seat is already taken by another user.|
+
 
 ## Remove a block in a Seat [/seat-block]
 
@@ -657,13 +713,18 @@ This request, with all correct params, will return a Response _202_, with the fo
 }
 ```
 
-**NOTE** If the `sessionId` or the lifetime of the Seat block have already expired, you may obtain a _400_ Response with the following Response body:
+**Errors**
 
-```json
-{
-    "message": "Invalid Parameters"
-}
-```
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**H14**|_Please provide a `sessionId`._|The parameter `sessionId` is missing from the Request.|
+|**H15**|_The given `sessionId` has expired._|The value for `sessionId` has expired and is no longer valid. Please request a new value in **Session**.|
+|**H16**|_Please provide the `scheduleId`._|The parameter `scheduleId` is missing from the Request.|
+|**H17**|_The given `scheduleId` is invalid._|The value for `scheduleId` has expired and is no longer valid. Please request a new value in **Trips**.|
+|**H18**|_The Application encountered a temporary error and could not complete your request._|An error occurred while proccessing your Request before it's sent to the booking engine.|
+|**H19**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request to the booking engine.|
+|**H20**|_Busy seat._|The lifetime of the Seat Block is expired.|
+
 
 # Group Payment
 
@@ -675,7 +736,7 @@ The resource `/payment` retrieves all the information that you need according to
 - `store`
 - `platform`
 
-These parameters are created for each partner, and they are required for each request. If you have any doubts or questions about how to obtain these values, please contact our commercial department at contato@clickubs.com.br.
+These parameters are created for each partner, and they are required for each request. If you have any doubts or questions about how to obtain these values, please contact our commercial department at contato@clickbus.com.br.
 
 ### Get all Payment settings [GET]
 
@@ -683,17 +744,17 @@ These parameters are created for each partner, and they are required for each re
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
-|**store** (required)|_string_|`store` parameter. A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`clickbus`|
-|**model** (required)|_string_|`model` parameter. A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`retail`|
-|**platform** (required)|_string_|`platform` parameter. A specific param for each partner. Please contact ClickBus at contato@clickubs.com.br for more commercial details.|`web`|
+|**store** (required)|_string_|`store` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`clickbus`|
+|**model** (required)|_string_|`model` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`retail`|
+|**platform** (required)|_string_|`platform` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`web`|
 
 **Response**
 
 With the correct params, this resource returns a Response _200_ and a list, in JSON format, with these details as follow:
 
 - `paymentSettings`, like:
-    - `creditcard`, with it's own `serviceFee` and `serviceFeePercentage` which is attributed for each partner (contact ClickBus at contato@clickubs.com.br for more commercial details);
-    - `debitcard`, `paypal_hpp` and `banktransfer` information;
+    - `creditcard`, with it's own `serviceFee` and `serviceFeePercentage` which is attributed for each partner (contact ClickBus at contato@clickbus.com.br for more commercial details);
+    - `debitcard` and `paypal_hpp` information;
 
 **Examples**
 
@@ -708,16 +769,6 @@ With the correct params, this resource returns a Response _200_ and a list, in J
         {
             "meta": {},
             "paymentSettings": {
-                "bankslip": {
-                    "total": "0.00",
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
-                    "fixedValue": 0,
-                    "serviceFee": 0,
-                    "serviceFeePercentage": 0
-                },
                 "creditcard": {
                     "total": {
                         "1": "0.00",
@@ -786,22 +837,45 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                     "fixedValue": 0,
                     "serviceFee": 0,
                     "serviceFeePercentage": 0
-                },
-                "banktransfer": {
-                    "total": "0.00",
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
-                    "fixedValue": 0,
-                    "serviceFee": 0,
-                    "serviceFeePercentage": "13.00"
                 }
             }
         }
         ```
 
+**Errors**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**E1**|_Please provide the `store` value._|The parameter `store` is missing from the Request.|
+|**E2**|_Please provide the `platform` value._|The parameter `platform` is missing from the Request.|
+|**E3**|_Please provide the `model` value._|The parameter `model` is missing from the Request.|
+|**E4**|_One of the following parameters is incorrect: `store`, `platform` or `model`._|Please review the values for the three parameters.|
+|**E5**|_The Application encountered a temporary error and could not complete your request._|An error occurred while proccessing your Request before it's sent to the booking engine.|
+|**E6**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request to the booking engine.|
+
+
 # Group Booking
+
+## How to Check an Order Status [/booking]
+
+If you wish to check the status of your Orders, please follow these steps:
+
+- For every Request to **Create and Order**, add the optional parameter `api_key` into the `meta` object, with the value of your API Public Key, as below:
+    - Example:
+        ```json
+        {
+            "meta": {
+                "model": "Model",
+                "store": "clickbus",
+                "platform": "Medium",
+                "api_key": "dbb648c2d6f4df1b7422b56265947f261cd80e27"
+            }, {...}
+        }
+        ```
+- For more details about the Public API Key and how to obtain your Key, please check the chapter **Authentication Required** [here](#order-details-authentication-required).
+- You can only check the Orders where this value (`api_key`) was provided in the request to **Create an Order**.
+
+------------------------
 
 ## Create an Order [/booking]
 
@@ -809,7 +883,7 @@ When you have selected all the Seats, then you may proceed to create an Order, w
 
 **NOTES:**
 
-- For every Response, please remember to keep the `content.localizer` content; this value is required for any **Update Order** Request;
+- For every Response, please remember to keep the `content.localizer` value; this value is required for any **Update Order** Request;
 - Please keep in mind that you need to provide in your header the `PHPSESSID` key with the Session's ID in the Cookie, as below:
     > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
 
@@ -1362,6 +1436,24 @@ This payment method provides a redirect link in the Response body, provided afte
 }
 ```
 
+**Errors**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**A1**|_Please provide a `sessionId`._|The parameter `sessionId` is missing from the Request.|
+|**A2**|_The given `sessionId` has expired._|The value for `sessionId` has expired and is no longer valid. Please request a new value in **Session**.|
+|**A3**|_Please provide the `seatReservation` for all your Order Items._|One or more of your Items in the Order does not have the `seatReservation` parameter.|
+|**A4**|_Missing parameters in your payment data._|One or more of the following  `buyer` parameters are missing: `name`, `card`, `code`, `zipcode` or `expiration`.|
+|**A5**|_The expiration data is invalid or incorrect._|The expiration data provided in the card is incorrect or invalid.|
+|**A6**|_Please provide the `installment` for the payment data._|The parameter `installment` is missing from the Request.|
+|**A7**|_The Order Cart is empty._|You have tried to proceed to Checkout without creating any **Seat Block**.|
+|**A11**|_Please check you card number._|The card, or any other information provided for the payment form is incorrect.|
+|**A12**|_There was a problem with your Order. Please contact us for more details._|Your Order could not be completed. Please contact us at contato@clickbus.com.br for support and details.|
+|**A13**|_Checkout Error_|An internal error ocurred at the conclusion of your Request.|
+|**A14**|_Application Error_|An error occurred before send the success email of your Request.|
+|**A15**|_An unexpected issue happened in your Request. Please contact us for more details._|Troubles while requesting data from the booking engine. Please contact us at contato@clickbus.com.br for support and details.|
+
+
 ## Credit/Debit Card Rejection [/booking]
 
 If, for any circunstances listed above, the Request detects any kind of problem related to the given credit/debit card, as above:
@@ -1374,10 +1466,11 @@ If this happens, then the API will return a _400_ Response with the following co
 
 ```json
 {
-    "message": "Credit card was rejected."
+    "description": "Credit card was rejected."
 }
 ```
 
+-----------------------------
 
 ## Cancel an Order [/booking]
 
@@ -1483,3 +1576,280 @@ The given request returns a Response _201_, with all Order details in the Respon
     }
 }
 ```
+
+**Errors**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**A8**|_Please provide a `localizer`._|The parameter `localizer` is missing from the Request.|
+|**A9**|_The Request Status is invalid._|The value for the `status` is invalid. Use `order_canceled`.|
+|**A10**|_The given localizer is invalid._|The value for `localizer` is invalid or could not be found.|
+
+
+# Group Order Details
+
+
+## Authentication Required [/order]
+
+In order to access the resources for this endpoint, you have to provide a Public API Key for each Request. This key shall be declared in the headers section of your Request, as follow:
+
+    X-API-KEY: dbb648c2d6f4df1b7422b56265947f261cd80e27
+
+This value is generated for each partner. Once you receive your API Key, please do not share or publish this value. Please contact contato@clickbus.com.br for more information about your credentials.
+
+**OBS:** For implementation and test purposes, use the following value: `dbb648c2d6f4df1b7422b56265947f261cd80e27`.
+
+---------------
+
+## Get Order List [/order]
+
+The resource `/trip` return all information related to a specific trip, based on a given schedule ID (check **Trips** resource for more details).
+
+### Get Order List [GET]
+
+**Parameters**
+
+_None_
+
+**Response**
+
+A successful request will return a _200_ Response, with the structure as described below:
+
+- `items`, which is a collection of Orders. Each Order contains:
+    - `uuid` is the Order ID;
+    - `localizer` is the Order `localizer` property, required to **Cancel an Order**;
+    - `buyer_firstname`, `buyer_lastname`, `buyer_email` and `buyer_phone` are related to the Order's Buyer;
+    - `payment_method` is the Payment Method applied on this Order;
+    - `total` stands for the Order total value;
+    - `status` is the Order actual status;
+    - `created_at` stands for the date and time that the Order was created;
+    - `order_items`, which is a collection of Items related to this Order:
+        - `ticket_code` is the value provided from the Booking Engine, related to the ticket created for this Order;
+        - `seat_reference` is the Seat number;
+        - `seat_price` is the Seat monetary value;
+        - `passenger_firstname`, `passenger_lastname` and `passenger_document` are related to the Passenger;
+        - `departure_datetime` is the date and time selected for the departure;
+        - `timezone` stands for the timezone from the server;
+        - `origin_station_name` is the departure point, related in the `from` parameter used in the **Trips** Request for this Order;
+        - `destination_station_name` is the destination point, related in the `to` parameter used in the **Trips** Request for this Order;
+        - `subtotal` is the monetary value related to this Item.
+        
+
+**Examples**
+
+- Get a list of Orders, using a proper API Public Key:
+
+    - URL:
+        ```
+        api/v1/order
+        ```
+    - Response:
+        ```json
+        {
+            "meta": "",
+            "items": [
+                {
+                    "uuid": 88,
+                    "localizer": "YDSKRH",
+                    "buyer_firstname": "Peter",
+                    "buyer_lastname": "Nile",
+                    "buyer_email": "peter@email.com.br",
+                    "buyer_gender": "",
+                    "buyer_birthday": "",
+                    "buyer_document": "",
+                    "buyer_document_type": "",
+                    "buyer_phone": "11983864125",
+                    "payment_method": "payment.creditcard",
+                    "total": 23.59,
+                    "status": "order_finalized_successfully",
+                    "created_at": "2015-03-02 17:48:58",
+                    "updated_at": "",
+                    "order_items": [
+                        {
+                            "localizer": "",
+                            "ticket_code": "305913",
+                            "seat_reference": "09",
+                            "seat_price": 21.25,
+                            "passenger_firstname": "John",
+                            "passenger_lastname": "Doe",
+                            "passenger_document": "123.456.789-00",
+                            "passenger_document_type": "",
+                            "passenger_email": "",
+                            "passenger_gender": "",
+                            "passenger_birthday": "",
+                            "departure_datetime": "2015-03-25 06:30:00",
+                            "timezone": "America/Sao_Paulo",
+                            "origin_station_name": "Sao Paulo, SP - Tiete",
+                            "destination_station_name": "Santos, SP",
+                            "origin_city_name": "Sao Paulo, SP - Tiete",
+                            "destination_city_name": "Santos, SP",
+                            "subtotal": 21.25,
+                            "created_at": "2015-03-02 17:48:58",
+                            "updated_at": ""
+                        }
+                    ]
+                },
+                {...}
+            ]
+        }
+        ```
+- Incorrect request (permission denied):
+    - URL:
+        ```
+        api/v1/order
+        ``` 
+    - Response (status code: _401_):
+        ```json
+        {
+            "error": [
+                {
+                    "code": "D1",
+                    "type": "Unauthorized",
+                    "message": "Unauthorized access."
+                }
+            ]
+        }
+        ```
+
+**Errors**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**D1**|_Unauthorized access._|You are not authorized to view the contents of this resource. Please use a valid API Public Key.|
+|**D2**|_The Application encountered a temporary error and could not complete your request._|An error occurred while proccessing your Request before it's sent to the booking engine.|
+|**D3**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request to the booking engine.|
+
+## Get Order [/order/{id}]
+
+The resource `/order/{id}` provides a variety of details of a specific Order, based on it's ID.
+
+### Get Order [GET]
+
+**Parameters**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**id** (required)|_int_|A valid ID for any created Order.|`10`|
+
+**Response**
+
+Using a valid `id`, and providing a valid and authentic API Key, the request will return a _200_ Response, displaying an Order distributed in the following structure:
+
+- `content`, which contains:
+    - `uuid` is the Order ID;
+    - `localizer` is the Order `localizer` property, required to **Cancel an Order**;
+    - `buyer_firstname`, `buyer_lastname`, `buyer_email` and `buyer_phone` are related to the Order’s Buyer;
+    - `payment_method` is the Payment Method applied on this Order;
+    - `total` stands for the Order total value;
+    - `status` is the Order actual status;
+    - `created_at` stands for the date and time that the Order was created;
+    - `order_items`, which is a collection of Items related to this Order:
+        - `ticket_code` is the value provided from the Booking Engine, related to the ticket created for this Order;
+        - `seat_reference` is the Seat number;
+        - `seat_price` is the Seat monetary value;
+        - `passenger_firstname`, `passenger_lastname` and `passenger_document` are related to the Passenger;
+        - `departure_datetime` is the date and time selected for the departure;
+        - `timezone` stands for the timezone from the server;
+        - `origin_station_name` is the departure point, related in the from parameter used in the Trips Request for this Order;
+        - `destination_station_name` is the destination point, related in the to parameter used in the Trips Request for this Order;
+        - `origin_city_name` is the city's name related to the origin point;
+        - `destination_city_name` is the city's name related to the destination point;
+        - `subtotal` is the monetary value related to this Item.
+
+**Example**
+
+- Get the results from an Order, using credit card:
+
+    - URL:
+        ```
+        api/v1/order/88
+        ```
+    - Response:
+        ```json
+        {
+            "meta": "",
+            "content": {
+                "uuid": 88,
+                "localizer": "YDSKRH",
+                "buyer_firstname": "Peter",
+                "buyer_lastname": "Silva",
+                "buyer_email": "peter@email.com.br",
+                "buyer_gender": "",
+                "buyer_birthday": "",
+                "buyer_document": "",
+                "buyer_document_type": "",
+                "buyer_phone": "11983864125",
+                "payment_method": "payment.creditcard",
+                "total": 23.59,
+                "status": "order_finalized_successfully",
+                "created_at": "2015-03-02 17:48:58",
+                "updated_at": "",
+                "order_items": [
+                    {
+                        "localizer": "",
+                        "ticket_code": "305913",
+                        "seat_reference": "09",
+                        "seat_price": 21.25,
+                        "passenger_firstname": "Jhon",
+                        "passenger_lastname": "Doe",
+                        "passenger_document": "123.456.789-00",
+                        "passenger_document_type": "",
+                        "passenger_email": "",
+                        "passenger_gender": "",
+                        "passenger_birthday": "",
+                        "departure_datetime": "2015-03-25 06:30:00",
+                        "timezone": "America/Sao_Paulo",
+                        "origin_station_name": "Sao Paulo - Tiete, SP",
+                        "destination_station_name": "Santos, SP",
+                        "origin_city_name": "Sao Paulo - Tiete, SP",
+                        "destination_city_name": "Santos, SP",
+                        "subtotal": 21.25,
+                        "created_at": "2015-03-02 17:48:58",
+                        "updated_at": ""
+                    }
+                ]
+            }
+        }
+        ```
+- Incorrect request (permission denied):
+    - URL:
+        ```
+        api/v1/order/100
+        ``` 
+    - Response (status code: _401_):
+        ```json
+        {
+            "error":[
+                {
+                    "code":"D1",
+                    "type":"Unauthorized",
+                    "message":"Unauthorized access."
+                }
+            ]
+        }
+        ```
+- Incorrect request (Order not found):
+    - URL:
+        ```
+        api/v1/order/89
+        ``` 
+    - Response (status code: _404_):
+        ```json
+        {
+            "error":[
+                {
+                    "code":"D5",
+                    "type":"Not Found",
+                    "message":"Item not found."
+                }
+            ]
+        }
+        ```
+
+**Errors**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**D1**|_Unauthorized access._|You are not authorized to view the contents of this resource. Please use a valid API Public Key.|
+|**D4**|_The given Order ID is invalid._|The valjue provided for `id` is invalid or incorrect.|
+|**D5**|_Item not found._|The requested Order could not be found.|
