@@ -907,6 +907,7 @@ Each `/booking` have the same structure block except for `payment` block, which 
 |**meta.platform** (required)|_string_|Partner's `platform` data. |`web`|
 |**request** (required)|_object_|A container which requires: ||
 |**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
+|**request.ip** (optional)|_string_|IP address from where the request was sent.|`192.168.14.1`|
 |**request.buyer** (required)|_object_|A container which requires: ||
 |**request.buyer.locale** (required)|_string_|Buyer's locale.|`pt_BR`|
 |**request.buyer.firstName** (required)|_string_|Buyer's first name.|`Fulano`|
@@ -975,6 +976,7 @@ Based on each of the 3 valid payment methods:
             },
             "request": {
                 "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+                "ip": "192.168.14.1",
                 "buyer": {
                     "locale": "pt_BR",
                     "firstName": "Cicrano",
@@ -1152,6 +1154,7 @@ The following Request, with all correct parameters, will return a _201_ Response
             },
             "request": {
                 "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+                "ip": "192.168.14.1",
                 "buyer": {
                     "locale": "pt_BR",
                     "firstName": "Cicrano",
@@ -1309,6 +1312,7 @@ This payment method provides a redirect link in the Response body, provided afte
             },
             "request": {
                 "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+                "ip": "192.168.14.1",
                 "buyer": {
                     "locale": "pt_BR",
                     "firstName": "Cicrano",
