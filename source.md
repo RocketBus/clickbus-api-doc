@@ -1607,7 +1607,7 @@ This value is generated for each partner. Once you receive your API Key, please 
 
 ## Get Order List [/order]
 
-The resource `/trip` return all information related to a specific trip, based on a given schedule ID (check **Trips** resource for more details).
+The resource `/order` return all information related to a specific trip, based on a given schedule ID (check **Trips** resource for more details).
 
 ### Get Order List [GET]
 
@@ -1625,7 +1625,10 @@ A successful request will return a _200_ Response, with the structure as describ
     - `buyer_firstname`, `buyer_lastname`, `buyer_email` and `buyer_phone` are related to the Order's Buyer;
     - `payment_method` is the Payment Method applied on this Order;
     - `total` stands for the Order total value;
-    - `status` is the Order actual status;
+    - `status` is the Order actual status, which can be one of the following:
+        - `order_finalized_successfully` it's when the Order was successfuly accepted;
+        - `order_canceled` it's when the Order was successfuly canceled;
+        - `order_pending` it's when the Order is waiting for a response from the asynchronous payment method.
     - `created_at` stands for the date and time that the Order was created;
     - `order_items`, which is a collection of Items related to this Order:
         - `ticket_code` is the value provided from the Booking Engine, related to the ticket created for this Order;
@@ -1745,7 +1748,10 @@ Using a valid `id`, and providing a valid and authentic API Key, the request wil
     - `buyer_firstname`, `buyer_lastname`, `buyer_email` and `buyer_phone` are related to the Order’s Buyer;
     - `payment_method` is the Payment Method applied on this Order;
     - `total` stands for the Order total value;
-    - `status` is the Order actual status;
+    - `status` is the Order actual status, which can be one of the following:
+        - `order_finalized_successfully` it's when the Order was successfuly accepted;
+        - `order_canceled` it's when the Order was successfuly canceled;
+        - `order_pending` it's when the Order is waiting for a response from the asynchronous payment method.
     - `created_at` stands for the date and time that the Order was created;
     - `order_items`, which is a collection of Items related to this Order:
         - `ticket_code` is the value provided from the Booking Engine, related to the ticket created for this Order;
