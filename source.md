@@ -15,7 +15,8 @@ Below are the topic Groups to perform every task for your applications:
 - Get all information about the available **Payment** methods;
 - Obtain **Trip Details** from each route;
 - **Seat Block** to lock or unlock seat reservations;
-- **Booking** orders.
+- **Booking** orders;
+- Sign your actions with an ID provided by **Session**.
 
 # API Reference
 
@@ -119,7 +120,7 @@ The resource `/trips` provides a list with all available trips, with all sort of
 |**from** (required)|_string_|A destination from where a trip starts.|`quertaro-qro`|
 |**to** (required)|_string_|A destination to where a trip ends.|`guadalajara-jal`|
 |**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
-|**engine** (required)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
+|**engine** (optional)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
 
 **Response**
 
@@ -329,6 +330,39 @@ With the correct params, this resource returns a Response _200_ and a list, in J
             "meta": "",
             "bookingEngine": "5411E7D726991",
             "items": []
+        }
+        ```
+
+# Group Session
+
+## Get Session [/session]
+
+The resource `/session` retrieves the current Session ID, which is useful to obtain data from the current session, like add a reservation by locking a seat using the **Seat Block** resource.
+
+**NOTE:** The token have a lifetime of ~15 minutes. After that, the token is expired, so you have to execute a new request to `/session` to generate a new token.
+
+### Get Session [GET]
+
+**Parameters**
+
+_None_
+
+**Response**
+
+The given request returns a Response _200_, and the session ID on the Response Body, as follow:
+
+**Example**
+
+ - Sucessfull request:
+
+    - URL:
+        ```
+        api/v1/session
+        ```
+    - Response:
+        ```json
+        {
+            "sessionId": "or8k5s91s66fsl3bp6ksu96qs7"
         }
         ```
 
