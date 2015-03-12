@@ -721,9 +721,8 @@ These parameters are created for each partner, and they are required for each re
 
 With the correct params, this resource returns a Response _200_ and a list, in JSON format, with these details as follow:
 
-- `paymentSettings`, like:
-    - `creditcard`, with it's own `serviceFee` and `serviceFeePercentage` which is attributed for each partner (contact ClickBus at contacto@clickbus.com.mx for more commercial details);
-    - `debitcard`, `paypal_hpp` and `banktransfer` information;
+- `paymentSettings` for:
+    - `creditcard`, with it's own `serviceFee` and `serviceFeePercentage` which is attributed for each partner (contact ClickBus at contacto@clickbus.com.mx for more commercial details).
 
 **Examples**
 
@@ -738,13 +737,6 @@ With the correct params, this resource returns a Response _200_ and a list, in J
         {
             "meta": "",
             "paymentSettings": {
-                "bankslip": {
-                    "total": "0.00",
-                    "fixedValue": 0,
-                    "savings": 0,
-                    "serviceFee": 0,
-                    "serviceFeePercentage": "11.00"
-                },
                 "creditcard": {
                     "total": {
                         "1": "0.00",
@@ -772,34 +764,6 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                         "5": "0.00",
                         "6": "0.00"
                     }
-                },
-                "banktransfer": {
-                    "total": "0.00",
-                    "fixedValue": 0,
-                    "savings": 0,
-                    "serviceFee": 0,
-                    "serviceFeePercentage": "11.00"
-                },
-                "debitcard": {
-                    "total": [],
-                    "savings": 0,
-                    "fixedValue": 0,
-                    "serviceFee": 0,
-                    "serviceFeePercentage": 0
-                },
-                "paypal_hpp": {
-                    "total": "0.00",
-                    "savings": "0",
-                    "fixedValue": 0,
-                    "serviceFee": 0,
-                    "serviceFeePercentage": "0.00"
-                },
-                "paypal_debit_hpp": {
-                    "total": "0.00",
-                    "savings": "0",
-                    "fixedValue": 0,
-                    "serviceFee": 0,
-                    "serviceFeePercentage": "0.00"
                 }
             }
         }

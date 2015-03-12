@@ -797,10 +797,9 @@ a.list-group-item.heading:hover {
 <p><strong>Response</strong></p>
 <p>With the correct params, this resource returns a Response <em>200</em> and a list, in JSON format, with these details as follow:</p>
 <ul>
-<li><code>paymentSettings</code>, like:
+<li><code>paymentSettings</code> for:
 <ul>
-<li><code>creditcard</code>, with it’s own <code>serviceFee</code> and <code>serviceFeePercentage</code> which is attributed for each partner (contact ClickBus at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details);</li>
-<li><code>debitcard</code>, <code>paypal_hpp</code> and <code>banktransfer</code> information;</li>
+<li><code>creditcard</code>, with it’s own <code>serviceFee</code> and <code>serviceFeePercentage</code> which is attributed for each partner (contact ClickBus at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details).</li>
 </ul></li>
 </ul>
 <p><strong>Examples</strong></p>
@@ -814,13 +813,6 @@ a.list-group-item.heading:hover {
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
     "<span class="hljs-attribute">paymentSettings</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">bankslip</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-            "<span class="hljs-attribute">fixedValue</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">savings</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFee</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value"><span class="hljs-string">"11.00"</span>
-        </span>}</span>,
         "<span class="hljs-attribute">creditcard</span>": <span class="hljs-value">{
             "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
                 "<span class="hljs-attribute">1</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
@@ -848,34 +840,6 @@ a.list-group-item.heading:hover {
                 "<span class="hljs-attribute">5</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
                 "<span class="hljs-attribute">6</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span>
             </span>}
-        </span>}</span>,
-        "<span class="hljs-attribute">banktransfer</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-            "<span class="hljs-attribute">fixedValue</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">savings</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFee</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value"><span class="hljs-string">"11.00"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">debitcard</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">total</span>": <span class="hljs-value">[]</span>,
-            "<span class="hljs-attribute">savings</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">fixedValue</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFee</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value"><span class="hljs-number">0</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">paypal_hpp</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-            "<span class="hljs-attribute">savings</span>": <span class="hljs-value"><span class="hljs-string">"0"</span></span>,
-            "<span class="hljs-attribute">fixedValue</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFee</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">paypal_debit_hpp</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-            "<span class="hljs-attribute">savings</span>": <span class="hljs-value"><span class="hljs-string">"0"</span></span>,
-            "<span class="hljs-attribute">fixedValue</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFee</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span>
         </span>}
     </span>}
 </span>}
@@ -1085,7 +1049,7 @@ a.list-group-item.heading:hover {
     "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Credit card was rejected."</span>
 </span>}
 </code></pre>
-</div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 11 Mar 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+</div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 12 Mar 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
 
 </div></body><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script>(function() {
   if (location.protocol === 'file:') {
