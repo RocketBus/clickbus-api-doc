@@ -875,7 +875,7 @@ To create an Order, the request's body requires a range of data, which, for a be
                         "lastName": "Teste",
                         "email": "dev@clickbus.com.br",
                         "document": "11111111111",
-                        "gender": "1",
+                        "gender": "M",
                         "seat": "1",
                         "meta": {}
                     }
