@@ -1017,7 +1017,7 @@ Based on each of the 3 valid payment methods:
                         "products": [{
                             "uuid": "abcd123s",
                             "quantity": 1
-                        }
+                        }]
                     },
                     {
                         "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
@@ -1195,7 +1195,7 @@ The following Request, with all correct parameters, will return a _201_ Response
                         "products": [{
                             "uuid": "abcd123s",
                             "quantity": 1
-                        }
+                        }]
                     }
                 ]
             }
@@ -1347,7 +1347,7 @@ This payment method provides a redirect link in the Response body, provided afte
                         "products": [{
                             "uuid": "abcd123s",
                             "quantity": 1
-                        }
+                        }]
                     }
                 ]
             }
