@@ -1480,7 +1480,9 @@ If this happens, then the API will return a _400_ Response with the following co
 
 This Request aims to update an Order Status to `order_canceled`, which means that the Order has been sucessfully canceled.
 
-**ATTENTION:** Once an Order status is settled to `order_canceled`, the action is irreversible.
+**ATTENTION:** 
+1. Once an Order status is settled to `order_canceled`, the action is irreversible;
+2. You can cancel an Order until **3 hours** before the departure time.
 
 ### Cancel an Order [PUT]
 
