@@ -1074,6 +1074,7 @@ The following Request, with all correct parameters, will return a _201_ Response
         "items": [{
             "trip_id": "4321",
             "localizer": "KPFHNB",
+            "ticket_code": "6462297",
             "context": "departure",
             "order_item": "1228",
             "serviceClass": "Convencional",
