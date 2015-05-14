@@ -41,6 +41,8 @@ Below are the topic Groups to perform every task for your applications:
 
 3. The params **store**, **model** and **platform** are required and singular for each partner. To obtain these credentials, please contact our commercial department at contato@clickbus.com.br.
 
+----------------------------------------------------------------
+
 ## **Groups**
 
 # Group Places
@@ -2412,10 +2414,10 @@ The values are the same for the `payment` block, as described in the [`/booking`
 |**L8**|_The expiration data is invalid or incorrect._|The expiration data provided in the card is incorrect or invalid.|
 |**L9**|_Please provide the 'installment' for the payment data._|The parameter `installment` is missing from the Request.|
 |**L10**|_An unexpected issue happened in your Request. Please contact us for more details._|Troubles while requesting data from the booking engine. Please contact us at contato@clickbus.com.br for support and details.|
-|**L11**|_The 'departure' date and time cannot occur before current date and time_||
+|**L11**|_Busy seat._|One of the selected seats is actually unavailable.|
 |**L12**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request.|
-|**L13**|_Please check you card number._||
-|**L14**|_There was a problem with your Order. Please contact us for more details_||
+|**L13**|_Please check you card number._|The card, or any other information provided for the payment form is incorrect.|
+|**L14**|_There was a problem with your Order. Please contact us for more details._|Your Order could not be completed. Please contact us at contato@clickbus.com.br for support and details.|
 |**L15**|_Checkout Error_|An internal error ocurred at the conclusion of your Request.|
 |**L16**|_Application Error_|An error occurred before send the success email of your Request.|
 
