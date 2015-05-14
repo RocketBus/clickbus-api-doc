@@ -138,35 +138,49 @@ a.list-group-item.heading:hover {
     max-width: 212px;
   }
 }
-</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a data-toggle="" data-target="#places-menu" href="#places" class="list-group-item heading collapsed">Places</a><div id="places-menu"><a href="#places-get-all-places" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get All Places</a></div></div><div class="list-group"><a data-toggle="" data-target="#trips-menu" href="#trips" class="list-group-item heading collapsed">Trips</a><div id="trips-menu"><a href="#trips-get-all-available-trips" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get all available Trips</a></div></div><div class="list-group"><a data-toggle="" data-target="#session-menu" href="#session" class="list-group-item heading collapsed">Session</a><div id="session-menu"><a href="#session-get-session" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Session</a></div></div><div class="list-group"><a data-toggle="" data-target="#trip-details-menu" href="#trip-details" class="list-group-item heading collapsed">Trip Details</a><div id="trip-details-menu"><a href="#trip-details-get-trip-details" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Trip Details</a><a href="#trip-details-how-seat-position-works" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">How Seat Position works</a></div></div><div class="list-group"><a data-toggle="" data-target="#seat-block-menu" href="#seat-block" class="list-group-item heading collapsed">Seat Block</a><div id="seat-block-menu"><a href="#seat-block-create-a-block-in-a-seat" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span>Create a block in a Seat</a><a href="#seat-block-remove-a-block-in-a-seat" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-danger"><i class="fa fa-times"></i></span>Remove a block in a Seat</a></div></div><div class="list-group"><a data-toggle="" data-target="#payment-menu" href="#payment" class="list-group-item heading collapsed">Payment</a><div id="payment-menu"><a href="#payment-get-all-payment-settings" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get all Payment settings</a></div></div><div class="list-group"><a data-toggle="" data-target="#booking-menu" href="#booking" class="list-group-item heading collapsed">Booking</a><div id="booking-menu"><a href="#booking-how-to-check-an-order-status" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">How to Check an Order Status</a><a href="#booking-create-an-order" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span>Create an Order</a><a href="#booking-credit/debit-card-rejection" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Credit/Debit Card Rejection</a><a href="#booking-cancel-an-order" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span>Cancel an Order</a></div></div><div class="list-group"><a data-toggle="" data-target="#order-details-menu" href="#order-details" class="list-group-item heading collapsed">Order Details</a><div id="order-details-menu"><a href="#order-details-authentication-required" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Authentication Required</a><a href="#order-details-get-order-list" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Order List</a><a href="#order-details-get-order" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Order</a></div></div></nav></div><div class="col-md-8"><div><header><div class="page-header"><h1 id="top">Clickbus Public API</h1></div></header><div class="description"><p>This is the documentation and samples for Clickbus Public API. Also this can be used as mocked data to simply test API integration.</p>
-<p>In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (<a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a> for more commercial details).</p>
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a data-toggle="" data-target="#places-menu" href="#places" class="list-group-item heading collapsed">Places</a><div id="places-menu"><a href="#places-get-all-places" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get All Places</a></div></div><div class="list-group"><a data-toggle="" data-target="#trips-menu" href="#trips" class="list-group-item heading collapsed">Trips</a><div id="trips-menu"><a href="#trips-get-all-available-trips" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get all available Trips</a></div></div><div class="list-group"><a data-toggle="" data-target="#session-menu" href="#session" class="list-group-item heading collapsed">Session</a><div id="session-menu"><a href="#session-get-session" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Session</a></div></div><div class="list-group"><a data-toggle="" data-target="#trip-details-menu" href="#trip-details" class="list-group-item heading collapsed">Trip Details</a><div id="trip-details-menu"><a href="#trip-details-get-trip-details" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Trip Details</a><a href="#trip-details-how-seat-position-works" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">How Seat Position works</a></div></div><div class="list-group"><a data-toggle="" data-target="#seat-block-menu" href="#seat-block" class="list-group-item heading collapsed">Seat Block</a><div id="seat-block-menu"><a href="#seat-block-create-a-block-in-a-seat" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span>Create a block in a Seat</a><a href="#seat-block-remove-a-block-in-a-seat" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-danger"><i class="fa fa-times"></i></span>Remove a block in a Seat</a></div></div><div class="list-group"><a data-toggle="" data-target="#payments-menu" href="#payments" class="list-group-item heading collapsed">Payments</a><div id="payments-menu"><a href="#payments-calculate-your-items" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span>Calculate your Items</a><a href="#payments-how-payments-works" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">How Payments Works</a><a href="#payments-supported-card-brands" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Supported Card Brands</a></div></div><div class="list-group"><a data-toggle="" data-target="#booking-menu" href="#booking" class="list-group-item heading collapsed">Booking</a><div id="booking-menu"><a href="#booking-how-to-check-an-order-status" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">How to Check an Order Status</a><a href="#booking-create-an-order" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span>Create an Order</a><a href="#booking-credit/debit-card-rejection" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Credit/Debit Card Rejection</a><a href="#booking-cancel-an-order" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span>Cancel an Order</a></div></div><div class="list-group"><a data-toggle="" data-target="#checkout-menu" href="#checkout" class="list-group-item heading collapsed">Checkout</a><div id="checkout-menu"><a href="#checkout-create-an-order" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span>Create an Order</a></div></div><div class="list-group"><a data-toggle="" data-target="#order-details-menu" href="#order-details" class="list-group-item heading collapsed">Order Details</a><div id="order-details-menu"><a href="#order-details-authentication-required" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Authentication Required</a><a href="#order-details-get-order-list" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Order List</a><a href="#order-details-get-order" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Order</a></div></div></nav></div><div class="col-md-8"><div><header><div class="page-header"><h1 id="top">Clickbus Public API</h1></div></header><div class="description"><p>This is the documentation and samples for Clickbus Public API. The contents here can also be used as mocked data to simply test API integration.</p>
+<p>In this document you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (<a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a> for more commercial details).</p>
+<hr>
 <h3><strong>Overview</strong></h3>
 <p>Below are the topic Groups to perform every task for your applications:</p>
 <ul>
 <li><p>Obtain a list with all <strong>Places</strong>;</p></li>
 <li><p>Search any of our <strong>Trips</strong>;</p></li>
-<li><p>Get all information about the available <strong>Payment</strong> methods;</p></li>
+<li><p>Calculate your roundtrip items before the purchase with the <strong>Payments</strong> resource;</p></li>
 <li><p>Obtain <strong>Trip Details</strong> from each route;</p></li>
 <li><p><strong>Seat Block</strong> to lock or unlock seat reservations;</p></li>
 <li><p><strong>Booking</strong> orders;</p></li>
+<li><p>Purchase roundtrip orders in <strong>Checkout</strong>;</p></li>
 <li><p>Sign your actions with an ID provided by <strong>Session</strong>;</p></li>
 <li><p>Check your <strong>Order</strong> status.</p></li>
 </ul>
+<hr>
 <h1>API Reference</h1>
 <h2><strong>Predicates</strong></h2>
 <ol>
 <li><p>All sucessfull requests return a <strong>20</strong>* Response header;</p></li>
-<li><p>The <strong>Evaluation</strong> environment (<a href="https://api-evaluation.clickbus.com.br/api/v1">https://api-evaluation.clickbus.com.br/api/v1</a>) have only 1 possible trip: from <strong>Sao Paulo, SP - Tiete</strong> (<code>sao-paulo-tiete-sp</code>) to <strong>Santos, SP</strong> (<code>santos-sp</code>), and vice-versa.</p></li>
-<li><p>The params <strong>store</strong>, <strong>model</strong> and <strong>platform</strong> are required and singular for each partner. To obtain these credentials, please contact our commercial department at <a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a>.</p></li>
+<li><p>The <strong>Evaluation</strong> environment (<a href="https://api-evaluation.clickbus.com.br/api/v1">https://api-evaluation.clickbus.com.br/api/v1</a>) have only the following routes, for both departure and return:</p>
+<ul>
+<li>From <strong>Sao Paulo, SP - Tiete</strong> (<code>sao-paulo-tiete-sp</code>) to <strong>Santos, SP</strong> (<code>santos-sp</code>);</li>
+<li>From <strong>Sao Paulo, SP - Tiete</strong> (<code>sao-paulo-tiete-sp</code>) to <strong>Campinas, SP</strong> (<code>campinas-sp</code>);</li>
+<li>From <strong>Japeri, RJ</strong> (<code>japeri-rj</code>) to <strong>Sao Paulo, SP - Tiete</strong> (<code>sao-paulo-tiete-sp</code>);</li>
+<li>From <strong>Santa Rita Passa Quatro, SP</strong> (<code>santa-rita-passa-quatro-sp</code>) to <strong>Sao Paulo, SP - Tiete</strong> (<code>sao-paulo-tiete-sp</code>);</li>
+<li>From <strong>Belo Horizonte, MG</strong> (<code>belo-horizonte-mg</code>) to <strong>Rio de Janeiro, RJ</strong> (<code>rio-de-janeiro-rj</code>);</li>
+<li>From <strong>Estancia, SE</strong> (<code>estancia-se</code>) to <strong>Belo Horizonte, MG</strong> (<code>belo-horizonte-mg</code>);</li>
+<li>From <strong>Campinas, SP</strong> (<code>campinas-sp</code>) to <strong>Santos, SP</strong> (<code>santos-sp</code>);</li>
+</ul></li>
+</ol>
+<ol start="3">
+<li>The params <strong>store</strong>, <strong>model</strong> and <strong>platform</strong> are required and singular for each partner. To obtain these credentials, please contact our commercial department at <a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a>.</li>
 </ol>
 <h2><strong>Groups</strong></h2>
 </div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="places">Places&nbsp;<a href="#places"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="places-get-all-places">Get All Places&nbsp;<a href="#places-get-all-places"><i class="fa fa-link"></i></a></h4><p>The resource <code>/places</code> retrieves all the available Places, where each Place can be used as a destination point to our travels and routes.</p>
 <p>One of the most important values on this resource is the <code>slug</code>, which contains the name to use when referencing to a Place in a <strong>Trips</strong> request.</p>
-<section id="places-get-all-places-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get All Places</span></div><div style="float:left"><a href="#places-get-all-places-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/places</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<section id="places-get-all-places-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get All Places</span></div><div style="float:left"><a href="#places-get-all-places-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/places</code></div></div><div class="panel-body"><p><strong>PARAMETERS</strong></p>
 <p><em>None</em></p>
-<p><strong>Response</strong></p>
+<p><strong>RESPONSE</strong></p>
 <p>The given request returns a Response <em>200</em>, with a list in JSON format filled with all Places:</p>
-<p><strong>Example</strong></p>
+<p><strong>EXAMPLE</strong></p>
 <pre><code class="language-json">{
    "meta": "",
    "items": [{
@@ -230,7 +244,7 @@ a.list-group-item.heading:hover {
 </table>
 </div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="trips">Trips&nbsp;<a href="#trips"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="trips-get-all-available-trips">Get all available Trips&nbsp;<a href="#trips-get-all-available-trips"><i class="fa fa-link"></i></a></h4><p>The resource <code>/trips</code> provides a list with all available trips, with all sort of details you may need.</p>
 <p><strong>ADVICE:</strong> Remember that each request to <code>/trips</code> will erase all itens stored in your Pre-Order, so, if you don’t have confirmed your Order yet, all the items added to the Pre-Order will be lost.</p>
-<section id="trips-get-all-available-trips-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get all available Trips</span></div><div style="float:left"><a href="#trips-get-all-available-trips-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/trips</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<section id="trips-get-all-available-trips-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get all available Trips</span></div><div style="float:left"><a href="#trips-get-all-available-trips-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/trips</code></div></div><div class="panel-body"><p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
 <tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
@@ -242,7 +256,7 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:left"><strong>engine</strong> (optional)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.</td><td style="text-align:left"><code>5411E7D726991</code></td></tr>
 </tbody>
 </table>
-<p><strong>Response</strong></p>
+<p><strong>RESPONSE</strong></p>
 <p>With the correct params, this resource returns a Response <em>200</em> and a list, in JSON format, with these details as follow:</p>
 <ul>
 <li><code>items</code>, which have:
@@ -469,11 +483,11 @@ a.list-group-item.heading:hover {
 </table>
 </div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="session">Session&nbsp;<a href="#session"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="session-get-session">Get Session&nbsp;<a href="#session-get-session"><i class="fa fa-link"></i></a></h4><p>The resource <code>/session</code> retrieves the current Session ID, which is useful to obtain data from the current session, like add a reservation by locking a seat using the <strong>Seat Block</strong> resource.</p>
 <p><strong>NOTE:</strong> The token have a lifetime of ~15 minutes. After that, the token is expired, so you have to execute a new request to <code>/session</code> to generate a new token.</p>
-<section id="session-get-session-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Session</span></div><div style="float:left"><a href="#session-get-session-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/session</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<section id="session-get-session-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Session</span></div><div style="float:left"><a href="#session-get-session-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/session</code></div></div><div class="panel-body"><p><strong>PARAMETERS</strong></p>
 <p><em>None</em></p>
-<p><strong>Response</strong></p>
+<p><strong>RESPONSE</strong></p>
 <p>The given request returns a Response <em>201</em>, and the session ID on the Response Body, as follow:</p>
-<p><strong>Example</strong></p>
+<p><strong>EXAMPLE</strong></p>
 <ul>
 <li><p>Sucessfull request:</p>
 <ul>
@@ -488,7 +502,7 @@ a.list-group-item.heading:hover {
 </ul></li>
 </ul>
 </div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="trip-details">Trip Details&nbsp;<a href="#trip-details"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="trip-details-get-trip-details">Get Trip Details&nbsp;<a href="#trip-details-get-trip-details"><i class="fa fa-link"></i></a></h4><p>The resource <code>/trip</code> return all information related to a specific trip, based on a given schedule ID (check <strong>Trips</strong> resource for more details).</p>
-<section id="trip-details-get-trip-details-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Trip Details</span></div><div style="float:left"><a href="#trip-details-get-trip-details-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/trip</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<section id="trip-details-get-trip-details-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Trip Details</span></div><div style="float:left"><a href="#trip-details-get-trip-details-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/trip</code></div></div><div class="panel-body"><p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
 <tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
@@ -497,7 +511,7 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:left"><strong>scheduleId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A given hash from a search part. See on <strong>Trips</strong> resource, in the output, into each <code>items</code> part, the value on <code>departure.waypoint.schedule.id</code> node.</td><td style="text-align:left"><code>NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwM...</code></td></tr>
 </tbody>
 </table>
-<p><strong>Response</strong></p>
+<p><strong>RESPONSE</strong></p>
 <p>Using a valid <code>scheduleId</code>, the request will return a <em>200</em> Response, with the structure as described below:</p>
 <ul>
 <li><code>sessionId</code>, which is the current session’s ID;
@@ -646,7 +660,7 @@ a.list-group-item.heading:hover {
 </blockquote></li>
 <li><p>You can create up to 5 Seat blocks per Order.</p></li>
 </ol>
-<section id="seat-block-create-a-block-in-a-seat-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Create a block in a Seat</span></div><div style="float:left"><a href="#seat-block-create-a-block-in-a-seat-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/seat-block</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<section id="seat-block-create-a-block-in-a-seat-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Create a block in a Seat</span></div><div style="float:left"><a href="#seat-block-create-a-block-in-a-seat-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/seat-block</code></div></div><div class="panel-body"><p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
 <tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
@@ -670,7 +684,7 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:left"><strong>request.sessionId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Session’s ID, obtained from <strong>Session</strong>.</td><td style="text-align:left"><code>dnlfm8aecg2omtjaang62fvla5</code></td></tr>
 </tbody>
 </table>
-<p><strong>Request</strong></p>
+<p><strong>REQUEST</strong></p>
 <ul>
 <li><p>Created a block for a Seat, named <em>07</em>, on a travel from <em>Sao Paulo, SP - Tiete</em> to <em>Santos, SP</em> in <em>27th January 2015</em>, with all params correct:</p>
 <pre><code class="language-json">{
@@ -696,7 +710,7 @@ a.list-group-item.heading:hover {
 </span>}
 </code></pre></li>
 </ul>
-<p><strong>Response</strong></p>
+<p><strong>RESPONSE</strong></p>
 <p>This request, with all correct params and being executed before the Seat block’s life time ends, will return a Response <em>200</em>, with the following Response body:</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
@@ -754,7 +768,7 @@ a.list-group-item.heading:hover {
 <p>Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3</p>
 </blockquote></li>
 </ul>
-<section id="seat-block-remove-a-block-in-a-seat-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Remove a block in a Seat</span></div><div style="float:left"><a href="#seat-block-remove-a-block-in-a-seat-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/seat-block</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<section id="seat-block-remove-a-block-in-a-seat-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Remove a block in a Seat</span></div><div style="float:left"><a href="#seat-block-remove-a-block-in-a-seat-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/seat-block</code></div></div><div class="panel-body"><p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
 <tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
@@ -768,7 +782,7 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:left"><strong>request.sessionId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Session’s ID, obtained from <strong>Session</strong>.</td><td style="text-align:left"><code>dnlfm8aecg2omtjaang62fvla5</code></td></tr>
 </tbody>
 </table>
-<p><strong>Request</strong></p>
+<p><strong>REQUEST</strong></p>
 <ul>
 <li><p>Removing the Seat block, named <em>07</em>, on a travel from <em>Sao Paulo, SP - Tiete</em> to <em>Santos, SP</em> in <em>27th January 2015</em>, with all params correct:</p>
 <pre><code class="language-json">{
@@ -783,7 +797,7 @@ a.list-group-item.heading:hover {
 </span>}
 </code></pre></li>
 </ul>
-<p><strong>Response</strong></p>
+<p><strong>RESPONSE</strong></p>
 <p>This request, with all correct params, will return a Response <em>202</em>, with the following Response body:</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
@@ -809,117 +823,586 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:center"><strong>H20</strong></td><td style="text-align:left"><em>Busy seat.</em></td><td style="text-align:left">The lifetime of the Seat Block is expired.</td></tr>
 </tbody>
 </table>
-</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="payment">Payment&nbsp;<a href="#payment"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="payment-get-all-payment-settings">Get all Payment settings&nbsp;<a href="#payment-get-all-payment-settings"><i class="fa fa-link"></i></a></h4><p>The resource <code>/payment</code> retrieves all the information that you need according to your <code>meta</code> parameters, which are:</p>
+</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="payments">Payments&nbsp;<a href="#payments"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="payments-calculate-your-items">Calculate your Items&nbsp;<a href="#payments-calculate-your-items"><i class="fa fa-link"></i></a></h4><p>The resource <code>/payments</code> retrieves all the payment details without the need of a purchase, according to your <code>meta</code> parameters, which are:</p>
 <ul>
 <li><p><code>model</code></p></li>
 <li><p><code>store</code></p></li>
 <li><p><code>platform</code></p></li>
 </ul>
 <p>These parameters are created for each partner, and they are required for each request. If you have any doubts or questions about how to obtain these values, please contact our commercial department at <a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a>.</p>
-<section id="payment-get-all-payment-settings-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get all Payment settings</span></div><div style="float:left"><a href="#payment-get-all-payment-settings-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/payment</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<section id="payments-calculate-your-items-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Calculate your Items</span></div><div style="float:left"><a href="#payments-calculate-your-items-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/payments</code></div></div><div class="panel-body"><p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
 <tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left"><strong>store</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>store</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a> for more commercial details.</td><td style="text-align:left"><code>clickbus</code></td></tr>
-<tr><td style="text-align:left"><strong>model</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>model</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a> for more commercial details.</td><td style="text-align:left"><code>retail</code></td></tr>
-<tr><td style="text-align:left"><strong>platform</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>platform</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a> for more commercial details.</td><td style="text-align:left"><code>web</code></td></tr>
+<tr><td style="text-align:left"><strong>meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An object, where you should provide the values fot <code>store</code>, <code>model</code> and <code>platform</code>.</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>meta.model</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>model</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a> for more commercial details.</td><td style="text-align:left"><code>retail</code></td></tr>
+<tr><td style="text-align:left"><strong>meta.store</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>store</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a> for more commercial details.</td><td style="text-align:left"><code>newstore</code></td></tr>
+<tr><td style="text-align:left"><strong>meta.platform</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>platform</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a> for more commercial details.</td><td style="text-align:left"><code>web</code></td></tr>
+<tr><td style="text-align:left"><strong>contents</strong> (required)</td><td style="text-align:left"><em>array</em></td><td style="text-align:left">An array of objects, where each object shall contain the following values:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>scheduleId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">The <code>scheduleId</code> for each of the desired trips (departure or return).</td><td style="text-align:left"><code>SUVScFpTQkVhV1VnVFh...</code></td></tr>
+<tr><td style="text-align:left"><strong>ticket_amount</strong> (required)</td><td style="text-align:left"><em>integer</em></td><td style="text-align:left">The ammount of seats for this trip (departure or return).</td><td style="text-align:left"><code>8</code></td></tr>
 </tbody>
 </table>
-<p><strong>Response</strong></p>
-<p>With the correct params, this resource returns a Response <em>200</em> and a list, in JSON format, with these details as follow:</p>
+<p><strong>REQUEST</strong></p>
 <ul>
-<li><code>paymentSettings</code>, like:
-<ul>
-<li><code>creditcard</code>, with it’s own <code>serviceFee</code> and <code>serviceFeePercentage</code> which is attributed for each partner (contact ClickBus at <a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a> for more commercial details);</li>
-<li><code>debitcard</code> and <code>paypal_hpp</code> information;</li>
-</ul></li>
-</ul>
-<p><strong>Examples</strong></p>
-<ul>
-<li><p>A request, with all valid parameters:</p>
-<ul>
-<li>URL:
-<pre><code>/api/v1/payment?<span class="hljs-variable">store=</span>clickbus&amp;<span class="hljs-variable">platform=</span>web&amp;<span class="hljs-variable">model=</span>retail
-</code></pre></li>
-<li>Response:
+<li><p>Calculate a purchase of 10 seats, from <code>sao-paulo-tiete-sp</code> to <code>santos-sp</code>, being 5 seats for each trip.</p>
 <pre><code class="language-json">{
-    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
-    "<span class="hljs-attribute">paymentSettings</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">creditcard</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">1</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">2</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">3</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">4</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">5</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">6</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">7</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">8</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">9</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">10</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">11</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">12</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">discount_id</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">discount_type</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">discount_value</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">savings</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">fixedValue</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFee</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">1</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-                "<span class="hljs-attribute">2</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-                "<span class="hljs-attribute">3</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-                "<span class="hljs-attribute">4</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-                "<span class="hljs-attribute">5</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-                "<span class="hljs-attribute">6</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-                "<span class="hljs-attribute">7</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-                "<span class="hljs-attribute">8</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-                "<span class="hljs-attribute">9</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-                "<span class="hljs-attribute">10</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-                "<span class="hljs-attribute">11</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-                "<span class="hljs-attribute">12</span>": <span class="hljs-value"><span class="hljs-number">0</span>
-            </span>}</span>,
-            "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">1</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">2</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">3</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">4</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">5</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">6</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">7</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">8</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">9</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">10</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">11</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-                "<span class="hljs-attribute">12</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span>
-            </span>}
-        </span>}</span>,
-        "<span class="hljs-attribute">debitcard</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-            "<span class="hljs-attribute">discount_id</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">discount_type</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">discount_value</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">savings</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">fixedValue</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFee</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value"><span class="hljs-number">0</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">paypal_hpp</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
-            "<span class="hljs-attribute">discount_id</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">discount_type</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">discount_value</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">savings</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">fixedValue</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFee</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-            "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value"><span class="hljs-number">0</span>
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"clickbus"</span></span>,
+        "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"retail"</span></span>,
+        "<span class="hljs-attribute">platform</span>": <span class="hljs-value"><span class="hljs-string">"web"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">contents</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">scheduleId</span>": <span class="hljs-value"><span class="hljs-string">"YmFzZTY0LCBu8YXNlNjQsIGJpdGNoZXMhIGJhc2U2NCwgYml0Y2hlcyE="</span></span>,
+            "<span class="hljs-attribute">ticket_amount</span>" : <span class="hljs-value"><span class="hljs-number">5</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">scheduleId</span>": <span class="hljs-value"><span class="hljs-string">"SGV5ISBUaGlzIGlzIG5vdCB5b3VyIHNoaXR0eSBtZDUsIGR1bWJhc3Mh"</span></span>,
+            "<span class="hljs-attribute">ticket_amount</span>" : <span class="hljs-value"><span class="hljs-number">5</span>
         </span>}
+    ]
+</span>}
+</code></pre></li>
+</ul>
+<p><strong>RESPONSE</strong></p>
+<ul>
+<li><p>With the correct params, this resource returns a Response <em>200 OK</em>, as below:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"clickbus"</span></span>,
+        "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"retail"</span></span>,
+        "<span class="hljs-attribute">platform</span>": <span class="hljs-value"><span class="hljs-string">"web"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">ticket_amount</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+    "<span class="hljs-attribute">original_cost</span>": <span class="hljs-value"><span class="hljs-number">42.75</span></span>,
+    "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">payment_methods</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"creditcard"</span></span>,
+                "<span class="hljs-attribute">details</span>": <span class="hljs-value">[
+                    {
+                        "<span class="hljs-attribute">brand</span>": <span class="hljs-value"><span class="hljs-string">"mastercard"</span></span>,
+                        "<span class="hljs-attribute">discount_value</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                        "<span class="hljs-attribute">installments</span>": <span class="hljs-value">{
+                            "<span class="hljs-attribute">1</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">2</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">24.16</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">3</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">16.1</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">4</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">12.08</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">5</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">9.66</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">6</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">8.05</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">7</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">6.9</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">8</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">6.04</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">9</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">5.37</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">10</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.83</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">11</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.39</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">12</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.03</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}
+                        </span>}
+                    </span>},
+                    {
+                        "<span class="hljs-attribute">brand</span>": <span class="hljs-value"><span class="hljs-string">"visa"</span></span>,
+                        "<span class="hljs-attribute">discount_value</span>": <span class="hljs-value"><span class="hljs-number">7.7</span></span>,
+                        "<span class="hljs-attribute">installments</span>": <span class="hljs-value">{
+                            "<span class="hljs-attribute">1</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">40.61</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">40.61</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">2</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">20.31</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">40.61</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">3</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">13.54</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">40.61</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">4</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">10.15</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">40.61</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">5</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">8.12</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">40.61</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">6</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">6.77</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">40.61</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">7</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">5.8</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">40.61</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">8</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">5.08</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">40.61</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">9</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.51</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">40.61</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">10</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.06</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">40.61</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">11</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">3.69</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">40.61</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">12</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">3.38</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">40.61</span>
+                            </span>}
+                        </span>}
+                    </span>},
+                    {
+                        "<span class="hljs-attribute">brand</span>": <span class="hljs-value"><span class="hljs-string">"amex"</span></span>,
+                        "<span class="hljs-attribute">discount_value</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                        "<span class="hljs-attribute">installments</span>": <span class="hljs-value">{
+                            "<span class="hljs-attribute">1</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">2</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">24.16</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">3</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">16.1</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">4</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">12.08</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">5</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">9.66</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">6</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">8.05</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">7</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">6.9</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">8</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">6.04</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">9</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">5.37</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">10</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.83</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">11</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.39</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">12</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.03</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}
+                        </span>}
+                    </span>},
+                    {
+                        "<span class="hljs-attribute">brand</span>": <span class="hljs-value"><span class="hljs-string">"diners"</span></span>,
+                        "<span class="hljs-attribute">discount_value</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                        "<span class="hljs-attribute">installments</span>": <span class="hljs-value">{
+                            "<span class="hljs-attribute">1</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">2</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">24.16</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">3</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">16.1</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">4</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">12.08</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">5</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">9.66</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">6</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">8.05</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">7</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">6.9</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">8</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">6.04</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">9</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">5.37</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">10</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.83</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">11</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.39</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">12</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.03</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}
+                        </span>}
+                    </span>},
+                    {
+                        "<span class="hljs-attribute">brand</span>": <span class="hljs-value"><span class="hljs-string">"hipercard"</span></span>,
+                        "<span class="hljs-attribute">discount_value</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                        "<span class="hljs-attribute">installments</span>": <span class="hljs-value">{
+                            "<span class="hljs-attribute">1</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">2</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">24.16</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">3</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">16.1</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">4</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">12.08</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">5</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">9.66</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">6</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">8.05</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">7</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">6.9</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">8</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">6.04</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">9</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">5.37</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">10</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.83</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">11</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.39</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">12</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.03</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}
+                        </span>}
+                    </span>},
+                    {
+                        "<span class="hljs-attribute">brand</span>": <span class="hljs-value"><span class="hljs-string">"elo"</span></span>,
+                        "<span class="hljs-attribute">discount_value</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                        "<span class="hljs-attribute">installments</span>": <span class="hljs-value">{
+                            "<span class="hljs-attribute">1</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">2</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">24.16</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">3</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">16.1</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">4</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">12.08</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">5</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">9.66</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">6</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">8.05</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">7</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">6.9</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">8</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">6.04</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">9</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">5.37</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">10</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.83</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">11</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.39</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}</span>,
+                            "<span class="hljs-attribute">12</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">5.56</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">4.03</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">48.31</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">48.31</span>
+                            </span>}
+                        </span>}
+                    </span>}
+                ]
+            </span>},
+            {
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"paypal_hpp"</span></span>,
+                "<span class="hljs-attribute">details</span>": <span class="hljs-value">[
+                    {
+                        "<span class="hljs-attribute">brand</span>": <span class="hljs-value"><span class="hljs-string">"paypal"</span></span>,
+                        "<span class="hljs-attribute">discount_value</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                        "<span class="hljs-attribute">installments</span>": <span class="hljs-value">{
+                            "<span class="hljs-attribute">1</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">42.75</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">42.75</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">42.75</span>
+                            </span>}
+                        </span>}
+                    </span>}
+                ]
+            </span>},
+            {
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"debitcard"</span></span>,
+                "<span class="hljs-attribute">details</span>": <span class="hljs-value">[
+                    {
+                        "<span class="hljs-attribute">brand</span>": <span class="hljs-value"><span class="hljs-string">"visa-electron"</span></span>,
+                        "<span class="hljs-attribute">discount_value</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                        "<span class="hljs-attribute">installments</span>": <span class="hljs-value">{
+                            "<span class="hljs-attribute">1</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">42.75</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">42.75</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">42.75</span>
+                            </span>}
+                        </span>}
+                    </span>},
+                    {
+                        "<span class="hljs-attribute">brand</span>": <span class="hljs-value"><span class="hljs-string">"mastercard-maestro"</span></span>,
+                        "<span class="hljs-attribute">discount_value</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                        "<span class="hljs-attribute">installments</span>": <span class="hljs-value">{
+                            "<span class="hljs-attribute">1</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-number">42.75</span></span>,
+                                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">42.75</span></span>,
+                                "<span class="hljs-attribute">total_with_discount</span>": <span class="hljs-value"><span class="hljs-number">42.75</span>
+                            </span>}
+                        </span>}
+                    </span>}
+                ]
+            </span>}
+        ]
     </span>}
 </span>}
 </code></pre></li>
-</ul></li>
 </ul>
 <p><strong>Errors</strong></p>
 <table>
@@ -927,15 +1410,92 @@ a.list-group-item.heading:hover {
 <tr><th style="text-align:center">CODE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">DETAILS</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align:center"><strong>E1</strong></td><td style="text-align:left"><em>Please provide the <code>store</code> value.</em></td><td style="text-align:left">The parameter <code>store</code> is missing from the Request.</td></tr>
-<tr><td style="text-align:center"><strong>E2</strong></td><td style="text-align:left"><em>Please provide the <code>platform</code> value.</em></td><td style="text-align:left">The parameter <code>platform</code> is missing from the Request.</td></tr>
-<tr><td style="text-align:center"><strong>E3</strong></td><td style="text-align:left"><em>Please provide the <code>model</code> value.</em></td><td style="text-align:left">The parameter <code>model</code> is missing from the Request.</td></tr>
-<tr><td style="text-align:center"><strong>E4</strong></td><td style="text-align:left"><em>One of the following parameters is incorrect: <code>store</code>, <code>platform</code> or <code>model</code>.</em></td><td style="text-align:left">Please review the values for the three parameters.</td></tr>
-<tr><td style="text-align:center"><strong>E5</strong></td><td style="text-align:left"><em>The Application encountered a temporary error and could not complete your request.</em></td><td style="text-align:left">An error occurred while proccessing your Request before it’s sent to the booking engine.</td></tr>
-<tr><td style="text-align:center"><strong>E6</strong></td><td style="text-align:left"><em>The Server encountered a temporary error and could not complete your request.</em></td><td style="text-align:left">An error occurred after sending your Request to the booking engine.</td></tr>
+<tr><td style="text-align:center"><strong>K1</strong></td><td style="text-align:left"><em>Please provide the <code>meta</code> block.</em></td><td style="text-align:left">The parameter <code>meta</code> is missing from the Request.</td></tr>
+<tr><td style="text-align:center"><strong>K2</strong></td><td style="text-align:left"><em>Please provide your store parameters for meta.</em></td><td style="text-align:left">At least one of the parameters <code>store</code>, <code>model</code> or <code>platform</code> is missing.</td></tr>
+<tr><td style="text-align:center"><strong>K3</strong></td><td style="text-align:left"><em>One of the following parameters are incorrect: <code>store</code>, <code>platform</code> or <code>model</code>.</em></td><td style="text-align:left">One of the <code>meta</code> values is incorrect (<code>store</code>, <code>model</code> or <code>platform</code>).</td></tr>
+<tr><td style="text-align:center"><strong>K4</strong></td><td style="text-align:left"><em>Please provide the <code>contents</code> block.</em></td><td style="text-align:left">The parameter <code>contents</code> is missing from the Request.</td></tr>
+<tr><td style="text-align:center"><strong>K5</strong></td><td style="text-align:left"><em>Please provide at least one seat information.</em></td><td style="text-align:left">The parameter <code>contents</code> is empty.</td></tr>
+<tr><td style="text-align:center"><strong>K6</strong></td><td style="text-align:left"><em>Please provide the right params for the seats.</em></td><td style="text-align:left">At least one of the values inside <code>contents</code> is missing one of it’s required parameters: <code>scheduleId</code> or <code>ticket_amount</code>.</td></tr>
+<tr><td style="text-align:center"><strong>K7</strong></td><td style="text-align:left"><em>The given <code>scheduleId</code> is incorrect.</em></td><td style="text-align:left">One of the given <code>scheduleId</code> is incorrect or invalid.</td></tr>
+<tr><td style="text-align:center"><strong>K8</strong></td><td style="text-align:left"><em>The given <code>ticket_amount</code> is incorrect.</em></td><td style="text-align:left">One of the given <code>ticket_amount</code> is incorrect.</td></tr>
 </tbody>
 </table>
-</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="booking">Booking&nbsp;<a href="#booking"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="booking-how-to-check-an-order-status">How to Check an Order Status&nbsp;<a href="#booking-how-to-check-an-order-status"><i class="fa fa-link"></i></a></h4><p>If you wish to check the status of your Orders, please follow these steps:</p>
+</div><ul class="list-group"></ul></section><h4 id="payments-how-payments-works">How Payments Works&nbsp;<a href="#payments-how-payments-works"><i class="fa fa-link"></i></a></h4><p>This resource provides a list for each payment option that our API offers. The calculus is based on the following operation:</p>
+<ul>
+<li><p><code>ticket_amount</code> stands for the seats quantity, based on how many seats were provided in the request;</p></li>
+<li><p><code>original_cost</code> stands for the ticket’s original price;</p></li>
+<li><p><code>payment_methods[].details[].discount_value</code> is the discount value that will be applied for this brand;</p></li>
+<li><p><code>installment</code> is the installment value itself, calculated as:</p>
+<blockquote>
+<p>((<code>original_cost</code> + <code>fee</code>) - <code>discount_value</code>) / <code>installment</code> quantity</p>
+</blockquote>
+<p>So, based on the following example:</p>
+<pre><code class="language-json">"1": {
+    "fee": 5.43,
+    "installment": 47.23,
+    "total": 47.23,
+    "total_with_discount": 47.23
+},
+"2": {
+    "fee": 6.27,
+    "installment": 24.03,
+    "total": 48.07,
+    "total_with_discount": 48.07
+}
+</code></pre>
+<ul>
+<li><p>If the customer decides to pay in a single installment:</p>
+<ul>
+<li>The <code>original_cost</code> is <em>41.80</em>, the <code>fee</code> is <em>5.43</em> and the <code>discount_value</code> is <em>0</em>;
+<blockquote>
+<p>(41.8 + 5.43) = <strong>47.23</strong> is the <code>total</code> value.</p>
+<p>((<code>total</code>) - 0) / 1 = <strong>47.23</strong> is the value for each <code>installment</code>.</p>
+</blockquote></li>
+</ul></li>
+<li><p>If the customer decides to pay in two installments:</p>
+<ul>
+<li>The <code>original_cost</code> is <em>41.80</em>, the <code>fee</code> is <em>6.27</em> and the <code>discount_value</code> is <em>0</em>;
+<blockquote>
+<p>(41.8 + 6.27) = <strong>48.07</strong> is the <code>total</code> value.</p>
+<p>((<code>total</code>) - 0) / 2 = <strong>24.03</strong> is the value for each <code>installment</code>.</p>
+</blockquote></li>
+</ul></li>
+<li><p>If the customer decides to pay in two installments, but there is a discount value:</p>
+<ul>
+<li>The <code>original_cost</code> is <em>41.80</em>, the <code>fee</code> is <em>6.27</em> and the <code>discount_value</code> is <em>7.52</em>;
+<blockquote>
+<p>(41.8 + 6.27) = <strong>48.07</strong> is the <code>total</code> value.</p>
+<p>((<code>total</code>) - 7.52) / 2 = <strong>20.27</strong> is the value for each <code>installment</code>.</p>
+</blockquote></li>
+</ul></li>
+</ul></li>
+</ul>
+<ul>
+<li><p><code>total</code> is the total value, based on <code>installment</code> + <code>fee</code>;</p></li>
+<li><p><code>total_with_discount</code> is the same total value, but applying the <code>discount_value</code>.</p></li>
+</ul>
+<hr>
+<h4 id="payments-supported-card-brands">Supported Card Brands&nbsp;<a href="#payments-supported-card-brands"><i class="fa fa-link"></i></a></h4><p>Below you can find a list of supported card brands, based on each payment method:</p>
+<ul>
+<li><strong>Credit Card</strong> (<code>creditcard</code>):
+<ul>
+<li>American Express (<code>amex</code>)</li>
+<li>Diners (<code>diners</code>)</li>
+<li>Elo (<code>elo</code>)</li>
+<li>Hipercard (<code>hipercard</code>)</li>
+<li>MasterCard (<code>mastercard</code>)</li>
+<li>Visa (<code>visa</code>)</li>
+</ul></li>
+</ul>
+<ul>
+<li><strong>Debit Card</strong> (<code>debitcard</code>)
+<ul>
+<li>Visa Electron (<code>visa-electron</code>)</li>
+<li>MasterCard Maestro (<code>mastercard-maestro</code>)</li>
+</ul></li>
+</ul>
+<p>For <strong>PayPal</strong> (<code>paypal_hpp</code>), there is no specific limitation for brands.</p>
+</div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="booking">Booking&nbsp;<a href="#booking"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="booking-how-to-check-an-order-status">How to Check an Order Status&nbsp;<a href="#booking-how-to-check-an-order-status"><i class="fa fa-link"></i></a></h4><p>If you wish to check the status of your Orders, please follow these steps:</p>
 <ul>
 <li><p>For every Request to <strong>Create and Order</strong>, add the optional parameter <code>api_key</code> into the <code>meta</code> object, with the value of your API Public Key, as below:</p>
 <ul>
@@ -952,6 +1512,7 @@ a.list-group-item.heading:hover {
 </ul></li>
 <li><p>For more details about the Public API Key and how to obtain your Key, please check the chapter <strong>Authentication Required</strong> <a href="#order-details-authentication-required">here</a>.</p></li>
 <li><p>You can only check the Orders where this value (<code>api_key</code>) was provided in the request to <strong>Create an Order</strong>.</p></li>
+<li><p>The same settings can be applied to the <code>/checkout</code> endpoint.</p></li>
 </ul>
 <hr>
 <h4 id="booking-create-an-order">Create an Order&nbsp;<a href="#booking-create-an-order"><i class="fa fa-link"></i></a></h4><p>When you have selected all the Seats, then you may proceed to create an Order, which will start the payment process.</p>
@@ -1023,7 +1584,7 @@ a.list-group-item.heading:hover {
 </ul>
 <p>Based on each of the 3 valid payment methods:</p>
 <p><strong>1) Payment method: Credit Card</strong></p>
-<p><strong>Parameters</strong></p>
+<p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
 <tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
@@ -1123,7 +1684,7 @@ a.list-group-item.heading:hover {
 </code></pre></li>
 </ul></li>
 </ul>
-<p><strong>Response</strong></p>
+<p><strong>RESPONSE</strong></p>
 <p>The following Request, with all correct parameters, will return a <em>201</em> Response, with all details from the Order, as the example below.</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
@@ -1200,7 +1761,7 @@ a.list-group-item.heading:hover {
 </span>}
 </code></pre>
 <p><strong>2) Payment method: Debit Card</strong></p>
-<p><strong>Parameters</strong></p>
+<p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
 <tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
@@ -1283,7 +1844,7 @@ a.list-group-item.heading:hover {
 </code></pre></li>
 </ul></li>
 </ul>
-<p><strong>Response</strong></p>
+<p><strong>RESPONSE</strong></p>
 <p>Attention to <code>content.payment.meta.continuePaymentURL</code>, which contains the URL to redirect after payment.</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
@@ -1360,7 +1921,7 @@ a.list-group-item.heading:hover {
 </code></pre>
 <p><strong>3) Payment method: PayPal</strong></p>
 <p>This payment method provides a redirect link in the Response body, provided after PayPal’s request.</p>
-<p><strong>Parameters</strong></p>
+<p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
 <tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
@@ -1432,7 +1993,7 @@ a.list-group-item.heading:hover {
 </code></pre></li>
 </ul></li>
 </ul>
-<p><strong>Response</strong></p>
+<p><strong>RESPONSE</strong></p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
@@ -1553,7 +2114,7 @@ a.list-group-item.heading:hover {
 <li>Once an Order status is settled to <code>order_canceled</code>, the action is irreversible;</li>
 <li>You can cancel an Order until <strong>3 hours</strong> before the departure time.</li>
 </ol>
-<section id="booking-cancel-an-order-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Cancel an Order</span></div><div style="float:left"><a href="#booking-cancel-an-order-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/booking</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<section id="booking-cancel-an-order-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Cancel an Order</span></div><div style="float:left"><a href="#booking-cancel-an-order-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/booking</code></div></div><div class="panel-body"><p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
 <tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
@@ -1564,7 +2125,7 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:left"><strong>request.status</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><strong>Cancel</strong> status.</td><td style="text-align:left"><code>order_canceled</code></td></tr>
 </tbody>
 </table>
-<p><strong>Request</strong></p>
+<p><strong>REQUEST</strong></p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">request</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">localizer</span>": <span class="hljs-value"><span class="hljs-string">"53347e09aee47"</span></span>,
@@ -1572,7 +2133,7 @@ a.list-group-item.heading:hover {
     </span>}
 </span>}
 </code></pre>
-<p><strong>Response</strong></p>
+<p><strong>RESPONSE</strong></p>
 <p>The given request returns a Response <em>201</em>, with all Order details in the Response body:</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
@@ -1657,6 +2218,276 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:center"><strong>A10</strong></td><td style="text-align:left"><em>The given localizer is invalid.</em></td><td style="text-align:left">The value for <code>localizer</code> is invalid or could not be found.</td></tr>
 </tbody>
 </table>
+</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="checkout">Checkout&nbsp;<a href="#checkout"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><p>The <code>/checkout</code> endpoint allows you to pick the seats and create the Order in the same request.</p>
+<p>As opposed to <code>/booking</code>, <code>/checkout</code> <strong>does not need previous requests to <code>/seat-block</code>.</strong> Instead, you provide the <code>scheduleId</code> for each trip (departure, return, or even only departure or only return) along with the minimum required data for each passenger.</p>
+<ul>
+<li><strong>ATTENTION:</strong>
+<blockquote>
+<p>This resource provides an easier approach for creating Orders, once that you don’t need to request <code>/seat-block</code> for each seat. However, there are chances that one or more of the desired seats are unavailable.</p>
+</blockquote></li>
+</ul>
+<p><strong>NOTES:</strong></p>
+<ul>
+<li><p>For every Response, please remember to keep the <code>content.localizer</code> value; this value is required for any <strong>Update Order</strong> Request;</p></li>
+<li><p>Please keep in mind that you need to provide in your header the <code>PHPSESSID</code> key with the Session’s ID in the Cookie, as below:</p>
+<blockquote>
+<p>Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3</p>
+</blockquote></li>
+</ul>
+<h4 id="checkout-create-an-order">Create an Order&nbsp;<a href="#checkout-create-an-order"><i class="fa fa-link"></i></a></h4><section id="checkout-create-an-order-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Create an Order</span></div><div style="float:left"><a href="#checkout-create-an-order-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/checkout</code></div></div><div class="panel-body"><p>To create an Order, the request’s body requires a range of data, which, for a better understanding, we will divide in the following blocks below:</p>
+<ul>
+<li><p><strong>meta</strong>, which contains the params <code>model</code>, <code>store</code> and <code>platform</code> for each Partner;</p></li>
+<li><p><strong>request</strong>, which contains:</p>
+<ul>
+<li><strong>request.buyer</strong> contains all required information about the Buyer;
+<ul>
+<li><strong>request.buyer.payment</strong> contains all the Buyer’s payment data;</li>
+</ul></li>
+<li><strong>request.orderItems</strong> contains all the Seats, along with their information, added to the Order.</li>
+</ul></li>
+</ul>
+<p>Each <code>/checkout</code> have the same structure block except for <code>payment</code> block, which is based on each payment method (see details below):</p>
+<table>
+<thead>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object. Partners can use this parameter to provide:</td><td style="text-align:left"><code>{}</code></td></tr>
+<tr><td style="text-align:left"><strong>meta.model</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Partner’s <code>model</code> data.</td><td style="text-align:left"><code>retail</code></td></tr>
+<tr><td style="text-align:left"><strong>meta.store</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Partner’s <code>store</code> data.</td><td style="text-align:left"><code>newstore</code></td></tr>
+<tr><td style="text-align:left"><strong>meta.platform</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Partner’s <code>platform</code> data.</td><td style="text-align:left"><code>web</code></td></tr>
+<tr><td style="text-align:left"><strong>request</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.ip</strong> (optional)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">IP address from where the request was sent.</td><td style="text-align:left"><code>192.168.14.1</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.locale</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s locale.</td><td style="text-align:left"><code>pt_BR</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.firstName</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s first name.</td><td style="text-align:left"><code>Fulano</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.lastName</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s surname.</td><td style="text-align:left"><code>de Silva</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.email</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s email.</td><td style="text-align:left"><code>fulano@teste.com.br</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.phone</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s phone, in format <code>AABBBBBBBBB</code>, where <code>AA</code> stands for the brazilian phone’s region code, and <code>BBBBBBBBB</code> stands for the phone number.</td><td style="text-align:left"><code>11912345678</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.document</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s document.</td><td style="text-align:left"><code>123.456.789-00</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.gender</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>M</code> stands for <em>Male</em>, and <code>F</code>, for <em>Female</em>.</td><td style="text-align:left"><code>M</code> or <code>F</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.birthday</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s birth date, in format <code>yyyy-mm-dd</code>.</td><td style="text-align:left"><code>1970-01-15</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object.</td><td style="text-align:left"><code>{}</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An object containing all the required information according to the payment method.</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.items</strong> (required)</td><td style="text-align:left"><em>array</em></td><td style="text-align:left">A collection of objects, which may contain at least 1 and a maximum of N to be considered valid. Each object contains:</td><td style="text-align:left"><code>[]</code></td></tr>
+<tr><td style="text-align:left"><strong>request.items.seat</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">The seat number for a single passenger.</td><td style="text-align:left"><code>13</code></td></tr>
+<tr><td style="text-align:left"><strong>request.items.passenger</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An object, which have:</td><td style="text-align:left"><code>{}</code></td></tr>
+<tr><td style="text-align:left"><strong>request.items.passenger.name</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s full name.</td><td style="text-align:left"><code>Fulano da Silva</code></td></tr>
+<tr><td style="text-align:left"><strong>request.items.passenger.document</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s document.</td><td style="text-align:left"><code>123.456.789-00</code></td></tr>
+<tr><td style="text-align:left"><strong>request.items.passenger.documentType</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s document type. It must be a document with the passenger’s picture.</td><td style="text-align:left"><code>rg</code></td></tr>
+<tr><td style="text-align:left"><strong>request.items.scheduleId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">The <code>scheduleId</code> for one of the desired trips (departure or return).</td><td style="text-align:left"><code>NDAxNy0tMzkzNS0tMjAxNS0wNS0...</code></td></tr>
+</tbody>
+</table>
+<p>As the <code>/booking</code> endpoint, the <code>/checkout</code> request support the same 3 valid payment methods:</p>
+<ul>
+<li><p><strong>Credit Card</strong></p></li>
+<li><p><strong>Debit Card</strong></p></li>
+<li><p><strong>PayPal</strong></p></li>
+</ul>
+<p><strong>Payment method: Credit Card</strong></p>
+<p><strong>PARAMETERS</strong></p>
+<p>The values are the same for the <code>payment</code> block, as described in the <a href="#booking-create-an-order"><code>/booking</code> endpoint</a>.</p>
+<p><strong>REQUEST</strong></p>
+<ul>
+<li><p>Create an Order with the following data:</p>
+<ul>
+<li>Created from a <code>store</code> called <em>NewWorld</em>;</li>
+<li>Selected 1 Seat (number <em>13</em>) on departure for <em>Fulano da Silva</em> and 1 Seat (number <em>17</em>) on return for the same passenger;</li>
+<li>Each item costs R$ 12.35, so the <code>request.buyer.payment.total</code> value is <em>2470</em>;</li>
+<li>The payment is settled to a single <code>installment</code>, using <code>creditcard</code>.</li>
+</ul>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"Retail"</span></span>,
+        "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"NewWorld"</span></span>,
+        "<span class="hljs-attribute">platform</span>": <span class="hljs-value"><span class="hljs-string">"Web"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">request</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">ip</span>": <span class="hljs-value"><span class="hljs-string">"192.168.14.1"</span></span>,
+        "<span class="hljs-attribute">buyer</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">locale</span>": <span class="hljs-value"><span class="hljs-string">"pt_BR"</span></span>,
+            "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Clickbus"</span></span>,
+            "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"Test"</span></span>,
+            "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"test-orders@clickbus.com"</span></span>,
+            "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"12098765432"</span></span>,
+            "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"176.768.826-13"</span></span>,
+            "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">"M"</span></span>,
+            "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1986-04-18"</span></span>,
+            "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
+            "<span class="hljs-attribute">payment</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"creditcard"</span></span>,
+                "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">2470</span></span>,
+                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+                "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">card</span>": <span class="hljs-value"><span class="hljs-string">"4111111111111111"</span></span>,
+                    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"737"</span></span>,
+                    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"FULANO SILVA"</span></span>,
+                    "<span class="hljs-attribute">expiration</span>": <span class="hljs-value"><span class="hljs-string">"2017-07"</span></span>,
+                    "<span class="hljs-attribute">zipcode</span>": <span class="hljs-value"><span class="hljs-string">"04104080"</span>
+                </span>}
+            </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">items</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">seat</span>": <span class="hljs-value"><span class="hljs-string">"13"</span></span>,
+                "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fulano da Silva"</span></span>,
+                    "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"12.345.678-9"</span></span>,
+                    "<span class="hljs-attribute">documentType</span>": <span class="hljs-value"><span class="hljs-string">"rg"</span>
+                </span>}</span>,
+                "<span class="hljs-attribute">scheduleId</span>": <span class="hljs-value"><span class="hljs-string">"NDAxNy0tMzkzNS0tMjAxNS0wNS0yNSAyMDoxMC0tOS0tMDAxMy0tMS0tMS0tMS0tQ09OVi0tNjYuMzY="</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">seat</span>": <span class="hljs-value"><span class="hljs-string">"17"</span></span>,
+                "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fulano da Silva"</span></span>,
+                    "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"12.345.678-9"</span></span>,
+                    "<span class="hljs-attribute">documentType</span>": <span class="hljs-value"><span class="hljs-string">"rg"</span>
+                </span>}</span>,
+                "<span class="hljs-attribute">scheduleId</span>": <span class="hljs-value"><span class="hljs-string">"MzkzNS0tNDAxNy0tMjAxNS0wNS0yNSAwMzo1MC0tOS0tMDA4Mi0tMS0tMS0tMS0tQ09OVi0tMTA="</span>
+            </span>}
+        ]
+    </span>}
+</span>}
+</code></pre></li>
+</ul>
+<p><strong>RESPONSE</strong></p>
+<ul>
+<li><p>The following Request, with all correct parameters, will return a <em>201</em> Response, with all details from the Order, as the example below.</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"Retail"</span></span>,
+        "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"ClickBus"</span></span>,
+        "<span class="hljs-attribute">platform</span>": <span class="hljs-value"><span class="hljs-string">"Web"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1062"</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"order_finalized_successfully"</span></span>,
+        "<span class="hljs-attribute">localizer</span>": <span class="hljs-value"><span class="hljs-string">"5EBP2M"</span></span>,
+        "<span class="hljs-attribute">payment</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"payment.creditcard"</span></span>,
+            "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-string">"2470"</span></span>,
+            "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+            "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"order_finalized_successfully"</span></span>,
+            "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">card</span>": <span class="hljs-value"><span class="hljs-string">"4111-XXXX-XXXX-1111"</span></span>,
+                "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"XXX"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"FULANO SILVA"</span></span>,
+                "<span class="hljs-attribute">expiration</span>": <span class="hljs-value"><span class="hljs-string">"XXXX-XX-XX"</span></span>,
+                "<span class="hljs-attribute">postbackUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                "<span class="hljs-attribute">callbackUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+            </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">items</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">trip_id</span>": <span class="hljs-value"><span class="hljs-string">"4321"</span></span>,
+                "<span class="hljs-attribute">localizer</span>": <span class="hljs-value"><span class="hljs-string">"KPFHNB"</span></span>,
+                "<span class="hljs-attribute">ticket_code</span>": <span class="hljs-value"><span class="hljs-string">"6462297"</span></span>,
+                "<span class="hljs-attribute">context</span>": <span class="hljs-value"><span class="hljs-string">"departure"</span></span>,
+                "<span class="hljs-attribute">order_item</span>": <span class="hljs-value"><span class="hljs-string">"1228"</span></span>,
+                "<span class="hljs-attribute">serviceClass</span>": <span class="hljs-value"><span class="hljs-string">"Convencional"</span></span>,
+                "<span class="hljs-attribute">departure</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">waypoint</span>": <span class="hljs-value"><span class="hljs-string">"4017"</span></span>,
+                    "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
+                        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"01:00"</span></span>,
+                        "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    </span>}
+                </span>}</span>,
+                "<span class="hljs-attribute">arrival</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">waypoint</span>": <span class="hljs-value"><span class="hljs-string">"3935"</span></span>,
+                    "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
+                        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"03:00"</span></span>,
+                        "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    </span>}
+                </span>}</span>,
+                "<span class="hljs-attribute">seat</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"13"</span></span>,
+                    "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-string">"12.35"</span></span>,
+                    "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"reserved"</span></span>,
+                    "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+                    "<span class="hljs-attribute">type</span>": <span class="hljs-value">{}
+                </span>}</span>,
+                "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Fulano"</span></span>,
+                    "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"da Silva"</span></span>,
+                    "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789-00"</span></span>,
+                    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}
+                </span>}</span>,
+                "<span class="hljs-attribute">products</span>": <span class="hljs-value">[]</span>,
+                "<span class="hljs-attribute">subtotal</span>": <span class="hljs-value"><span class="hljs-string">"12.35"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">trip_id</span>": <span class="hljs-value"><span class="hljs-string">"7340"</span></span>,
+                "<span class="hljs-attribute">localizer</span>": <span class="hljs-value"><span class="hljs-string">"ZXSMTM"</span></span>,
+                "<span class="hljs-attribute">ticket_code</span>": <span class="hljs-value"><span class="hljs-string">"5762464"</span></span>,
+                "<span class="hljs-attribute">context</span>": <span class="hljs-value"><span class="hljs-string">"departure"</span></span>,
+                "<span class="hljs-attribute">order_item</span>": <span class="hljs-value"><span class="hljs-string">"1229"</span></span>,
+                "<span class="hljs-attribute">serviceClass</span>": <span class="hljs-value"><span class="hljs-string">"Convencional"</span></span>,
+                "<span class="hljs-attribute">departure</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">waypoint</span>": <span class="hljs-value"><span class="hljs-string">"4017"</span></span>,
+                    "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
+                        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"01:00"</span></span>,
+                        "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    </span>}
+                </span>}</span>,
+                "<span class="hljs-attribute">arrival</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">waypoint</span>": <span class="hljs-value"><span class="hljs-string">"3935"</span></span>,
+                    "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
+                        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"03:00"</span></span>,
+                        "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    </span>}
+                </span>}</span>,
+                "<span class="hljs-attribute">seat</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"17"</span></span>,
+                    "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-string">"12.35"</span></span>,
+                    "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"reserved"</span></span>,
+                    "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+                    "<span class="hljs-attribute">type</span>": <span class="hljs-value">{}
+                </span>}</span>,
+                "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Fulano"</span></span>,
+                    "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"da Silva"</span></span>,
+                    "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789-00"</span></span>,
+                    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}
+                </span>}</span>,
+                "<span class="hljs-attribute">products</span>": <span class="hljs-value">[]</span>,
+                "<span class="hljs-attribute">subtotal</span>": <span class="hljs-value"><span class="hljs-string">"12.35"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-23"</span>
+    </span>}
+</span>}
+</code></pre></li>
+</ul>
+<p><strong>Errors</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:center">CODE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">DETAILS</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:center"><strong>L1</strong></td><td style="text-align:left"><em>Please provide the 'passenger’s name.</em></td><td style="text-align:left">One of the passenger’s <code>name</code> is missing from the request.</td></tr>
+<tr><td style="text-align:center"><strong>L2</strong></td><td style="text-align:left"><em>Please provide a value for the passenger’s first name.</em></td><td style="text-align:left">One of the passenger’s <code>name</code> is empty.</td></tr>
+<tr><td style="text-align:center"><strong>L3</strong></td><td style="text-align:left"><em>Please provide the 'passenger’s document.</em></td><td style="text-align:left">One of the passenger’s <code>document</code> is missing from the request.</td></tr>
+<tr><td style="text-align:center"><strong>L4</strong></td><td style="text-align:left"><em>Please provide a value for the passenger’s document.</em></td><td style="text-align:left">One of the passenger’s <code>document</code> is empty.</td></tr>
+<tr><td style="text-align:center"><strong>L5</strong></td><td style="text-align:left"><em>Please provide the 'scheduleId’.</em></td><td style="text-align:left">The <code>scheduleId</code> for one of the order items is missing from the Request.</td></tr>
+<tr><td style="text-align:center"><strong>L6</strong></td><td style="text-align:left"><em>The given ‘scheduleId’ is invalid.</em></td><td style="text-align:left">The <code>scheduleId</code> for one of the order items is invalid or incorrect.</td></tr>
+<tr><td style="text-align:center"><strong>L7</strong></td><td style="text-align:left"><em>Missing parameters in your payment data.</em></td><td style="text-align:left">One or more of the following <code>buyer</code> parameters are missing: <code>name</code>, <code>card</code>, <code>code</code>, <code>zipcode</code> or <code>expiration</code>.</td></tr>
+<tr><td style="text-align:center"><strong>L8</strong></td><td style="text-align:left"><em>The expiration data is invalid or incorrect.</em></td><td style="text-align:left">The expiration data provided in the card is incorrect or invalid.</td></tr>
+<tr><td style="text-align:center"><strong>L9</strong></td><td style="text-align:left"><em>Please provide the ‘installment’ for the payment data.</em></td><td style="text-align:left">The parameter <code>installment</code> is missing from the Request.</td></tr>
+<tr><td style="text-align:center"><strong>L10</strong></td><td style="text-align:left"><em>An unexpected issue happened in your Request. Please contact us for more details.</em></td><td style="text-align:left">Troubles while requesting data from the booking engine. Please contact us at <a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a> for support and details.</td></tr>
+<tr><td style="text-align:center"><strong>L11</strong></td><td style="text-align:left"><em>The ‘departure’ date and time cannot occur before current date and time</em></td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:center"><strong>L12</strong></td><td style="text-align:left"><em>The Server encountered a temporary error and could not complete your request.</em></td><td style="text-align:left">An error occurred after sending your Request.</td></tr>
+<tr><td style="text-align:center"><strong>L13</strong></td><td style="text-align:left"><em>Please check you card number.</em></td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:center"><strong>L14</strong></td><td style="text-align:left"><em>There was a problem with your Order. Please contact us for more details</em></td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:center"><strong>L15</strong></td><td style="text-align:left"><em>Checkout Error</em></td><td style="text-align:left">An internal error ocurred at the conclusion of your Request.</td></tr>
+<tr><td style="text-align:center"><strong>L16</strong></td><td style="text-align:left"><em>Application Error</em></td><td style="text-align:left">An error occurred before send the success email of your Request.</td></tr>
+</tbody>
+</table>
 </div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="order-details">Order Details&nbsp;<a href="#order-details"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="order-details-authentication-required">Authentication Required&nbsp;<a href="#order-details-authentication-required"><i class="fa fa-link"></i></a></h4><p>In order to access the resources for this endpoint, you have to provide a Public API Key for each Request. This key shall be declared in the headers section of your Request, as follow:</p>
 <pre><code>X-API-KEY: dbb648c2d6f4df1b7422b56265947f261cd80e27
 </code></pre>
@@ -1664,9 +2495,9 @@ a.list-group-item.heading:hover {
 <p><strong>OBS:</strong> For implementation and test purposes, use the following value: <code>dbb648c2d6f4df1b7422b56265947f261cd80e27</code>.</p>
 <hr>
 <h4 id="order-details-get-order-list">Get Order List&nbsp;<a href="#order-details-get-order-list"><i class="fa fa-link"></i></a></h4><p>The resource <code>/order</code> return all information related to a specific trip, based on a given schedule ID (check <strong>Trips</strong> resource for more details).</p>
-<section id="order-details-get-order-list-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Order List</span></div><div style="float:left"><a href="#order-details-get-order-list-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/order</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<section id="order-details-get-order-list-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Order List</span></div><div style="float:left"><a href="#order-details-get-order-list-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/order</code></div></div><div class="panel-body"><p><strong>PARAMETERS</strong></p>
 <p><em>None</em></p>
-<p><strong>Response</strong></p>
+<p><strong>RESPONSE</strong></p>
 <p>A successful request will return a <em>200</em> Response, with the structure as described below:</p>
 <ul>
 <li><code>items</code>, which is a collection of Orders. Each Order contains:
@@ -1784,7 +2615,7 @@ a.list-group-item.heading:hover {
 </tbody>
 </table>
 </div><ul class="list-group"></ul></section><h4 id="order-details-get-order">Get Order&nbsp;<a href="#order-details-get-order"><i class="fa fa-link"></i></a></h4><p>The resource <code>/order/{id}</code> provides a variety of details of a specific Order, based on it’s ID.</p>
-<section id="order-details-get-order-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Order</span></div><div style="float:left"><a href="#order-details-get-order-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/order/{id}</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<section id="order-details-get-order-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Order</span></div><div style="float:left"><a href="#order-details-get-order-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/order/{id}</code></div></div><div class="panel-body"><p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
 <tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
@@ -1793,7 +2624,7 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:left"><strong>id</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">A valid ID for any created Order.</td><td style="text-align:left"><code>10</code></td></tr>
 </tbody>
 </table>
-<p><strong>Response</strong></p>
+<p><strong>RESPONSE</strong></p>
 <p>Using a valid <code>id</code>, and providing a valid and authentic API Key, the request will return a <em>200</em> Response, displaying an Order distributed in the following structure:</p>
 <ul>
 <li><code>content</code>, which contains:
@@ -1826,7 +2657,7 @@ a.list-group-item.heading:hover {
 </ul></li>
 </ul></li>
 </ul>
-<p><strong>Example</strong></p>
+<p><strong>EXAMPLE</strong></p>
 <ul>
 <li><p>Get the results from an Order, using credit card:</p>
 <ul>
@@ -1926,7 +2757,7 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:center"><strong>D5</strong></td><td style="text-align:left"><em>Item not found.</em></td><td style="text-align:left">The requested Order could not be found.</td></tr>
 </tbody>
 </table>
-</div><ul class="list-group"></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 04 May 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+</div><ul class="list-group"></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 14 May 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
 
 </div></body><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script>(function() {
   if (location.protocol === 'file:') {

@@ -2,9 +2,11 @@ FORMAT: 1A
 
 # Clickbus Public API
 
-This is the documentation and samples for Clickbus Public API. Also this can be used as mocked data to simply test API integration.
+This is the documentation and samples for Clickbus Public API. The contents here can also be used as mocked data to simply test API integration.
 
-In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (contato@clickbus.com.br for more commercial details).
+In this document you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (contato@clickbus.com.br for more commercial details).
+
+----------------------------------------------------------------
 
 ### **Overview**
 
@@ -12,19 +14,31 @@ Below are the topic Groups to perform every task for your applications:
 
 - Obtain a list with all **Places**;
 - Search any of our **Trips**;
-- Get all information about the available **Payment** methods;
+- Calculate your roundtrip items before the purchase with the **Payments** resource;
 - Obtain **Trip Details** from each route;
 - **Seat Block** to lock or unlock seat reservations;
 - **Booking** orders;
+- Purchase roundtrip orders in **Checkout**;
 - Sign your actions with an ID provided by **Session**;
 - Check your **Order** status.
+
+----------------------------------------------------------------
 
 # API Reference
 
 ## **Predicates**
 
 1. All sucessfull requests return a **20*** Response header;
-2. The **Evaluation** environment (https://api-evaluation.clickbus.com.br/api/v1) have only 1 possible trip: from **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`) to **Santos, SP** (`santos-sp`), and vice-versa.
+2. The **Evaluation** environment (https://api-evaluation.clickbus.com.br/api/v1) have only the following routes, for both departure and return:
+    - From **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`) to **Santos, SP** (`santos-sp`);
+    - From **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`) to **Campinas, SP** (`campinas-sp`);
+    - From **Japeri, RJ** (`japeri-rj`) to **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`);
+    - From **Santa Rita Passa Quatro, SP** (`santa-rita-passa-quatro-sp`) to **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`);
+    - From **Belo Horizonte, MG** (`belo-horizonte-mg`) to **Rio de Janeiro, RJ** (`rio-de-janeiro-rj`);
+    - From **Estancia, SE** (`estancia-se`) to **Belo Horizonte, MG** (`belo-horizonte-mg`);
+    - From **Campinas, SP** (`campinas-sp`) to **Santos, SP** (`santos-sp`);
+
+
 3. The params **store**, **model** and **platform** are required and singular for each partner. To obtain these credentials, please contact our commercial department at contato@clickbus.com.br.
 
 ## **Groups**
@@ -39,15 +53,15 @@ One of the most important values on this resource is the `slug`, which contains 
 
 ### Get All Places [GET]
 
-**Parameters**
+**PARAMETERS**
 
 _None_
 
-**Response**
+**RESPONSE**
 
 The given request returns a Response _200_, with a list in JSON format filled with all Places:
 
-**Example**
+**EXAMPLE**
 
  ```json
  {
@@ -102,7 +116,6 @@ The given request returns a Response _200_, with a list in JSON format filled wi
 }
  ```
 
-
  **Errors**
 
 |CODE|DESCRIPTION|DETAILS|
@@ -121,7 +134,7 @@ The resource `/trips` provides a list with all available trips, with all sort of
 
 ### Get all available Trips [GET]
 
-**Parameters**
+**PARAMETERS**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
@@ -130,7 +143,7 @@ The resource `/trips` provides a list with all available trips, with all sort of
 |**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
 |**engine** (optional)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
 
-**Response**
+**RESPONSE**
 
 With the correct params, this resource returns a Response _200_ and a list, in JSON format, with these details as follow:
 
@@ -363,15 +376,15 @@ The resource `/session` retrieves the current Session ID, which is useful to obt
 
 ### Get Session [GET]
 
-**Parameters**
+**PARAMETERS**
 
 _None_
 
-**Response**
+**RESPONSE**
 
 The given request returns a Response _201_, and the session ID on the Response Body, as follow:
 
-**Example**
+**EXAMPLE**
 
  - Sucessfull request:
 
@@ -394,13 +407,13 @@ The resource `/trip` return all information related to a specific trip, based on
 
 ### Get Trip Details [GET]
 
-**Parameters**
+**PARAMETERS**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
 |**scheduleId** (required)|_string_|A given hash from a search part. See on **Trips** resource, in the output, into each `items` part, the value on `departure.waypoint.schedule.id` node. |`NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwM...`|
 
-**Response**
+**RESPONSE**
 
 Using a valid `scheduleId`, the request will return a _200_ Response, with the structure as described below:
 
@@ -555,7 +568,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 
 ### Create a block in a Seat [PUT]
 
-**Parameters**
+**PARAMETERS**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
@@ -576,7 +589,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 |**request.schedule.timezone** (required)|_string_|Timezone information, based on actual country.|`America/Sao_Paulo`|
 |**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
 
-**Request**
+**REQUEST**
 
 - Created a block for a Seat, named _07_, on a travel from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _27th January 2015_, with all params correct:
 
@@ -604,7 +617,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
     }
     ```
 
-**Response**
+**RESPONSE**
 
 This request, with all correct params and being executed before the Seat block's life time ends, will return a Response _200_, with the following Response body:
 
@@ -670,7 +683,7 @@ As opposed to the Create proccess, the Remove will delete a block created on a S
 
 ### Remove a block in a Seat [DELETE]
 
-**Parameters**
+**PARAMETERS**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
@@ -681,7 +694,7 @@ As opposed to the Create proccess, the Remove will delete a block created on a S
 |**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw...`|
 |**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
 
-**Request**
+**REQUEST**
 
 - Removing the Seat block, named _07_, on a travel from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _27th January 2015_, with all params correct:
 
@@ -698,7 +711,7 @@ As opposed to the Create proccess, the Remove will delete a block created on a S
     }
     ```
 
-**Response**
+**RESPONSE**
 
 This request, with all correct params, will return a Response _202_, with the following Response body:
 
@@ -726,11 +739,11 @@ This request, with all correct params, will return a Response _202_, with the fo
 |**H20**|_Busy seat._|The lifetime of the Seat Block is expired.|
 
 
-# Group Payment
+# Group Payments
 
-## Get all Payment settings [/payment]
+## Calculate your Items [/payments]
 
-The resource `/payment` retrieves all the information that you need according to your `meta` parameters, which are:
+The resource `/payments` retrieves all the payment details without the need of a purchase, according to your `meta` parameters, which are:
 
 - `model`
 - `store`
@@ -738,121 +751,665 @@ The resource `/payment` retrieves all the information that you need according to
 
 These parameters are created for each partner, and they are required for each request. If you have any doubts or questions about how to obtain these values, please contact our commercial department at contato@clickbus.com.br.
 
-### Get all Payment settings [GET]
+### Calculate your Items [POST]
 
-**Parameters**
+**PARAMETERS**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
-|**store** (required)|_string_|`store` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`clickbus`|
-|**model** (required)|_string_|`model` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`retail`|
-|**platform** (required)|_string_|`platform` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`web`|
+|**meta** (required)|_object_|An object, where you should provide the values fot `store`, `model` and `platform`.||
+|**meta.model** (required)|_string_|`model` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`retail`|
+|**meta.store** (required)|_string_|`store` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`newstore`|
+|**meta.platform** (required)|_string_|`platform` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`web`|
+|**contents** (required)|_array_|An array of objects, where each object shall contain the following values:||
+|**scheduleId** (required)|_string_|The `scheduleId` for each of the desired trips (departure or return).|`SUVScFpTQkVhV1VnVFh...`|
+|**ticket_amount** (required)|_integer_|The ammount of seats for this trip (departure or return).|`8`|
 
-**Response**
+**REQUEST**
 
-With the correct params, this resource returns a Response _200_ and a list, in JSON format, with these details as follow:
+- Calculate a purchase of 10 seats, from `sao-paulo-tiete-sp` to `santos-sp`, being 5 seats for each trip.
 
-- `paymentSettings`, like:
-    - `creditcard`, with it's own `serviceFee` and `serviceFeePercentage` which is attributed for each partner (contact ClickBus at contato@clickbus.com.br for more commercial details);
-    - `debitcard` and `paypal_hpp` information;
-
-**Examples**
-
-- A request, with all valid parameters:
-
-    - URL:
-        ```
-        /api/v1/payment?store=clickbus&platform=web&model=retail
-        ```
-    - Response:
-        ```json
-        {
-            "meta": {},
-            "paymentSettings": {
-                "creditcard": {
-                    "total": {
-                        "1": "0.00",
-                        "2": "0.00",
-                        "3": "0.00",
-                        "4": "0.00",
-                        "5": "0.00",
-                        "6": "0.00",
-                        "7": "0.00",
-                        "8": "0.00",
-                        "9": "0.00",
-                        "10": "0.00",
-                        "11": "0.00",
-                        "12": "0.00"
-                    },
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
-                    "fixedValue": 0,
-                    "serviceFee": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0,
-                        "6": 0,
-                        "7": 0,
-                        "8": 0,
-                        "9": 0,
-                        "10": 0,
-                        "11": 0,
-                        "12": 0
-                    },
-                    "serviceFeePercentage": {
-                        "1": "0.00",
-                        "2": "0.00",
-                        "3": "0.00",
-                        "4": "0.00",
-                        "5": "0.00",
-                        "6": "0.00",
-                        "7": "0.00",
-                        "8": "0.00",
-                        "9": "0.00",
-                        "10": "0.00",
-                        "11": "0.00",
-                        "12": "0.00"
-                    }
-                },
-                "debitcard": {
-                    "total": "0.00",
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
-                    "fixedValue": 0,
-                    "serviceFee": 0,
-                    "serviceFeePercentage": 0
-                },
-                "paypal_hpp": {
-                    "total": "0.00",
-                    "discount_id": 0,
-                    "discount_type": 0,
-                    "discount_value": 0,
-                    "savings": 0,
-                    "fixedValue": 0,
-                    "serviceFee": 0,
-                    "serviceFeePercentage": 0
-                }
+    ```json
+    {
+        "meta": {
+            "store": "clickbus",
+            "model": "retail",
+            "platform": "web"
+        },
+        "contents": [
+            {
+                "scheduleId": "YmFzZTY0LCBu8YXNlNjQsIGJpdGNoZXMhIGJhc2U2NCwgYml0Y2hlcyE=",
+                "ticket_amount" : 5
+            },
+            {
+                "scheduleId": "SGV5ISBUaGlzIGlzIG5vdCB5b3VyIHNoaXR0eSBtZDUsIGR1bWJhc3Mh",
+                "ticket_amount" : 5
             }
+        ]
+    }
+    ```
+
+**RESPONSE**
+
+- With the correct params, this resource returns a Response _200 OK_, as below:
+
+    ```json
+    {
+        "meta": {
+            "store": "clickbus",
+            "model": "retail",
+            "platform": "web"
+        },
+        "ticket_amount": 10,
+        "original_cost": 42.75,
+        "items": {
+            "payment_methods": [
+                {
+                    "name": "creditcard",
+                    "details": [
+                        {
+                            "brand": "mastercard",
+                            "discount_value": 0,
+                            "installments": {
+                                "1": {
+                                    "fee": 5.56,
+                                    "installment": 48.31,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "2": {
+                                    "fee": 5.56,
+                                    "installment": 24.16,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "3": {
+                                    "fee": 5.56,
+                                    "installment": 16.1,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "4": {
+                                    "fee": 5.56,
+                                    "installment": 12.08,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "5": {
+                                    "fee": 5.56,
+                                    "installment": 9.66,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "6": {
+                                    "fee": 5.56,
+                                    "installment": 8.05,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "7": {
+                                    "fee": 5.56,
+                                    "installment": 6.9,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "8": {
+                                    "fee": 5.56,
+                                    "installment": 6.04,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "9": {
+                                    "fee": 5.56,
+                                    "installment": 5.37,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "10": {
+                                    "fee": 5.56,
+                                    "installment": 4.83,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "11": {
+                                    "fee": 5.56,
+                                    "installment": 4.39,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "12": {
+                                    "fee": 5.56,
+                                    "installment": 4.03,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                }
+                            }
+                        },
+                        {
+                            "brand": "visa",
+                            "discount_value": 7.7,
+                            "installments": {
+                                "1": {
+                                    "fee": 5.56,
+                                    "installment": 40.61,
+                                    "total": 48.31,
+                                    "total_with_discount": 40.61
+                                },
+                                "2": {
+                                    "fee": 5.56,
+                                    "installment": 20.31,
+                                    "total": 48.31,
+                                    "total_with_discount": 40.61
+                                },
+                                "3": {
+                                    "fee": 5.56,
+                                    "installment": 13.54,
+                                    "total": 48.31,
+                                    "total_with_discount": 40.61
+                                },
+                                "4": {
+                                    "fee": 5.56,
+                                    "installment": 10.15,
+                                    "total": 48.31,
+                                    "total_with_discount": 40.61
+                                },
+                                "5": {
+                                    "fee": 5.56,
+                                    "installment": 8.12,
+                                    "total": 48.31,
+                                    "total_with_discount": 40.61
+                                },
+                                "6": {
+                                    "fee": 5.56,
+                                    "installment": 6.77,
+                                    "total": 48.31,
+                                    "total_with_discount": 40.61
+                                },
+                                "7": {
+                                    "fee": 5.56,
+                                    "installment": 5.8,
+                                    "total": 48.31,
+                                    "total_with_discount": 40.61
+                                },
+                                "8": {
+                                    "fee": 5.56,
+                                    "installment": 5.08,
+                                    "total": 48.31,
+                                    "total_with_discount": 40.61
+                                },
+                                "9": {
+                                    "fee": 5.56,
+                                    "installment": 4.51,
+                                    "total": 48.31,
+                                    "total_with_discount": 40.61
+                                },
+                                "10": {
+                                    "fee": 5.56,
+                                    "installment": 4.06,
+                                    "total": 48.31,
+                                    "total_with_discount": 40.61
+                                },
+                                "11": {
+                                    "fee": 5.56,
+                                    "installment": 3.69,
+                                    "total": 48.31,
+                                    "total_with_discount": 40.61
+                                },
+                                "12": {
+                                    "fee": 5.56,
+                                    "installment": 3.38,
+                                    "total": 48.31,
+                                    "total_with_discount": 40.61
+                                }
+                            }
+                        },
+                        {
+                            "brand": "amex",
+                            "discount_value": 0,
+                            "installments": {
+                                "1": {
+                                    "fee": 5.56,
+                                    "installment": 48.31,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "2": {
+                                    "fee": 5.56,
+                                    "installment": 24.16,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "3": {
+                                    "fee": 5.56,
+                                    "installment": 16.1,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "4": {
+                                    "fee": 5.56,
+                                    "installment": 12.08,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "5": {
+                                    "fee": 5.56,
+                                    "installment": 9.66,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "6": {
+                                    "fee": 5.56,
+                                    "installment": 8.05,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "7": {
+                                    "fee": 5.56,
+                                    "installment": 6.9,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "8": {
+                                    "fee": 5.56,
+                                    "installment": 6.04,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "9": {
+                                    "fee": 5.56,
+                                    "installment": 5.37,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "10": {
+                                    "fee": 5.56,
+                                    "installment": 4.83,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "11": {
+                                    "fee": 5.56,
+                                    "installment": 4.39,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "12": {
+                                    "fee": 5.56,
+                                    "installment": 4.03,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                }
+                            }
+                        },
+                        {
+                            "brand": "diners",
+                            "discount_value": 0,
+                            "installments": {
+                                "1": {
+                                    "fee": 5.56,
+                                    "installment": 48.31,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "2": {
+                                    "fee": 5.56,
+                                    "installment": 24.16,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "3": {
+                                    "fee": 5.56,
+                                    "installment": 16.1,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "4": {
+                                    "fee": 5.56,
+                                    "installment": 12.08,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "5": {
+                                    "fee": 5.56,
+                                    "installment": 9.66,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "6": {
+                                    "fee": 5.56,
+                                    "installment": 8.05,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "7": {
+                                    "fee": 5.56,
+                                    "installment": 6.9,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "8": {
+                                    "fee": 5.56,
+                                    "installment": 6.04,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "9": {
+                                    "fee": 5.56,
+                                    "installment": 5.37,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "10": {
+                                    "fee": 5.56,
+                                    "installment": 4.83,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "11": {
+                                    "fee": 5.56,
+                                    "installment": 4.39,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "12": {
+                                    "fee": 5.56,
+                                    "installment": 4.03,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                }
+                            }
+                        },
+                        {
+                            "brand": "hipercard",
+                            "discount_value": 0,
+                            "installments": {
+                                "1": {
+                                    "fee": 5.56,
+                                    "installment": 48.31,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "2": {
+                                    "fee": 5.56,
+                                    "installment": 24.16,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "3": {
+                                    "fee": 5.56,
+                                    "installment": 16.1,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "4": {
+                                    "fee": 5.56,
+                                    "installment": 12.08,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "5": {
+                                    "fee": 5.56,
+                                    "installment": 9.66,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "6": {
+                                    "fee": 5.56,
+                                    "installment": 8.05,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "7": {
+                                    "fee": 5.56,
+                                    "installment": 6.9,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "8": {
+                                    "fee": 5.56,
+                                    "installment": 6.04,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "9": {
+                                    "fee": 5.56,
+                                    "installment": 5.37,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "10": {
+                                    "fee": 5.56,
+                                    "installment": 4.83,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "11": {
+                                    "fee": 5.56,
+                                    "installment": 4.39,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "12": {
+                                    "fee": 5.56,
+                                    "installment": 4.03,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                }
+                            }
+                        },
+                        {
+                            "brand": "elo",
+                            "discount_value": 0,
+                            "installments": {
+                                "1": {
+                                    "fee": 5.56,
+                                    "installment": 48.31,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "2": {
+                                    "fee": 5.56,
+                                    "installment": 24.16,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "3": {
+                                    "fee": 5.56,
+                                    "installment": 16.1,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "4": {
+                                    "fee": 5.56,
+                                    "installment": 12.08,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "5": {
+                                    "fee": 5.56,
+                                    "installment": 9.66,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "6": {
+                                    "fee": 5.56,
+                                    "installment": 8.05,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "7": {
+                                    "fee": 5.56,
+                                    "installment": 6.9,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "8": {
+                                    "fee": 5.56,
+                                    "installment": 6.04,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "9": {
+                                    "fee": 5.56,
+                                    "installment": 5.37,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "10": {
+                                    "fee": 5.56,
+                                    "installment": 4.83,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "11": {
+                                    "fee": 5.56,
+                                    "installment": 4.39,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                },
+                                "12": {
+                                    "fee": 5.56,
+                                    "installment": 4.03,
+                                    "total": 48.31,
+                                    "total_with_discount": 48.31
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "paypal_hpp",
+                    "details": [
+                        {
+                            "brand": "paypal",
+                            "discount_value": 0,
+                            "installments": {
+                                "1": {
+                                    "fee": 0,
+                                    "installment": 42.75,
+                                    "total": 42.75,
+                                    "total_with_discount": 42.75
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "debitcard",
+                    "details": [
+                        {
+                            "brand": "visa-electron",
+                            "discount_value": 0,
+                            "installments": {
+                                "1": {
+                                    "fee": 0,
+                                    "installment": 42.75,
+                                    "total": 42.75,
+                                    "total_with_discount": 42.75
+                                }
+                            }
+                        },
+                        {
+                            "brand": "mastercard-maestro",
+                            "discount_value": 0,
+                            "installments": {
+                                "1": {
+                                    "fee": 0,
+                                    "installment": 42.75,
+                                    "total": 42.75,
+                                    "total_with_discount": 42.75
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
         }
-        ```
+    }
+    ```
 
 **Errors**
 
 |CODE|DESCRIPTION|DETAILS|
 |:---:|:----|:----|
-|**E1**|_Please provide the `store` value._|The parameter `store` is missing from the Request.|
-|**E2**|_Please provide the `platform` value._|The parameter `platform` is missing from the Request.|
-|**E3**|_Please provide the `model` value._|The parameter `model` is missing from the Request.|
-|**E4**|_One of the following parameters is incorrect: `store`, `platform` or `model`._|Please review the values for the three parameters.|
-|**E5**|_The Application encountered a temporary error and could not complete your request._|An error occurred while proccessing your Request before it's sent to the booking engine.|
-|**E6**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request to the booking engine.|
+|**K1**|_Please provide the `meta` block._|The parameter `meta` is missing from the Request.|
+|**K2**|_Please provide your store parameters for meta._|At least one of the parameters `store`, `model` or `platform` is missing.|
+|**K3**|_One of the following parameters are incorrect: `store`, `platform` or `model`._|One of the `meta` values is incorrect (`store`, `model` or `platform`).|
+|**K4**|_Please provide the `contents` block._|The parameter `contents` is missing from the Request.|
+|**K5**|_Please provide at least one seat information._|The parameter `contents` is empty.|
+|**K6**|_Please provide the right params for the seats._|At least one of the values inside `contents` is missing one of it's required parameters: `scheduleId` or `ticket_amount`.|
+|**K7**|_The given `scheduleId` is incorrect._|One of the given `scheduleId` is incorrect or invalid.|
+|**K8**|_The given `ticket_amount` is incorrect._|One of the given `ticket_amount` is incorrect.|
 
+
+## How Payments Works [/payments]
+
+This resource provides a list for each payment option that our API offers. The calculus is based on the following operation:
+
+* `ticket_amount` stands for the seats quantity, based on how many seats were provided in the request;
+* `original_cost` stands for the ticket's original price;
+* `payment_methods[].details[].discount_value` is the discount value that will be applied for this brand;
+* `installment` is the installment value itself, calculated as:
+    > ((`original_cost` + `fee`) - `discount_value`) / `installment` quantity
+                
+   So, based on the following example:
+                
+    ```json
+    "1": {
+        "fee": 5.43,
+        "installment": 47.23,
+        "total": 47.23,
+        "total_with_discount": 47.23
+    },
+    "2": {
+        "fee": 6.27,
+        "installment": 24.03,
+        "total": 48.07,
+        "total_with_discount": 48.07
+    }
+    ```
+
+    * If the customer decides to pay in a single installment:
+        * The `original_cost` is _41.80_, the `fee` is _5.43_ and the `discount_value` is _0_;
+            > (41.8 + 5.43) = **47.23** is the `total` value.
+            > 
+            > ((`total`) - 0) / 1 = **47.23** is the value for each `installment`.
+
+    * If the customer decides to pay in two installments:
+        * The `original_cost` is _41.80_, the `fee` is _6.27_ and the `discount_value` is _0_;
+            > (41.8 + 6.27) = **48.07** is the `total` value.
+            > 
+            > ((`total`) - 0) / 2 = **24.03** is the value for each `installment`.
+             
+    * If the customer decides to pay in two installments, but there is a discount value:
+        * The `original_cost` is _41.80_, the `fee` is _6.27_ and the `discount_value` is _7.52_;
+            > (41.8 + 6.27) = **48.07** is the `total` value.
+            > 
+            > ((`total`) - 7.52) / 2 = **20.27** is the value for each `installment`.
+            
+* `total` is the total value, based on `installment` + `fee`;
+* `total_with_discount` is the same total value, but applying the `discount_value`.
+
+----------------------------------------
+
+##Supported Card Brands [/payments]
+
+Below you can find a list of supported card brands, based on each payment method:
+
+- **Credit Card** (`creditcard`):
+    - American Express (`amex`)
+    - Diners (`diners`)
+    - Elo (`elo`)
+    - Hipercard (`hipercard`)
+    - MasterCard (`mastercard`)
+    - Visa (`visa`)
+
+
+- **Debit Card** (`debitcard`)
+    - Visa Electron (`visa-electron`)
+    - MasterCard Maestro (`mastercard-maestro`)
+
+For **PayPal** (`paypal_hpp`), there is no specific limitation for brands.
 
 # Group Booking
 
@@ -874,6 +1431,7 @@ If you wish to check the status of your Orders, please follow these steps:
         ```
 - For more details about the Public API Key and how to obtain your Key, please check the chapter **Authentication Required** [here](#order-details-authentication-required).
 - You can only check the Orders where this value (`api_key`) was provided in the request to **Create an Order**.
+- The same settings can be applied to the `/checkout` endpoint.
 
 ------------------------
 
@@ -944,7 +1502,7 @@ Based on each of the 3 valid payment methods:
 
 **1) Payment method: Credit Card**
 
-**Parameters**
+**PARAMETERS**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
@@ -1041,7 +1599,7 @@ Based on each of the 3 valid payment methods:
         }
         ```
 
-**Response**
+**RESPONSE**
 
 The following Request, with all correct parameters, will return a _201_ Response, with all details from the Order, as the example below.
 
@@ -1123,7 +1681,7 @@ The following Request, with all correct parameters, will return a _201_ Response
 
 **2) Payment method: Debit Card**
 
-**Parameters**
+**PARAMETERS**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
@@ -1203,7 +1761,7 @@ The following Request, with all correct parameters, will return a _201_ Response
         }
         ```
 
-**Response**
+**RESPONSE**
 
 Attention to `content.payment.meta.continuePaymentURL`, which contains the URL to redirect after payment.
 
@@ -1286,7 +1844,7 @@ Attention to `content.payment.meta.continuePaymentURL`, which contains the URL t
 
 This payment method provides a redirect link in the Response body, provided after PayPal's request.
 
-**Parameters**
+**PARAMETERS**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
@@ -1355,7 +1913,7 @@ This payment method provides a redirect link in the Response body, provided afte
         }
         ```
 
-**Response**
+**RESPONSE**
 
 ```json
 {
@@ -1487,7 +2045,7 @@ This Request aims to update an Order Status to `order_canceled`, which means tha
 
 ### Cancel an Order [PUT]
 
-**Parameters**
+**PARAMETERS**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
@@ -1495,7 +2053,7 @@ This Request aims to update an Order Status to `order_canceled`, which means tha
 |**request.localizer** (required)|_string_|A localizer which points to your Order, obtained while creating an **Order**.|`53347e09aee47`|
 |**request.status** (required)|_string_|**Cancel** status.|`order_canceled`|
 
-**Request**
+**REQUEST**
 
 ```json
 {
@@ -1506,7 +2064,7 @@ This Request aims to update an Order Status to `order_canceled`, which means tha
 }
 ```
 
-**Response**
+**RESPONSE**
 
 The given request returns a Response _201_, with all Order details in the Response body:
 
@@ -1593,6 +2151,275 @@ The given request returns a Response _201_, with all Order details in the Respon
 |**A10**|_The given localizer is invalid._|The value for `localizer` is invalid or could not be found.|
 
 
+# Group Checkout
+
+The `/checkout` endpoint allows you to pick the seats and create the Order in the same request.
+
+As opposed to `/booking`, `/checkout` **does not need previous requests to `/seat-block`.** Instead, you provide the `scheduleId` for each trip (departure, return, or even only departure or only return) along with the minimum required data for each passenger. 
+    
+- **ATTENTION:** 
+    > This resource provides an easier approach for creating Orders, once that you don't need to request `/seat-block` for each seat. However, there are chances that one or more of the desired seats are unavailable.
+
+**NOTES:**
+
+- For every Response, please remember to keep the `content.localizer` value; this value is required for any **Update Order** Request;
+- Please keep in mind that you need to provide in your header the `PHPSESSID` key with the Session's ID in the Cookie, as below:
+    > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
+
+## Create an Order [/checkout]
+
+### Create an Order [POST]
+
+To create an Order, the request's body requires a range of data, which, for a better understanding, we will divide in the following blocks below:
+
+- **meta**, which contains the params `model`, `store` and `platform` for each Partner;
+- **request**, which contains:
+    - **request.buyer** contains all required information about the Buyer;
+        - **request.buyer.payment** contains all the Buyer's payment data;
+    - **request.orderItems** contains all the Seats, along with their information, added to the Order.
+
+Each `/checkout` have the same structure block except for `payment` block, which is based on each payment method (see details below):
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**meta** (required)|_object_|An empty object. Partners can use this parameter to provide:|`{}`|
+|**meta.model** (required)|_string_|Partner's `model` data. |`retail`|
+|**meta.store** (required)|_string_|Partner's `store` data. |`newstore`|
+|**meta.platform** (required)|_string_|Partner's `platform` data. |`web`|
+|**request** (required)|_object_|A container which requires: ||
+|**request.ip** (optional)|_string_|IP address from where the request was sent.|`192.168.14.1`|
+|**request.buyer** (required)|_object_|A container which requires: ||
+|**request.buyer.locale** (required)|_string_|Buyer's locale.|`pt_BR`|
+|**request.buyer.firstName** (required)|_string_|Buyer's first name.|`Fulano`|
+|**request.buyer.lastName** (required)|_string_|Buyer's surname.|`de Silva`|
+|**request.buyer.email** (required)|_string_|Buyer's email.|`fulano@teste.com.br`|
+|**request.buyer.phone** (required)|_string_|Buyer's phone, in format `AABBBBBBBBB`, where `AA` stands for the brazilian phone's region code, and `BBBBBBBBB` stands for the phone number.|`11912345678`|
+|**request.buyer.document** (required)|_string_|Buyer's document.|`123.456.789-00`|
+|**request.buyer.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
+|**request.buyer.birthday** (required)|_string_|Buyer's birth date, in format `yyyy-mm-dd`.|`1970-01-15`|
+|**request.buyer.meta** (required)|_object_|An empty object.|`{}`|
+|**request.buyer.payment** (required)|_object_|An object containing all the required information according to the payment method.||
+|**request.items** (required)|_array_|A collection of objects, which may contain at least 1 and a maximum of N to be considered valid. Each object contains:|`[]`|
+|**request.items.seat** (required)|_string_|The seat number for a single passenger.|`13`|
+|**request.items.passenger** (required)|_object_|An object, which have:|`{}`|
+|**request.items.passenger.name** (required)|_string_|Passenger's full name.|`Fulano da Silva`|
+|**request.items.passenger.document** (required)|_string_|Passenger's document.|`123.456.789-00`|
+|**request.items.passenger.documentType** (required)|_string_|Passenger's document type. It must be a document with the passenger's picture.|`rg`|
+|**request.items.scheduleId** (required)|_string_|The `scheduleId` for one of the desired trips (departure or return).|`NDAxNy0tMzkzNS0tMjAxNS0wNS0...`|
+
+ As the `/booking` endpoint, the `/checkout` request support the same 3 valid payment methods:
+
+- **Credit Card**
+- **Debit Card**
+- **PayPal**
+
+**Payment method: Credit Card**
+
+**PARAMETERS**
+
+The values are the same for the `payment` block, as described in the [`/booking` endpoint](#booking-create-an-order).
+
+**REQUEST**
+
+- Create an Order with the following data:
+    - Created from a `store` called _NewWorld_;
+    - Selected 1 Seat (number _13_) on departure for _Fulano da Silva_ and 1 Seat (number _17_) on return for the same passenger;
+    - Each item costs R$ 12.35, so the `request.buyer.payment.total` value is _2470_;
+    - The payment is settled to a single `installment`, using `creditcard`.
+
+    ```json
+    {
+        "meta": {
+            "model": "Retail",
+            "store": "NewWorld",
+            "platform": "Web"
+        },
+        "request": {
+            "ip": "192.168.14.1",
+            "buyer": {
+                "locale": "pt_BR",
+                "firstName": "Clickbus",
+                "lastName": "Test",
+                "email": "test-orders@clickbus.com",
+                "phone": "12098765432",
+                "document": "176.768.826-13",
+                "gender": "M",
+                "birthday": "1986-04-18",
+                "meta": {},
+                "payment": {
+                    "method": "creditcard",
+                    "currency": "BRL",
+                    "total": 2470,
+                    "installment": "1",
+                    "meta": {
+                        "card": "4111111111111111",
+                        "code": "737",
+                        "name": "FULANO SILVA",
+                        "expiration": "2017-07",
+                        "zipcode": "04104080"
+                    }
+                }
+            },
+            "items": [
+                {
+                    "seat": "13",
+                    "passenger": {
+                        "name": "Fulano da Silva",
+                        "document": "12.345.678-9",
+                        "documentType": "rg"
+                    },
+                    "scheduleId": "NDAxNy0tMzkzNS0tMjAxNS0wNS0yNSAyMDoxMC0tOS0tMDAxMy0tMS0tMS0tMS0tQ09OVi0tNjYuMzY="
+                },
+                {
+                    "seat": "17",
+                    "passenger": {
+                        "name": "Fulano da Silva",
+                        "document": "12.345.678-9",
+                        "documentType": "rg"
+                    },
+                    "scheduleId": "MzkzNS0tNDAxNy0tMjAxNS0wNS0yNSAwMzo1MC0tOS0tMDA4Mi0tMS0tMS0tMS0tQ09OVi0tMTA="
+                }
+            ]
+        }
+    }
+    ```
+
+**RESPONSE**
+
+- The following Request, with all correct parameters, will return a _201_ Response, with all details from the Order, as the example below.
+
+    ```json
+    {
+        "meta": {
+            "model": "Retail",
+            "store": "ClickBus",
+            "platform": "Web"
+        },
+        "content": {
+            "id": "1062",
+            "status": "order_finalized_successfully",
+            "localizer": "5EBP2M",
+            "payment": {
+                "method": "payment.creditcard",
+                "total": "2470",
+                "currency": "BRL",
+                "status": "order_finalized_successfully",
+                "meta": {
+                    "card": "4111-XXXX-XXXX-1111",
+                    "code": "XXX",
+                    "name": "FULANO SILVA",
+                    "expiration": "XXXX-XX-XX",
+                    "postbackUrl": "",
+                    "callbackUrl": ""
+                }
+            },
+            "items": [
+                {
+                    "trip_id": "4321",
+                    "localizer": "KPFHNB",
+                    "ticket_code": "6462297",
+                    "context": "departure",
+                    "order_item": "1228",
+                    "serviceClass": "Convencional",
+                    "departure": {
+                        "waypoint": "4017",
+                        "schedule": {
+                            "date": "2015-02-11",
+                            "time": "01:00",
+                            "timezone": "America/Sao_Paulo"
+                        }
+                    },
+                    "arrival": {
+                        "waypoint": "3935",
+                        "schedule": {
+                            "date": "2015-02-11",
+                            "time": "03:00",
+                            "timezone": "America/Sao_Paulo"
+                        }
+                    },
+                    "seat": {
+                        "name": "13",
+                        "price": "12.35",
+                        "status": "reserved",
+                        "currency": "BRL",
+                        "type": {}
+                    },
+                    "passenger": {
+                        "firstName": "Fulano",
+                        "lastName": "da Silva",
+                        "document": "123.456.789-00",
+                        "meta": {}
+                    },
+                    "products": [],
+                    "subtotal": "12.35"
+                },
+                {
+                    "trip_id": "7340",
+                    "localizer": "ZXSMTM",
+                    "ticket_code": "5762464",
+                    "context": "departure",
+                    "order_item": "1229",
+                    "serviceClass": "Convencional",
+                    "departure": {
+                        "waypoint": "4017",
+                        "schedule": {
+                            "date": "2015-02-11",
+                            "time": "01:00",
+                            "timezone": "America/Sao_Paulo"
+                        }
+                    },
+                    "arrival": {
+                        "waypoint": "3935",
+                        "schedule": {
+                            "date": "2015-02-11",
+                            "time": "03:00",
+                            "timezone": "America/Sao_Paulo"
+                        }
+                    },
+                    "seat": {
+                        "name": "17",
+                        "price": "12.35",
+                        "status": "reserved",
+                        "currency": "BRL",
+                        "type": {}
+                    },
+                    "passenger": {
+                        "firstName": "Fulano",
+                        "lastName": "da Silva",
+                        "document": "123.456.789-00",
+                        "meta": {}
+                    },
+                    "products": [],
+                    "subtotal": "12.35"
+                }
+            ],
+            "createdAt": "2015-01-23"
+        }
+    }
+    ```
+
+**Errors**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**L1**|_Please provide the 'passenger's name._|One of the passenger's `name` is missing from the request.|
+|**L2**|_Please provide a value for the passenger's first name._|One of the passenger's `name` is empty.|
+|**L3**|_Please provide the 'passenger's document._|One of the passenger's `document` is missing from the request.|
+|**L4**|_Please provide a value for the passenger's document._|One of the passenger's `document` is empty.|
+|**L5**|_Please provide the 'scheduleId'._|The `scheduleId` for one of the order items is missing from the Request.|
+|**L6**|_The given 'scheduleId' is invalid._|The `scheduleId` for one of the order items is invalid or incorrect.|
+|**L7**|_Missing parameters in your payment data._|One or more of the following `buyer` parameters are missing: `name`, `card`, `code`, `zipcode` or `expiration`.|
+|**L8**|_The expiration data is invalid or incorrect._|The expiration data provided in the card is incorrect or invalid.|
+|**L9**|_Please provide the 'installment' for the payment data._|The parameter `installment` is missing from the Request.|
+|**L10**|_An unexpected issue happened in your Request. Please contact us for more details._|Troubles while requesting data from the booking engine. Please contact us at contato@clickbus.com.br for support and details.|
+|**L11**|_The 'departure' date and time cannot occur before current date and time_||
+|**L12**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request.|
+|**L13**|_Please check you card number._||
+|**L14**|_There was a problem with your Order. Please contact us for more details_||
+|**L15**|_Checkout Error_|An internal error ocurred at the conclusion of your Request.|
+|**L16**|_Application Error_|An error occurred before send the success email of your Request.|
+
+
 # Group Order Details
 
 
@@ -1614,11 +2441,11 @@ The resource `/order` return all information related to a specific trip, based o
 
 ### Get Order List [GET]
 
-**Parameters**
+**PARAMETERS**
 
 _None_
 
-**Response**
+**RESPONSE**
 
 A successful request will return a _200_ Response, with the structure as described below:
 
@@ -1735,13 +2562,13 @@ The resource `/order/{id}` provides a variety of details of a specific Order, ba
 
 ### Get Order [GET]
 
-**Parameters**
+**PARAMETERS**
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
 |**id** (required)|_int_|A valid ID for any created Order.|`10`|
 
-**Response**
+**RESPONSE**
 
 Using a valid `id`, and providing a valid and authentic API Key, the request will return a _200_ Response, displaying an Order distributed in the following structure:
 
@@ -1769,7 +2596,7 @@ Using a valid `id`, and providing a valid and authentic API Key, the request wil
         - `destination_city_name` is the city's name related to the destination point;
         - `subtotal` is the monetary value related to this Item.
 
-**Example**
+**EXAMPLE**
 
 - Get the results from an Order, using credit card:
 
