@@ -1,0 +1,7 @@
+/notes
+
+.DS_Store
+
+# just for Capstrano tests
+Capfile
+config/
