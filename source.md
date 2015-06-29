@@ -369,6 +369,100 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 |**J8**|_Please provide a valid date for `departure`._|The value for `departure` is invalid or incorrect.|
 |**J9**|_The `departure` date cannot occur in a day before today._|The value for `departure` cannot be a date in the past.|
 
+# Group Bus Companies
+
+## List All Bus Companies [/buscompanies]
+
+The resource `/buscompanies` provides a list of all available Bus Companies offered in ClickBus routes. This is useful to provide logos, identifiers and alias related to each Bus Company for any purposes that your application may use.
+
+### List All Bus Companies [GET]
+
+**PARAMETERS**
+
+_None_
+
+**RESPONSE**
+
+- The `meta` parameter contains all data for pagination, as:
+    - `total` is the amount of results obtained.
+    - `perPage` is the limit of results per page.
+    - `currentPage` displays om which page you actually are.
+    - `totalPages` indicates the amount of pages.
+    - `busCompanies` provides an array of Bus Companies, described as:
+        - `id` is the identifier, unique for each result.
+        - `name` is the Bus Company name.
+        - `logo` is an object containing `url`, which is the path for the Bus Company logo image file.
+
+```
+{
+    "meta": {
+        "total": 67,
+        "perPage": 50,
+        "currentPage": 1,
+        "totalPages": 2
+    },
+    "busCompanies": [
+        {
+            "id": 1,
+            "name": "1001",
+            "logo": {
+                "url": "https://s3-sa-east-1.amazonaws.com/legacy-static/bl-1001-s.jpg"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Andorinha",
+            "logo": {
+                "url": "https://s3-sa-east-1.amazonaws.com/legacy-static/bl-andorinha-s.jpg"
+            }
+        },
+        {...}
+    ]
+}
+```
+
+## Get a Single Bus Company  [/buscompanies{/id}]
+
+Once you have all identifiers for all Bus Companies, the resource `/buscompanies` provide a shortcut to retrieve a single Bus Company, related to the given `id`.
+
+### Get a Single Bus Company [GET]
+
+**PARAMETERS**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**id** (required)|_integer_|An identifier related to any Bus Company.|`10`|
+
+**REQUEST**
+
+- URL:
+    ```
+    api/v1/buscompanies/2
+    ```
+
+**RESPONSE**
+
+- As there is no pagination data for a single result, the `meta` parameter contains only an empty object.
+- `busCompanies` contains an array with a single Bus Company, described as:
+    - `id` is the identifier, unique for each result.
+    - `name` is the Bus Company name.
+    - `logo` is an object containing `url`, which is the path for the Bus Company logo image file.
+
+    ```
+    {
+        "meta": {},
+        "busCompanies": [
+            {
+                "id": 2,
+                "name": "Andorinha",
+                "logo": {
+                    "url": "https://s3-sa-east-1.amazonaws.com/legacy-static/bl-andorinha-s.jpg"
+                }
+            }
+        ]
+    }
+    ```
+
 
 # Group Session
 
