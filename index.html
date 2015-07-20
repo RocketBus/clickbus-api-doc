@@ -1,0 +1,1064 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Clickbus Public API</title><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  margin-left: 3px;
+  color: #c7254e;
+  background-color: rgba(255,255,255,0.7);
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item:hover {
+  background-color: #f8f8f8;
+  border-left: 2px solid #555;
+  padding-left: 15px;
+}
+.indent {
+  display: block;
+  text-indent: 16px;
+}
+.list-group-item {
+  padding-left: 16px;
+}
+.list-group-item .toggle .open {
+  display: block;
+}
+.list-group-item .toggle .closed {
+  display: none;
+}
+.list-group-item.collapsed .toggle .open {
+  display: none;
+}
+.list-group-item.collapsed .toggle .closed {
+  display: block;
+}
+a.list-group-item {
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  font-size: 15px;
+  background-color: #f5f5f5;
+}
+a.list-group-item.heading:hover {
+  background-color: #f8f8f8;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+.list-group-item a span.closed {
+  display: none;
+}
+.list-group-item a span.open {
+  display: block;
+}
+.list-group-item a.collapsed span.closed {
+  display: block;
+}
+.list-group-item a.collapsed span.open {
+  display: none;
+}
+#nav {
+  width: inherit;
+  margin-top: 38px;
+  max-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    max-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a data-toggle="" data-target="#places-menu" href="#places" class="list-group-item heading collapsed">Places</a><div id="places-menu"><a href="#places-get-all-places" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get All Places</a></div></div><div class="list-group"><a data-toggle="" data-target="#trips-menu" href="#trips" class="list-group-item heading collapsed">Trips</a><div id="trips-menu"><a href="#trips-get-all-available-trips" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get all available Trips</a></div></div><div class="list-group"><a data-toggle="" data-target="#session-menu" href="#session" class="list-group-item heading collapsed">Session</a><div id="session-menu"><a href="#session-get-session" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Session</a></div></div><div class="list-group"><a data-toggle="" data-target="#trip-details-menu" href="#trip-details" class="list-group-item heading collapsed">Trip Details</a><div id="trip-details-menu"><a href="#trip-details-get-trip-details" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Trip Details</a><a href="#trip-details-how-seat-position-works" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">How Seat Position works</a></div></div><div class="list-group"><a data-toggle="" data-target="#seat-block-menu" href="#seat-block" class="list-group-item heading collapsed">Seat Block</a><div id="seat-block-menu"><a href="#seat-block-create-a-block-in-a-seat" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span>Create a block in a Seat</a><a href="#seat-block-remove-a-block-in-a-seat" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-danger"><i class="fa fa-times"></i></span>Remove a block in a Seat</a></div></div><div class="list-group"><a data-toggle="" data-target="#payment-menu" href="#payment" class="list-group-item heading collapsed">Payment</a><div id="payment-menu"><a href="#payment-get-all-payment-settings" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get all Payment settings</a></div></div><div class="list-group"><a data-toggle="" data-target="#booking-menu" href="#booking" class="list-group-item heading collapsed">Booking</a><div id="booking-menu"><a href="#booking-create-an-order" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span>Create an Order</a><a href="#booking-credit-card-rejection" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Credit Card Rejection</a></div></div></nav></div><div class="col-md-8"><div><header><div class="page-header"><h1 id="top">Clickbus Public API</h1></div></header><div class="description"><p>This is the documentation and samples for Clickbus Public API. Also this can be used as mocked data to simply test API integration.</p>
+<p>In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (<a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details).</p>
+<h3><strong>Overview</strong></h3>
+<p>Below are the topic Groups to perform every task for your applications:</p>
+<ul>
+<li><p>Obtain a list with all <strong>Places</strong>;</p></li>
+<li><p>Search any of our <strong>Trips</strong>;</p></li>
+<li><p>Get all information about the available <strong>Payment</strong> methods;</p></li>
+<li><p>Obtain <strong>Trip Details</strong> from each route;</p></li>
+<li><p><strong>Seat Block</strong> to lock or unlock seat reservations;</p></li>
+<li><p><strong>Booking</strong> orders;</p></li>
+<li><p>Sign your actions with an ID provided by <strong>Session</strong>.</p></li>
+</ul>
+<h1>API Reference</h1>
+<h2><strong>Predicates</strong></h2>
+<ol>
+<li><p>All sucessfull requests return a <strong>20</strong>* Response header;</p></li>
+<li><p>The params <strong>store</strong>, <strong>model</strong> and <strong>platform</strong> are created for each partner. To obtain these credentials, please contact our commercial department at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a>.</p></li>
+</ol>
+<h2><strong>Groups</strong></h2>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="places">Places&nbsp;<a href="#places"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="places-get-all-places">Get All Places&nbsp;<a href="#places-get-all-places"><i class="fa fa-link"></i></a></h4><p>The resource <code>/places</code> retrieves all the available Places, where each Place can be used as a destination point to our travels and routes.</p>
+<p>One of the most important values on this resource is the <code>slug</code>, which contains the name to use when referencing to a Place in a <strong>Trips</strong> request.</p>
+<section id="places-get-all-places-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get All Places</span></div><div style="float:left"><a href="#places-get-all-places-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/places</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<p><em>None</em></p>
+<p><strong>Response</strong></p>
+<p>The given request returns a Response <em>200</em>, with a list in JSON format filled with all Places:</p>
+<p><strong>Example</strong></p>
+<pre><code class="language-json">{
+   "meta": "",
+   "items": [{
+       "id": 15720,
+       "station_id": 15720,
+       "slug": "aeropuerto-guadalajara-jal_",
+       "locale": "es-MX",
+       "name": "Aeropuerto Guadalajara, JAL",
+       "is_primary": "true",
+       "created_at": "2014-09-17 10:08:11",
+       "updated_at": "2014-12-03 12:18:36",
+       "place": {
+           "id": 15720,
+           "place_id": 15720,
+           "locale": "es-MX",
+           "name": "Aeropuerto Guadalajara, JAL",
+           "created_at": "2014-09-17 10:08:11",
+           "updated_at": "2014-12-03 12:18:36",
+           "latitude": "",
+           "longitude": "",
+           "state": {
+               "code": "",
+               "name": "Aeropuerto Guadalajara, JAL"
+           }
+       }
+   }, {
+       "id": 5068,
+       "station_id": 5068,
+       "slug": "quertaro-qro",
+       "locale": "es-MX",
+       "name": "Querétaro, QRO.",
+       "is_primary": "true",
+       "created_at": "2013-11-26 17:57:06",
+       "updated_at": "2014-05-26 16:38:32",
+       "place": {
+           "id": 5068,
+           "place_id": 5068,
+           "locale": "es-MX",
+           "name": "Querétaro, QRO.",
+           "created_at": "2013-11-26 17:57:06",
+           "updated_at": "2014-05-26 16:38:32",
+           "latitude": "",
+           "longitude": "",
+           "state": {
+               "code": "",
+               "name": "Querétaro, QRO."
+           }
+       }
+   }, {...}]
+}
+</code></pre>
+</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="trips">Trips&nbsp;<a href="#trips"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="trips-get-all-available-trips">Get all available Trips&nbsp;<a href="#trips-get-all-available-trips"><i class="fa fa-link"></i></a></h4><p>The resource <code>/trips</code> provides a list with all available trips, with all sort of details you may need.</p>
+<p><strong>ADVICES:</strong></p>
+<ul>
+<li><p>Remember that each request to <code>/trips</code> will erase all itens stored in your Pre-Order, so, if you don’t have confirmed your Order yet, all the items added to the Pre-Order will be lost.</p></li>
+<li><p>The <code>bookingEngine</code> value, provided in the sucessfull Response, is one of the most important values on this resource: when you request the return trip, you have to provide in the <code>engine</code> parameter the exact same <code>bookingEngine</code> obtained in the departure trip.</p></li>
+</ul>
+<section id="trips-get-all-available-trips-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get all available Trips</span></div><div style="float:left"><a href="#trips-get-all-available-trips-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/trips</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>from</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination from where a trip starts.</td><td style="text-align:left"><code>quertaro-qro</code></td></tr>
+<tr><td style="text-align:left"><strong>to</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination to where a trip ends.</td><td style="text-align:left"><code>guadalajara-jal</code></td></tr>
+<tr><td style="text-align:left"><strong>departure</strong> (required)</td><td style="text-align:left"><em>date</em></td><td style="text-align:left">Any valid date, in format <code>yyyy-mm-dd</code>.</td><td style="text-align:left"><code>2015-02-11</code></td></tr>
+<tr><td style="text-align:left"><strong>engine</strong> (optional)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.</td><td style="text-align:left"><code>5411E7D726991</code></td></tr>
+</tbody>
+</table>
+<p><strong>Response</strong></p>
+<p>With the correct params, this resource returns a Response <em>200</em> and a list, in JSON format, with these details as follow:</p>
+<ul>
+<li><p><code>bookingEngine</code>, which is the booking engine where the results are based on;</p></li>
+<li><p><code>items</code>, a list with the results from the requested <code>bookingEngine</code>, which contain:</p>
+<ul>
+<li><code>from</code> and <code>to</code> destinations;</li>
+<li><code>parts</code> section, which contains:
+<ul>
+<li><code>waypoint</code> information, such as <code>schedule</code> for each waypoint, including <code>price</code>, <code>date</code> and <code>time</code>;</li>
+<li>Which <code>busCompany</code> offer these travels;</li>
+<li><code>availableSeats</code> provides how many seats are available.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li><p>Searching for travels from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> in <em>11th Feb 2015</em>, with all correct params:</p>
+<ul>
+<li>URL:
+<pre><code>api/v1/trips?<span class="hljs-variable">from=</span>quertaro-qro&amp;<span class="hljs-variable">to=</span>guadalajara-jal&amp;<span class="hljs-variable">engine=</span><span class="hljs-number">5411</span>E7D726991&amp;<span class="hljs-variable">departure=</span><span class="hljs-number">2015</span>-<span class="hljs-number">02</span>-<span class="hljs-number">11</span>
+</code></pre></li>
+<li>Response:
+<pre><code class="language-json">{
+    "meta": "",
+    "bookingEngine": "5411E7D726991",
+    "items": [{
+        "from": "Querétaro, QRO.",
+        "to": "Guadalajara, JAL.",
+        "parts": [{
+            "trip_id": "50",
+            "departure": {
+                "price": "50000",
+                "waypoint": {
+                    "id": "5068",
+                    "prices": [{
+                        "waypoint": "5029",
+                        "price": "50000"
+                    }],
+                    "schedule": {
+                        "id": "e4479611acd114b958871fe4cb8130af",
+                        "date": "2015-02-05",
+                        "time": "07:20",
+                        "timezone": "America/Mexico_City"
+                    },
+                    "context": "departure",
+                    "place": {
+                        "country": "MX",
+                        "state": "",
+                        "city": "Querétaro, QRO.",
+                        "station": {
+                            "current": {
+                                "id": "5068",
+                                "name": "Querétaro, QRO.",
+                                "locale": "es"
+                            },
+                            "default": {
+                                "id": "",
+                                "name": "",
+                                "locale": ""
+                            }
+                        },
+                        "locale": "es",
+                        "id": "5068"
+                    },
+                    "isDeparture": "true",
+                    "position": "0"
+                }
+            },
+            "arrival": {
+                "price": "50000",
+                "waypoint": {
+                    "id": "5029",
+                    "prices": [{
+                        "waypoint": "",
+                        "price": ""
+                    }],
+                    "schedule": {
+                        "id": "e4479611acd114b958871fe4cb8130af",
+                        "date": "2015-02-05",
+                        "time": "12:35",
+                        "timezone": "America/Mexico_City"
+                    },
+                    "context": "arrival",
+                    "place": {
+                        "country": "MX",
+                        "state": "",
+                        "city": "Guadalajara, JAL.",
+                        "station": {
+                            "current": {
+                                "id": "111",
+                                "name": "Guadalajara, JAL.",
+                                "locale": "es"
+                            },
+                            "default": {
+                                "id": "",
+                                "name": "",
+                                "locale": "es"
+                            }
+                        },
+                        "locale": "es",
+                        "id": "5029"
+                    },
+                    "isDeparture": "false",
+                    "position": "0"
+                }
+            },
+            "busCompany": {
+                "name": "Primera Plus",
+                "id": "33"
+            },
+            "bus": {
+                "serviceClass": "Primera",
+                "name": "Primera",
+                "id": "1"
+            },
+            "waypoints": [{
+                "id": "5068",
+                "prices": [{
+                    "waypoint": "5029",
+                    "price": "50000"
+                }],
+                "schedule": {
+                    "id": "e4479611acd114b958871fe4cb8130af",
+                    "date": "2015-02-05",
+                    "time": "07:20",
+                    "timezone": "America/Mexico_City"
+                },
+                "context": "departure",
+                "place": {
+                    "country": "MX",
+                    "state": "Ankara",
+                    "city": "Ankara",
+                    "station": {
+                        "current": {
+                            "id": "5068",
+                            "name": "Querétaro, QRO.",
+                            "locale": "es"
+                        },
+                        "default": {
+                            "id": "",
+                            "name": "",
+                            "locale": ""
+                        }
+                    },
+                    "locale": "es",
+                    "id": "123"
+                },
+                "isDeparture": "true",
+                "position": "0"
+            }, {
+                "id": "5029",
+                "prices": [{
+                    "waypoint": "",
+                    "price": "50000"
+                }],
+                "schedule": {
+                    "id": "e4479611acd114b958871fe4cb8130af",
+                    "date": "2015-02-05",
+                    "time": "07:20",
+                    "timezone": "America/Mexico_City"
+                },
+                "context": "arrival",
+                "place": {
+                    "country": "MX",
+                    "state": "Ankara",
+                    "city": "Guadalajara, JAL.",
+                    "station": {
+                        "current": {
+                            "id": "5029",
+                            "name": "Guadalajara, JAL.",
+                            "locale": "es"
+                        },
+                        "default": {
+                            "id": "",
+                            "name": "",
+                            "locale": "es"
+                        }
+                    },
+                    "locale": "es",
+                    "id": ""
+                },
+                "isDeparture": false,
+                "position": 0
+            }],
+            "seatTypes": [],
+            "products": [],
+            "availableSeats": "30"
+        }]
+    }, {...}]
+}
+</code></pre></li>
+</ul></li>
+<li><p>Searching for travels from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> using an incorrect or even an unavailable date value on <em>departure</em>:</p>
+<ul>
+<li><p>URL:</p>
+<p>For an incorrect value, like <code>99/99/9999</code>:</p>
+<pre><code>/api/v1/search?<span class="hljs-variable">departure=</span><span class="hljs-number">9999</span>-<span class="hljs-number">99</span>-<span class="hljs-number">99</span>&amp;<span class="hljs-variable">from=</span>quertaro-qro&amp;<span class="hljs-variable">to=</span>guadalajara-jal&amp;<span class="hljs-variable">engine=</span><span class="hljs-number">5411</span>E7D726991
+</code></pre>
+<p>For an unavailable value, like <code>1th January, 2010</code>:</p>
+<pre><code>/api/v1/search?<span class="hljs-variable">departure=</span><span class="hljs-number">2010</span>-<span class="hljs-number">01</span>-<span class="hljs-number">01</span>&amp;<span class="hljs-variable">from=</span>quertaro-qro&amp;<span class="hljs-variable">to=</span>guadalajara-jal&amp;<span class="hljs-variable">engine=</span><span class="hljs-number">5411</span>E7D726991
+</code></pre></li>
+<li><p>Response:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">bookingEngine</span>": <span class="hljs-value"><span class="hljs-string">"5411E7D726991"</span></span>,
+    "<span class="hljs-attribute">items</span>": <span class="hljs-value">[]
+</span>}
+</code></pre></li>
+</ul></li>
+</ul>
+</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="session">Session&nbsp;<a href="#session"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="session-get-session">Get Session&nbsp;<a href="#session-get-session"><i class="fa fa-link"></i></a></h4><p>The resource <code>/session</code> retrieves the current Session ID, which is useful to obtain data from the current session, like add a reservation by locking a seat using the <strong>Seat Block</strong> resource.</p>
+<p><strong>NOTE:</strong> The token have a lifetime of ~15 minutes. After that, the token is expired, so you have to execute a new request to <code>/session</code> to generate a new token.</p>
+<section id="session-get-session-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Session</span></div><div style="float:left"><a href="#session-get-session-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/session</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<p><em>None</em></p>
+<p><strong>Response</strong></p>
+<p>The given request returns a Response <em>200</em>, and the session ID on the Response Body, as follow:</p>
+<p><strong>Example</strong></p>
+<ul>
+<li><p>Sucessfull request:</p>
+<ul>
+<li>URL:
+<pre><code>api<span class="hljs-regexp">/v1/</span>session
+</code></pre></li>
+<li>Response:
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"or8k5s91s66fsl3bp6ksu96qs7"</span>
+</span>}
+</code></pre></li>
+</ul></li>
+</ul>
+</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="trip-details">Trip Details&nbsp;<a href="#trip-details"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="trip-details-get-trip-details">Get Trip Details&nbsp;<a href="#trip-details-get-trip-details"><i class="fa fa-link"></i></a></h4><p>The resource <code>/trip</code> return all information related to a specific trip, based on a given schedule ID (check <strong>Trips</strong> resource for more details).</p>
+<ul>
+<li><strong>WARNING:</strong>
+<blockquote>
+<p>One of the most important values obtained in the <code>/trip</code>s Response is <code>sessionId</code>. <strong>Remember to keep this value</strong>: it’s required for most of your requests.</p>
+</blockquote></li>
+</ul>
+<section id="trip-details-get-trip-details-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Trip Details</span></div><div style="float:left"><a href="#trip-details-get-trip-details-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/trip</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>scheduleId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A given hash from a search part. See on <strong>Trips</strong> resource, in the output, into each <code>items</code> part, the value on <code>departure.waypoint.schedule.id</code> node.</td><td style="text-align:left"><code>e4479611acd114b9...</code></td></tr>
+</tbody>
+</table>
+<p><strong>Response</strong></p>
+<p>Using a valid <code>scheduleId</code>, the request will return a <em>200</em> Response, with the structure as described below:</p>
+<ul>
+<li><code>sessionId</code>, which is the current session’s ID;
+<ul>
+<li><code>content</code>, containing:
+<ul>
+<li><code>trip_id</code> which is the trip ID (each trip has it’s own ID);</li>
+<li>The <code>busCompany</code> name;</li>
+<li>The <code>bus</code> vehicle itself;</li>
+<li>The <code>seat_type</code> which describes all types of different Seats offered by the bus company:
+<ul>
+<li><code>children</code> applies to individuals under <em>12</em> years old;</li>
+<li><code>adult</code> applies to individuals between <em>12</em> and <em>59</em> years old;</li>
+<li><code>elderly</code> applies to individuals over <em>59</em> years old;</li>
+<li>There is also some specific seat types, which lasts only during specific seasons:
+<ul>
+<li><code>teacher</code> and <code>student</code> stands for the school’s vacation period.</li>
+</ul></li>
+</ul></li>
+<li>Each bus seat is listed on <code>seats</code>, with:
+<ul>
+<li>A single <code>id</code>;</li>
+<li>The seat’s <code>name</code>;</li>
+<li>If this given seat is <code>available</code> or not;</li>
+<li>The seat <code>position</code>, which is useful to understand how the <strong>Seat</strong> proccess works, distributed in:
+<ul>
+<li><code>x</code> is for the horizontal axis;</li>
+<li><code>y</code> is for the vertical axis;</li>
+<li><code>z</code> indicates on which floor the <strong>Seat</strong> is located (only for double-decker vehicles).</li>
+</ul></li>
+<li>The seat <code>details</code>, which provides:
+<ul>
+<li><strong>Seat</strong>'s <code>price</code>, <code>currency</code> and <code>seatTypes</code>.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li><p>Get the trip details from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> in <em>11th Feb 2015</em> from a single part of this search.</p>
+<ul>
+<li>URL:
+<pre><code><span class="hljs-attribute">api/v1/trip?scheduleId</span>=<span class="hljs-string">e4479611acd114b958871fe4cb8130af
+</span></code></pre></li>
+<li>Response:
+<pre><code class="language-json">{
+    "meta": {},
+    "sessionId": "tofnv14ro2usflh75ragok18q5",
+    "content": {
+        "trip_id": "50",
+        "busCompany": {
+            "name": "Primera Plus"
+        },
+        "bus": {
+            "id": "",
+            "name": ""
+        },
+        "seat_type": [{
+            "seat_type.adult": {
+                "price": "500"
+            },
+            "seat_type.elderly": {
+                "price": "250"
+            },
+            "seat_type.children": {
+                "price": "250"
+            }
+        }],
+        "seats": [{
+            "id": "1",
+            "name": "1",
+            "available": "1",
+            "position": {
+                "x": "0",
+                "y": "0",
+                "z": ""
+            },
+            "details": {
+                "price": "50000",
+                "currency": "MXN",
+                "seatTypes": []
+            }
+        }, {...}]
+    }
+}
+</code></pre></li>
+</ul></li>
+<li><p>Incorrect request (using a invalid or incorrect schedule ID):</p>
+<ul>
+<li>URL:
+<pre><code><span class="hljs-attribute">api/v1/trip?scheduleId</span>=<span class="hljs-string">0123456789abc
+</span></code></pre></li>
+<li>Response (status code: <em>400</em>):
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"seat_reservation.errors.parameters.scheduleId_not_saved"</span>
+</span>}
+</code></pre></li>
+</ul></li>
+</ul>
+</div><ul class="list-group"></ul></section><h4 id="trip-details-how-seat-position-works">How Seat Position works&nbsp;<a href="#trip-details-how-seat-position-works"><i class="fa fa-link"></i></a></h4><p>According to the explanation about the <code>seats</code> node information, retrieved on <code>/trip</code> resource, the Seat manipulation is as follow:</p>
+<p>Let’s have a look back to our <code>seats</code> node, found inside the <code>/trip</code> Response:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">seats</span>": <span class="hljs-value">[{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+        "<span class="hljs-attribute">available</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+        "<span class="hljs-attribute">position</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">x</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,
+            "<span class="hljs-attribute">y</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+            "<span class="hljs-attribute">z</span>": <span class="hljs-value"><span class="hljs-string">"1"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">details</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-string">"10000"</span></span>,
+            "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"MXN"</span></span>,
+            "<span class="hljs-attribute">seatTypes</span>": <span class="hljs-value">[]
+        </span>}
+    </span>}]
+</span>}
+</code></pre>
+<p>The concept here is pretty simple: in the <code>position</code> node, we have 3 different values:</p>
+<ul>
+<li><p><code>x</code>, which represents the horizontal axis;</p></li>
+<li><p><code>y</code>, which represents the horizontal axis;</p></li>
+<li><p><code>z</code>, which indicates the <strong>Seat</strong>'s floor (only for double-decker vehicles).</p></li>
+</ul>
+<p>Consider the image below:</p>
+<p><img src="img/1_bus.png" alt="Seat Selection - source: http://www.clickbus.com.mx"></p>
+<p>In this image, we can represent the Seat manipulation as an array, with X and Y axis:</p>
+<p><img src="img/2_array.png" alt="Seat Selection - source: http://www.clickbus.com.mx"></p>
+<p>So, if you have the following coordinates: <code>{(X: 3, Y: 3, Z: 0),(X: 3, Y: 4, Z: 0),(X: 7, Y: 1, Z: 0),(X: 4, Y: 1, Z: 1)}</code>, you have selected the the following Seats, in sequence:</p>
+<ul>
+<li><p>1st floor</p>
+<ul>
+<li><code>(X: 3, Y: 3, Z: 0)</code> stands for Seat <code>&quot;name&quot;: &quot;16&quot;</code>, 1rst floor;</li>
+<li><code>(X: 3, Y: 4, Z: 0)</code> stands for Seat <code>&quot;name&quot;: &quot;15&quot;</code>, 1rst floor;</li>
+<li><code>(X: 7, Y: 1, Z: 0)</code> stands for Seat <code>&quot;name&quot;: &quot;30&quot;</code>, 1rst floor;</li>
+</ul>
+<p><img src="img/3_seats.png" alt="Seat Selection - source: http://www.clickbus.com.mx"></p></li>
+</ul>
+<ul>
+<li><p>2nd floor</p>
+<ul>
+<li><code>(X: 4, Y: 1, Z: 1)</code> stands for Seat <code>&quot;name&quot;: &quot;18&quot;</code>, 2nd floor;</li>
+</ul>
+<p><img src="img/4_seats_2nd.png" alt="Seat Selection - source: http://www.clickbus.com.mx"></p></li>
+</ul>
+</div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="seat-block">Seat Block&nbsp;<a href="#seat-block"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="seat-block-create-a-block-in-a-seat">Create a block in a Seat&nbsp;<a href="#seat-block-create-a-block-in-a-seat"><i class="fa fa-link"></i></a></h4><p>This request creates a block in a Seat, which indicates that this Seat is now unavailable for other passengers.</p>
+<p><strong>NOTES:</strong></p>
+<ol>
+<li><p>This block may last ~10 minutes. After that, the seat is available again;</p></li>
+<li><p>Every Request’s header shall declare the key <code>PHPSESSID</code>, along with it’s value, Session’s ID (obtained on <strong>Trip Details</strong>), as follow:</p>
+<blockquote>
+<p>Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3</p>
+</blockquote></li>
+<li><p>You can create up to 5 Seat blocks per Order;</p></li>
+<li><p>According to Mexico’s bus companies, no children is allowed to travel unaccompanied by and adult. In order to follow this requirement, every request for this resource to create the first <strong>Seat Block</strong> for any Order can only use <code>adult</code>, <code>elderly</code> or <code>teacher</code> as valid <code>seat_type</code>. In order to follow this rule, if you try to select a <code>children</code> as the first <strong>Seat Block</strong>, you may receive a <em>400</em> Response with the following message:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">message</span>":<span class="hljs-value"><span class="hljs-string">"adult_first"</span>
+</span>}
+</code></pre>
+<p>After you’ve created a <strong>Seat Block</strong> for at least one of these three <code>seat_type</code> then you can proceed to create a <strong>Seat Block</strong> using the <code>children</code> <code>seat_type</code>.</p></li>
+</ol>
+<section id="seat-block-create-a-block-in-a-seat-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Create a block in a Seat</span></div><div style="float:left"><a href="#seat-block-create-a-block-in-a-seat-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/seat-block</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object. Partners can use this parameter to provide their own <code>meta</code> information: <code>store</code>, <code>platform</code> and <code>model</code>.</td><td style="text-align:left"><code>{}</code></td></tr>
+<tr><td style="text-align:left"><strong>request</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.from</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination from where a trip starts. Same value used on <strong>Trips</strong>.</td><td style="text-align:left"><code>quertaro-qro</code></td></tr>
+<tr><td style="text-align:left"><strong>request.to</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination to where a trip ends. Same value used on <strong>Trips</strong>.</td><td style="text-align:left"><code>guadalajara-jal</code></td></tr>
+<tr><td style="text-align:left"><strong>request.seat</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container with:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.seat.name</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">The seat’s <code>name</code>, obtained on <strong>Trip Details</strong>.</td><td style="text-align:left"><code>01</code></td></tr>
+<tr><td style="text-align:left"><strong>request.seat.type</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">One of the valid seat <code>type</code>, obtained on <strong>Trip Details</strong>.</td><td style="text-align:left"><code>adult</code></td></tr>
+<tr><td style="text-align:left"><strong>request.passenger</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which contains multiple items, one for each passenger:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.passenger.name</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s name.</td><td style="text-align:left"><code>Fulano da Silva</code></td></tr>
+<tr><td style="text-align:left"><strong>request.passenger.document</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s document.</td><td style="text-align:left"><code>123.456.789-00</code></td></tr>
+<tr><td style="text-align:left"><strong>request.passenger.documentType</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Type of the passenger’s <code>document</code>.</td><td style="text-align:left"><code>id</code></td></tr>
+<tr><td style="text-align:left"><strong>request.passenger.gender</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>M</code> stands for <em>Male</em>, and <code>F</code>, for <em>Female</em>.</td><td style="text-align:left"><code>M</code> or <code>F</code></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule.id</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Schedule’s ID, obtained from <strong>Trip Details</strong>.</td><td style="text-align:left"><code>NDAxNy0tMzkzNS0tMjAxN...</code></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule.date</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Any valid date, in format <code>yyyy-mm-dd</code>. Use the same value applied on <strong>Trips</strong>.</td><td style="text-align:left"><code>2015-01-27</code></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule.time</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Any valid time between <code>00:00</code> and <code>23:59</code>, in format <code>HH:ii</code>.</td><td style="text-align:left"><code>10:30</code></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule.timezone</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Timezone information, based on actual country.</td><td style="text-align:left"><code>America/Mexico_City</code></td></tr>
+<tr><td style="text-align:left"><strong>request.sessionId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Session’s ID, obtained from <strong>Trip Details</strong>.</td><td style="text-align:left"><code>dnlfm8aecg2omtjaang62fvla5</code></td></tr>
+</tbody>
+</table>
+<p><strong>Request</strong></p>
+<ul>
+<li><p>Created a block for a Seat, named <em>01</em>, for an <em>Adult</em>, on a travel from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> in <em>11th Feb 2015</em>, with all params correct:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">request</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">from</span>": <span class="hljs-value"><span class="hljs-string">"quertaro-qro"</span></span>,
+        "<span class="hljs-attribute">to</span>": <span class="hljs-value"><span class="hljs-string">"guadalajara-jal"</span></span>,
+        "<span class="hljs-attribute">seat</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"01"</span></span>,
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"seat_type.adult"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Teste de Passageiro"</span></span>,
+            "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789-00"</span></span>,
+            "<span class="hljs-attribute">documentType</span>": <span class="hljs-value"><span class="hljs-string">"id"</span></span>,
+            "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">"M"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw"</span></span>,
+            "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
+            "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"10:30"</span></span>,
+            "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"dnlfm8aecg2omtjaang62fvla5"</span>
+    </span>}
+</span>}
+</code></pre></li>
+</ul>
+<p><strong>Response</strong></p>
+<p>This request, with all correct params and being executed before the Seat block’s life time ends, will return a Response <em>200</em>, with the following Response body:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">items</span>": <span class="hljs-value">[{
+        "<span class="hljs-attribute">seat</span>": <span class="hljs-value"><span class="hljs-string">"01"</span></span>,
+        "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw"</span></span>,
+            "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+            "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+            "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"blocked"</span></span>,
+        "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"dnlfm8aecg2omtjaang62fvla5"</span></span>,
+        "<span class="hljs-attribute">expireAt</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-30 10:27"</span>
+    </span>}]
+</span>}
+</code></pre>
+<p><strong>NOTE:</strong> If, while a Request to create a Seat Block, the selected Seat is already blocked by other Request executed previously, you may receive the following <em>400</em> Response:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">message</span>":<span class="hljs-value"><span class="hljs-string">"Busy seat"</span>
+</span>}
+</code></pre>
+</div><ul class="list-group"></ul></section><h4 id="seat-block-remove-a-block-in-a-seat">Remove a block in a Seat&nbsp;<a href="#seat-block-remove-a-block-in-a-seat"><i class="fa fa-link"></i></a></h4><p>As opposed to the Create proccess, the Remove will delete a block created on a Seat, which automatically turns a Seat available for all passengers.</p>
+<p><strong>NOTE:</strong></p>
+<ul>
+<li>Every Request’s header shall declare the key <code>PHPSESSID</code>, along with it’s value, Session’s ID (obtained on <strong>Session</strong>), as follow:
+<blockquote>
+<p>Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3</p>
+</blockquote></li>
+</ul>
+<section id="seat-block-remove-a-block-in-a-seat-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Remove a block in a Seat</span></div><div style="float:left"><a href="#seat-block-remove-a-block-in-a-seat-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/seat-block</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object. Partners can use this parameter to provide their own <code>meta</code> information: <code>store</code>, <code>platform</code> and <code>model</code>.</td><td style="text-align:left"><code>{}</code></td></tr>
+<tr><td style="text-align:left"><strong>request</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.seat</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">The seat’s <code>name</code>, obtained on <strong>Trip Details</strong>.</td><td style="text-align:left"><code>07</code></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule.id</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Schedule’s ID, obtained from <strong>Trip Details</strong>.</td><td style="text-align:left"><code>NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw...</code></td></tr>
+<tr><td style="text-align:left"><strong>request.sessionId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Session’s ID, obtained from <strong>Trip Details</strong>.</td><td style="text-align:left"><code>dnlfm8aecg2omtjaang62fvla5</code></td></tr>
+</tbody>
+</table>
+<p><strong>Request</strong></p>
+<ul>
+<li><p>Removing the Seat block, named <em>07</em>, on a travel from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> in <em>11th Feb 2015</em>, with all params correct:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">request</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">seat</span>": <span class="hljs-value"><span class="hljs-string">"07"</span></span>,
+        "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg=="</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"dnlfm8aecg2omtjaang62fvla5"</span>
+    </span>}
+</span>}
+</code></pre></li>
+</ul>
+<p><strong>Response</strong></p>
+<p>This request, with all correct params, will return a Response <em>202</em>, with the following Response body:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"canceled"</span></span>,
+        "<span class="hljs-attribute">messages</span>": <span class="hljs-value">[]</span>,
+        "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"dnlfm8aecg2omtjaang62fvla5"</span>
+    </span>}
+</span>}
+</code></pre>
+<p><strong>NOTE</strong> If the <code>sessionId</code> or the lifetime of the Seat block have already expired, you may obtain a <em>400</em> Response with the following Response body:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Invalid Parameters"</span>
+</span>}
+</code></pre>
+</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="payment">Payment&nbsp;<a href="#payment"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="payment-get-all-payment-settings">Get all Payment settings&nbsp;<a href="#payment-get-all-payment-settings"><i class="fa fa-link"></i></a></h4><p>The resource <code>/payment</code> retrieves all the information that you need according to your <code>meta</code> parameters, which are:</p>
+<ul>
+<li><p><code>model</code></p></li>
+<li><p><code>store</code></p></li>
+<li><p><code>platform</code></p></li>
+</ul>
+<p>These parameters are created for each partner, and they are required for each request. If you have any doubts or questions about how to obtain these values, please contact our commercial department at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a>.</p>
+<section id="payment-get-all-payment-settings-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get all Payment settings</span></div><div style="float:left"><a href="#payment-get-all-payment-settings-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/payment</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>store</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>store</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details.</td><td style="text-align:left"><code>clickbus</code></td></tr>
+<tr><td style="text-align:left"><strong>model</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>model</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details.</td><td style="text-align:left"><code>retail</code></td></tr>
+<tr><td style="text-align:left"><strong>platform</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>platform</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details.</td><td style="text-align:left"><code>web</code></td></tr>
+</tbody>
+</table>
+<p><strong>Response</strong></p>
+<p>With the correct params, this resource returns a Response <em>200</em> and a list, in JSON format, with these details as follow:</p>
+<ul>
+<li><code>paymentSettings</code> for:
+<ul>
+<li><code>creditcard</code>, with it’s own <code>serviceFee</code> and <code>serviceFeePercentage</code> which is attributed for each partner (contact ClickBus at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details).</li>
+</ul></li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li><p>A request, with all valid parameters:</p>
+<ul>
+<li>URL:
+<pre><code>/api/v1/payment?<span class="hljs-variable">store=</span>clickbus&amp;<span class="hljs-variable">platform=</span>web&amp;<span class="hljs-variable">model=</span>retail
+</code></pre></li>
+<li>Response:
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">paymentSettings</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">creditcard</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">total</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">1</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
+                "<span class="hljs-attribute">2</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
+                "<span class="hljs-attribute">3</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
+                "<span class="hljs-attribute">4</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
+                "<span class="hljs-attribute">5</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
+                "<span class="hljs-attribute">6</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">fixedValue</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">savings</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">serviceFee</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">1</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                "<span class="hljs-attribute">2</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                "<span class="hljs-attribute">3</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                "<span class="hljs-attribute">4</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                "<span class="hljs-attribute">5</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                "<span class="hljs-attribute">6</span>": <span class="hljs-value"><span class="hljs-number">0</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">1</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
+                "<span class="hljs-attribute">2</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
+                "<span class="hljs-attribute">3</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
+                "<span class="hljs-attribute">4</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
+                "<span class="hljs-attribute">5</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
+                "<span class="hljs-attribute">6</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span>
+            </span>}
+        </span>}
+    </span>}
+</span>}
+</code></pre></li>
+</ul></li>
+</ul>
+</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="booking">Booking&nbsp;<a href="#booking"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="booking-create-an-order">Create an Order&nbsp;<a href="#booking-create-an-order"><i class="fa fa-link"></i></a></h4><p>When you have selected all the Seats, then you may proceed to create an Order, which will start the payment process.</p>
+<p><strong>NOTES:</strong></p>
+<ul>
+<li>Please keep in mind that you need to provide in your header the <code>PHPSESSID</code> key with the Session’s ID in the Cookie, as below:
+<blockquote>
+<p>Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3</p>
+</blockquote></li>
+</ul>
+<section id="booking-create-an-order-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Create an Order</span></div><div style="float:left"><a href="#booking-create-an-order-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/booking</code></div></div><div class="panel-body"><p>To create an Order, the request’s body requires a range of data, which, for a better understanding, we will divide in the following blocks below:</p>
+<ul>
+<li><p><strong>meta</strong>, which contains the params <code>model</code>, <code>store</code> and <code>platform</code> for each Partner;</p></li>
+<li><p><strong>request</strong>, which contains:</p>
+<ul>
+<li><strong>request.buyer</strong> contains all required information about the Buyer;
+<ul>
+<li><strong>request.buyer.payment</strong> contains all the Buyer’s payment data;</li>
+</ul></li>
+<li><strong>request.orderItems</strong> contains all the Seats, along with their information, added to the Order.</li>
+</ul></li>
+</ul>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object. Partners can use this parameter to provide:</td><td style="text-align:left"><code>{}</code></td></tr>
+<tr><td style="text-align:left"><strong>meta.model</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Partner’s <code>model</code> data.</td><td style="text-align:left"><code>retail</code></td></tr>
+<tr><td style="text-align:left"><strong>meta.store</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Partner’s <code>store</code> data.</td><td style="text-align:left"><code>newstore</code></td></tr>
+<tr><td style="text-align:left"><strong>meta.platform</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Partner’s <code>platform</code> data.</td><td style="text-align:left"><code>web</code></td></tr>
+<tr><td style="text-align:left"><strong>request</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.sessionId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Session’s ID, obtained from <strong>Trip Details</strong>.</td><td style="text-align:left"><code>dnlfm8aecg2omtjaang62fvla5</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.locale</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s locale.</td><td style="text-align:left"><code>es_MX</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.firstName</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s first name.</td><td style="text-align:left"><code>Fulano</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.lastName</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s surname.</td><td style="text-align:left"><code>de Silva</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.cc_id_number</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s document.</td><td style="text-align:left"><code>123123123</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.email</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s email.</td><td style="text-align:left"><code>fulano@teste.com.br</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.phone</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s phone, in format <code>(AAA)-BBB-BBBB</code>, where <code>AAA</code> stands for the brazilian phone’s region code, and <code>BBB-BBBB</code> stands for the phone number.</td><td style="text-align:left"><code>(011)-232-3333</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.terms</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s response to the <em>Therms and Conditions</em> acceptance.</td><td style="text-align:left"><code>1</code> stands for <em>agreed</em>, <code>0</code> stands for <em>disagreed</em></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object.</td><td style="text-align:left"><code>{}</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An object containing all the required information according to the payment method.</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.method</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment type: <code>creditcard</code>.</td><td style="text-align:left"><code>creditcard</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.currency</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment currency.</td><td style="text-align:left"><code>TRL</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.total</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, <code>1400</code> means <code>14.00</code>, and <code>6050</code> means <code>60.50</code>.</td><td style="text-align:left"><code>1400</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.installment</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Indicates on how many installments the payment is settled.</td><td style="text-align:left"><code>1</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An object which requires the following data:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.card</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card’s number.</td><td style="text-align:left"><code>1234567812345678</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.code</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card’s security code.</td><td style="text-align:left"><code>065</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.name</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card owner’s name, in all upper case.</td><td style="text-align:left"><code>CICRANO SILVA</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.expiration</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card’s expiration date, in format <code>yyyy-mm</code>.</td><td style="text-align:left"><code>2016-02</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A collection of objects, which may contain at least 1 and a maximum of N to be considered valid. Each object contains:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.seatReservation</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Schedule’s ID, obtained in the <strong>Seat</strong> process.</td><td style="text-align:left"><code>NDAxNy0tMzkzNS0tMjAxNS0...</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container, which have:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.firstName</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s first name.</td><td style="text-align:left"><code>Beltrano</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.lastName</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s surname.</td><td style="text-align:left"><code>da Silva</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.email</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s email.</td><td style="text-align:left"><code>beltrano@teste.com.br</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.document</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s document.</td><td style="text-align:left"><code>11111111111</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.gender</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>M</code> stands for <em>Male</em>, and <code>F</code>, for <em>Female</em>.</td><td style="text-align:left"><code>M</code> or <code>F</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.seat</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>seat</code> name, obtained on <strong>Seat</strong> proccess.</td><td style="text-align:left"><code>01</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object.</td><td style="text-align:left"><code>{}</code></td></tr>
+</tbody>
+</table>
+<p><strong>Request - Example</strong></p>
+<ul>
+<li>Create an Order with the following data:
+<ul>
+<li><p>Created from a <code>store</code> called <em>NewWorld</em>;</p></li>
+<li><p>Selected 1 Seat for <em>Fulano da Silva</em>;</p></li>
+<li><p>Each item costs R$ 12.35, so the <code>request.buyer.payment.total</code> value is <em>1235</em>.</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"newworld"</span></span>,
+        "<span class="hljs-attribute">platform</span>": <span class="hljs-value"><span class="hljs-string">"web"</span></span>,
+        "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"retail"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">request</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"njivqofna5umqu6k3cla588462"</span></span>,
+        "<span class="hljs-attribute">buyer</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">locale</span>": <span class="hljs-value"><span class="hljs-string">"es_MX"</span></span>,
+            "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Beltrano"</span></span>,
+            "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"Silva"</span></span>,
+            "<span class="hljs-attribute">cc_id_number</span>": <span class="hljs-value"><span class="hljs-string">"123123123"</span></span>,
+            "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"teste@teste.com"</span></span>,
+            "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"(011)-232-3333"</span></span>,
+            "<span class="hljs-attribute">terms</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+            "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
+            "<span class="hljs-attribute">payment</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"creditcard"</span></span>,
+                "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"TRL"</span></span>,
+                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">1000</span></span>,
+                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+                "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">card</span>": <span class="hljs-value"><span class="hljs-string">"4111-1111-1111-1111"</span></span>,
+                    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"737"</span></span>,
+                    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Teste teste"</span></span>,
+                    "<span class="hljs-attribute">expiration</span>": <span class="hljs-value"><span class="hljs-string">"2019-06"</span>
+                </span>}
+            </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">orderItems</span>": <span class="hljs-value">[{
+            "<span class="hljs-attribute">seatReservation</span>": <span class="hljs-value"><span class="hljs-string">"e9f7adff6cd8eeaf8734615c97317386"</span></span>,
+            "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Teste"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"Teste"</span></span>,
+                "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"dev@clickbus.com.br"</span></span>,
+                "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"11111111111"</span></span>,
+                "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">"M"</span></span>,
+                "<span class="hljs-attribute">seat</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+                "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}
+            </span>}
+        </span>}]
+    </span>}
+</span>}
+</code></pre></li>
+</ul></li>
+</ul>
+<p><strong>Response</strong></p>
+<p>The following Request, with all correct parameters, will return a <em>201</em> Response, with all details from the Order, as the example below.</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"corporate"</span></span>,
+        "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"clickbus"</span></span>,
+        "<span class="hljs-attribute">platform</span>": <span class="hljs-value"><span class="hljs-string">"Web"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1062"</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"order_finalized_successfully"</span></span>,
+        "<span class="hljs-attribute">localizer</span>": <span class="hljs-value"><span class="hljs-string">"5EBP2M"</span></span>,
+        "<span class="hljs-attribute">uuid</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">payment</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"payment.creditcard"</span></span>,
+            "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-string">"6.3"</span></span>,
+            "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"MXN"</span></span>,
+            "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"order_finalized_successfully"</span></span>,
+            "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">card</span>": <span class="hljs-value"><span class="hljs-string">"4111-XXXX-XXXX-1111"</span></span>,
+                "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"XXX"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"NOME DE TESTE DA COMPRA"</span></span>,
+                "<span class="hljs-attribute">expiration</span>": <span class="hljs-value"><span class="hljs-string">"XXXX-XX-XX"</span></span>,
+                "<span class="hljs-attribute">postbackUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                "<span class="hljs-attribute">callbackUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+            </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">items</span>": <span class="hljs-value">[{
+            "<span class="hljs-attribute">trip_id</span>": <span class="hljs-value"><span class="hljs-string">"4321"</span></span>,
+            "<span class="hljs-attribute">localizer</span>": <span class="hljs-value"><span class="hljs-string">"KPFHNB"</span></span>,
+            "<span class="hljs-attribute">context</span>": <span class="hljs-value"><span class="hljs-string">"departure"</span></span>,
+            "<span class="hljs-attribute">order_item</span>": <span class="hljs-value"><span class="hljs-string">"1228"</span></span>,
+            "<span class="hljs-attribute">serviceClass</span>": <span class="hljs-value"><span class="hljs-string">"Convencional"</span></span>,
+            "<span class="hljs-attribute">departure</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">waypoint</span>": <span class="hljs-value"><span class="hljs-string">"4017"</span></span>,
+                "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
+                    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"01:00"</span></span>,
+                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
+                </span>}
+            </span>}</span>,
+            "<span class="hljs-attribute">arrival</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">waypoint</span>": <span class="hljs-value"><span class="hljs-string">"3935"</span></span>,
+                "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-11"</span></span>,
+                    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"03:00"</span></span>,
+                    "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Mexico_City"</span>
+                </span>}
+            </span>}</span>,
+            "<span class="hljs-attribute">seat</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"42"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"42"</span></span>,
+                "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-string">"6.30"</span></span>,
+                "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"reserved"</span></span>,
+                "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"MXN"</span></span>,
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value">{}
+            </span>}</span>,
+            "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Nome Passageiro"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"passageiro@teste.com.br"</span></span>,
+                "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789-00"</span></span>,
+                "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}
+            </span>}</span>,
+            "<span class="hljs-attribute">products</span>": <span class="hljs-value">[]</span>,
+            "<span class="hljs-attribute">subtotal</span>": <span class="hljs-value"><span class="hljs-string">"6.30"</span>
+        </span>}]</span>,
+        "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-23"</span>
+    </span>}
+</span>}
+</code></pre>
+</div><ul class="list-group"></ul></section><h4 id="booking-credit-card-rejection">Credit Card Rejection&nbsp;<a href="#booking-credit-card-rejection"><i class="fa fa-link"></i></a></h4><p>If, for any circunstances listed above, the Request detects any kind of problem related to the given credit card, as above:</p>
+<ul>
+<li><p>The maximum credit limit was reached;</p></li>
+<li><p>The credit, for any reason, is blocked;</p></li>
+<li><p>There is an error with any of the credit card’s data.</p></li>
+</ul>
+<p>If this happens, then the API will return a <em>400</em> Response with the following content:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Credit card was rejected."</span>
+</span>}
+</code></pre>
+</div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 12 Mar 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>
