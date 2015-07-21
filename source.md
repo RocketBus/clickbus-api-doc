@@ -592,33 +592,33 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 
 **Request**
 
-- Created a block for a Seat, named _01_, for an _Adult_, on a travel from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ in _11th Feb 2015_, with all params correct:
+- Created a block for a Seat, named _01_, for an _Adult_, on a travel from _Querétaro, QRO. - Central del Norte - Ciudad de México_ in _25th Jul 2015_, with all params correct:
 
     ```json
-    {
-        "meta": {},
-        "request": {
-            "from": "quertaro-qro",
-            "to": "guadalajara-jal",
-            "seat": {
-                "name": "01",
-                "type": "seat_type.adult"
-            },
-            "passenger": {
-                "name": "Teste de Passageiro",
-                "document": "123.456.789-00",
-                "documentType": "id",
-                "gender": "M"
-            },
-            "schedule": {
-                "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw",
-                "date": "2015-02-11",
-                "time": "10:30",
-                "timezone": "America/Mexico_City"
-            },
-            "sessionId": "dnlfm8aecg2omtjaang62fvla5"
-        }
+{
+    "meta": {},
+    "request": {
+        "from": "queretaro-qro",
+        "to": "central-del-norte-ciudad-de-mexico-df",
+        "seat": {
+            "name": "8",
+            "type": "seat_type.adult"
+        },
+        "passenger": {
+            "name": "Teste de Passageiro",
+            "document": "123.456.789-00",
+            "documentType": "id",
+            "gender": "M"
+        },
+        "schedule": {
+            "id": "0ada399ed49596fe6c56ff421ae7848f",
+            "date": "2015-07-25",
+            "time": "0",
+            "timezone": "America/Mexico_City"
+        },
+        "sessionId": "b1vd4mhonggecviranmsa164k5"
     }
+}
     ```
 
 **Response**
@@ -627,19 +627,22 @@ This request, with all correct params and being executed before the Seat block's
 
 ```json
 {
-    "meta": {},
-    "items": [{
-        "seat": "01",
-        "schedule": {
-            "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw",
-            "date": "",
-            "time": "",
-            "timezone": "America/Mexico_City"
-        },
-        "status": "blocked",
-        "sessionId": "dnlfm8aecg2omtjaang62fvla5",
-        "expireAt": "2015-01-30 10:27"
-    }]
+   "meta":{
+   },
+   "items":[
+      {
+         "seat":"8",
+         "schedule":{
+            "id":"0ada399ed49596fe6c56ff421ae7848f",
+            "date":"",
+            "time":"",
+            "timezone":"America/Mexico_City"
+         },
+         "status":"blocked",
+         "sessionId":"b1vd4mhonggecviranmsa164k5",
+         "expireAt":"2015-07-21 12:35"
+      }
+   ]
 }
 ```
 
@@ -797,6 +800,10 @@ When you have selected all the Seats, then you may proceed to create an Order, w
 
 - Please keep in mind that you need to provide in your header the `PHPSESSID` key with the Session's ID in the Cookie, as below:
     > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
+- We are using Conekta payment service, please read the documentation to know more about how to integrate conekta with your application:  
+ -- https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta
+ -- https://www.conekta.io/es/docs/referencias/pruebas#cards
+
 
 ### Create an Order [POST]
 
@@ -828,15 +835,12 @@ To create an Order, the request's body requires a range of data, which, for a be
 |**request.buyer.terms** (required)|_string_|Buyer's response to the _Therms and Conditions_ acceptance.|`1` stands for _agreed_, `0` stands for _disagreed_|
 |**request.buyer.meta** (required)|_object_|An empty object.|`{}`|
 |**request.buyer.payment** (required)|_object_|An object containing all the required information according to the payment method.||
-|**request.buyer.payment.method** (required)|_string_|Payment type: `creditcard`.|`creditcard`|
+|**request.buyer.payment.method** (required)|_string_|Payment type: `card`.|`card`|
 |**request.buyer.payment.currency** (required)|_string_|Payment currency.|`TRL`|
 |**request.buyer.payment.total** (required)|_int_|Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, `1400` means `14.00`, and `6050` means `60.50`.|`1400`|
 |**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
 |**request.buyer.payment.meta** (required)|_object_|An object which requires the following data:||
-|**request.buyer.payment.meta.card** (required)|_string_|Credit card's number.|`1234567812345678`|
-|**request.buyer.payment.meta.code** (required)|_string_|Credit card's security code.|`065`|
-|**request.buyer.payment.meta.name** (required)|_string_|Credit card owner's name, in all upper case.|`CICRANO SILVA`|
-|**request.buyer.payment.meta.expiration** (required)|_string_|Credit card's expiration date, in format `yyyy-mm`.|`2016-02`|
+|**request.buyer.payment.meta.token** (required)|_string_|Conekta token (more information here https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta) .|`tok_test_visa_4242`|
 |**request.orderItems** (required)|_object_|A collection of objects, which may contain at least 1 and a maximum of N to be considered valid. Each object contains:||
 |**request.orderItems.seatReservation** (required)|_string_|Schedule's ID, obtained in the **Seat** process.|`NDAxNy0tMzkzNS0tMjAxNS0...`|
 |**request.orderItems.passenger** (required)|_object_|A container, which have:||
@@ -924,12 +928,7 @@ The following Request, with all correct parameters, will return a _201_ Response
             "currency": "MXN",
             "status": "order_finalized_successfully",
             "meta": {
-                "card": "4111-XXXX-XXXX-1111",
-                "code": "XXX",
-                "name": "NOME DE TESTE DA COMPRA",
-                "expiration": "XXXX-XX-XX",
-                "postbackUrl": "",
-                "callbackUrl": ""
+                "token": "tok_test_visa_4242"
             }
         },
         "items": [{
