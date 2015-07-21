@@ -48,55 +48,59 @@ The given request returns a Response _200_, with a list in JSON format filled wi
 **Example**
 
  ```json
- {
-    "meta": "",
-    "items": [{
-        "id": 15720,
-        "station_id": 15720,
-        "slug": "aeropuerto-guadalajara-jal_",
-        "locale": "es-MX",
-        "name": "Aeropuerto Guadalajara, JAL",
-        "is_primary": "true",
-        "created_at": "2014-09-17 10:08:11",
-        "updated_at": "2014-12-03 12:18:36",
-        "place": {
-            "id": 15720,
-            "place_id": 15720,
-            "locale": "es-MX",
-            "name": "Aeropuerto Guadalajara, JAL",
-            "created_at": "2014-09-17 10:08:11",
-            "updated_at": "2014-12-03 12:18:36",
-            "latitude": "",
-            "longitude": "",
-            "state": {
-                "code": "",
-                "name": "Aeropuerto Guadalajara, JAL"
+{
+   "meta":"",
+   "items":[
+      {
+         "id":5068,
+         "station_id":5068,
+         "slug":"queretaro-qro",
+         "locale":"es-MX",
+         "name":"Quer\u00e9taro, QRO.",
+         "is_primary":"true",
+         "created_at":"2013-11-26 17:57:06",
+         "updated_at":"2015-07-20 15:49:16",
+         "place":{
+            "id":5068,
+            "place_id":5068,
+            "locale":"es-MX",
+            "name":"Quer\u00e9taro, QRO.",
+            "created_at":"2013-11-26 17:57:06",
+            "updated_at":"2015-07-20 15:49:16",
+            "latitude":"20.5887932",
+            "longitude":"-100.3898881",
+            "state":{
+               "code":"",
+               "name":"Quer\u00e9taro, QRO."
             }
-        }
-    }, {
-        "id": 5068,
-        "station_id": 5068,
-        "slug": "quertaro-qro",
-        "locale": "es-MX",
-        "name": "Querétaro, QRO.",
-        "is_primary": "true",
-        "created_at": "2013-11-26 17:57:06",
-        "updated_at": "2014-05-26 16:38:32",
-        "place": {
-            "id": 5068,
-            "place_id": 5068,
-            "locale": "es-MX",
-            "name": "Querétaro, QRO.",
-            "created_at": "2013-11-26 17:57:06",
-            "updated_at": "2014-05-26 16:38:32",
-            "latitude": "",
-            "longitude": "",
-            "state": {
-                "code": "",
-                "name": "Querétaro, QRO."
+         }
+      },
+      {
+         "id":5047,
+         "station_id":5047,
+         "slug":"central-del-norte-ciudad-de-mexico-df",
+         "locale":"es-MX",
+         "name":"Central del Norte - Ciudad de M\u00e9xico, DF.",
+         "is_primary":"true",
+         "created_at":"2013-11-26 17:57:06",
+         "updated_at":"2015-07-20 15:49:16",
+         "place":{
+            "id":5047,
+            "place_id":5047,
+            "locale":"es-MX",
+            "name":"Central del Norte - Ciudad de M\u00e9xico, DF.",
+            "created_at":"2013-11-26 17:57:06",
+            "updated_at":"2015-07-20 15:49:16",
+            "latitude":"19.3423057",
+            "longitude":"-99.1476417",
+            "state":{
+               "code":"",
+               "name":"Central del Norte - Ciudad de M\u00e9xico, DF."
             }
-        }
-    }, {...}]
+         }
+      },
+      {...}
+   ]
 }
  ```
 
@@ -117,9 +121,9 @@ The resource `/trips` provides a list with all available trips, with all sort of
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
-|**from** (required)|_string_|A destination from where a trip starts.|`quertaro-qro`|
-|**to** (required)|_string_|A destination to where a trip ends.|`guadalajara-jal`|
-|**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
+|**from** (required)|_string_|A destination from where a trip starts.|`queretaro-qro`|
+|**to** (required)|_string_|A destination to where a trip ends.|`central-del-norte-ciudad-de-mexico-df`|
+|**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-07-25`|
 |**engine** (optional)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
 
 **Response**
@@ -140,30 +144,32 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 
     - URL:
         ```
-        api/v1/trips?from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991&departure=2015-02-11
+        /api/v1/trips?from=queretaro-qro&to=central-del-norte-ciudad-de-mexico-df&engine=&departure=2015-07-25
         ```
     - Response:
         ```json
         {
-            "meta": "",
-            "bookingEngine": "5411E7D726991",
-            "items": [{
-                "from": "Querétaro, QRO.",
-                "to": "Guadalajara, JAL.",
-                "parts": [{
-                    "trip_id": "50",
+    "meta": "",
+    "items": [{
+            "from": "Querétaro, QRO.",
+            "to": "Central del Norte - Ciudad de México, DF.",
+            "parts": [
+                {
+                    "trip_id": "15132179",
                     "departure": {
-                        "price": "50000",
+                        "price": "257.00",
                         "waypoint": {
                             "id": "5068",
-                            "prices": [{
-                                "waypoint": "5029",
-                                "price": "50000"
-                            }],
+                            "prices": [
+                                {
+                                    "waypoint": "5047",
+                                    "price": "257.00"
+                                }
+                            ],
                             "schedule": {
-                                "id": "e4479611acd114b958871fe4cb8130af",
-                                "date": "2015-02-05",
-                                "time": "07:20",
+                                "id": "826a3c756eeff4976893b55dcb1519fd",
+                                "date": "2015-07-25",
+                                "time": "01:20",
                                 "timezone": "America/Mexico_City"
                             },
                             "context": "departure",
@@ -175,7 +181,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                                     "current": {
                                         "id": "5068",
                                         "name": "Querétaro, QRO.",
-                                        "locale": "es"
+                                        "locale": "es_MX"
                                     },
                                     "default": {
                                         "id": "",
@@ -183,7 +189,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                                         "locale": ""
                                     }
                                 },
-                                "locale": "es",
+                                "locale": "es_MX",
                                 "id": "5068"
                             },
                             "isDeparture": "true",
@@ -191,138 +197,150 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                         }
                     },
                     "arrival": {
-                        "price": "50000",
+                        "price": "257.00",
                         "waypoint": {
-                            "id": "5029",
-                            "prices": [{
-                                "waypoint": "",
-                                "price": ""
-                            }],
+                            "id": "5047",
+                            "prices": [
+                                {
+                                    "waypoint": "",
+                                    "price": ""
+                                }
+                            ],
                             "schedule": {
-                                "id": "e4479611acd114b958871fe4cb8130af",
-                                "date": "2015-02-05",
-                                "time": "12:35",
+                                "id": "826a3c756eeff4976893b55dcb1519fd",
+                                "date": "2015-07-25",
+                                "time": "01:20",
                                 "timezone": "America/Mexico_City"
                             },
                             "context": "arrival",
                             "place": {
                                 "country": "MX",
                                 "state": "",
-                                "city": "Guadalajara, JAL.",
+                                "city": "Central del Norte - Ciudad de México, DF.",
                                 "station": {
                                     "current": {
-                                        "id": "111",
-                                        "name": "Guadalajara, JAL.",
-                                        "locale": "es"
+                                        "id": "5047",
+                                        "name": "Central del Norte - Ciudad de México, DF.",
+                                        "locale": "es_MX"
                                     },
                                     "default": {
                                         "id": "",
                                         "name": "",
-                                        "locale": "es"
+                                        "locale": ""
                                     }
                                 },
-                                "locale": "es",
-                                "id": "5029"
+                                "locale": "es_MX",
+                                "id": "5047"
                             },
                             "isDeparture": "false",
                             "position": "0"
                         }
                     },
                     "busCompany": {
-                        "name": "Primera Plus",
-                        "id": "33"
+                        "name": "Transportes del Norte",
+                        "id": "34",
+                        "logo_small": "http://static.evaluation.clickbus.com.mx/logos/small/bl-tdn-s.jpg"
                     },
                     "bus": {
-                        "serviceClass": "Primera",
-                        "name": "Primera",
-                        "id": "1"
+                        "serviceClass": "PRIMERA",
+                        "name": "PRIMERA",
+                        "id": "20"
                     },
-                    "waypoints": [{
-                        "id": "5068",
-                        "prices": [{
-                            "waypoint": "5029",
-                            "price": "50000"
-                        }],
-                        "schedule": {
-                            "id": "e4479611acd114b958871fe4cb8130af",
-                            "date": "2015-02-05",
-                            "time": "07:20",
-                            "timezone": "America/Mexico_City"
-                        },
-                        "context": "departure",
-                        "place": {
-                            "country": "MX",
-                            "state": "Ankara",
-                            "city": "Ankara",
-                            "station": {
-                                "current": {
-                                    "id": "5068",
-                                    "name": "Querétaro, QRO.",
-                                    "locale": "es"
-                                },
-                                "default": {
-                                    "id": "",
-                                    "name": "",
-                                    "locale": ""
+                    "waypoints": [
+                        {
+                            "id": "5068",
+                            "prices": [
+                                {
+                                    "waypoint": "5047",
+                                    "price": "257.00"
                                 }
+                            ],
+                            "schedule": {
+                                "id": "826a3c756eeff4976893b55dcb1519fd",
+                                "date": "2015-07-25",
+                                "time": "01:20",
+                                "timezone": "America/Mexico_City"
                             },
-                            "locale": "es",
-                            "id": "123"
-                        },
-                        "isDeparture": "true",
-                        "position": "0"
-                    }, {
-                        "id": "5029",
-                        "prices": [{
-                            "waypoint": "",
-                            "price": "50000"
-                        }],
-                        "schedule": {
-                            "id": "e4479611acd114b958871fe4cb8130af",
-                            "date": "2015-02-05",
-                            "time": "07:20",
-                            "timezone": "America/Mexico_City"
-                        },
-                        "context": "arrival",
-                        "place": {
-                            "country": "MX",
-                            "state": "Ankara",
-                            "city": "Guadalajara, JAL.",
-                            "station": {
-                                "current": {
-                                    "id": "5029",
-                                    "name": "Guadalajara, JAL.",
-                                    "locale": "es"
+                            "context": "departure",
+                            "place": {
+                                "country": "MX",
+                                "state": "",
+                                "city": "Querétaro, QRO.",
+                                "station": {
+                                    "current": {
+                                        "id": "5068",
+                                        "name": "Querétaro, QRO.",
+                                        "locale": "es_MX"
+                                    },
+                                    "default": {
+                                        "id": "",
+                                        "name": "",
+                                        "locale": ""
+                                    }
                                 },
-                                "default": {
-                                    "id": "",
-                                    "name": "",
-                                    "locale": "es"
-                                }
+                                "locale": "es_MX",
+                                "id": "123"
                             },
-                            "locale": "es",
-                            "id": ""
+                            "isDeparture": "true",
+                            "position": "0"
                         },
-                        "isDeparture": false,
-                        "position": 0
-                    }],
+                        {
+                            "id": "5047",
+                            "prices": [
+                                {
+                                    "waypoint": "",
+                                    "price": "257.00"
+                                }
+                            ],
+                            "schedule": {
+                                "id": "826a3c756eeff4976893b55dcb1519fd",
+                                "date": "2015-07-25",
+                                "time": "01:20",
+                                "timezone": "America/Sao_Paulo"
+                            },
+                            "context": "arrival",
+                            "place": {
+                                "country": "MX",
+                                "state": "",
+                                "city": "Central del Norte - Ciudad de México, DF.",
+                                "station": {
+                                    "current": {
+                                        "id": "5047",
+                                        "name": "Central del Norte - Ciudad de México, DF.",
+                                        "locale": "es_MX"
+                                    },
+                                    "default": {
+                                        "id": "",
+                                        "name": "",
+                                        "locale": ""
+                                    }
+                                },
+                                "locale": "es_MX",
+                                "id": ""
+                            },
+                            "isDeparture": false,
+                            "position": 0
+                        }
+                    ],
                     "seatTypes": [],
                     "products": [],
                     "availableSeats": "30"
-                }]
-            }, {...}]
-        }
+                }
+            ]
+        },
+        {...}]
+}
         ```
 - Searching for travels from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ using an incorrect or even an unavailable date value on _departure_:
     - URL:
         
         For an incorrect value, like `99/99/9999`:
         ```
-        /api/v1/search?departure=9999-99-99&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
+        /api/v1/trips?departure=9999-99-99&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
         ``` 
         For an unavailable value, like `1th January, 2010`:
         ```
-        /api/v1/search?departure=2010-01-01&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
+        /api/v1/trips?departure=2010-01-01&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
         ``` 
     - Response:
         ```json
@@ -574,33 +592,33 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 
 **Request**
 
-- Created a block for a Seat, named _01_, for an _Adult_, on a travel from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ in _11th Feb 2015_, with all params correct:
+- Created a block for a Seat, named _01_, for an _Adult_, on a travel from _Querétaro, QRO. - Central del Norte - Ciudad de México_ in _25th Jul 2015_, with all params correct:
 
     ```json
-    {
-        "meta": {},
-        "request": {
-            "from": "quertaro-qro",
-            "to": "guadalajara-jal",
-            "seat": {
-                "name": "01",
-                "type": "seat_type.adult"
-            },
-            "passenger": {
-                "name": "Teste de Passageiro",
-                "document": "123.456.789-00",
-                "documentType": "id",
-                "gender": "M"
-            },
-            "schedule": {
-                "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw",
-                "date": "2015-02-11",
-                "time": "10:30",
-                "timezone": "America/Mexico_City"
-            },
-            "sessionId": "dnlfm8aecg2omtjaang62fvla5"
-        }
+{
+    "meta": {},
+    "request": {
+        "from": "queretaro-qro",
+        "to": "central-del-norte-ciudad-de-mexico-df",
+        "seat": {
+            "name": "8",
+            "type": "seat_type.adult"
+        },
+        "passenger": {
+            "name": "Teste de Passageiro",
+            "document": "123.456.789-00",
+            "documentType": "id",
+            "gender": "M"
+        },
+        "schedule": {
+            "id": "0ada399ed49596fe6c56ff421ae7848f",
+            "date": "2015-07-25",
+            "time": "0",
+            "timezone": "America/Mexico_City"
+        },
+        "sessionId": "b1vd4mhonggecviranmsa164k5"
     }
+}
     ```
 
 **Response**
@@ -609,19 +627,22 @@ This request, with all correct params and being executed before the Seat block's
 
 ```json
 {
-    "meta": {},
-    "items": [{
-        "seat": "01",
-        "schedule": {
-            "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw",
-            "date": "",
-            "time": "",
-            "timezone": "America/Mexico_City"
-        },
-        "status": "blocked",
-        "sessionId": "dnlfm8aecg2omtjaang62fvla5",
-        "expireAt": "2015-01-30 10:27"
-    }]
+   "meta":{
+   },
+   "items":[
+      {
+         "seat":"8",
+         "schedule":{
+            "id":"0ada399ed49596fe6c56ff421ae7848f",
+            "date":"",
+            "time":"",
+            "timezone":"America/Mexico_City"
+         },
+         "status":"blocked",
+         "sessionId":"b1vd4mhonggecviranmsa164k5",
+         "expireAt":"2015-07-21 12:35"
+      }
+   ]
 }
 ```
 
@@ -779,6 +800,10 @@ When you have selected all the Seats, then you may proceed to create an Order, w
 
 - Please keep in mind that you need to provide in your header the `PHPSESSID` key with the Session's ID in the Cookie, as below:
     > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
+- We are using Conekta payment service, please read the documentation to know more about how to integrate conekta with your application:  
+ -- https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta
+ -- https://www.conekta.io/es/docs/referencias/pruebas#cards
+
 
 ### Create an Order [POST]
 
@@ -810,15 +835,12 @@ To create an Order, the request's body requires a range of data, which, for a be
 |**request.buyer.terms** (required)|_string_|Buyer's response to the _Therms and Conditions_ acceptance.|`1` stands for _agreed_, `0` stands for _disagreed_|
 |**request.buyer.meta** (required)|_object_|An empty object.|`{}`|
 |**request.buyer.payment** (required)|_object_|An object containing all the required information according to the payment method.||
-|**request.buyer.payment.method** (required)|_string_|Payment type: `creditcard`.|`creditcard`|
+|**request.buyer.payment.method** (required)|_string_|Payment type: `card`.|`card`|
 |**request.buyer.payment.currency** (required)|_string_|Payment currency.|`TRL`|
 |**request.buyer.payment.total** (required)|_int_|Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, `1400` means `14.00`, and `6050` means `60.50`.|`1400`|
 |**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
 |**request.buyer.payment.meta** (required)|_object_|An object which requires the following data:||
-|**request.buyer.payment.meta.card** (required)|_string_|Credit card's number.|`1234567812345678`|
-|**request.buyer.payment.meta.code** (required)|_string_|Credit card's security code.|`065`|
-|**request.buyer.payment.meta.name** (required)|_string_|Credit card owner's name, in all upper case.|`CICRANO SILVA`|
-|**request.buyer.payment.meta.expiration** (required)|_string_|Credit card's expiration date, in format `yyyy-mm`.|`2016-02`|
+|**request.buyer.payment.meta.token** (required)|_string_|Conekta token (more information here https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta) .|`tok_test_visa_4242`|
 |**request.orderItems** (required)|_object_|A collection of objects, which may contain at least 1 and a maximum of N to be considered valid. Each object contains:||
 |**request.orderItems.seatReservation** (required)|_string_|Schedule's ID, obtained in the **Seat** process.|`NDAxNy0tMzkzNS0tMjAxNS0...`|
 |**request.orderItems.passenger** (required)|_object_|A container, which have:||
@@ -906,12 +928,7 @@ The following Request, with all correct parameters, will return a _201_ Response
             "currency": "MXN",
             "status": "order_finalized_successfully",
             "meta": {
-                "card": "4111-XXXX-XXXX-1111",
-                "code": "XXX",
-                "name": "NOME DE TESTE DA COMPRA",
-                "expiration": "XXXX-XX-XX",
-                "postbackUrl": "",
-                "callbackUrl": ""
+                "token": "tok_test_visa_4242"
             }
         },
         "items": [{
