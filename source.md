@@ -47,7 +47,7 @@ The given request returns a Response _200_, with a list in JSON format filled wi
 
 **Example**
 
- ```json
+```json
 {
    "meta":"",
    "items":[
@@ -143,11 +143,14 @@ With the correct params, this resource returns a Response _200_ and a list, in J
  - Searching for travels from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ in _11th Feb 2015_, with all correct params:
 
     - URL:
-        ```
-        /api/v1/trips?from=queretaro-qro&to=central-del-norte-ciudad-de-mexico-df&engine=&departure=2015-07-25
-        ```
-    - Response:
-        ```json
+```
+/api/v1/trips?from=queretaro-qro&to=central-del-norte-ciudad-de-mexico-df&engine=&departure=2015-07-25
+```
+
+
+ - Response:
+
+```json
         {
     "meta": "",
     "items": [{
@@ -330,7 +333,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
         },
         {...}]
 }
-        ```
+```
 - Searching for travels from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ using an incorrect or even an unavailable date value on _departure_:
     - URL:
         
@@ -584,7 +587,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 |**request.passenger.documentType** (required)|_string_|Type of the passenger's `document`.|`id`|
 |**request.passenger.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
 |**request.schedule** (required)|_object_|A container which requires: ||
-|**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxN...`|
+|**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`e4479611acd114b958871fe4cb8130af`|
 |**request.schedule.date** (required)|_string_|Any valid date, in format `yyyy-mm-dd`. Use the same value applied on **Trips**.|`2015-01-27`|
 |**request.schedule.time** (required)|_string_|Any valid time between `00:00` and `23:59`, in format `HH:ii`.|`10:30`|
 |**request.schedule.timezone** (required)|_string_|Timezone information, based on actual country.|`America/Mexico_City`|
@@ -594,7 +597,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 
 - Created a block for a Seat, named _01_, for an _Adult_, on a travel from _Querétaro, QRO. - Central del Norte - Ciudad de México_ in _25th Jul 2015_, with all params correct:
 
-    ```json
+```json
 {
     "meta": {},
     "request": {
@@ -619,7 +622,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
         "sessionId": "b1vd4mhonggecviranmsa164k5"
     }
 }
-    ```
+```
 
 **Response**
 
@@ -673,7 +676,7 @@ As opposed to the Create proccess, the Remove will delete a block created on a S
 |**request** (required)|_object_|A container which requires: ||
 |**request.seat** (required)|_string_|The seat’s `name`, obtained on **Trip Details**.|`07`|
 |**request.schedule** (required)|_object_|A container which requires: ||
-|**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw...`|
+|**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`e4479611acd114b958871fe4cb8130af`|
 |**request.sessionId** (required)|_string_|Session's ID, obtained from **Trip Details**.|`dnlfm8aecg2omtjaang62fvla5`|
 
 **Request**
@@ -686,7 +689,7 @@ As opposed to the Create proccess, the Remove will delete a block created on a S
         "request": {
             "seat": "07",
             "schedule": {
-                "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg=="
+                "id": "e4479611acd114b958871fe4cb8130af"
             },
             "sessionId": "dnlfm8aecg2omtjaang62fvla5"
         }
@@ -800,9 +803,8 @@ When you have selected all the Seats, then you may proceed to create an Order, w
 
 - Please keep in mind that you need to provide in your header the `PHPSESSID` key with the Session's ID in the Cookie, as below:
     > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
-- We are using Conekta payment service, please read the documentation to know more about how to integrate conekta with your application:  
- -- https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta
- -- https://www.conekta.io/es/docs/referencias/pruebas#cards
+- We are using Conekta payment service, please read the documentation to know more about how to integrate conekta with your application: https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta & https://www.conekta.io/es/docs/referencias/pruebas#cards
+
 
 
 ### Create an Order [POST]
@@ -878,15 +880,12 @@ To create an Order, the request's body requires a range of data, which, for a be
                     "terms": "1",
                     "meta": {},
                     "payment": {
-                        "method": "creditcard",
+                        "method": "card",
                         "currency": "TRL",
                         "total": 1000,
                         "installment": "1",
                         "meta": {
-                            "card": "4111-1111-1111-1111",
-                            "code": "737",
-                            "name": "Teste teste",
-                            "expiration": "2019-06"
+                            "token": "tok_test_visa_4242"
                         }
                     }
                 },
