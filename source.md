@@ -121,9 +121,9 @@ The resource `/trips` provides a list with all available trips, with all sort of
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
-|**from** (required)|_string_|A destination from where a trip starts.|`quertaro-qro`|
-|**to** (required)|_string_|A destination to where a trip ends.|`guadalajara-jal`|
-|**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
+|**from** (required)|_string_|A destination from where a trip starts.|`queretaro-qro`|
+|**to** (required)|_string_|A destination to where a trip ends.|`central-del-norte-ciudad-de-mexico-df`|
+|**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-07-25`|
 |**engine** (optional)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
 
 **Response**
@@ -144,30 +144,32 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 
     - URL:
         ```
-        api/v1/trips?from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991&departure=2015-02-11
+        /api/v1/trips?from=queretaro-qro&to=central-del-norte-ciudad-de-mexico-df&engine=&departure=2015-07-25
         ```
     - Response:
         ```json
         {
-            "meta": "",
-            "bookingEngine": "5411E7D726991",
-            "items": [{
-                "from": "Querétaro, QRO.",
-                "to": "Guadalajara, JAL.",
-                "parts": [{
-                    "trip_id": "50",
+    "meta": "",
+    "items": [{
+            "from": "Querétaro, QRO.",
+            "to": "Central del Norte - Ciudad de México, DF.",
+            "parts": [
+                {
+                    "trip_id": "15132179",
                     "departure": {
-                        "price": "50000",
+                        "price": "257.00",
                         "waypoint": {
                             "id": "5068",
-                            "prices": [{
-                                "waypoint": "5029",
-                                "price": "50000"
-                            }],
+                            "prices": [
+                                {
+                                    "waypoint": "5047",
+                                    "price": "257.00"
+                                }
+                            ],
                             "schedule": {
-                                "id": "e4479611acd114b958871fe4cb8130af",
-                                "date": "2015-02-05",
-                                "time": "07:20",
+                                "id": "826a3c756eeff4976893b55dcb1519fd",
+                                "date": "2015-07-25",
+                                "time": "01:20",
                                 "timezone": "America/Mexico_City"
                             },
                             "context": "departure",
@@ -179,7 +181,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                                     "current": {
                                         "id": "5068",
                                         "name": "Querétaro, QRO.",
-                                        "locale": "es"
+                                        "locale": "es_MX"
                                     },
                                     "default": {
                                         "id": "",
@@ -187,7 +189,7 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                                         "locale": ""
                                     }
                                 },
-                                "locale": "es",
+                                "locale": "es_MX",
                                 "id": "5068"
                             },
                             "isDeparture": "true",
@@ -195,138 +197,150 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                         }
                     },
                     "arrival": {
-                        "price": "50000",
+                        "price": "257.00",
                         "waypoint": {
-                            "id": "5029",
-                            "prices": [{
-                                "waypoint": "",
-                                "price": ""
-                            }],
+                            "id": "5047",
+                            "prices": [
+                                {
+                                    "waypoint": "",
+                                    "price": ""
+                                }
+                            ],
                             "schedule": {
-                                "id": "e4479611acd114b958871fe4cb8130af",
-                                "date": "2015-02-05",
-                                "time": "12:35",
+                                "id": "826a3c756eeff4976893b55dcb1519fd",
+                                "date": "2015-07-25",
+                                "time": "01:20",
                                 "timezone": "America/Mexico_City"
                             },
                             "context": "arrival",
                             "place": {
                                 "country": "MX",
                                 "state": "",
-                                "city": "Guadalajara, JAL.",
+                                "city": "Central del Norte - Ciudad de México, DF.",
                                 "station": {
                                     "current": {
-                                        "id": "111",
-                                        "name": "Guadalajara, JAL.",
-                                        "locale": "es"
+                                        "id": "5047",
+                                        "name": "Central del Norte - Ciudad de México, DF.",
+                                        "locale": "es_MX"
                                     },
                                     "default": {
                                         "id": "",
                                         "name": "",
-                                        "locale": "es"
+                                        "locale": ""
                                     }
                                 },
-                                "locale": "es",
-                                "id": "5029"
+                                "locale": "es_MX",
+                                "id": "5047"
                             },
                             "isDeparture": "false",
                             "position": "0"
                         }
                     },
                     "busCompany": {
-                        "name": "Primera Plus",
-                        "id": "33"
+                        "name": "Transportes del Norte",
+                        "id": "34",
+                        "logo_small": "http://static.evaluation.clickbus.com.mx/logos/small/bl-tdn-s.jpg"
                     },
                     "bus": {
-                        "serviceClass": "Primera",
-                        "name": "Primera",
-                        "id": "1"
+                        "serviceClass": "PRIMERA",
+                        "name": "PRIMERA",
+                        "id": "20"
                     },
-                    "waypoints": [{
-                        "id": "5068",
-                        "prices": [{
-                            "waypoint": "5029",
-                            "price": "50000"
-                        }],
-                        "schedule": {
-                            "id": "e4479611acd114b958871fe4cb8130af",
-                            "date": "2015-02-05",
-                            "time": "07:20",
-                            "timezone": "America/Mexico_City"
-                        },
-                        "context": "departure",
-                        "place": {
-                            "country": "MX",
-                            "state": "Ankara",
-                            "city": "Ankara",
-                            "station": {
-                                "current": {
-                                    "id": "5068",
-                                    "name": "Querétaro, QRO.",
-                                    "locale": "es"
-                                },
-                                "default": {
-                                    "id": "",
-                                    "name": "",
-                                    "locale": ""
+                    "waypoints": [
+                        {
+                            "id": "5068",
+                            "prices": [
+                                {
+                                    "waypoint": "5047",
+                                    "price": "257.00"
                                 }
+                            ],
+                            "schedule": {
+                                "id": "826a3c756eeff4976893b55dcb1519fd",
+                                "date": "2015-07-25",
+                                "time": "01:20",
+                                "timezone": "America/Mexico_City"
                             },
-                            "locale": "es",
-                            "id": "123"
-                        },
-                        "isDeparture": "true",
-                        "position": "0"
-                    }, {
-                        "id": "5029",
-                        "prices": [{
-                            "waypoint": "",
-                            "price": "50000"
-                        }],
-                        "schedule": {
-                            "id": "e4479611acd114b958871fe4cb8130af",
-                            "date": "2015-02-05",
-                            "time": "07:20",
-                            "timezone": "America/Mexico_City"
-                        },
-                        "context": "arrival",
-                        "place": {
-                            "country": "MX",
-                            "state": "Ankara",
-                            "city": "Guadalajara, JAL.",
-                            "station": {
-                                "current": {
-                                    "id": "5029",
-                                    "name": "Guadalajara, JAL.",
-                                    "locale": "es"
+                            "context": "departure",
+                            "place": {
+                                "country": "MX",
+                                "state": "",
+                                "city": "Querétaro, QRO.",
+                                "station": {
+                                    "current": {
+                                        "id": "5068",
+                                        "name": "Querétaro, QRO.",
+                                        "locale": "es_MX"
+                                    },
+                                    "default": {
+                                        "id": "",
+                                        "name": "",
+                                        "locale": ""
+                                    }
                                 },
-                                "default": {
-                                    "id": "",
-                                    "name": "",
-                                    "locale": "es"
-                                }
+                                "locale": "es_MX",
+                                "id": "123"
                             },
-                            "locale": "es",
-                            "id": ""
+                            "isDeparture": "true",
+                            "position": "0"
                         },
-                        "isDeparture": false,
-                        "position": 0
-                    }],
+                        {
+                            "id": "5047",
+                            "prices": [
+                                {
+                                    "waypoint": "",
+                                    "price": "257.00"
+                                }
+                            ],
+                            "schedule": {
+                                "id": "826a3c756eeff4976893b55dcb1519fd",
+                                "date": "2015-07-25",
+                                "time": "01:20",
+                                "timezone": "America/Sao_Paulo"
+                            },
+                            "context": "arrival",
+                            "place": {
+                                "country": "MX",
+                                "state": "",
+                                "city": "Central del Norte - Ciudad de México, DF.",
+                                "station": {
+                                    "current": {
+                                        "id": "5047",
+                                        "name": "Central del Norte - Ciudad de México, DF.",
+                                        "locale": "es_MX"
+                                    },
+                                    "default": {
+                                        "id": "",
+                                        "name": "",
+                                        "locale": ""
+                                    }
+                                },
+                                "locale": "es_MX",
+                                "id": ""
+                            },
+                            "isDeparture": false,
+                            "position": 0
+                        }
+                    ],
                     "seatTypes": [],
                     "products": [],
                     "availableSeats": "30"
-                }]
-            }, {...}]
-        }
+                }
+            ]
+        },
+        {...}]
+}
         ```
 - Searching for travels from _Querétaro, QRO. - Mexico_ to _Guadalajara, JAL. - Mexico_ using an incorrect or even an unavailable date value on _departure_:
     - URL:
         
         For an incorrect value, like `99/99/9999`:
         ```
-        /api/v1/search?departure=9999-99-99&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
+        /api/v1/trips?departure=9999-99-99&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
         ``` 
         For an unavailable value, like `1th January, 2010`:
         ```
-        /api/v1/search?departure=2010-01-01&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
+        /api/v1/trips?departure=2010-01-01&from=quertaro-qro&to=guadalajara-jal&engine=5411E7D726991
         ``` 
     - Response:
         ```json
