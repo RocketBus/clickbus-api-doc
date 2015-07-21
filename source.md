@@ -48,55 +48,59 @@ The given request returns a Response _200_, with a list in JSON format filled wi
 **Example**
 
  ```json
- {
-    "meta": "",
-    "items": [{
-        "id": 15720,
-        "station_id": 15720,
-        "slug": "aeropuerto-guadalajara-jal_",
-        "locale": "es-MX",
-        "name": "Aeropuerto Guadalajara, JAL",
-        "is_primary": "true",
-        "created_at": "2014-09-17 10:08:11",
-        "updated_at": "2014-12-03 12:18:36",
-        "place": {
-            "id": 15720,
-            "place_id": 15720,
-            "locale": "es-MX",
-            "name": "Aeropuerto Guadalajara, JAL",
-            "created_at": "2014-09-17 10:08:11",
-            "updated_at": "2014-12-03 12:18:36",
-            "latitude": "",
-            "longitude": "",
-            "state": {
-                "code": "",
-                "name": "Aeropuerto Guadalajara, JAL"
+{
+   "meta":"",
+   "items":[
+      {
+         "id":5068,
+         "station_id":5068,
+         "slug":"queretaro-qro",
+         "locale":"es-MX",
+         "name":"Quer\u00e9taro, QRO.",
+         "is_primary":"true",
+         "created_at":"2013-11-26 17:57:06",
+         "updated_at":"2015-07-20 15:49:16",
+         "place":{
+            "id":5068,
+            "place_id":5068,
+            "locale":"es-MX",
+            "name":"Quer\u00e9taro, QRO.",
+            "created_at":"2013-11-26 17:57:06",
+            "updated_at":"2015-07-20 15:49:16",
+            "latitude":"20.5887932",
+            "longitude":"-100.3898881",
+            "state":{
+               "code":"",
+               "name":"Quer\u00e9taro, QRO."
             }
-        }
-    }, {
-        "id": 5068,
-        "station_id": 5068,
-        "slug": "quertaro-qro",
-        "locale": "es-MX",
-        "name": "Querétaro, QRO.",
-        "is_primary": "true",
-        "created_at": "2013-11-26 17:57:06",
-        "updated_at": "2014-05-26 16:38:32",
-        "place": {
-            "id": 5068,
-            "place_id": 5068,
-            "locale": "es-MX",
-            "name": "Querétaro, QRO.",
-            "created_at": "2013-11-26 17:57:06",
-            "updated_at": "2014-05-26 16:38:32",
-            "latitude": "",
-            "longitude": "",
-            "state": {
-                "code": "",
-                "name": "Querétaro, QRO."
+         }
+      },
+      {
+         "id":5047,
+         "station_id":5047,
+         "slug":"central-del-norte-ciudad-de-mexico-df",
+         "locale":"es-MX",
+         "name":"Central del Norte - Ciudad de M\u00e9xico, DF.",
+         "is_primary":"true",
+         "created_at":"2013-11-26 17:57:06",
+         "updated_at":"2015-07-20 15:49:16",
+         "place":{
+            "id":5047,
+            "place_id":5047,
+            "locale":"es-MX",
+            "name":"Central del Norte - Ciudad de M\u00e9xico, DF.",
+            "created_at":"2013-11-26 17:57:06",
+            "updated_at":"2015-07-20 15:49:16",
+            "latitude":"19.3423057",
+            "longitude":"-99.1476417",
+            "state":{
+               "code":"",
+               "name":"Central del Norte - Ciudad de M\u00e9xico, DF."
             }
-        }
-    }, {...}]
+         }
+      },
+      {...}
+   ]
 }
  ```
 
