@@ -2439,13 +2439,15 @@ This value is generated for each partner. Once you receive your API Key, please 
 
 ## Get Order List [/order]
 
-The resource `/order` return all information related to a specific trip, based on a given schedule ID (check **Trips** resource for more details).
+The resource `/order` return a list of Orders with a limit of 50 results per page, where each object provide the details for a single Order.
 
 ### Get Order List [GET]
 
 **PARAMETERS**
 
-_None_
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**page** (optional)|_integer_|Use this parameter to navigate through the result pages.|`2`|
 
 **RESPONSE**
 
@@ -2560,7 +2562,7 @@ A successful request will return a _200_ Response, with the structure as describ
 
 ## Get Order [/order/{id}]
 
-The resource `/order/{id}` provides a variety of details of a specific Order, based on it's ID.
+The resource `/order/{id}` provides all details of a single Order, based on the given ID.
 
 ### Get Order [GET]
 
