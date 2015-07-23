@@ -843,6 +843,8 @@ To create an Order, the request's body requires a range of data, which, for a be
 |**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
 |**request.buyer.payment.meta** (required)|_object_|An object which requires the following data:||
 |**request.buyer.payment.meta.token** (required)|_string_|Conekta token (more information here https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta) .|`tok_test_visa_4242`|
+|**request.buyer.payment.meta.source** (optional)|_string_|Name of your brand or campaing|`viajesClickbus`|
+|**request.buyer.payment.meta.medium** (optional)|_string_|Name of your medium(web, mobile, etc)|`web`|
 |**request.orderItems** (required)|_object_|A collection of objects, which may contain at least 1 and a maximum of N to be considered valid. Each object contains:||
 |**request.orderItems.seatReservation** (required)|_string_|Schedule's ID, obtained in the **Seat** process.|`NDAxNy0tMzkzNS0tMjAxNS0...`|
 |**request.orderItems.passenger** (required)|_object_|A container, which have:||
@@ -885,7 +887,9 @@ To create an Order, the request's body requires a range of data, which, for a be
                         "total": 1000,
                         "installment": "1",
                         "meta": {
-                            "token": "tok_test_visa_4242"
+                            "token": "tok_test_visa_4242",
+                            "source": "viajesClickbus",
+                            "medium": "web"
                         }
                     }
                 },
