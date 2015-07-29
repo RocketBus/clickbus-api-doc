@@ -366,6 +366,8 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 |**J5**|_The given `to` value is invalid or incorrect._|The provided value for `to` is not a valid **Place**.|
 |**J6**|_The Application encountered a temporary error and could not complete your request._|An error occurred while proccessing your Request before it's sent to the booking engine.|
 |**J7**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request to the booking engine.|
+|**J8**|_Please provide a valid date for `departure`._|The value for `departure` is invalid or incorrect.|
+|**J9**|_The `departure` date cannot occur in a day before today._|The value for `departure` cannot be a date in the past.|
 
 
 # Group Session
@@ -671,8 +673,9 @@ This request, with all correct params and being executed before the Seat block's
 |**H10**|_The given `scheduleId` is invalid._|The value for `scheduleId` has expired and is no longer valid. Please request a new value in **Trips**.|
 |**H11**|_The Application encountered a temporary error and could not complete your request._|An error occurred while proccessing your Request before it's sent to the booking engine.|
 |**H12**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request to the booking engine.|
-|**H13**|_Busy seat._|The selected Seat is already taken by another user.|
-
+|**H13**|_The selected Seat is unavailable._|The selected Seat is already taken by another user.|
+|**H21**|_Please provide the passenger's document type._|The Passenger's `documentType` is missing.|
+|**H22**|_Please provide a value for the passenger's document type._|The Passenger's `documentType` is empty.|
 
 ## Remove a block in a Seat [/seat-block]
 
@@ -1342,6 +1345,7 @@ These parameters are created for each partner, and they are required for each re
 |**K6**|_Please provide the right params for the seats._|At least one of the values inside `contents` is missing one of it's required parameters: `scheduleId` or `ticket_amount`.|
 |**K7**|_The given `scheduleId` is incorrect._|One of the given `scheduleId` is incorrect or invalid.|
 |**K8**|_The given `ticket_amount` is incorrect._|One of the given `ticket_amount` is incorrect.|
+|**K9**|_The request is malformed. Please check the contents of your request._|Please check your request for any JSON malforming.|
 
 
 ## How Payments Works [/payments]
@@ -2017,7 +2021,9 @@ This payment method provides a redirect link in the Response body, provided afte
 |**A13**|_Checkout Error_|An internal error ocurred at the conclusion of your Request.|
 |**A14**|_Application Error_|An error occurred before send the success email of your Request.|
 |**A15**|_An unexpected issue happened in your Request. Please contact us for more details._|Troubles while requesting data from the booking engine. Please contact us at contato@clickbus.com.br for support and details.|
-
+|**A16**|_The number of passengers does not match with the data already informed._|There is a difference between the ammount of seats provided in the request and the the ammount of seats that were reserved previously at the Seat Block. Please contact us for more details about the subject and how to troubleshoot.|
+|**A27**|_Inconsistencies were found. Please check your Payment Data._|One or more values provided for the payment data are invalid or incorrect. Please check these values before send a new request.|
+|**A28**|_The given credit card brand is not supported by the payment method._|The card brand is not supported by our payment methods. Please contact us or check the /payments endpoint to verify if the given card brand is declared in the supported list.|
 
 ## Credit/Debit Card Rejection [/booking]
 
@@ -2420,10 +2426,99 @@ The values are the same for the `payment` block, as described in the [`/booking`
 |**L14**|_There was a problem with your Order. Please contact us for more details._|Your Order could not be completed. Please contact us at contato@clickbus.com.br for support and details.|
 |**L15**|_Checkout Error_|An internal error ocurred at the conclusion of your Request.|
 |**L16**|_Application Error_|An error occurred before send the success email of your Request.|
+|**L23**|_The Order Cart is empty._|No Seats were found in your cart to finish your purchase. Please contact us for more details.|
+|**L24**|_The installment value is less than the minimum value supported._|The value based for each installment of your request is lower than the minimum supported value. Please contact us for more details.|
+
+
+## Unavailable Seats [/checkout]
+
+As stated at the beginning of this group info, _there are chances that one or more of the desired seats are unavailable._ So, requests to `/checkout` may find Seats previously reserved before your request is received and, if this situation may happen, this endpoint have a proper error message that provide all details that your application need to troubleshoot this issue.
+
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**L22**|_Unavailable Seat_|One or more Seats received in the request were reserved before your request, or the booking engine could not create reservations for the given Seats.|
+
+The `message` param of this response contains a JSON list with the Seats that were available in your request, in the format as below:
+
+**REQUEST**
+
+- Selected 1 Seat (number _29_) for _Fulano da Silva_ and 1 Seat for _Beltrano da Silva_ (number _21_), both for the same departure;
+    
+    ```json
+    {
+        "meta": {
+            "model": "Retail",
+            "store": "NewWorld",
+            "platform": "Web"
+        },
+        "request": {
+            "ip": "192.168.14.1",
+            "buyer": {
+                "locale": "pt_BR",
+                "firstName": "Clickbus",
+                "lastName": "Test",
+                "email": "test-orders@clickbus.com",
+                "phone": "12098765432",
+                "document": "176.768.826-13",
+                "gender": "M",
+                "birthday": "1986-04-18",
+                "meta": {},
+                "payment": {
+                    "method": "creditcard",
+                    "currency": "BRL",
+                    "total": 2470,
+                    "installment": "1",
+                    "meta": {
+                        "card": "4111111111111111",
+                        "code": "737",
+                        "name": "FULANO SILVA",
+                        "expiration": "2017-07",
+                        "zipcode": "04104080"
+                    }
+                }
+            },
+            "items": [
+                {
+                    "seat": "29",
+                    "passenger": {
+                        "name": "Fulano da Silva",
+                        "document": "12.345.678-9",
+                        "documentType": "rg"
+                    },
+                    "scheduleId": "MzA5Ny0tMzUzNS0tMjAxNS0wNi0yNSAwNzo1NS0tMTUtLTE4MTUtLTEtLTEtLTEtLUNPTUVSQ0lBTC0tMi44NQ=="
+                },
+                {
+                    "seat": "21",
+                    "passenger": {
+                        "name": "Beltrano da Silva",
+                        "document": "98.765.432-1",
+                        "documentType": "rg"
+                    },
+                    "scheduleId": "MzA5Ny0tMzUzNS0tMjAxNS0wNi0yNSAwNzo1NS0tMTUtLTE4MTUtLTEtLTEtLTEtLUNPTUVSQ0lBTC0tMi44NQ=="
+                }
+            ]
+        }
+    }
+    ```
+
+**RESPONSE**
+- For this request, only one seat (for _Fulano da Silva_) was available. So the response will describe that only that Seat (_29_) was available, along with it's `scheduleId`, to identify for which trip the Seats were unavailable, as below:
+
+    ```json
+    {
+        "error": [
+            {
+                "code": "L22",
+                "type": "Unavailable Seat",
+                "message": "{\"Successful seats:\":[{\"seatNumber\":\"29\",\"scheduleId\":\"MzA5Ny0tMzUzNS0tMjAxNS0wNi0yNSAwNzo1NS0tMTUtLTE4MTUtLTEtLTEtLTEtLUNPTUVSQ0lBTC0tMi44NQ==\"}]}"
+            }
+        ]
+    }
+    ```
 
 
 # Group Order Details
-
 
 ## Authentication Required [/order]
 
