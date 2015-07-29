@@ -386,7 +386,7 @@ _None_
 - The `meta` parameter contains all data for pagination, as:
     - `total` is the amount of results obtained.
     - `perPage` is the limit of results per page.
-    - `currentPage` displays om which page you actually are.
+    - `currentPage` displays on which page you actually are.
     - `totalPages` indicates the amount of pages.
     - `busCompanies` provides an array of Bus Companies, described as:
         - `id` is the identifier, unique for each result.
