@@ -768,7 +768,7 @@ These parameters are created for each partner, and they are required for each re
 |**meta.platform** (required)|_string_|`platform` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`web`|
 |**contents** (required)|_array_|An array of objects, where each object shall contain the following values:||
 |**scheduleId** (required)|_string_|The `scheduleId` for each of the desired trips (departure or return).|`SUVScFpTQkVhV1VnVFh...`|
-|**ticket_amount** (required)|_integer_|The ammount of seats for this trip (departure or return).|`8`|
+|**ticket_amount** (required)|_integer_|The amount of seats for this trip (departure or return).|`8`|
 
 **REQUEST**
 
@@ -2016,12 +2016,11 @@ This payment method provides a redirect link in the Response body, provided afte
 |**A5**|_The expiration data is invalid or incorrect._|The expiration data provided in the card is incorrect or invalid.|
 |**A6**|_Please provide the `installment` for the payment data._|The parameter `installment` is missing from the Request.|
 |**A7**|_The Order Cart is empty._|You have tried to proceed to Checkout without creating any **Seat Block**.|
-|**A11**|_Please check you card number._|The card, or any other information provided for the payment form is incorrect.|
 |**A12**|_There was a problem with your Order. Please contact us for more details._|Your Order could not be completed. Please contact us at contato@clickbus.com.br for support and details.|
 |**A13**|_Checkout Error_|An internal error ocurred at the conclusion of your Request.|
 |**A14**|_Application Error_|An error occurred before send the success email of your Request.|
 |**A15**|_An unexpected issue happened in your Request. Please contact us for more details._|Troubles while requesting data from the booking engine. Please contact us at contato@clickbus.com.br for support and details.|
-|**A16**|_The number of passengers does not match with the data already informed._|There is a difference between the ammount of seats provided in the request and the the ammount of seats that were reserved previously at the Seat Block. Please contact us for more details about the subject and how to troubleshoot.|
+|**A16**|_The number of passengers does not match with the data already informed._|There is a difference between the amount of seats provided in the request and the the amount of seats that were reserved previously at the Seat Block. Please contact us for more details about the subject and how to troubleshoot.|
 |**A27**|_Inconsistencies were found. Please check your Payment Data._|One or more values provided for the payment data are invalid or incorrect. Please check these values before send a new request.|
 |**A28**|_The given credit card brand is not supported by the payment method._|The card brand is not supported by our payment methods. Please contact us or check the /payments endpoint to verify if the given card brand is declared in the supported list.|
 
@@ -2157,6 +2156,9 @@ The given request returns a Response _201_, with all Order details in the Respon
 |**A8**|_Please provide a `localizer`._|The parameter `localizer` is missing from the Request.|
 |**A9**|_The Request Status is invalid._|The value for the `status` is invalid. Use `order_canceled`.|
 |**A10**|_The given localizer is invalid._|The value for `localizer` is invalid or could not be found.|
+|**A24**|_The cancelation request failed. Please check the Order status for more details._|The request for cancelation of the given Order was started but could not achieve success. Please contact us for more details.|
+|**A25**|_The Order Cancelation Workflow can't be executed for the given Order. Please check the Order Status for more info._|The actual Order status does not allow to proceed to it's cancelation and your application should not repeat this request. Please contact us for more details.|
+|**A26**|_Server Error_|The Server encountered a temporary error and could not complete your request.|
 
 
 # Group Checkout
@@ -2416,11 +2418,10 @@ The values are the same for the `payment` block, as described in the [`/booking`
 |**L4**|_Please provide a value for the passenger's document._|One of the passenger's `document` is empty.|
 |**L5**|_Please provide the 'scheduleId'._|The `scheduleId` for one of the order items is missing from the Request.|
 |**L6**|_The given 'scheduleId' is invalid._|The `scheduleId` for one of the order items is invalid or incorrect.|
-|**L7**|_Missing parameters in your payment data._|One or more of the following `buyer` parameters are missing: `name`, `card`, `code`, `zipcode` or `expiration`.|
+|**L7**|_Invalid Parameters_|(**Deprecated**: check for **L25**) Missing parameters in your payment data.|
 |**L8**|_The expiration data is invalid or incorrect._|The expiration data provided in the card is incorrect or invalid.|
 |**L9**|_Please provide the 'installment' for the payment data._|The parameter `installment` is missing from the Request.|
 |**L10**|_An unexpected issue happened in your Request. Please contact us for more details._|Troubles while requesting data from the booking engine. Please contact us at contato@clickbus.com.br for support and details.|
-|**L11**|_Busy seat._|One of the selected seats is actually unavailable.|
 |**L12**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request.|
 |**L13**|_Please check you card number._|The card, or any other information provided for the payment form is incorrect.|
 |**L14**|_There was a problem with your Order. Please contact us for more details._|Your Order could not be completed. Please contact us at contato@clickbus.com.br for support and details.|
@@ -2428,6 +2429,8 @@ The values are the same for the `payment` block, as described in the [`/booking`
 |**L16**|_Application Error_|An error occurred before send the success email of your Request.|
 |**L23**|_The Order Cart is empty._|No Seats were found in your cart to finish your purchase. Please contact us for more details.|
 |**L24**|_The installment value is less than the minimum value supported._|The value based for each installment of your request is lower than the minimum supported value. Please contact us for more details.|
+|**L25**|_Inconsistencies were found. Please check your Payment Data._|Some required values for your payment data are missing. Please review your request before proceed.|
+|**L26**|_The given credit card brand is not supported by the payment method._|The card brand is not supported by our payment methods. Please contact us or check the /payments endpoint to verify if the given card brand is declared in the supported list.|
 
 
 ## Unavailable Seats [/checkout]
