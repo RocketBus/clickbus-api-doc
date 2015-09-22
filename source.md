@@ -112,8 +112,9 @@ The resource `/trips` provides a list with all available trips, with all sort of
 
 **ADVICES:**
 
-- Remember that each request to `/trips` will erase all itens stored in your Pre-Order, so, if you don't have confirmed your Order yet, all the items added to the Pre-Order will be lost.
+- Remember that each request to `/trips` will erase all items stored in your Pre-Order, so, if you have not confirmed your Order yet, all the items added to the Pre-Order will be lost.
 - The `bookingEngine` value, provided in the sucessfull Response, is one of the most important values on this resource: when you request the return trip, you have to provide in the `engine` parameter the exact same `bookingEngine` obtained in the departure trip.
+- In order to obtain Autovias' return-trip discounts. It is required you include the `return` parameter. You will obtain a list with all the trips for both ways. 
 
 ### Get all available Trips [GET]
 
@@ -124,6 +125,7 @@ The resource `/trips` provides a list with all available trips, with all sort of
 |**from** (required)|_string_|A destination from where a trip starts.|`queretaro-qro`|
 |**to** (required)|_string_|A destination to where a trip ends.|`central-del-norte-ciudad-de-mexico-df`|
 |**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-07-25`|
+|**return** (optional)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-07-25`|
 |**engine** (optional)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
 
 **Response**
@@ -395,6 +397,7 @@ The resource `/trip` return all information related to a specific trip, based on
 
 - **WARNING:**
     > One of the most important values obtained in the `/trip`s Response is `sessionId`. **Remember to keep this value**: it's required for most of your requests.
+    > In order to block return-trip seats (priorly obtained from a call to `/trips` using `return` parameter), you must first invoke your call to `/trip` for the first `scheduleId` then block all the seats for this specific ´scheduleId´ calling `/seat-block`. Secondly you need to call again `/trip` with the second `scheduleId`, and block all the seats for this `scheduleId` calling `/seat-block`.
 
 ### Get Trip Details [GET]
 
@@ -559,14 +562,16 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 2. Every Request's header shall declare the key `PHPSESSID`, along with it's value, Session's ID (obtained on **Trip Details**), as follow:
     > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
 3. You can create up to 5 Seat blocks per Order;
-4. According to Mexico's bus companies, no children is allowed to travel unaccompanied by and adult. In order to follow this requirement, every request for this resource to create the first **Seat Block** for any Order can only use `adult`, `elderly` or `teacher` as valid `seat_type`. In order to follow this rule, if you try to select a `children` as the first **Seat Block**, you may receive a _400_ Response with the following message:
+4. According to Mexican laws, no children is allowed to travel unaccompanied by and adult. In order to follow this requirement, every request for this resource to create the first **Seat Block** for any Order can only use `adult`, `elderly` or `teacher` as valid `seat_type`. In order to follow this rule, if you try to select a `children` as the first **Seat Block**, you may receive a _400_ Response with the following message:
     ```json
     {
         "message":"adult_first"
     }
     ```
    After you've created a **Seat Block** for at least one of these three `seat_type` then you can proceed to create a **Seat Block** using the `children` `seat_type`.
-
+   
+- **WARNING:**
+    > In order to block return-trip seats (priorly obtained from a call to `/trips` using `return` parameter), you must first invoke your call to `/trip` for the first `scheduleId` then block all the seats for this specific ´scheduleId´ calling `/seat-block`. Secondly you need to call again `/trip` with the second `scheduleId`, and block all the seats for this `scheduleId` calling `/seat-block`.
 
 ### Create a block in a Seat [PUT]
 
