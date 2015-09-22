@@ -999,3 +999,23 @@ If this happens, then the API will return a _400_ Response with the following co
     "message": "Credit card was rejected."
 }
 ```
+
+## Booking Discounts [/booking-dicounts]
+There are booking engines which offer discounts, but they will only affect their prices when all the seats have been blocked. Right now the only affected BusLine is Primera Plus. To verify the amount and id of those discounts you need to call the `/booking-discounts`.
+
+### Get Booking Discounts [GET]
+
+When you have selected all the Seats, then you may look for additional discounts from any busline. To do so you will need to make a [GET] call to `/booking-discounts`
+
+**NOTES:**
+
+- Please keep in mind that you need to provide in your header the `PHPSESSID` key with the Session's ID in the Cookie, as below:
+    > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
+
+**Parameters**
+None
+
+**Response**
+{
+   ...
+}
