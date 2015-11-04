@@ -1,6 +1,6 @@
 FORMAT: 1A
 
-# Clickbus Public API
+# ClickBus Public API
 
 This is the documentation and samples for Clickbus Public API. The contents here can also be used as mocked data to simply test API integration.
 
@@ -8,12 +8,15 @@ In this document you may find both how to integrate with Clickbus API for any co
 
 ----------------------------------------------------------------
 
-### **Overview**
+# Group Overview
+
+## Introduction [/intro]
 
 Below are the topic Groups to perform every task for your applications:
 
 - Obtain a list with all **Places**;
 - Search any of our **Trips**;
+- See all information from our supported **Bus Companies**;
 - Calculate your roundtrip items before the purchase with the **Payments** resource;
 - Obtain **Trip Details** from each route;
 - **Seat Block** to lock or unlock seat reservations;
@@ -24,28 +27,19 @@ Below are the topic Groups to perform every task for your applications:
 
 ----------------------------------------------------------------
 
-# API Reference
-
-## **Predicates**
+## Predicates [/intro]
 
 1. All sucessfull requests return a **20*** Response header;
 2. The **Evaluation** environment (https://api-evaluation.clickbus.com.br/api/v1) have only the following routes, for both departure and return:
     - From **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`) to **Santos, SP** (`santos-sp`);
-    - From **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`) to **Campinas, SP** (`campinas-sp`);
-    - From **Japeri, RJ** (`japeri-rj`) to **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`);
-    - From **Santa Rita Passa Quatro, SP** (`santa-rita-passa-quatro-sp`) to **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`);
-    - From **Belo Horizonte, MG** (`belo-horizonte-mg`) to **Rio de Janeiro, RJ** (`rio-de-janeiro-rj`);
-    - From **Estancia, SE** (`estancia-se`) to **Belo Horizonte, MG** (`belo-horizonte-mg`);
-    - From **Campinas, SP** (`campinas-sp`) to **Santos, SP** (`santos-sp`);
+    - From **Santos, SP** (`santos-sp`) to **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`).
 
 
 3. The params **store**, **model** and **platform** are required and singular for each partner. To obtain these credentials, please contact our commercial department at contato@clickbus.com.br.
 
-----------------------------------------------------------------
 
-## **Groups**
 
-# Group Places
+# Group Places 
 
 ## Get All Places [/places]
 
