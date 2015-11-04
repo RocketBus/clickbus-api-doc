@@ -104,6 +104,201 @@ The given request returns a Response _200_, with a list in JSON format filled wi
 }
  ```
 
+## Prepare search for asyncronous calls  [/search-prepare]
+
+The resource `/search-prepare` returns a list of all the possible combinations of booking engines and pairs of origins-destinations serving a given route. This is specially useful to execute asyncronous calls to each booking engine in order to speed up the search results. It is also the only way available to get all the combinations of origins and destinations for grouped places.
+
+### /search-prepare [GET]
+
+**PARAMETERS**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**from**|_string_|This is the place slug for the desired origin. It can be either a grouped or individual place slug.|`ixtapa-gro`|
+|**to**|_string_|This is the place slug for the desired destination. It can be either a grouped or individual place slug.|`zihuatanejo-gro`|
+|**isReturn** (optional)|_boolean_|Whether you are looking for a round or single way trip. The default value is false|`true`|
+
+**RESPONSE**
+
+A successful request will return a _200_ Response, with the structure as described below:
+
+- `origin`, which is an array of results containing a combination of origin, destination and booking engine:
+    - `originPlace` a single place collection of values regarding the place of origin:
+        - `id` ClickBus internal placeId
+        - `original_name` a description name of the place of origin
+        - `slug` a slug (an easily read name by computers) for the place of origin
+    - `destinationPlace` a single place collection of values regarding the place of destination:
+        - `id` ClickBus internal placeId
+        - `original_name` a description name of the place of destination
+        - `slug` a slug (an easily read name by computers) for the place of destination
+    - `bookingEngine` a collection of values regading the booking engine
+        - `id` ClickBus internal booking engine id
+        - `uuid` a unique identifier used for calling the booking engine to filter out the results in the /trips results
+        - `name` the actual name of the booking engine
+- `destination`, an array of results containin a combination of origin, destination and booking engine for the place of destination. The body of this value is contructed in the same way as origin's.
+
+
+**Examples**
+
+- Get a list of combinations to prepare an asyncronous call:
+
+    - URL:
+        ```
+        api/v1/search-prepare?from=ixtapa-gro&to=zihuatanejo-gro&isReturn=true
+        ```
+    - Response:
+        ```json
+        {
+          "origin": [
+            {
+              "originPlace": {
+                "id": 15385,
+                "original_name": "Central de autobuses, Ixtapa, GRO",
+                "slug": "ixtapa-gro"
+              },
+              "destinationPlace": {
+                "id": 5112,
+                "original_name": "Terminal, Zihuatanejo, GRO",
+                "slug": "zihuatanejo-gro"
+              },
+              "bookingEngine": {
+                "id": 5,
+                "uuid": "847685145545385233326f3.40428976",
+                "name": "Autovias"
+              }
+            },
+            {
+              "originPlace": {
+                "id": 15385,
+                "original_name": "Central de autobuses, Ixtapa, GRO",
+                "slug": "ixtapa-gro"
+              },
+              "destinationPlace": {
+                "id": 5112,
+                "original_name": "Terminal, Zihuatanejo, GRO",
+                "slug": "zihuatanejo-gro"
+              },
+              "bookingEngine": {
+                "id": 9,
+                "uuid": "603884687547f59f4e1a1b4.29639698",
+                "name": "Costaline"
+              }
+            },
+            {
+              "originPlace": {
+                "id": 15385,
+                "original_name": "Central de autobuses, Ixtapa, GRO",
+                "slug": "ixtapa-gro"
+              },
+              "destinationPlace": {
+                "id": 5112,
+                "original_name": "Terminal, Zihuatanejo, GRO",
+                "slug": "zihuatanejo-gro"
+              },
+              "bookingEngine": {
+                "id": 12,
+                "uuid": "c8681642e10bb8bd9a4982a604177897",
+                "name": "Tap"
+              }
+            },
+            {
+              "originPlace": {
+                "id": 15385,
+                "original_name": "Central de autobuses, Ixtapa, GRO",
+                "slug": "ixtapa-gro"
+              },
+              "destinationPlace": {
+                "id": 5112,
+                "original_name": "Terminal, Zihuatanejo, GRO",
+                "slug": "zihuatanejo-gro"
+              },
+              "bookingEngine": {
+                "id": 2,
+                "uuid": "490779718545384f2cdbba9.36799433",
+                "name": "GFA"
+              }
+            }
+          ],
+          "destination": [
+            {
+              "originPlace": {
+                "id": 5112,
+                "original_name": "Terminal, Zihuatanejo, GRO",
+                "slug": "zihuatanejo-gro"
+              },
+              "destinationPlace": {
+                "id": 15385,
+                "original_name": "Central de autobuses, Ixtapa, GRO",
+                "slug": "ixtapa-gro"
+              },
+              "bookingEngine": {
+                "id": 5,
+                "uuid": "847685145545385233326f3.40428976",
+                "name": "Autovias"
+              }
+            },
+            {
+              "originPlace": {
+                "id": 5112,
+                "original_name": "Terminal, Zihuatanejo, GRO",
+                "slug": "zihuatanejo-gro"
+              },
+              "destinationPlace": {
+                "id": 15385,
+                "original_name": "Central de autobuses, Ixtapa, GRO",
+                "slug": "ixtapa-gro"
+              },
+              "bookingEngine": {
+                "id": 9,
+                "uuid": "603884687547f59f4e1a1b4.29639698",
+                "name": "Costaline"
+              }
+            },
+            {
+              "originPlace": {
+                "id": 5112,
+                "original_name": "Terminal, Zihuatanejo, GRO",
+                "slug": "zihuatanejo-gro"
+              },
+              "destinationPlace": {
+                "id": 15385,
+                "original_name": "Central de autobuses, Ixtapa, GRO",
+                "slug": "ixtapa-gro"
+              },
+              "bookingEngine": {
+                "id": 12,
+                "uuid": "c8681642e10bb8bd9a4982a604177897",
+                "name": "Tap"
+              }
+            },
+            {
+              "originPlace": {
+                "id": 5112,
+                "original_name": "Terminal, Zihuatanejo, GRO",
+                "slug": "zihuatanejo-gro"
+              },
+              "destinationPlace": {
+                "id": 15385,
+                "original_name": "Central de autobuses, Ixtapa, GRO",
+                "slug": "ixtapa-gro"
+              },
+              "bookingEngine": {
+                "id": 2,
+                "uuid": "490779718545384f2cdbba9.36799433",
+                "name": "GFA"
+              }
+            }
+          ]
+        }
+        ```
+**Errors**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**None**|_Apliction Error_|It does not exist a detailed error message right now, most probable cause of this error is a missing or malformed origin or destination slug.|
+
+
+
 # Group Trips
 
 ## Get all available Trips [/trips]
@@ -112,8 +307,9 @@ The resource `/trips` provides a list with all available trips, with all sort of
 
 **ADVICES:**
 
-- Remember that each request to `/trips` will erase all itens stored in your Pre-Order, so, if you don't have confirmed your Order yet, all the items added to the Pre-Order will be lost.
+- Remember that each request to `/trips` will erase all items stored in your Pre-Order, so, if you have not confirmed your Order yet, all the items added to the Pre-Order will be lost.
 - The `bookingEngine` value, provided in the sucessfull Response, is one of the most important values on this resource: when you request the return trip, you have to provide in the `engine` parameter the exact same `bookingEngine` obtained in the departure trip.
+- In order to obtain Autovias' return-trip discounts. It is required you include the `return` parameter. You will obtain a list with all the trips for both ways.
 
 ### Get all available Trips [GET]
 
@@ -124,6 +320,7 @@ The resource `/trips` provides a list with all available trips, with all sort of
 |**from** (required)|_string_|A destination from where a trip starts.|`queretaro-qro`|
 |**to** (required)|_string_|A destination to where a trip ends.|`central-del-norte-ciudad-de-mexico-df`|
 |**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-07-25`|
+|**return** (optional)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-07-28`|
 |**engine** (optional)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
 
 **Response**
@@ -395,6 +592,7 @@ The resource `/trip` return all information related to a specific trip, based on
 
 - **WARNING:**
     > One of the most important values obtained in the `/trip`s Response is `sessionId`. **Remember to keep this value**: it's required for most of your requests.
+    > In order to block return-trip seats (priorly obtained from a call to `/trips` using `return` parameter), you must first invoke your call to `/trip` for the first `scheduleId` then block all the seats for this specific ´scheduleId´ calling `/seat-block`. Secondly you need to call again `/trip` with the second `scheduleId`, and block all the seats for this `scheduleId` calling `/seat-block`.
 
 ### Get Trip Details [GET]
 
@@ -559,7 +757,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 2. Every Request's header shall declare the key `PHPSESSID`, along with it's value, Session's ID (obtained on **Trip Details**), as follow:
     > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
 3. You can create up to 5 Seat blocks per Order;
-4. According to Mexico's bus companies, no children is allowed to travel unaccompanied by and adult. In order to follow this requirement, every request for this resource to create the first **Seat Block** for any Order can only use `adult`, `elderly` or `teacher` as valid `seat_type`. In order to follow this rule, if you try to select a `children` as the first **Seat Block**, you may receive a _400_ Response with the following message:
+4. According to Mexican laws, no children is allowed to travel unaccompanied by and adult. In order to follow this requirement, every request for this resource to create the first **Seat Block** for any Order can only use `adult`, `elderly` or `teacher` as valid `seat_type`. In order to follow this rule, if you try to select a `children` as the first **Seat Block**, you may receive a _400_ Response with the following message:
     ```json
     {
         "message":"adult_first"
@@ -567,6 +765,8 @@ This request creates a block in a Seat, which indicates that this Seat is now un
     ```
    After you've created a **Seat Block** for at least one of these three `seat_type` then you can proceed to create a **Seat Block** using the `children` `seat_type`.
 
+**WARNING:**
+    > In order to block return-trip seats (priorly obtained from a call to `/trips` using `return` parameter), you must first invoke your call to `/trip` for the first `scheduleId` then block all the seats for this specific ´scheduleId´ calling `/seat-block`. Secondly you need to call again `/trip` with the second `scheduleId`, and block all the seats for this `scheduleId` calling `/seat-block`.
 
 ### Create a block in a Seat [PUT]
 
@@ -792,6 +992,88 @@ With the correct params, this resource returns a Response _200_ and a list, in J
             }
         }
         ```
+        
+------------------------
+
+## Get the discounts only available after blocking all seats GET [/booking-discount]
+
+The resource `/booking-discount` returns a list of all the discounts applied in specific booking engines after blocking all seats. As of today GFA (Primera Plus) can only show its return-trip discounts this way.
+
+*NOTE:* The following sequence is compulsory to follow in order to book a ticket with a booking dicount.
+
+1. Get return trip results in one call `/trips`
+    - To make a return trip GET request you should add the optional parameter `return` with the return date.
+    - In case you have designed your application to make two calls, then you could call a single trip on the first call and a round trip considering the two dates in the second.
+
+2. Get a sessionId `/session`
+    - See documentation.
+
+3. Trip details and seat block `/trip` and `/seat-block` must be called in the following sequence.
+    - Call `/trip` for the first trip
+    - Call `/seat-block` as many times as needed for this trip.
+    - Call  `/trip` for the second trip
+    - Call `/seat-block` as many times as needed for this trip.
+
+5. GET `/booking-discount` (optional) you can call this endpoint to get the discount. To get the final discount prior booking the tickets.
+
+4. Confirm a booking `/booking`
+    - You should call this end point in the same way as in a single trip except that the scheduleId you use in the body for orderItems.seatReservation should be that of the first trip.
+
+### /booking-discount [GET]
+
+**PARAMETERS**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**none**|_N/A_|N/A|N/A|
+
+**NOTES:**
+
+1. Every Request's header shall declare the key `PHPSESSID`, along with it's value, Session's ID (obtained on **Session**), as follow:
+    > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
+
+**RESPONSE**
+
+
+A successful request will return a _200_ Response, with one of either existent or non-existent discount the structure as described below:
+
+- `flag` whether a trip is a return trip
+- `return_discount` the discount response from the booking engine, it will return a false value in case there is no discount available.
+    - [DISCOUNT_REFERENCE] the discount reference provided by the booking engine
+        - `price` the original (one-way) price of the second trip
+        - `newprice` the discounted price of the second trip
+    - Alternatively it can return `false` indicating there is no discount available
+
+**Examples**
+
+- Get a list of combinations to prepare an asyncronous call:
+
+    - URL:
+
+        ```
+        /api/v1/booking-discount
+        ```
+    - Response:
+
+        ```json
+        {
+          "flag": true,
+          "return_discount": {
+            "0311201509602MEX__01": {
+              "price": 870,
+              "newprice": 696
+            }
+          }
+        }
+        ```
+
+**Errors**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**None**|_Apliction Error_|It does not exist a detailed error message right now, most probable cause of this error is that the sequence in which seats were blocked was wrong, example, a seat in the first trip was blocked followed by one in the second, another in the first and finally one in the second. This is as opposed of one in the first a second in the first, one in the second and the last one also in the second|
+
+------------------------
 
 # Group Booking
 
