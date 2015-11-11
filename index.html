@@ -175,53 +175,57 @@ a.list-group-item.heading:hover {
 <p><strong>EXAMPLE</strong></p>
 <pre><code class="language-json">{
    "meta": "",
-   "items": [{
-       "id": 4017,
-       "station_id": 34523,
-       "slug": "sao-paulo-tiete-sp",
-       "locale": "pt-BR",
-       "name": "",
-       "is_primary": "true",
-       "created_at": "2014-09-05 13:04:27",
-       "updated_at": "2014-09-05 13:04:59",
-       "place": {
-           "id": 34523,
-           "place_id": 4017,
+   "items": [
+       {
+           "id": 4017,
+           "station_id": 34523,
+           "slug": "sao-paulo-tiete-sp",
            "locale": "pt-BR",
-           "name": "Sao Paulo, SP - Tiete",
+           "name": "",
+           "is_primary": "true",
            "created_at": "2014-09-05 13:04:27",
            "updated_at": "2014-09-05 13:04:59",
-           "latitude": "-9.0237964",
-           "longitude": "-70.8119953",
-           "state": {
-               "code": "",
-               "name": "Sao Paulo, SP - Tiete"
+           "place": {
+               "id": 34523,
+               "place_id": 4017,
+               "locale": "pt-BR",
+               "name": "Sao Paulo, SP - Tiete",
+               "created_at": "2014-09-05 13:04:27",
+               "updated_at": "2014-09-05 13:04:59",
+               "latitude": "-9.0237964",
+               "longitude": "-70.8119953",
+               "state": {
+                   "code": "",
+                   "name": "Sao Paulo, SP - Tiete"
+               }
            }
-       }
-   }, {
-       "id": 9209,
-       "station_id": 7648,
-       "slug": "santos-sp",
-       "locale": "pt-BR",
-       "name": "Santos, SP",
-       "is_primary": "true",
-       "created_at": "2014-05-26 16:19:36",
-       "updated_at": "2014-05-26 16:38:32",
-       "place": {
-           "id": 7648,
-           "place_id": 7648,
+       },
+       {
+           "id": 9209,
+           "station_id": 7648,
+           "slug": "santos-sp",
            "locale": "pt-BR",
            "name": "Santos, SP",
+           "is_primary": "true",
            "created_at": "2014-05-26 16:19:36",
            "updated_at": "2014-05-26 16:38:32",
-           "latitude": "",
-           "longitude": "",
-           "state": {
-               "code": "",
-               "name": "Santos, SP"
+           "place": {
+               "id": 7648,
+               "place_id": 7648,
+               "locale": "pt-BR",
+               "name": "Santos, SP",
+               "created_at": "2014-05-26 16:19:36",
+               "updated_at": "2014-05-26 16:38:32",
+               "latitude": "",
+               "longitude": "",
+               "state": {
+                   "code": "",
+                   "name": "Santos, SP"
+               }
            }
-       }
-   }, {...}]
+       },
+       { ... }
+   ]
 }
 </code></pre>
 <p><strong>Errors</strong></p>
@@ -751,7 +755,7 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:left"><strong>request.seat</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">The seat’s <code>name</code>, obtained on <strong>Trip Details</strong>.</td><td style="text-align:left"><code>07</code></td></tr>
 <tr><td style="text-align:left"><strong>request.passenger</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which contains multiple items, one for each passenger:</td><td style="text-align:left"></td></tr>
 <tr><td style="text-align:left"><strong>request.passenger.name</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s name.</td><td style="text-align:left"><code>Fulano da Silva</code></td></tr>
-<tr><td style="text-align:left"><strong>request.passenger.document</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s document.</td><td style="text-align:left"><code>123.456.789-00</code></td></tr>
+<tr><td style="text-align:left"><strong>request.passenger.document</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s document.</td><td style="text-align:left"><code>12345678900</code></td></tr>
 <tr><td style="text-align:left"><strong>request.passenger.documentType</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Type of the passenger’s <code>document</code>.</td><td style="text-align:left"><code>&quot;cpf&quot;</code></td></tr>
 <tr><td style="text-align:left"><strong>request.passenger.gender</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>M</code> stands for <em>Male</em>, and <code>F</code>, for <em>Female</em>.</td><td style="text-align:left"><code>M</code> or <code>F</code></td></tr>
 <tr><td style="text-align:left"><strong>request.schedule</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
@@ -1657,14 +1661,15 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:left"><strong>request.orderItems.products.quantity</strong> (optional)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left"></td><td style="text-align:left"><code>{}</code></td></tr>
 </tbody>
 </table>
-<p>The <code>/booking</code> request have the 3 valid payment methods:</p>
+<p>The <code>/booking</code> request have the 4 valid payment methods:</p>
 <ul>
-<li><p><strong>Credit Card</strong></p></li>
+<li><p><strong>Credit Card using the card’s data</strong></p></li>
+<li><p><strong>Credit Card using Mercado Pago tokens</strong></p></li>
 <li><p><strong>Debit Card</strong></p></li>
 <li><p><strong>PayPal</strong></p></li>
 </ul>
-<p>Based on each of the 3 valid payment methods:</p>
-<p><strong>1) Payment method: Credit Card</strong></p>
+<p>Based on each of the 4 valid payment methods:</p>
+<p><strong>1) Payment method: Credit Card using the card’s data</strong></p>
 <p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
@@ -1769,9 +1774,9 @@ a.list-group-item.heading:hover {
 <p>The following Request, with all correct parameters, will return a <em>201</em> Response, with all details from the Order, as the example below.</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"corporate"</span></span>,
-        "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"clickbus"</span></span>,
-        "<span class="hljs-attribute">platform</span>": <span class="hljs-value"><span class="hljs-string">"Web"</span>
+        "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
+        "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"newworld"</span></span>,
+        "<span class="hljs-attribute">platform</span>": <span class="hljs-value"><span class="hljs-string">"bar"</span>
     </span>}</span>,
     "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1062"</span></span>,
@@ -1841,7 +1846,225 @@ a.list-group-item.heading:hover {
     </span>}
 </span>}
 </code></pre>
-<p><strong>2) Payment method: Debit Card</strong></p>
+<p><strong>2) Payment method: Credit Card using Mercado Pago tokens</strong></p>
+<p>This payment method is available only for credit card. It requires to obtain a token trough the MercadoPago services and then provide it in your request to our services, along with the credit card brand, instead of sending the credit card data right to our services.</p>
+<p><strong>NOTE:</strong> We provide a JavaScript library to make the token generation with ease. This library is maintained by ClickBus and you can check the instructions on how to install and use it through <a href="https://github.com/RocketBus/clickbus-payments.js">this link</a>. If you have any questions related to this library, please contact us at <a href="mailto:contato@clickbus.com.br">contato@clickbus.com.br</a> and we’ll assist you in any questions.</p>
+<p><strong>PARAMETERS</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>request.buyer.payment.method</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment type: <code>creditcard</code>.</td><td style="text-align:left"><code>creditcard</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.currency</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment currency.</td><td style="text-align:left"><code>BRL</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.total</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, <code>1400</code> means <code>14.00</code>, and <code>6050</code> means <code>60.50</code>.</td><td style="text-align:left"><code>1400</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.installment</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Indicates on how many installments the payment is settled.</td><td style="text-align:left"><code>1</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An object which requires the following data:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.token</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Token generated through the Mercado Pago JS library.</td><td style="text-align:left"><code>cd844cde3fb6269</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.card_brand</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card’s brand.</td><td style="text-align:left">Check the list of available card brands at <a href="/#payments-supported-card-brands">Supported Card Brands</a>.</td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.zipcode</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Credit card owner’s zip code, with only digits.</td><td style="text-align:left"><code>12345678</code></td></tr>
+</tbody>
+</table>
+<p><strong>REQUEST</strong></p>
+<ul>
+<li>Create an Order with the following data:
+<ul>
+<li><p>Created from a <code>store</code> called <em>NewWorld</em>;</p></li>
+<li><p>Selected 1 Seat for <em>Cicrano da Silva</em> and 1 Seat for <em>Deltrano da Silva</em> in the same Order;</p></li>
+<li><p>Each item costs R$ 12.35, so the <code>request.buyer.payment.total</code> value is <em>2470</em>;</p></li>
+<li><p>The payment is settled to a single <code>installment</code>, using <code>creditcard</code> with a and providing both token and credit card brand (in this example, Visa).</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
+        "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"newworld"</span></span>,
+        "<span class="hljs-attribute">platform</span>": <span class="hljs-value"><span class="hljs-string">"bar"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">request</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"oeccq3hugiknuj5f2luvvruvj7"</span></span>,
+        "<span class="hljs-attribute">ip</span>": <span class="hljs-value"><span class="hljs-string">"192.168.14.1"</span></span>,
+        "<span class="hljs-attribute">buyer</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">locale</span>": <span class="hljs-value"><span class="hljs-string">"pt_BR"</span></span>,
+            "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Cicrano"</span></span>,
+            "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"da Silva"</span></span>,
+            "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"cicrano@teste.com.br"</span></span>,
+            "<span class="hljs-attribute">phone</span>": <span class="hljs-value"><span class="hljs-string">"12934567890"</span></span>,
+            "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789-00"</span></span>,
+            "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">"M"</span></span>,
+            "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1986-05-17"</span></span>,
+            "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
+            "<span class="hljs-attribute">payment</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"creditcard"</span></span>,
+                "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+                "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">2470</span></span>,
+                "<span class="hljs-attribute">installment</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+                "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"cd844c9fd6e300c7a235880de3fb6269"</span></span>,
+                    "<span class="hljs-attribute">card_brand</span>": <span class="hljs-value"><span class="hljs-string">"visa"</span></span>,
+                    "<span class="hljs-attribute">zipcode</span>": <span class="hljs-value"><span class="hljs-string">"12345678"</span>
+                </span>}
+            </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">orderItems</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">seatReservation</span>": <span class="hljs-value"><span class="hljs-string">"NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg=="</span></span>,
+                "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Cicrano"</span></span>,
+                    "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"da Silva"</span></span>,
+                    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fulano@teste.com.br"</span></span>,
+                    "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"12312312301"</span></span>,
+                    "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">"M"</span></span>,
+                    "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1986-05-17"</span></span>,
+                    "<span class="hljs-attribute">seat</span>": <span class="hljs-value"><span class="hljs-string">"11"</span></span>,
+                    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}
+                </span>}</span>,
+                "<span class="hljs-attribute">products</span>": <span class="hljs-value">[{
+                    "<span class="hljs-attribute">uuid</span>": <span class="hljs-value"><span class="hljs-string">"abcd123s"</span></span>,
+                    "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+                </span>}]
+            </span>},
+            {
+                "<span class="hljs-attribute">seatReservation</span>": <span class="hljs-value"><span class="hljs-string">"NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg=="</span></span>,
+                "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Deltrano"</span></span>,
+                    "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"da Silva"</span></span>,
+                    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"beltrano@teste.com.br"</span></span>,
+                    "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"98765432199"</span></span>,
+                    "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">"M"</span></span>,
+                    "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1942-10-17"</span></span>,
+                    "<span class="hljs-attribute">seat</span>": <span class="hljs-value"><span class="hljs-string">"02"</span></span>,
+                    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}
+                </span>}</span>,
+                "<span class="hljs-attribute">products</span>": <span class="hljs-value">[{
+                    "<span class="hljs-attribute">uuid</span>": <span class="hljs-value"><span class="hljs-string">"abcd123s"</span></span>,
+                    "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+                </span>}]
+            </span>}
+        ]
+    </span>}
+</span>}
+</code></pre></li>
+</ul></li>
+</ul>
+<p><strong>RESPONSE</strong></p>
+<p>The following Request, with all correct parameters, will return a <em>201</em> Response, with all details from the Order, as the example below.</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">model</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
+        "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"newworld"</span></span>,
+        "<span class="hljs-attribute">platform</span>": <span class="hljs-value"><span class="hljs-string">"bar"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"655503"</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"order_finalized_successfully"</span></span>,
+        "<span class="hljs-attribute">localizer</span>": <span class="hljs-value"><span class="hljs-string">"2PRMUT"</span></span>,
+        "<span class="hljs-attribute">uuid</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">payment</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"payment.creditcard.mercadopago"</span></span>,
+            "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-string">"3.249"</span></span>,
+            "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+            "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"order_finalized_successfully"</span></span>,
+            "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">postbackUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                "<span class="hljs-attribute">callbackUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+            </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">items</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">trip_id</span>": <span class="hljs-value"><span class="hljs-string">"2528"</span></span>,
+                "<span class="hljs-attribute">localizer</span>": <span class="hljs-value"><span class="hljs-string">"OCYNQB"</span></span>,
+                "<span class="hljs-attribute">ticket_code</span>": <span class="hljs-value"><span class="hljs-string">"0686102"</span></span>,
+                "<span class="hljs-attribute">context</span>": <span class="hljs-value"><span class="hljs-string">"departure"</span></span>,
+                "<span class="hljs-attribute">order_item</span>": <span class="hljs-value"><span class="hljs-string">"1057494"</span></span>,
+                "<span class="hljs-attribute">serviceClass</span>": <span class="hljs-value"><span class="hljs-string">"Convencional"</span></span>,
+                "<span class="hljs-attribute">departure</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">waypoint</span>": <span class="hljs-value"><span class="hljs-string">"3097"</span></span>,
+                    "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-12-12"</span></span>,
+                        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"05:10"</span></span>,
+                        "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    </span>}
+                </span>}</span>,
+                "<span class="hljs-attribute">arrival</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">waypoint</span>": <span class="hljs-value"><span class="hljs-string">"3535"</span></span>,
+                    "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-12-12"</span></span>,
+                        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"05:29"</span></span>,
+                        "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    </span>}
+                </span>}</span>,
+                "<span class="hljs-attribute">seat</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11"</span></span>,
+                    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"11"</span></span>,
+                    "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-string">"12.35"</span></span>,
+                    "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"reserved"</span></span>,
+                    "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+                    "<span class="hljs-attribute">type</span>": <span class="hljs-value">{}
+                </span>}</span>,
+                "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Cicrano da Silva"</span></span>,
+                    "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"cicrano@teste.com.br"</span></span>,
+                    "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"1236547890"</span></span>,
+                    "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                    "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}
+                </span>}</span>,
+                "<span class="hljs-attribute">products</span>": <span class="hljs-value">[]</span>,
+                "<span class="hljs-attribute">subtotal</span>": <span class="hljs-value"><span class="hljs-string">"12.35"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">trip_id</span>": <span class="hljs-value"><span class="hljs-string">"2528"</span></span>,
+                "<span class="hljs-attribute">localizer</span>": <span class="hljs-value"><span class="hljs-string">"OCYNQB"</span></span>,
+                "<span class="hljs-attribute">ticket_code</span>": <span class="hljs-value"><span class="hljs-string">"0686102"</span></span>,
+                "<span class="hljs-attribute">context</span>": <span class="hljs-value"><span class="hljs-string">"departure"</span></span>,
+                "<span class="hljs-attribute">order_item</span>": <span class="hljs-value"><span class="hljs-string">"1057494"</span></span>,
+                "<span class="hljs-attribute">serviceClass</span>": <span class="hljs-value"><span class="hljs-string">"Convencional"</span></span>,
+                "<span class="hljs-attribute">departure</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">waypoint</span>": <span class="hljs-value"><span class="hljs-string">"3097"</span></span>,
+                    "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-12-12"</span></span>,
+                        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"05:10"</span></span>,
+                        "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    </span>}
+                </span>}</span>,
+                "<span class="hljs-attribute">arrival</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">waypoint</span>": <span class="hljs-value"><span class="hljs-string">"3535"</span></span>,
+                    "<span class="hljs-attribute">schedule</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2015-12-12"</span></span>,
+                        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"05:29"</span></span>,
+                        "<span class="hljs-attribute">timezone</span>": <span class="hljs-value"><span class="hljs-string">"America/Sao_Paulo"</span>
+                    </span>}
+                </span>}</span>,
+                "<span class="hljs-attribute">seat</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"02"</span></span>,
+                    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"02"</span></span>,
+                    "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-string">"12.35"</span></span>,
+                    "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"reserved"</span></span>,
+                    "<span class="hljs-attribute">currency</span>": <span class="hljs-value"><span class="hljs-string">"BRL"</span></span>,
+                    "<span class="hljs-attribute">type</span>": <span class="hljs-value">{}
+                </span>}</span>,
+                "<span class="hljs-attribute">passenger</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"Deltrano da Silva"</span></span>,
+                    "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"deltrano@teste.com.br"</span></span>,
+                    "<span class="hljs-attribute">document</span>": <span class="hljs-value"><span class="hljs-string">"0987654321"</span></span>,
+                    "<span class="hljs-attribute">gender</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                    "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                    "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}
+                </span>}</span>,
+                "<span class="hljs-attribute">products</span>": <span class="hljs-value">[]</span>,
+                "<span class="hljs-attribute">subtotal</span>": <span class="hljs-value"><span class="hljs-string">"12.35"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value"><span class="hljs-string">"2015-11-10"</span>
+    </span>}
+</span>}
+</code></pre>
+<p><strong>3) Payment method: Debit Card</strong></p>
 <p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
@@ -2000,7 +2223,7 @@ a.list-group-item.heading:hover {
     </span>}
 </span>}
 </code></pre>
-<p><strong>3) Payment method: PayPal</strong></p>
+<p><strong>4) Payment method: PayPal</strong></p>
 <p>This payment method provides a redirect link in the Response body, provided after PayPal’s request.</p>
 <p><strong>PARAMETERS</strong></p>
 <table>
@@ -2936,7 +3159,7 @@ a.list-group-item.heading:hover {
 <tr><td style="text-align:center"><strong>D5</strong></td><td style="text-align:left"><em>Item not found.</em></td><td style="text-align:left">The requested Order could not be found.</td></tr>
 </tbody>
 </table>
-</div><ul class="list-group"></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 23 Oct 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+</div><ul class="list-group"></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 11 Nov 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
 
 </div></body><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script>(function() {
   if (location.protocol === 'file:') {

@@ -62,53 +62,57 @@ The given request returns a Response _200_, with a list in JSON format filled wi
  ```json
  {
     "meta": "",
-    "items": [{
-        "id": 4017,
-        "station_id": 34523,
-        "slug": "sao-paulo-tiete-sp",
-        "locale": "pt-BR",
-        "name": "",
-        "is_primary": "true",
-        "created_at": "2014-09-05 13:04:27",
-        "updated_at": "2014-09-05 13:04:59",
-        "place": {
-            "id": 34523,
-            "place_id": 4017,
+    "items": [
+        {
+            "id": 4017,
+            "station_id": 34523,
+            "slug": "sao-paulo-tiete-sp",
             "locale": "pt-BR",
-            "name": "Sao Paulo, SP - Tiete",
+            "name": "",
+            "is_primary": "true",
             "created_at": "2014-09-05 13:04:27",
             "updated_at": "2014-09-05 13:04:59",
-            "latitude": "-9.0237964",
-            "longitude": "-70.8119953",
-            "state": {
-                "code": "",
-                "name": "Sao Paulo, SP - Tiete"
+            "place": {
+                "id": 34523,
+                "place_id": 4017,
+                "locale": "pt-BR",
+                "name": "Sao Paulo, SP - Tiete",
+                "created_at": "2014-09-05 13:04:27",
+                "updated_at": "2014-09-05 13:04:59",
+                "latitude": "-9.0237964",
+                "longitude": "-70.8119953",
+                "state": {
+                    "code": "",
+                    "name": "Sao Paulo, SP - Tiete"
+                }
             }
-        }
-    }, {
-        "id": 9209,
-        "station_id": 7648,
-        "slug": "santos-sp",
-        "locale": "pt-BR",
-        "name": "Santos, SP",
-        "is_primary": "true",
-        "created_at": "2014-05-26 16:19:36",
-        "updated_at": "2014-05-26 16:38:32",
-        "place": {
-            "id": 7648,
-            "place_id": 7648,
+        },
+        {
+            "id": 9209,
+            "station_id": 7648,
+            "slug": "santos-sp",
             "locale": "pt-BR",
             "name": "Santos, SP",
+            "is_primary": "true",
             "created_at": "2014-05-26 16:19:36",
             "updated_at": "2014-05-26 16:38:32",
-            "latitude": "",
-            "longitude": "",
-            "state": {
-                "code": "",
-                "name": "Santos, SP"
+            "place": {
+                "id": 7648,
+                "place_id": 7648,
+                "locale": "pt-BR",
+                "name": "Santos, SP",
+                "created_at": "2014-05-26 16:19:36",
+                "updated_at": "2014-05-26 16:38:32",
+                "latitude": "",
+                "longitude": "",
+                "state": {
+                    "code": "",
+                    "name": "Santos, SP"
+                }
             }
-        }
-    }, {...}]
+        },
+        { ... }
+    ]
 }
  ```
 
@@ -671,7 +675,7 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 |**request.seat** (required)|_string_|The seat’s `name`, obtained on **Trip Details**.|`07`|
 |**request.passenger** (required)|_object_|A container which contains multiple items, one for each passenger: ||
 |**request.passenger.name** (required)|_string_|Passenger's name.|`Fulano da Silva`|
-|**request.passenger.document** (required)|_string_|Passenger's document.|`123.456.789-00`|
+|**request.passenger.document** (required)|_string_|Passenger's document.|`12345678900`|
 |**request.passenger.documentType** (required)|_string_|Type of the passenger's `document`.|`"cpf"`|
 |**request.passenger.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
 |**request.schedule** (required)|_object_|A container which requires: ||
@@ -1586,15 +1590,16 @@ Each `/booking` have the same structure block except for `payment` block, which 
 |**request.orderItems.products.uuid** (optional)|_string_||`abcd123s`|
 |**request.orderItems.products.quantity** (optional)|_int_||`{}`|
 
- The `/booking` request have the 3 valid payment methods:
+ The `/booking` request have the 4 valid payment methods:
 
-- **Credit Card**
+- **Credit Card using the card's data**
+- **Credit Card using Mercado Pago tokens**
 - **Debit Card**
 - **PayPal**
 
-Based on each of the 3 valid payment methods:
+Based on each of the 4 valid payment methods:
 
-**1) Payment method: Credit Card**
+**1) Payment method: Credit Card using the card's data**
 
 **PARAMETERS**
 
@@ -1700,9 +1705,9 @@ The following Request, with all correct parameters, will return a _201_ Response
 ```json
 {
     "meta": {
-        "model": "corporate",
-        "store": "clickbus",
-        "platform": "Web"
+        "model": "foo",
+        "store": "newworld",
+        "platform": "bar"
     },
     "content": {
         "id": "1062",
@@ -1773,7 +1778,232 @@ The following Request, with all correct parameters, will return a _201_ Response
 }
 ```
 
-**2) Payment method: Debit Card**
+**2) Payment method: Credit Card using Mercado Pago tokens**
+
+This payment method is available only for credit card. It requires to obtain a token trough the MercadoPago services and then provide it in your request to our services, along with the credit card brand, instead of sending the credit card data right to our services.
+
+**NOTE:** We provide a JavaScript library to make the token generation with ease. This library is maintained by ClickBus and you can check the instructions on how to install and use it through [this link](https://github.com/RocketBus/clickbus-payments.js). If you have any questions related to this library, please contact us at contato@clickbus.com.br and we'll assist you in any questions.
+
+**PARAMETERS**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**request.buyer.payment.method** (required)|_string_|Payment type: `creditcard`.|`creditcard`|
+|**request.buyer.payment.currency** (required)|_string_|Payment currency.|`BRL`|
+|**request.buyer.payment.total** (required)|_int_|Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, `1400` means `14.00`, and `6050` means `60.50`.|`1400`|
+|**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
+|**request.buyer.payment.meta** (required)|_object_|An object which requires the following data:||
+|**request.buyer.payment.meta.token** (required)|_string_|Token generated through the Mercado Pago JS library.|`cd844cde3fb6269`|
+|**request.buyer.payment.meta.card_brand** (required)|_string_|Credit card's brand.|Check the list of available card brands at [Supported Card Brands](/#payments-supported-card-brands).|
+|**request.buyer.payment.meta.zipcode** (required)|_string_|Credit card owner's zip code, with only digits.|`12345678`|
+
+**REQUEST**
+
+- Create an Order with the following data:
+    - Created from a `store` called _NewWorld_;
+    - Selected 1 Seat for _Cicrano da Silva_ and 1 Seat for _Deltrano da Silva_ in the same Order;
+    - Each item costs R$ 12.35, so the `request.buyer.payment.total` value is _2470_;
+    - The payment is settled to a single `installment`, using `creditcard` with a and providing both token and credit card brand (in this example, Visa).
+
+        ```json
+        {
+            "meta": {
+                "model": "foo",
+                "store": "newworld",
+                "platform": "bar"
+            },
+            "request": {
+                "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+                "ip": "192.168.14.1",
+                "buyer": {
+                    "locale": "pt_BR",
+                    "firstName": "Cicrano",
+                    "lastName": "da Silva",
+                    "email": "cicrano@teste.com.br",
+                    "phone": "12934567890",
+                    "document": "123.456.789-00",
+                    "gender": "M",
+                    "birthday": "1986-05-17",
+                    "meta": {},
+                    "payment": {
+                        "method": "creditcard",
+                        "currency": "BRL",
+                        "total": 2470,
+                        "installment": "1",
+                        "meta": {
+                            "token": "cd844c9fd6e300c7a235880de3fb6269",
+                            "card_brand": "visa",
+                            "zipcode": "12345678"
+                        }
+                    }
+                },
+                "orderItems": [
+                    {
+                        "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
+                        "passenger": {
+                            "firstName": "Cicrano",
+                            "lastName": "da Silva",
+                            "email": "fulano@teste.com.br",
+                            "document": "12312312301",
+                            "gender": "M",
+                            "birthday": "1986-05-17",
+                            "seat": "11",
+                            "meta": {}
+                        },
+                        "products": [{
+                            "uuid": "abcd123s",
+                            "quantity": 1
+                        }]
+                    },
+                    {
+                        "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
+                        "passenger": {
+                            "firstName": "Deltrano",
+                            "lastName": "da Silva",
+                            "email": "beltrano@teste.com.br",
+                            "document": "98765432199",
+                            "gender": "M",
+                            "birthday": "1942-10-17",
+                            "seat": "02",
+                            "meta": {}
+                        },
+                        "products": [{
+                            "uuid": "abcd123s",
+                            "quantity": 1
+                        }]
+                    }
+                ]
+            }
+        }
+        ```
+
+
+**RESPONSE**
+
+The following Request, with all correct parameters, will return a _201_ Response, with all details from the Order, as the example below.
+
+```json
+{
+    "meta": {
+        "model": "foo",
+        "store": "newworld",
+        "platform": "bar"
+    },
+    "content": {
+        "id": "655503",
+        "status": "order_finalized_successfully",
+        "localizer": "2PRMUT",
+        "uuid": "",
+        "payment": {
+            "method": "payment.creditcard.mercadopago",
+            "total": "3.249",
+            "currency": "BRL",
+            "status": "order_finalized_successfully",
+            "meta": {
+                "postbackUrl": "",
+                "callbackUrl": ""
+            }
+        },
+        "items": [
+            {
+                "trip_id": "2528",
+                "localizer": "OCYNQB",
+                "ticket_code": "0686102",
+                "context": "departure",
+                "order_item": "1057494",
+                "serviceClass": "Convencional",
+                "departure": {
+                    "waypoint": "3097",
+                    "schedule": {
+                        "id": "",
+                        "date": "2015-12-12",
+                        "time": "05:10",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "arrival": {
+                    "waypoint": "3535",
+                    "schedule": {
+                        "id": "",
+                        "date": "2015-12-12",
+                        "time": "05:29",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "seat": {
+                    "id": "11",
+                    "name": "11",
+                    "price": "12.35",
+                    "status": "reserved",
+                    "currency": "BRL",
+                    "type": {}
+                },
+                "passenger": {
+                    "firstName": "Cicrano da Silva",
+                    "lastName": "",
+                    "email": "cicrano@teste.com.br",
+                    "document": "1236547890",
+                    "gender": "",
+                    "birthday": "",
+                    "meta": {}
+                },
+                "products": [],
+                "subtotal": "12.35"
+            },
+            {
+                "trip_id": "2528",
+                "localizer": "OCYNQB",
+                "ticket_code": "0686102",
+                "context": "departure",
+                "order_item": "1057494",
+                "serviceClass": "Convencional",
+                "departure": {
+                    "waypoint": "3097",
+                    "schedule": {
+                        "id": "",
+                        "date": "2015-12-12",
+                        "time": "05:10",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "arrival": {
+                    "waypoint": "3535",
+                    "schedule": {
+                        "id": "",
+                        "date": "2015-12-12",
+                        "time": "05:29",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "seat": {
+                    "id": "02",
+                    "name": "02",
+                    "price": "12.35",
+                    "status": "reserved",
+                    "currency": "BRL",
+                    "type": {}
+                },
+                "passenger": {
+                    "firstName": "Deltrano da Silva",
+                    "lastName": "",
+                    "email": "deltrano@teste.com.br",
+                    "document": "0987654321",
+                    "gender": "",
+                    "birthday": "",
+                    "meta": {}
+                },
+                "products": [],
+                "subtotal": "12.35"
+            }
+        ],
+        "createdAt": "2015-11-10"
+    }
+}
+```
+
+
+
+**3) Payment method: Debit Card**
 
 **PARAMETERS**
 
@@ -1934,7 +2164,7 @@ Attention to `content.payment.meta.continuePaymentURL`, which contains the URL t
 }
 ```
 
-**3) Payment method: PayPal**
+**4) Payment method: PayPal**
 
 This payment method provides a redirect link in the Response body, provided after PayPal's request.
 
