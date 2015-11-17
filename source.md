@@ -1,19 +1,22 @@
 FORMAT: 1A
 
-# Clickbus Public API
+# ClickBus Public API
 
 This is the documentation and samples for Clickbus Public API. The contents here can also be used as mocked data to simply test API integration.
 
-In this document you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (contato@clickbus.com.br for more commercial details).
+In this document, you may find both how to integrate with Clickbus API but also use it as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using ClickBus (contato@clickbus.com.br for more commercial details).
 
 ----------------------------------------------------------------
 
-### **Overview**
+# Group Overview
+
+## Introduction [/intro]
 
 Below are the topic Groups to perform every task for your applications:
 
 - Obtain a list with all **Places**;
 - Search any of our **Trips**;
+- See all information from our supported **Bus Companies**;
 - Calculate your roundtrip items before the purchase with the **Payments** resource;
 - Obtain **Trip Details** from each route;
 - **Seat Block** to lock or unlock seat reservations;
@@ -24,28 +27,19 @@ Below are the topic Groups to perform every task for your applications:
 
 ----------------------------------------------------------------
 
-# API Reference
-
-## **Predicates**
+## Predicates [/intro]
 
 1. All sucessfull requests return a **20*** Response header;
 2. The **Evaluation** environment (https://api-evaluation.clickbus.com.br/api/v1) have only the following routes, for both departure and return:
     - From **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`) to **Santos, SP** (`santos-sp`);
-    - From **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`) to **Campinas, SP** (`campinas-sp`);
-    - From **Japeri, RJ** (`japeri-rj`) to **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`);
-    - From **Santa Rita Passa Quatro, SP** (`santa-rita-passa-quatro-sp`) to **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`);
-    - From **Belo Horizonte, MG** (`belo-horizonte-mg`) to **Rio de Janeiro, RJ** (`rio-de-janeiro-rj`);
-    - From **Estancia, SE** (`estancia-se`) to **Belo Horizonte, MG** (`belo-horizonte-mg`);
-    - From **Campinas, SP** (`campinas-sp`) to **Santos, SP** (`santos-sp`);
+    - From **Santos, SP** (`santos-sp`) to **Sao Paulo, SP - Tiete** (`sao-paulo-tiete-sp`).
 
 
 3. The params **store**, **model** and **platform** are required and singular for each partner. To obtain these credentials, please contact our commercial department at contato@clickbus.com.br.
 
-----------------------------------------------------------------
 
-## **Groups**
 
-# Group Places
+# Group Places 
 
 ## Get All Places [/places]
 
@@ -59,66 +53,76 @@ One of the most important values on this resource is the `slug`, which contains 
 
 _None_
 
-**RESPONSE**
-
-The given request returns a Response _200_, with a list in JSON format filled with all Places:
-
 **EXAMPLE**
+
+The given request returns a Response _200_, with a list in JSON format filled with all Places.
+
+**REQUEST**
+
+```
+api/v1/places
+```
+
+**RESPONSE (application/json)**
 
  ```json
  {
     "meta": "",
-    "items": [{
-        "id": 4017,
-        "station_id": 34523,
-        "slug": "sao-paulo-tiete-sp",
-        "locale": "pt-BR",
-        "name": "",
-        "is_primary": "true",
-        "created_at": "2014-09-05 13:04:27",
-        "updated_at": "2014-09-05 13:04:59",
-        "place": {
-            "id": 34523,
-            "place_id": 4017,
+    "items": [
+        {
+            "id": 4017,
+            "station_id": 34523,
+            "slug": "sao-paulo-tiete-sp",
             "locale": "pt-BR",
-            "name": "Sao Paulo, SP - Tiete",
+            "name": "",
+            "is_primary": "true",
             "created_at": "2014-09-05 13:04:27",
             "updated_at": "2014-09-05 13:04:59",
-            "latitude": "-9.0237964",
-            "longitude": "-70.8119953",
-            "state": {
-                "code": "",
-                "name": "Sao Paulo, SP - Tiete"
+            "place": {
+                "id": 34523,
+                "place_id": 4017,
+                "locale": "pt-BR",
+                "name": "Sao Paulo, SP - Tiete",
+                "created_at": "2014-09-05 13:04:27",
+                "updated_at": "2014-09-05 13:04:59",
+                "latitude": "-9.0237964",
+                "longitude": "-70.8119953",
+                "state": {
+                    "code": "",
+                    "name": "Sao Paulo, SP - Tiete"
+                }
             }
-        }
-    }, {
-        "id": 9209,
-        "station_id": 7648,
-        "slug": "santos-sp",
-        "locale": "pt-BR",
-        "name": "Santos, SP",
-        "is_primary": "true",
-        "created_at": "2014-05-26 16:19:36",
-        "updated_at": "2014-05-26 16:38:32",
-        "place": {
-            "id": 7648,
-            "place_id": 7648,
+        },
+        {
+            "id": 9209,
+            "station_id": 7648,
+            "slug": "santos-sp",
             "locale": "pt-BR",
             "name": "Santos, SP",
+            "is_primary": "true",
             "created_at": "2014-05-26 16:19:36",
             "updated_at": "2014-05-26 16:38:32",
-            "latitude": "",
-            "longitude": "",
-            "state": {
-                "code": "",
-                "name": "Santos, SP"
+            "place": {
+                "id": 7648,
+                "place_id": 7648,
+                "locale": "pt-BR",
+                "name": "Santos, SP",
+                "created_at": "2014-05-26 16:19:36",
+                "updated_at": "2014-05-26 16:38:32",
+                "latitude": "",
+                "longitude": "",
+                "state": {
+                    "code": "",
+                    "name": "Santos, SP"
+                }
             }
-        }
-    }, {...}]
+        },
+        { ... }
+    ]
 }
  ```
 
- **Errors**
+ **ERRORS**
 
 |CODE|DESCRIPTION|DETAILS|
 |:---:|:----|:----|
@@ -145,217 +149,225 @@ The resource `/trips` provides a list with all available trips, with all sort of
 |**departure** (required)|_date_|Any valid date, in format `yyyy-mm-dd`.|`2015-02-11`|
 |**engine** (optional)|_string_|Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.|`5411E7D726991`|
 
-**RESPONSE**
-
-With the correct params, this resource returns a Response _200_ and a list, in JSON format, with these details as follow:
+With the correct params, this resource returns a Response 200 and a list, in JSON format, with these details as follow:
 
 - `items`, which have:
     - `from` and `to` destinations;
-    - `parts` section, which contains:
+    - parts section, which contains:
         - `waypoint` information, such as `schedule` for each waypoint, including `price`, `date` and `time`;
         - Which `busCompany` offer these travels;
         - `availableSeats` provides how many seats are available.
 
-**Examples**
+**EXAMPLE**
 
- - Searching for travels from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _11th Feb 2015_, with all correct params:
+Searching for travels from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _11th Feb 2015_, with all correct params:
 
-    - URL:
-        ```
-        api/v1/trips?from=sao-paulo-tiete-sp&to=santos-sp&departure=2015-02-11
-        ```
-    - Response:
-        ```json
-        {
-            "meta": "",
-            "items": [{
-                "from": "Sao Paulo, SP - Tiete",
-                "to": "Santos, SP",
-                "parts": [{
-                    "trip_id": "2949",
-                    "departure": {
-                        "price": "2191",
-                        "waypoint": {
-                            "id": "4016",
-                            "prices": [{
-                                "waypoint": "3935",
-                                "price": "2191"
-                            }],
-                            "schedule": {
-                                "id": "NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==",
-                                "date": "2015-02-11",
-                                "time": "01:00",
-                                "timezone": "America/Sao_Paulo"
-                            },
-                            "context": "departure",
-                            "place": {
-                                "country": "BRA",
-                                "state": "",
-                                "city": "Sao Paulo, SP - Tiete",
-                                "station": {
-                                    "current": {
-                                        "id": "4016",
-                                        "name": "Sao Paulo, SP - Tiete",
-                                        "locale": "en_US"
-                                    },
-                                    "default": {
-                                        "id": "",
-                                        "name": "",
-                                        "locale": ""
-                                    }
-                                },
-                                "locale": "pt_BR",
-                                "id": "4016"
-                            },
-                            "isDeparture": "true",
-                            "position": "0"
-                        }
-                    },
-                    "arrival": {
-                        "price": "2191",
-                        "waypoint": {
-                            "id": "3935",
-                            "prices": [{
-                                "waypoint": "",
-                                "price": ""
-                            }],
-                            "schedule": {
-                                "id": "NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==",
-                                "date": "2015-02-11",
-                                "time": "02:10",
-                                "timezone": "America/Sao_Paulo"
-                            },
-                            "context": "arrival",
-                            "place": {
-                                "country": "BRA",
-                                "state": "",
-                                "city": "Santos, SP",
-                                "station": {
-                                    "current": {
-                                        "id": "111",
-                                        "name": "Santos, SP",
-                                        "locale": "pt_BR"
-                                    },
-                                    "default": {
-                                        "id": "",
-                                        "name": "",
-                                        "locale": ""
-                                    }
-                                },
-                                "locale": "pt_BR",
-                                "id": "3935"
-                            },
-                            "isDeparture": "false",
-                            "position": "0"
-                        }
-                    },
-                    "busCompany": {
-                        "name": "Cometa",
-                        "id": "7",
-                        "logo": "https://api-evaluation.clickbus.com.br/bundles/frontend/img/logos/buslines/small/bl-demon-s.png"
-                    },
-                    "bus": {
-                        "serviceClass": "Convencional",
-                        "name": "Convencional",
-                        "id": "1"
-                    },
-                    "waypoints": [{
-                        "id": "4016",
-                        "prices": [{
-                            "waypoint": "3935",
-                            "price": "2191"
-                        }],
-                        "schedule": {
-                            "id": "NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==",
-                            "date": "2015-02-11",
-                            "time": "01:00",
-                            "timezone": "America/Sao_Paulo"
-                        },
-                        "context": "departure",
-                        "place": {
-                            "country": "BRA",
-                            "state": "SÃ£o Paulo",
-                            "city": "SÃ£o Paulo",
-                            "station": {
-                                "current": {
-                                    "id": "4016",
-                                    "name": "Sao Paulo, SP - Tiete",
-                                    "locale": "pt_BR"
-                                },
-                                "default": {
-                                    "id": "",
-                                    "name": "",
-                                    "locale": ""
-                                }
-                            },
-                            "locale": "pt_BR",
-                            "id": "123"
-                        },
-                        "isDeparture": "true",
-                        "position": "0"
-                    },
-                    {
-                        "id": "3935",
-                        "prices": [{
-                            "waypoint": "",
-                            "price": "2191"
-                        }],
-                        "schedule": {
-                            "id": "NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==",
-                            "date": "2015-02-11",
-                            "time": "01:00",
-                            "timezone": "America/Sao_Paulo"
-                        },
-                        "context": "arrival",
-                        "place": {
-                            "country": "BRA",
-                            "state": "",
-                            "city": "Santos, SP",
-                            "station": {
-                                "current": {
-                                    "id": "3935",
-                                    "name": "Santos, SP",
-                                    "locale": "pt_BR"
-                                },
-                                "default": {
-                                    "id": "",
-                                    "name": "",
-                                    "locale": ""
-                                }
-                            },
-                            "locale": "pt_BR",
-                            "id": ""
-                        },
-                        "isDeparture": false,
-                        "position": 0
+**REQUEST**
+
+```
+api/v1/trips?from=sao-paulo-tiete-sp&to=santos-sp&departure=2015-02-11
+```
+
+**RESPONSE (application/json)**
+
+```json
+{
+    "meta": "",
+    "items": [{
+        "from": "Sao Paulo, SP - Tiete",
+        "to": "Santos, SP",
+        "parts": [{
+            "trip_id": "2949",
+            "departure": {
+                "price": "2191",
+                "waypoint": {
+                    "id": "4016",
+                    "prices": [{
+                        "waypoint": "3935",
+                        "price": "2191"
                     }],
-                    "seatTypes": [],
-                    "products": [],
-                    "availableSeats": "44"
-                }]
-            }]
-        }
-        ```
-- Searching for travels from _Sao Paulo, SP - Tiete_ to _Santos, SP_ using an incorrect or even an unavailable date value on _departure_:
-    - URL:
-        
-        For an incorrect value, like `99/99/9999`:
-        ```
-        api/v1/trips?from=sao-paulo-tiete-sp&to=santos-sp&departure=9999-99-99
-        ``` 
-        For an unavailable value, like `1th January, 2010`:
-        ```
-        api/v1/trips?from=sao-paulo-tiete-sp&to=santos-sp&departure=2010-01-01
-        ``` 
-    - Response:
-        ```json
-        {
-            "meta": "",
-            "items": []
-        }
-        ```
+                    "schedule": {
+                        "id": "NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==",
+                        "date": "2015-02-11",
+                        "time": "01:00",
+                        "timezone": "America/Sao_Paulo"
+                    },
+                    "context": "departure",
+                    "place": {
+                        "country": "BRA",
+                        "state": "",
+                        "city": "Sao Paulo, SP - Tiete",
+                        "station": {
+                            "current": {
+                                "id": "4016",
+                                "name": "Sao Paulo, SP - Tiete",
+                                "locale": "en_US"
+                            },
+                            "default": {
+                                "id": "",
+                                "name": "",
+                                "locale": ""
+                            }
+                        },
+                        "locale": "pt_BR",
+                        "id": "4016"
+                    },
+                    "isDeparture": "true",
+                    "position": "0"
+                }
+            },
+            "arrival": {
+                "price": "2191",
+                "waypoint": {
+                    "id": "3935",
+                    "prices": [{
+                        "waypoint": "",
+                        "price": ""
+                    }],
+                    "schedule": {
+                        "id": "NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==",
+                        "date": "2015-02-11",
+                        "time": "02:10",
+                        "timezone": "America/Sao_Paulo"
+                    },
+                    "context": "arrival",
+                    "place": {
+                        "country": "BRA",
+                        "state": "",
+                        "city": "Santos, SP",
+                        "station": {
+                            "current": {
+                                "id": "111",
+                                "name": "Santos, SP",
+                                "locale": "pt_BR"
+                            },
+                            "default": {
+                                "id": "",
+                                "name": "",
+                                "locale": ""
+                            }
+                        },
+                        "locale": "pt_BR",
+                        "id": "3935"
+                    },
+                    "isDeparture": "false",
+                    "position": "0"
+                }
+            },
+            "busCompany": {
+                "name": "Cometa",
+                "id": "7",
+                "logo": "https://api-evaluation.clickbus.com.br/bundles/frontend/img/logos/buslines/small/bl-demon-s.png"
+            },
+            "bus": {
+                "serviceClass": "Convencional",
+                "name": "Convencional",
+                "id": "1"
+            },
+            "waypoints": [{
+                "id": "4016",
+                "prices": [{
+                    "waypoint": "3935",
+                    "price": "2191"
+                }],
+                "schedule": {
+                    "id": "NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==",
+                    "date": "2015-02-11",
+                    "time": "01:00",
+                    "timezone": "America/Sao_Paulo"
+                },
+                "context": "departure",
+                "place": {
+                    "country": "BRA",
+                    "state": "SÃ£o Paulo",
+                    "city": "SÃ£o Paulo",
+                    "station": {
+                        "current": {
+                            "id": "4016",
+                            "name": "Sao Paulo, SP - Tiete",
+                            "locale": "pt_BR"
+                        },
+                        "default": {
+                            "id": "",
+                            "name": "",
+                            "locale": ""
+                        }
+                    },
+                    "locale": "pt_BR",
+                    "id": "123"
+                },
+                "isDeparture": "true",
+                "position": "0"
+            },
+            {
+                "id": "3935",
+                "prices": [{
+                    "waypoint": "",
+                    "price": "2191"
+                }],
+                "schedule": {
+                    "id": "NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==",
+                    "date": "2015-02-11",
+                    "time": "01:00",
+                    "timezone": "America/Sao_Paulo"
+                },
+                "context": "arrival",
+                "place": {
+                    "country": "BRA",
+                    "state": "",
+                    "city": "Santos, SP",
+                    "station": {
+                        "current": {
+                            "id": "3935",
+                            "name": "Santos, SP",
+                            "locale": "pt_BR"
+                        },
+                        "default": {
+                            "id": "",
+                            "name": "",
+                            "locale": ""
+                        }
+                    },
+                    "locale": "pt_BR",
+                    "id": ""
+                },
+                "isDeparture": false,
+                "position": 0
+            }],
+            "seatTypes": [],
+            "products": [],
+            "availableSeats": "44"
+        }]
+    }]
+}
+```
 
-**Errors**
+**EXAMPLE**
+
+Searching for travels from _Sao Paulo, SP - Tiete_ to _Santos, SP_ using an incorrect or even an unavailable date value on _departure_:
+
+**REQUEST**
+
+- For an incorrect value, like `99/99/9999`:
+    ```
+    api/v1/trips?from=sao-paulo-tiete-sp&to=santos-sp&departure=9999-99-99
+    ``` 
+- For an unavailable value, like `1th January, 2010`:
+    ```
+    api/v1/trips?from=sao-paulo-tiete-sp&to=santos-sp&departure=2010-01-01
+    ``` 
+
+**RESPONSE (application/json)**
+
+```json
+{
+    "meta": "",
+    "items": []
+}
+```
+
+
+**ERRORS**
 
 |CODE|DESCRIPTION|DETAILS|
 |:---:|:----|:----|
@@ -381,7 +393,7 @@ The resource `/buscompanies` provides a list of all available Bus Companies offe
 
 _None_
 
-**RESPONSE**
+In the response, you can map the data as described below:
 
 - The `meta` parameter contains all data for pagination, as:
     - `total` is the amount of results obtained.
@@ -393,7 +405,20 @@ _None_
         - `name` is the Bus Company name.
         - `logo` is an object containing `url`, which is the path for the Bus Company logo image file.
 
+
+**EXAMPLE**
+
+Listing all bus companies and their data.
+
+**REQUEST**
+
 ```
+api/v1/buscompanies
+```
+
+**RESPONSE (application/json)**
+
+```json
 {
     "meta": {
         "total": 67,
@@ -433,35 +458,38 @@ Once you have all identifiers for all Bus Companies, the resource `/buscompanies
 |:----|:----|:----|:----|
 |**id** (required)|_integer_|An identifier related to any Bus Company.|`10`|
 
-**REQUEST**
-
-- URL:
-    ```
-    api/v1/buscompanies/2
-    ```
-
-**RESPONSE**
-
-- As there is no pagination data for a single result, the `meta` parameter contains only an empty object.
+As there is no pagination data for a single result, the `meta` parameter contains only an empty object.
 - `busCompanies` contains an array with a single Bus Company, described as:
     - `id` is the identifier, unique for each result.
     - `name` is the Bus Company name.
     - `logo` is an object containing `url`, which is the path for the Bus Company logo image file.
 
-    ```
-    {
-        "meta": {},
-        "busCompanies": [
-            {
-                "id": 2,
-                "name": "Andorinha",
-                "logo": {
-                    "url": "https://s3-sa-east-1.amazonaws.com/legacy-static/bl-andorinha-s.jpg"
-                }
+**EXAMPLE**
+
+Searching for a bus company, using the ID `2` (related to the `Andorinha` bus company). 
+
+**REQUEST**
+
+```
+api/v1/buscompanies/2
+```
+
+**RESPONSE (application/json)**
+
+```
+{
+    "meta": {},
+    "busCompanies": [
+        {
+            "id": 2,
+            "name": "Andorinha",
+            "logo": {
+                "url": "https://s3-sa-east-1.amazonaws.com/legacy-static/bl-andorinha-s.jpg"
             }
-        ]
-    }
-    ```
+        }
+    ]
+}
+```
 
 
 # Group Session
@@ -478,30 +506,32 @@ The resource `/session` retrieves the current Session ID, which is useful to obt
 
 _None_
 
-**RESPONSE**
-
-The given request returns a Response _201_, and the session ID on the Response Body, as follow:
+The given request returns a Response _201_, and the Session ID can be found at the response body, as follow:
 
 **EXAMPLE**
 
- - Sucessfull request:
+Requesting a new Session ID.
 
-    - URL:
-        ```
-        api/v1/session
-        ```
-    - Response:
-        ```json
-        {
-            "content": "or8k5s91s66fsl3bp6ksu96qs7"
-        }
-        ```
+**REQUEST**
+
+```
+api/v1/session
+```
+
+**RESPONSE (application/json)**
+
+```json
+{
+    "content": "or8k5s91s66fsl3bp6ksu96qs7"
+}
+```
+     
 
 # Group Trip Details
 
 ## Get Trip Details [/trip]
 
-The resource `/trip` return all information related to a specific trip, based on a given schedule ID (check **Trips** resource for more details).
+The resource `/trip` return all information related to a specific trip, based on a given schedule ID (check **[Trips](#trips)** resource for more details).
 
 ### Get Trip Details [GET]
 
@@ -509,9 +539,7 @@ The resource `/trip` return all information related to a specific trip, based on
 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
-|**scheduleId** (required)|_string_|A given hash from a search part. See on **Trips** resource, in the output, into each `items` part, the value on `departure.waypoint.schedule.id` node. |`NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwM...`|
-
-**RESPONSE**
+|**scheduleId** (required)|_string_|A given hash from a search part. See on **[Trips](#trips)** resource, in the output, into each `items` part, the value on `departure.waypoint.schedule.id` node. |`NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwM...`|
 
 Using a valid `scheduleId`, the request will return a _200_ Response, with the structure as described below:
 
@@ -532,66 +560,77 @@ Using a valid `scheduleId`, the request will return a _200_ Response, with the s
             - The seat `details`, which provides:
                 - Seat's `price`, `currency` and `seatTypes`.
 
-**Examples**
 
-- Get the trip details from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _11th Feb 2015_ from a single part of this search.
+**EXAMPLE**
 
-    - URL:
-        ```
-        api/v1/trip?scheduleId=NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==
-        ```
-    - Response:
-        ```json
-        {
-            "meta": {},
-            "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
-            "content": {
-                "trip_id": "2949",
-                "busCompany": {
-                    "name": "Cometa"
-                },
-                "bus": {
-                    "id": "",
-                    "name": ""
-                },
-                "seats": [{
-                    "id": "01",
-                    "name": "01",
-                    "available": "",
-                    "position": {
-                        "x": "1",
-                        "y": "0",
-                        "z": ""
-                    },
-                    "details": {
-                        "price": "2191",
-                        "currency": "R$",
-                        "seatTypes": []
-                    }
-                }, {...}
-                ]
+Get the trip details from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _11th Feb 2015_ from a single part of this search.
+
+**REQUEST**
+
+```
+api/v1/trip?scheduleId=NDAxNi0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tNy0tMjk0OS0tMS0tMS0tMS0tQ09OVg==
+```
+
+**RESPONSE (application/json)**
+
+```json
+{
+    "meta": {},
+    "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+    "content": {
+        "trip_id": "2949",
+        "busCompany": {
+            "name": "Cometa"
+        },
+        "bus": {
+            "id": "",
+            "name": ""
+        },
+        "seats": [{
+            "id": "01",
+            "name": "01",
+            "available": "",
+            "position": {
+                "x": "1",
+                "y": "0",
+                "z": ""
+            },
+            "details": {
+                "price": "2191",
+                "currency": "R$",
+                "seatTypes": []
             }
-        }
-        ```
-- Incorrect request (using a invalid or incorrect schedule ID):
-    - URL:
-        ```
-        api/v1/trip?scheduleId=0123456789abcdefghijklmnopqrstuvxz
-        ``` 
-    - Response (status code: _400_):
-        ```json
-        {
-            "error": [
-                {
-                    "code": "I2",
-                    "type": "Invalid Parameters",
-                    "message": "The given 'scheduleId' is invalid."
-                }
-            ]
-        }
-        ```
+        }, {...}
+        ]
+    }
+}
+```
 
-**Errors**
+**EXAMPLE**
+        
+Incorrect request (using a invalid or incorrect schedule ID).
+
+**REQUEST**
+
+```
+api/v1/trip?scheduleId=0123456789abcdefghijklmnopqrstuvxz
+``` 
+
+**RESPONSE (application/json)**
+
+```json
+{
+    "error": [
+        {
+            "code": "I2",
+            "type": "Invalid Parameters",
+            "message": "The given 'scheduleId' is invalid."
+        }
+    ]
+}
+```
+
+**ERRORS**
 
 |CODE|DESCRIPTION|DETAILS|
 |:---:|:----|:----|
@@ -677,8 +716,8 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 |**request.seat** (required)|_string_|The seat’s `name`, obtained on **Trip Details**.|`07`|
 |**request.passenger** (required)|_object_|A container which contains multiple items, one for each passenger: ||
 |**request.passenger.name** (required)|_string_|Passenger's name.|`Fulano da Silva`|
-|**request.passenger.document** (required)|_string_|Passenger's document.|`123.456.789-00`|
-|**request.passenger.documentType** (required)|_string_|Type of the passenger's `document`.|`"cpf"`|
+|**request.passenger.document** (required)|_string_|Passenger's document.|`12345678900`|
+|**request.passenger.documentType** (required)|_string_|Type of the passenger's `document`. It must be a document with a photo.|`rg`, `passport`, ...|
 |**request.passenger.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
 |**request.schedule** (required)|_object_|A container which requires: ||
 |**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw...`|
@@ -687,35 +726,37 @@ This request creates a block in a Seat, which indicates that this Seat is now un
 |**request.schedule.timezone** (required)|_string_|Timezone information, based on actual country.|`America/Sao_Paulo`|
 |**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
 
-**REQUEST**
+**EXAMPLE**
 
-- Created a block for a Seat, named _07_, on a travel from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _27th January 2015_, with all params correct:
+Created a block for a Seat, named _07_, on a travel from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _27th January 2015_, with all params correct:
 
-    ```json
-    {
-        "meta": {},
-        "request": {
-            "from": "sao-paulo-tiete-sp",
-            "to": "santos-sp",
-            "seat": "07",
-            "passenger": {
-                "name": "Fulano da Silva",
-                "document": "123.456.789-00",
-                "documentType": "cpf",
-                "gender": "M"
-            },
-            "schedule": {
-                "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg==",
-                "date": "2015-01-27",
-                "time": "10:30",
-                "timezone": "America/Sao_Paulo"
-            },
-            "sessionId": "dnlfm8aecg2omtjaang62fvla5"
-        }
+**REQUEST (application/json)**
+
+```json
+{
+    "meta": {},
+    "request": {
+        "from": "sao-paulo-tiete-sp",
+        "to": "santos-sp",
+        "seat": "07",
+        "passenger": {
+            "name": "Fulano da Silva",
+            "document": "12345678900",
+            "documentType": "rg",
+            "gender": "M"
+        },
+        "schedule": {
+            "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg==",
+            "date": "2015-01-27",
+            "time": "10:30",
+            "timezone": "America/Sao_Paulo"
+        },
+        "sessionId": "dnlfm8aecg2omtjaang62fvla5"
     }
-    ```
+}
+```
 
-**RESPONSE**
+**RESPONSE (application/json)**
 
 This request, with all correct params and being executed before the Seat block's life time ends, will return a Response _200_, with the following Response body:
 
@@ -744,14 +785,14 @@ This request, with all correct params and being executed before the Seat block's
     "error": [
         {
             "code": "H13",
-            "type": "Busy Seat",
-            "message": "Busy seat."
+            "type": "Unavailable Seat",
+            "message": "The selected Seat is unavailable."
         }
     ]
 }
 ```
 
-**Errors**
+**ERRORS**
 
 |CODE|DESCRIPTION|DETAILS|
 |:---:|:----|:----|
@@ -793,24 +834,26 @@ As opposed to the Create proccess, the Remove will delete a block created on a S
 |**request.schedule.id** (required)|_string_|Schedule's ID, obtained from **Trip Details**.|`NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAw...`|
 |**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
 
-**REQUEST**
+**EXAMPLE**
 
-- Removing the Seat block, named _07_, on a travel from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _27th January 2015_, with all params correct:
+Removing the Seat block, named _07_, on a travel from _Sao Paulo, SP - Tiete_ to _Santos, SP_ in _27th January 2015_, with all params correct:
 
-    ```json
-    {
-        "meta": {},
-        "request": {
-            "seat": "07",
-            "schedule": {
-                "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg=="
-            },
-            "sessionId": "dnlfm8aecg2omtjaang62fvla5"
-        }
+**REQUEST (application/json)**
+
+```json
+{
+    "meta": {},
+    "request": {
+        "seat": "07",
+        "schedule": {
+            "id": "NDAxNy0tMzkzNS0tMjAxNS0wMi0xMSAwMTowMC0tOS0tNDMyMi0tMS0tMS0tMS0tQ09OVg=="
+        },
+        "sessionId": "dnlfm8aecg2omtjaang62fvla5"
     }
-    ```
+}
+```
 
-**RESPONSE**
+**RESPONSE (application/json)**
 
 This request, with all correct params, will return a Response _202_, with the following Response body:
 
@@ -825,7 +868,7 @@ This request, with all correct params, will return a Response _202_, with the fo
 }
 ```
 
-**Errors**
+**ERRORS**
 
 |CODE|DESCRIPTION|DETAILS|
 |:---:|:----|:----|
@@ -864,570 +907,212 @@ These parameters are created for each partner, and they are required for each re
 |**scheduleId** (required)|_string_|The `scheduleId` for each of the desired trips (departure or return).|`SUVScFpTQkVhV1VnVFh...`|
 |**ticket_amount** (required)|_integer_|The amount of seats for this trip (departure or return).|`8`|
 
-**REQUEST**
+**EXAMPLE**
 
-- Calculate a purchase of 10 seats, from `sao-paulo-tiete-sp` to `santos-sp`, being 5 seats for each trip.
+Calculate a purchase of 10 seats, from `sao-paulo-tiete-sp` to `santos-sp`, being 5 seats for each trip.
 
-    ```json
-    {
-        "meta": {
-            "store": "clickbus",
-            "model": "retail",
-            "platform": "web"
+**REQUEST (application/json)**
+
+```json
+{
+    "meta": {
+        "store": "clickbus",
+        "model": "retail",
+        "platform": "web"
+    },
+    "contents": [
+        {
+            "scheduleId": "YmFzZTY0LCBu8YXNlNjQsIGJpdGNoZXMhIGJhc2U2NCwgYml0Y2hlcyE=",
+            "ticket_amount" : 5
         },
-        "contents": [
+        {
+            "scheduleId": "SGV5ISBUaGlzIGlzIG5vdCB5b3VyIHNoaXR0eSBtZDUsIGR1bWJhc3Mh",
+            "ticket_amount" : 5
+        }
+    ]
+}
+```
+
+**RESPONSE (application/json)**
+
+With the correct params, this resource returns a Response _200 OK_, as below:
+
+```json
+{
+    "meta": {
+        "store": "clickbus",
+        "model": "retail",
+        "platform": "web"
+    },
+    "ticket_amount": 10,
+    "original_cost": 42.75,
+    "items": {
+        "payment_methods": [
             {
-                "scheduleId": "YmFzZTY0LCBu8YXNlNjQsIGJpdGNoZXMhIGJhc2U2NCwgYml0Y2hlcyE=",
-                "ticket_amount" : 5
+                "name": "creditcard",
+                "details": [
+                    {
+                        "brand": "mastercard",
+                        "discount_value": 0,
+                        "installments": {
+                            "1": {
+                                "fee": 5.56,
+                                "installment": 48.31,
+                                "total": 48.31,
+                                "total_with_discount": 48.31
+                            },
+                            "2": {
+                                "fee": 5.56,
+                                "installment": 24.16,
+                                "total": 48.31,
+                                "total_with_discount": 48.31
+                            }, { ... }
+                        }
+                    },
+                    {
+                        "brand": "visa",
+                        "discount_value": 7.7,
+                        "installments": {
+                            "1": {
+                                "fee": 5.56,
+                                "installment": 40.61,
+                                "total": 48.31,
+                                "total_with_discount": 40.61
+                            },
+                            "2": {
+                                "fee": 5.56,
+                                "installment": 20.31,
+                                "total": 48.31,
+                                "total_with_discount": 40.61
+                            }, { ... }
+                        }
+                    },
+                    {
+                        "brand": "amex",
+                        "discount_value": 0,
+                        "installments": {
+                            "1": {
+                                "fee": 5.56,
+                                "installment": 48.31,
+                                "total": 48.31,
+                                "total_with_discount": 48.31
+                            },
+                            "2": {
+                                "fee": 5.56,
+                                "installment": 24.16,
+                                "total": 48.31,
+                                "total_with_discount": 48.31
+                            }, { ... }
+                        }
+                    },
+                    {
+                        "brand": "diners",
+                        "discount_value": 0,
+                        "installments": {
+                            "1": {
+                                "fee": 5.56,
+                                "installment": 48.31,
+                                "total": 48.31,
+                                "total_with_discount": 48.31
+                            },
+                            "2": {
+                                "fee": 5.56,
+                                "installment": 24.16,
+                                "total": 48.31,
+                                "total_with_discount": 48.31
+                            }, { ... }
+                        }
+                    },
+                    {
+                        "brand": "hipercard",
+                        "discount_value": 0,
+                        "installments": {
+                            "1": {
+                                "fee": 5.56,
+                                "installment": 48.31,
+                                "total": 48.31,
+                                "total_with_discount": 48.31
+                            },
+                            "2": {
+                                "fee": 5.56,
+                                "installment": 24.16,
+                                "total": 48.31,
+                                "total_with_discount": 48.31
+                            }, { ... }
+                        }
+                    },
+                    {
+                        "brand": "elo",
+                        "discount_value": 0,
+                        "installments": {
+                            "1": {
+                                "fee": 5.56,
+                                "installment": 48.31,
+                                "total": 48.31,
+                                "total_with_discount": 48.31
+                            },
+                            "2": {
+                                "fee": 5.56,
+                                "installment": 24.16,
+                                "total": 48.31,
+                                "total_with_discount": 48.31
+                            }, { ... }
+                        }
+                    }
+                ]
             },
             {
-                "scheduleId": "SGV5ISBUaGlzIGlzIG5vdCB5b3VyIHNoaXR0eSBtZDUsIGR1bWJhc3Mh",
-                "ticket_amount" : 5
+                "name": "paypal_hpp",
+                "details": [
+                    {
+                        "brand": "paypal",
+                        "discount_value": 0,
+                        "installments": {
+                            "1": {
+                                "fee": 0,
+                                "installment": 42.75,
+                                "total": 42.75,
+                                "total_with_discount": 42.75
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "debitcard",
+                "details": [
+                    {
+                        "brand": "visa-electron",
+                        "discount_value": 0,
+                        "installments": {
+                            "1": {
+                                "fee": 0,
+                                "installment": 42.75,
+                                "total": 42.75,
+                                "total_with_discount": 42.75
+                            }
+                        }
+                    },
+                    {
+                        "brand": "mastercard-maestro",
+                        "discount_value": 0,
+                        "installments": {
+                            "1": {
+                                "fee": 0,
+                                "installment": 42.75,
+                                "total": 42.75,
+                                "total_with_discount": 42.75
+                            }
+                        }
+                    }
+                ]
             }
         ]
     }
-    ```
+}
+```
 
-**RESPONSE**
-
-- With the correct params, this resource returns a Response _200 OK_, as below:
-
-    ```json
-    {
-        "meta": {
-            "store": "clickbus",
-            "model": "retail",
-            "platform": "web"
-        },
-        "ticket_amount": 10,
-        "original_cost": 42.75,
-        "items": {
-            "payment_methods": [
-                {
-                    "name": "creditcard",
-                    "details": [
-                        {
-                            "brand": "mastercard",
-                            "discount_value": 0,
-                            "installments": {
-                                "1": {
-                                    "fee": 5.56,
-                                    "installment": 48.31,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "2": {
-                                    "fee": 5.56,
-                                    "installment": 24.16,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "3": {
-                                    "fee": 5.56,
-                                    "installment": 16.1,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "4": {
-                                    "fee": 5.56,
-                                    "installment": 12.08,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "5": {
-                                    "fee": 5.56,
-                                    "installment": 9.66,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "6": {
-                                    "fee": 5.56,
-                                    "installment": 8.05,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "7": {
-                                    "fee": 5.56,
-                                    "installment": 6.9,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "8": {
-                                    "fee": 5.56,
-                                    "installment": 6.04,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "9": {
-                                    "fee": 5.56,
-                                    "installment": 5.37,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "10": {
-                                    "fee": 5.56,
-                                    "installment": 4.83,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "11": {
-                                    "fee": 5.56,
-                                    "installment": 4.39,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "12": {
-                                    "fee": 5.56,
-                                    "installment": 4.03,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                }
-                            }
-                        },
-                        {
-                            "brand": "visa",
-                            "discount_value": 7.7,
-                            "installments": {
-                                "1": {
-                                    "fee": 5.56,
-                                    "installment": 40.61,
-                                    "total": 48.31,
-                                    "total_with_discount": 40.61
-                                },
-                                "2": {
-                                    "fee": 5.56,
-                                    "installment": 20.31,
-                                    "total": 48.31,
-                                    "total_with_discount": 40.61
-                                },
-                                "3": {
-                                    "fee": 5.56,
-                                    "installment": 13.54,
-                                    "total": 48.31,
-                                    "total_with_discount": 40.61
-                                },
-                                "4": {
-                                    "fee": 5.56,
-                                    "installment": 10.15,
-                                    "total": 48.31,
-                                    "total_with_discount": 40.61
-                                },
-                                "5": {
-                                    "fee": 5.56,
-                                    "installment": 8.12,
-                                    "total": 48.31,
-                                    "total_with_discount": 40.61
-                                },
-                                "6": {
-                                    "fee": 5.56,
-                                    "installment": 6.77,
-                                    "total": 48.31,
-                                    "total_with_discount": 40.61
-                                },
-                                "7": {
-                                    "fee": 5.56,
-                                    "installment": 5.8,
-                                    "total": 48.31,
-                                    "total_with_discount": 40.61
-                                },
-                                "8": {
-                                    "fee": 5.56,
-                                    "installment": 5.08,
-                                    "total": 48.31,
-                                    "total_with_discount": 40.61
-                                },
-                                "9": {
-                                    "fee": 5.56,
-                                    "installment": 4.51,
-                                    "total": 48.31,
-                                    "total_with_discount": 40.61
-                                },
-                                "10": {
-                                    "fee": 5.56,
-                                    "installment": 4.06,
-                                    "total": 48.31,
-                                    "total_with_discount": 40.61
-                                },
-                                "11": {
-                                    "fee": 5.56,
-                                    "installment": 3.69,
-                                    "total": 48.31,
-                                    "total_with_discount": 40.61
-                                },
-                                "12": {
-                                    "fee": 5.56,
-                                    "installment": 3.38,
-                                    "total": 48.31,
-                                    "total_with_discount": 40.61
-                                }
-                            }
-                        },
-                        {
-                            "brand": "amex",
-                            "discount_value": 0,
-                            "installments": {
-                                "1": {
-                                    "fee": 5.56,
-                                    "installment": 48.31,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "2": {
-                                    "fee": 5.56,
-                                    "installment": 24.16,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "3": {
-                                    "fee": 5.56,
-                                    "installment": 16.1,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "4": {
-                                    "fee": 5.56,
-                                    "installment": 12.08,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "5": {
-                                    "fee": 5.56,
-                                    "installment": 9.66,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "6": {
-                                    "fee": 5.56,
-                                    "installment": 8.05,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "7": {
-                                    "fee": 5.56,
-                                    "installment": 6.9,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "8": {
-                                    "fee": 5.56,
-                                    "installment": 6.04,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "9": {
-                                    "fee": 5.56,
-                                    "installment": 5.37,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "10": {
-                                    "fee": 5.56,
-                                    "installment": 4.83,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "11": {
-                                    "fee": 5.56,
-                                    "installment": 4.39,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "12": {
-                                    "fee": 5.56,
-                                    "installment": 4.03,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                }
-                            }
-                        },
-                        {
-                            "brand": "diners",
-                            "discount_value": 0,
-                            "installments": {
-                                "1": {
-                                    "fee": 5.56,
-                                    "installment": 48.31,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "2": {
-                                    "fee": 5.56,
-                                    "installment": 24.16,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "3": {
-                                    "fee": 5.56,
-                                    "installment": 16.1,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "4": {
-                                    "fee": 5.56,
-                                    "installment": 12.08,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "5": {
-                                    "fee": 5.56,
-                                    "installment": 9.66,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "6": {
-                                    "fee": 5.56,
-                                    "installment": 8.05,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "7": {
-                                    "fee": 5.56,
-                                    "installment": 6.9,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "8": {
-                                    "fee": 5.56,
-                                    "installment": 6.04,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "9": {
-                                    "fee": 5.56,
-                                    "installment": 5.37,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "10": {
-                                    "fee": 5.56,
-                                    "installment": 4.83,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "11": {
-                                    "fee": 5.56,
-                                    "installment": 4.39,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "12": {
-                                    "fee": 5.56,
-                                    "installment": 4.03,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                }
-                            }
-                        },
-                        {
-                            "brand": "hipercard",
-                            "discount_value": 0,
-                            "installments": {
-                                "1": {
-                                    "fee": 5.56,
-                                    "installment": 48.31,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "2": {
-                                    "fee": 5.56,
-                                    "installment": 24.16,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "3": {
-                                    "fee": 5.56,
-                                    "installment": 16.1,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "4": {
-                                    "fee": 5.56,
-                                    "installment": 12.08,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "5": {
-                                    "fee": 5.56,
-                                    "installment": 9.66,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "6": {
-                                    "fee": 5.56,
-                                    "installment": 8.05,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "7": {
-                                    "fee": 5.56,
-                                    "installment": 6.9,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "8": {
-                                    "fee": 5.56,
-                                    "installment": 6.04,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "9": {
-                                    "fee": 5.56,
-                                    "installment": 5.37,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "10": {
-                                    "fee": 5.56,
-                                    "installment": 4.83,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "11": {
-                                    "fee": 5.56,
-                                    "installment": 4.39,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "12": {
-                                    "fee": 5.56,
-                                    "installment": 4.03,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                }
-                            }
-                        },
-                        {
-                            "brand": "elo",
-                            "discount_value": 0,
-                            "installments": {
-                                "1": {
-                                    "fee": 5.56,
-                                    "installment": 48.31,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "2": {
-                                    "fee": 5.56,
-                                    "installment": 24.16,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "3": {
-                                    "fee": 5.56,
-                                    "installment": 16.1,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "4": {
-                                    "fee": 5.56,
-                                    "installment": 12.08,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "5": {
-                                    "fee": 5.56,
-                                    "installment": 9.66,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "6": {
-                                    "fee": 5.56,
-                                    "installment": 8.05,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "7": {
-                                    "fee": 5.56,
-                                    "installment": 6.9,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "8": {
-                                    "fee": 5.56,
-                                    "installment": 6.04,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "9": {
-                                    "fee": 5.56,
-                                    "installment": 5.37,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "10": {
-                                    "fee": 5.56,
-                                    "installment": 4.83,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "11": {
-                                    "fee": 5.56,
-                                    "installment": 4.39,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                },
-                                "12": {
-                                    "fee": 5.56,
-                                    "installment": 4.03,
-                                    "total": 48.31,
-                                    "total_with_discount": 48.31
-                                }
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "paypal_hpp",
-                    "details": [
-                        {
-                            "brand": "paypal",
-                            "discount_value": 0,
-                            "installments": {
-                                "1": {
-                                    "fee": 0,
-                                    "installment": 42.75,
-                                    "total": 42.75,
-                                    "total_with_discount": 42.75
-                                }
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "debitcard",
-                    "details": [
-                        {
-                            "brand": "visa-electron",
-                            "discount_value": 0,
-                            "installments": {
-                                "1": {
-                                    "fee": 0,
-                                    "installment": 42.75,
-                                    "total": 42.75,
-                                    "total_with_discount": 42.75
-                                }
-                            }
-                        },
-                        {
-                            "brand": "mastercard-maestro",
-                            "discount_value": 0,
-                            "installments": {
-                                "1": {
-                                    "fee": 0,
-                                    "installment": 42.75,
-                                    "total": 42.75,
-                                    "total_with_discount": 42.75
-                                }
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-    ```
-
-**Errors**
+**ERRORS**
 
 |CODE|DESCRIPTION|DETAILS|
 |:---:|:----|:----|
@@ -1535,7 +1220,7 @@ If you wish to check the status of your Orders, please follow these steps:
 
 ------------------------
 
-## Create an Order [/booking]
+# Create an Order [/booking]
 
 When you have selected all the Seats, then you may proceed to create an Order, which will start the payment process.
 
@@ -1545,7 +1230,7 @@ When you have selected all the Seats, then you may proceed to create an Order, w
 - Please keep in mind that you need to provide in your header the `PHPSESSID` key with the Session's ID in the Cookie, as below:
     > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
 
-### Create an Order [POST]
+## Create an Order [POST]
 
 To create an Order, the request's body requires a range of data, which, for a better understanding, we will divide in the following blocks below:
 
@@ -1592,15 +1277,18 @@ Each `/booking` have the same structure block except for `payment` block, which 
 |**request.orderItems.products.uuid** (optional)|_string_||`abcd123s`|
 |**request.orderItems.products.quantity** (optional)|_int_||`{}`|
 
- The `/booking` request have the 3 valid payment methods:
+ The `/booking` request have 4 valid options to proceed to the payment:
 
-- **Credit Card**
+- **Credit Card using the card's data**
+- **Credit Card using Mercado Pago tokens**
 - **Debit Card**
 - **PayPal**
 
-Based on each of the 3 valid payment methods:
+Based on each of the 4 valid payment options:
 
-**1) Payment method: Credit Card**
+**1) Credit Card using the card's data**
+
+For this option, it's required to provide the customer's credit card data in your request, which we'll submit it to the payment gateway and handle the response through our services.
 
 **PARAMETERS**
 
@@ -1617,98 +1305,100 @@ Based on each of the 3 valid payment methods:
 |**request.buyer.payment.meta.expiration** (required)|_string_|Credit card's expiration date, in format `yyyy-mm`.|`2016-02`|
 |**request.buyer.payment.meta.zipcode** (required)|_string_|Credit card owner's zip code, with only digits.|`12345678`|
 
-**Request - Example**
+**EXAMPLE**
 
-- Create an Order with the following data:
-    - Created from a `store` called _NewWorld_;
-    - Selected 1 Seat for _Fulano da Silva_ and 1 Seat for _Beltrano da Silva_ in the same Order;
-    - Each item costs R$ 12.35, so the `request.buyer.payment.total` value is _2470_;
-    - The payment is settled to a single `installment`, using `creditcard`.
+Create an Order with the following data:
+- Created from a `store` called _NewWorld_;
+- Selected 1 Seat for _Fulano da Silva_ and 1 Seat for _Beltrano da Silva_ in the same Order;
+- Each item costs R$ 12.35, so the `request.buyer.payment.total` value is _2470_;
+- The payment is settled to a single `installment`, using `creditcard`.
 
-        ```json
-        {
-            "meta": {
-                "model": "foo",
-                "store": "newworld",
-                "platform": "bar"
-            },
-            "request": {
-                "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
-                "ip": "192.168.14.1",
-                "buyer": {
-                    "locale": "pt_BR",
-                    "firstName": "Cicrano",
+**REQUEST (application/json)**
+
+```json
+{
+    "meta": {
+        "model": "foo",
+        "store": "newworld",
+        "platform": "bar"
+    },
+    "request": {
+        "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+        "ip": "192.168.14.1",
+        "buyer": {
+            "locale": "pt_BR",
+            "firstName": "Cicrano",
+            "lastName": "da Silva",
+            "email": "cicrano@teste.com.br",
+            "phone": "12934567890",
+            "document": "123.456.789-00",
+            "gender": "M",
+            "birthday": "1986-05-17",
+            "meta": {},
+            "payment": {
+                "method": "creditcard",
+                "currency": "BRL",
+                "total": 2470,
+                "installment": "1",
+                "meta": {
+                    "card": "1234567887654321",
+                    "code": "093",
+                    "name": "DELTRANO SILVA",
+                    "expiration": "2022-03",
+                    "zipcode": "12345678"
+                }
+            }
+        },
+        "orderItems": [
+            {
+                "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
+                "passenger": {
+                    "firstName": "Fulano",
                     "lastName": "da Silva",
-                    "email": "cicrano@teste.com.br",
-                    "phone": "12934567890",
-                    "document": "123.456.789-00",
+                    "email": "fulano@teste.com.br",
+                    "document": "123.123.123-01",
                     "gender": "M",
                     "birthday": "1986-05-17",
-                    "meta": {},
-                    "payment": {
-                        "method": "creditcard",
-                        "currency": "BRL",
-                        "total": 2470,
-                        "installment": "1",
-                        "meta": {
-                            "card": "1234567887654321",
-                            "code": "093",
-                            "name": "DELTRANO SILVA",
-                            "expiration": "2022-03",
-                            "zipcode": "12345678"
-                        }
-                    }
+                    "seat": "11",
+                    "meta": {}
                 },
-                "orderItems": [
-                    {
-                        "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
-                        "passenger": {
-                            "firstName": "Fulano",
-                            "lastName": "da Silva",
-                            "email": "fulano@teste.com.br",
-                            "document": "123.123.123-01",
-                            "gender": "M",
-                            "birthday": "1986-05-17",
-                            "seat": "11",
-                            "meta": {}
-                        },
-                        "products": [{
-                            "uuid": "abcd123s",
-                            "quantity": 1
-                        }]
-                    },
-                    {
-                        "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
-                        "passenger": {
-                            "firstName": "Beltrano",
-                            "lastName": "da Silva",
-                            "email": "beltrano@teste.com.br",
-                            "document": "987.654.321-99",
-                            "gender": "M",
-                            "birthday": "1942-10-17",
-                            "seat": "02",
-                            "meta": {}
-                        },
-                        "products": [{
-                            "uuid": "abcd123s",
-                            "quantity": 1
-                        }]
-                    }
-                ]
+                "products": [{
+                    "uuid": "abcd123s",
+                    "quantity": 1
+                }]
+            },
+            {
+                "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
+                "passenger": {
+                    "firstName": "Beltrano",
+                    "lastName": "da Silva",
+                    "email": "beltrano@teste.com.br",
+                    "document": "987.654.321-99",
+                    "gender": "M",
+                    "birthday": "1942-10-17",
+                    "seat": "02",
+                    "meta": {}
+                },
+                "products": [{
+                    "uuid": "abcd123s",
+                    "quantity": 1
+                }]
             }
-        }
-        ```
+        ]
+    }
+}
+```
 
-**RESPONSE**
+**RESPONSE (application/json)**
 
 The following Request, with all correct parameters, will return a _201_ Response, with all details from the Order, as the example below.
 
 ```json
 {
     "meta": {
-        "model": "corporate",
-        "store": "clickbus",
-        "platform": "Web"
+        "model": "foo",
+        "store": "newworld",
+        "platform": "bar"
     },
     "content": {
         "id": "1062",
@@ -1779,7 +1469,235 @@ The following Request, with all correct parameters, will return a _201_ Response
 }
 ```
 
-**2) Payment method: Debit Card**
+**2) Credit Card using Mercado Pago tokens**
+
+This payment method is available only for credit card. To use this payment method, it's requires to obtain a token trough the MercadoPago services and then provide it in your request to our services, along with the credit card brand, instead of sending the credit card data right to our services.
+
+- **ATTENTION:**
+    > 1. We provide a JavaScript library to make the token generation with ease. This library is maintained by ClickBus and you can check the instructions on how to install and use it through [this link](https://github.com/RocketBus/clickbus-payments.js/wiki). If you have any questions related to this library, please contact us at contato@clickbus.com.br and we'll assist you in any questions.
+    > 2. This payment option restricts the installments options. It does not accept installments for `7`, `8` nor `11` as valid options. If you provide one of these options in your requests, it will be rejected with the error message `Payments in this installment amount are not processed`, so we suggest you to avoid offer these installment options if you're using this payment option.
+
+**PARAMETERS**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**request.buyer.payment.method** (required)|_string_|Payment type: `creditcard`.|`creditcard`|
+|**request.buyer.payment.currency** (required)|_string_|Payment currency.|`BRL`|
+|**request.buyer.payment.total** (required)|_int_|Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, `1400` means `14.00`, and `6050` means `60.50`.|`1400`|
+|**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
+|**request.buyer.payment.meta** (required)|_object_|An object which requires the following data:||
+|**request.buyer.payment.meta.token** (required)|_string_|Token generated through the Mercado Pago JS library.|`cd844cde3fb6269`|
+|**request.buyer.payment.meta.card_brand** (required)|_string_|Credit card's brand.|Check the list of available card brands at [Supported Card Brands](/#payments-supported-card-brands).|
+|**request.buyer.payment.meta.zipcode** (required)|_string_|Credit card owner's zip code, with only digits.|`12345678`|
+
+**EXAMPLE**
+
+Create an Order with the following data:
+- Created from a `store` called _NewWorld_;
+- Selected 1 Seat for _Cicrano da Silva_ and 1 Seat for _Deltrano da Silva_ in the same Order;
+- Each item costs R$ 12.35, so the `request.buyer.payment.total` value is _2470_;
+- The payment is settled to a single `installment`, using `creditcard` and providing both token and credit card brand (in this example, Visa).
+
+**REQUEST (application/json)**
+
+```json
+{
+    "meta": {
+        "model": "foo",
+        "store": "newworld",
+        "platform": "bar"
+    },
+    "request": {
+        "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+        "ip": "192.168.14.1",
+        "buyer": {
+            "locale": "pt_BR",
+            "firstName": "Cicrano",
+            "lastName": "da Silva",
+            "email": "cicrano@teste.com.br",
+            "phone": "12934567890",
+            "document": "123.456.789-00",
+            "gender": "M",
+            "birthday": "1986-05-17",
+            "meta": {},
+            "payment": {
+                "method": "creditcard",
+                "currency": "BRL",
+                "total": 2470,
+                "installment": "1",
+                "meta": {
+                    "token": "cd844c9fd6e300c7a235880de3fb6269",
+                    "card_brand": "visa",
+                    "zipcode": "12345678"
+                }
+            }
+        },
+        "orderItems": [
+            {
+                "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
+                "passenger": {
+                    "firstName": "Cicrano",
+                    "lastName": "da Silva",
+                    "email": "fulano@teste.com.br",
+                    "document": "12312312301",
+                    "gender": "M",
+                    "birthday": "1986-05-17",
+                    "seat": "11",
+                    "meta": {}
+                },
+                "products": [{
+                    "uuid": "abcd123s",
+                    "quantity": 1
+                }]
+            },
+            {
+                "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
+                "passenger": {
+                    "firstName": "Deltrano",
+                    "lastName": "da Silva",
+                    "email": "beltrano@teste.com.br",
+                    "document": "98765432199",
+                    "gender": "M",
+                    "birthday": "1942-10-17",
+                    "seat": "02",
+                    "meta": {}
+                },
+                "products": [{
+                    "uuid": "abcd123s",
+                    "quantity": 1
+                }]
+            }
+        ]
+    }
+}
+```
+
+**RESPONSE (application/json)**
+
+The following Request, with all correct parameters, will return a _201_ Response, with all details from the Order, as the example below.
+
+```json
+{
+    "meta": {
+        "model": "foo",
+        "store": "newworld",
+        "platform": "bar"
+    },
+    "content": {
+        "id": "655503",
+        "status": "order_finalized_successfully",
+        "localizer": "2PRMUT",
+        "uuid": "",
+        "payment": {
+            "method": "payment.creditcard.mercadopago",
+            "total": "3.249",
+            "currency": "BRL",
+            "status": "order_finalized_successfully",
+            "meta": {
+                "postbackUrl": "",
+                "callbackUrl": ""
+            }
+        },
+        "items": [
+            {
+                "trip_id": "2528",
+                "localizer": "OCYNQB",
+                "ticket_code": "0686102",
+                "context": "departure",
+                "order_item": "1057494",
+                "serviceClass": "Convencional",
+                "departure": {
+                    "waypoint": "3097",
+                    "schedule": {
+                        "id": "",
+                        "date": "2015-12-12",
+                        "time": "05:10",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "arrival": {
+                    "waypoint": "3535",
+                    "schedule": {
+                        "id": "",
+                        "date": "2015-12-12",
+                        "time": "05:29",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "seat": {
+                    "id": "11",
+                    "name": "11",
+                    "price": "12.35",
+                    "status": "reserved",
+                    "currency": "BRL",
+                    "type": {}
+                },
+                "passenger": {
+                    "firstName": "Cicrano da Silva",
+                    "lastName": "",
+                    "email": "cicrano@teste.com.br",
+                    "document": "1236547890",
+                    "gender": "",
+                    "birthday": "",
+                    "meta": {}
+                },
+                "products": [],
+                "subtotal": "12.35"
+            },
+            {
+                "trip_id": "2528",
+                "localizer": "OCYNQB",
+                "ticket_code": "0686102",
+                "context": "departure",
+                "order_item": "1057494",
+                "serviceClass": "Convencional",
+                "departure": {
+                    "waypoint": "3097",
+                    "schedule": {
+                        "id": "",
+                        "date": "2015-12-12",
+                        "time": "05:10",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "arrival": {
+                    "waypoint": "3535",
+                    "schedule": {
+                        "id": "",
+                        "date": "2015-12-12",
+                        "time": "05:29",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "seat": {
+                    "id": "02",
+                    "name": "02",
+                    "price": "12.35",
+                    "status": "reserved",
+                    "currency": "BRL",
+                    "type": {}
+                },
+                "passenger": {
+                    "firstName": "Deltrano da Silva",
+                    "lastName": "",
+                    "email": "deltrano@teste.com.br",
+                    "document": "0987654321",
+                    "gender": "",
+                    "birthday": "",
+                    "meta": {}
+                },
+                "products": [],
+                "subtotal": "12.35"
+            }
+        ],
+        "createdAt": "2015-11-10"
+    }
+}
+```
+
+**3) Debit Card**
+
+This payment option will require that your application redirects the user to the given `continuePaymentURL` to proceed with the payment, also that the user must have the required plugins correctly installed in it's browser, depending on which bank corporation it may uses.
 
 **PARAMETERS**
 
@@ -1796,74 +1714,76 @@ The following Request, with all correct parameters, will return a _201_ Response
 |**request.buyer.payment.meta.expiration** (required)|_string_|Debit card's expiration date, in format `yyyy-mm`.|`2016-02`|
 |**request.buyer.payment.meta.zipcode** (required)|_string_|Debit card owner's zip code, with only digits.|`12345678`|
 
-**Request - Example**
+**EXAMPLE**
 
-- Create an Order with the following data:
-    - Created from a `store` called _NewWorld_;
-    - Selected 1 Seat for _Fulano da Silva_;
-    - Each item costs R$ 22.50, so the `request.buyer.payment.total` value is _2250_;
-    - The payment is settled to a single `installment`, using `debitcard`.
+Create an Order with the following data:
+- Created from a `store` called _NewWorld_;
+- Selected 1 Seat for _Fulano da Silva_;
+- Each item costs R$ 22.50, so the `request.buyer.payment.total` value is _2250_;
+- The payment is settled to a single `installment`, using `debitcard`.
 
-        ```json
-        {
-            "meta": {
-                "model": "foo",
-                "store": "newworld",
-                "platform": "bar"
-            },
-            "request": {
-                "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
-                "ip": "192.168.14.1",
-                "buyer": {
-                    "locale": "pt_BR",
-                    "firstName": "Cicrano",
+**REQUEST (application/json)**
+
+```json
+{
+    "meta": {
+        "model": "foo",
+        "store": "newworld",
+        "platform": "bar"
+    },
+    "request": {
+        "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+        "ip": "192.168.14.1",
+        "buyer": {
+            "locale": "pt_BR",
+            "firstName": "Cicrano",
+            "lastName": "da Silva",
+            "email": "cicrano@teste.com.br",
+            "phone": "12934567890",
+            "document": "123.456.789-00",
+            "gender": "M",
+            "birthday": "1986-05-17",
+            "meta": {},
+            "payment": {
+                "method": "debitcard",
+                "currency": "BRL",
+                "total": 2250,
+                "installment": "1",
+                "meta": {
+                    "card": "1234567887654321",
+                    "code": "093",
+                    "name": "DELTRANO SILVA",
+                    "expiration": "2022-03",
+                    "zipcode": "12345678"
+                }
+            }
+        },
+        "orderItems": [
+            {
+                "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
+                "passenger": {
+                    "firstName": "Fulano",
                     "lastName": "da Silva",
-                    "email": "cicrano@teste.com.br",
-                    "phone": "12934567890",
-                    "document": "123.456.789-00",
+                    "email": "fulano@teste.com.br",
+                    "document": "123.123.123-01",
                     "gender": "M",
                     "birthday": "1986-05-17",
-                    "meta": {},
-                    "payment": {
-                        "method": "debitcard",
-                        "currency": "BRL",
-                        "total": 2250,
-                        "installment": "1",
-                        "meta": {
-                            "card": "1234567887654321",
-                            "code": "093",
-                            "name": "DELTRANO SILVA",
-                            "expiration": "2022-03",
-                            "zipcode": "12345678"
-                        }
-                    }
+                    "seat": "11",
+                    "meta": {}
                 },
-                "orderItems": [
-                    {
-                        "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
-                        "passenger": {
-                            "firstName": "Fulano",
-                            "lastName": "da Silva",
-                            "email": "fulano@teste.com.br",
-                            "document": "123.123.123-01",
-                            "gender": "M",
-                            "birthday": "1986-05-17",
-                            "seat": "11",
-                            "meta": {}
-                        },
-                        "products": [{
-                            "uuid": "abcd123s",
-                            "quantity": 1
-                        }]
-                    }
-                ]
+                "products": [{
+                    "uuid": "abcd123s",
+                    "quantity": 1
+                }]
             }
-        }
-        ```
+        ]
+    }
+}
+```
 
-**RESPONSE**
+**RESPONSE (application/json)**
 
-Attention to `content.payment.meta.continuePaymentURL`, which contains the URL to redirect after payment.
+**NOTICE:** Attention to `content.payment.meta.continuePaymentURL`, which contains the URL to redirect after payment.
 
 ```json
 {
@@ -1940,9 +1860,9 @@ Attention to `content.payment.meta.continuePaymentURL`, which contains the URL t
 }
 ```
 
-**3) Payment method: PayPal**
+**4) PayPal**
 
-This payment method provides a redirect link in the Response body, provided after PayPal's request.
+This payment method provides a redirect link in the response body, provided after PayPal's request.
 
 **PARAMETERS**
 
@@ -1954,66 +1874,68 @@ This payment method provides a redirect link in the Response body, provided afte
 |**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
 |**request.buyer.payment.meta** (required)|_object_|An empty object.||
 
-**Request - Example**
+**EXAMPLE**
 
-- Create an Order with the following data:
-    - Created from a `store` called _NewWorld_;
-    - Selected 1 Seat for _Charles Bukowski_;
-    - Each item costs R$ 6.30, so the `request.buyer.payment.total` value is _630_;
-    - The payment is settled to a single `installment`, using `paypal_hpp`.
+Create an Order with the following data:
+- Created from a `store` called _NewWorld_;
+- Selected 1 Seat for _Charles Bukowski_;
+- Each item costs R$ 6.30, so the `request.buyer.payment.total` value is _630_;
+- The payment is settled to a single `installment`, using `paypal_hpp`.
 
-        ```json
-        {
-            "meta": {
-                "model": "foo",
-                "store": "newworld",
-                "platform": "bar"
-            },
-            "request": {
-                "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
-                "ip": "192.168.14.1",
-                "buyer": {
-                    "locale": "pt_BR",
-                    "firstName": "Cicrano",
-                    "lastName": "da Silva",
-                    "email": "cicrano@teste.com.br",
-                    "phone": "12934567890",
-                    "document": "123.456.789-00",
+**REQUEST (application/json)**
+
+```json
+{
+    "meta": {
+        "model": "foo",
+        "store": "newworld",
+        "platform": "bar"
+    },
+    "request": {
+        "sessionId": "oeccq3hugiknuj5f2luvvruvj7",
+        "ip": "192.168.14.1",
+        "buyer": {
+            "locale": "pt_BR",
+            "firstName": "Cicrano",
+            "lastName": "da Silva",
+            "email": "cicrano@teste.com.br",
+            "phone": "12934567890",
+            "document": "123.456.789-00",
+            "gender": "M",
+            "birthday": "1986-05-17",
+            "meta": {},
+            "payment": {
+                "method": "paypal_hpp",
+                "currency": "BRL",
+                "total": 630,
+                "installment": "1",
+                "meta": {}
+            }
+        },
+        "orderItems": [
+            {
+                "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
+                "passenger": {
+                    "firstName": "Charles",
+                    "lastName": "Bukowski",
+                    "email": "teste@novo.com.br",
+                    "document": "123.123.123-01",
                     "gender": "M",
                     "birthday": "1986-05-17",
-                    "meta": {},
-                    "payment": {
-                        "method": "paypal_hpp",
-                        "currency": "BRL",
-                        "total": 630,
-                        "installment": "1",
-                        "meta": {}
-                    }
+                    "seat": "26",
+                    "meta": {}
                 },
-                "orderItems": [
-                    {
-                        "seatReservation": "NDAxNy0tMzkzNS0tMjAxNS0wMS0wMSAwMTowMC0tOS0tNDMyMS0tMS0tMS0tMS0tQ09OVg==",
-                        "passenger": {
-                            "firstName": "Charles",
-                            "lastName": "Bukowski",
-                            "email": "teste@novo.com.br",
-                            "document": "123.123.123-01",
-                            "gender": "M",
-                            "birthday": "1986-05-17",
-                            "seat": "26",
-                            "meta": {}
-                        },
-                        "products": [{
-                            "uuid": "abcd123s",
-                            "quantity": 1
-                        }]
-                    }
-                ]
+                "products": [{
+                    "uuid": "abcd123s",
+                    "quantity": 1
+                }]
             }
-        }
-        ```
+        ]
+    }
+}
+```
 
-**RESPONSE**
+**RESPONSE (application/json)**
 
 ```json
 {
@@ -2099,7 +2021,7 @@ This payment method provides a redirect link in the Response body, provided afte
 }
 ```
 
-**Errors**
+**ERRORS**
 
 |CODE|DESCRIPTION|DETAILS|
 |:---:|:----|:----|
@@ -2116,7 +2038,23 @@ This payment method provides a redirect link in the Response body, provided afte
 |**A15**|_An unexpected issue happened in your Request. Please contact us for more details._|Troubles while requesting data from the booking engine. Please contact us at contato@clickbus.com.br for support and details.|
 |**A16**|_The number of passengers does not match with the data already informed._|There is a difference between the amount of seats provided in the request and the the amount of seats that were reserved previously at the Seat Block. Please contact us for more details about the subject and how to troubleshoot.|
 |**A27**|_Inconsistencies were found. Please check your Payment Data._|One or more values provided for the payment data are invalid or incorrect. Please check these values before send a new request.|
-|**A28**|_The given credit card brand is not supported by the payment method._|The card brand is not supported by our payment methods. Please contact us or check the /payments endpoint to verify if the given card brand is declared in the supported list.|
+|**A28**|_The given credit card brand is not supported by the payment method._|The card brand is not supported by our payment methods. Please contact us or check the [Payments](#payments) resource to verify if the given card brand is declared in the supported list.|
+|**A29**|_Checkout Error_|It's required to authorize this purchase with the card issuer.|
+|**A30**|_Checkout Error_|The payment was not authorized. We suggest you to check the card information before proceed.|
+|**A31**|_Checkout Error_|The payment was not authorized. We suggest you to check the card information before proceed.|
+|**A32**|_Checkout Error_|A problem ocurred while authorizing the purchase. Please check the card data or contact us for more details.|
+|**A33**|_Checkout Error_|The payment was not authorized. We suggest you to check the card information before proceed.|
+|**A34**|_Checkout Error_|The payment could not be processed.|
+|**A35**|_Checkout Error_|Please check if the card is ok or if it still requires it's activation before proceed with your payment.|
+|**A36**|_Checkout Error_|It was not possible to process the purchase.|
+|**A37**|_Checkout Error_|You have already made a purchase with the same value. If you need to pay the same amount again, please, use another card or payment method.|
+|**A38**|_Checkout Error_|Your payment was rejected. We recommend you to pay with other payment methods available.|
+|**A39**|_Checkout Error_|There is no credit available for this credit card.|
+|**A40**|_Checkout Error_|Payments in this installment amount are not processed. Please, choose other installment value.|
+|**A41**|_Checkout Error_|You have reached limit of tries. Please, use another card or payment method.|
+|**A42**|_Checkout Error_|The payment could not be processed.|
+|**A43**|_Checkout Error_|Payment not authorized. Please, check your credit card information.|
+
 
 ## Credit/Debit Card Rejection [/booking]
 
@@ -2154,20 +2092,24 @@ This Request aims to update an Order Status to `order_canceled`, which means tha
 |**request.localizer** (required)|_string_|A localizer which points to your Order, obtained while creating an **Order**.|`53347e09aee47`|
 |**request.status** (required)|_string_|**Cancel** status.|`order_canceled`|
 
-**REQUEST**
+The given request returns a Response _201_, with all Order details in the Response body:
+
+**EXAMPLE**
+
+Canceling an Order, which is related to the `RXNHIN` localizer.
+
+**REQUEST (application/json)**
 
 ```json
 {
     "request": {
-      "localizer": "53347e09aee47",
+      "localizer": "RXNHIN",
       "status": "order_canceled"
     }
 }
 ```
 
-**RESPONSE**
-
-The given request returns a Response _201_, with all Order details in the Response body:
+**RESPONSE (application/json)**
 
 ```json
 {
@@ -2179,7 +2121,7 @@ The given request returns a Response _201_, with all Order details in the Respon
     "content": {
         "id": "1059",
         "status": "cancelation_booking_engine_confirmation_successful",
-        "localizer": "53347e09aee47",
+        "localizer": "RXNHIN",
         "uuid": "",
         "payment": {
             "method": "payment.creditcard",
@@ -2243,7 +2185,7 @@ The given request returns a Response _201_, with all Order details in the Respon
 }
 ```
 
-**Errors**
+**ERRORS**
 
 |CODE|DESCRIPTION|DETAILS|
 |:---:|:----|:----|
@@ -2311,198 +2253,382 @@ Each `/checkout` have the same structure block except for `payment` block, which
 |**request.items.passenger.documentType** (required)|_string_|Passenger's document type. It must be a document with the passenger's picture.|`rg`|
 |**request.items.scheduleId** (required)|_string_|The `scheduleId` for one of the desired trips (departure or return).|`NDAxNy0tMzkzNS0tMjAxNS0wNS0...`|
 
- As the `/booking` endpoint, the `/checkout` request support the same 3 valid payment methods:
+ As the `/booking` endpoint, the `/checkout` request support the same 4 valid payment options:
 
-- **Credit Card**
+- **Credit Card using the card’s data**
+- **Credit Card using MercadoPago tokens**
 - **Debit Card**
 - **PayPal**
 
-**Payment method: Credit Card**
+**1) Credit Card using the card’s data**
 
 **PARAMETERS**
 
 The values are the same for the `payment` block, as described in the [`/booking` endpoint](#booking-create-an-order).
 
-**REQUEST**
+**EXAMPLE**
 
-- Create an Order with the following data:
-    - Created from a `store` called _NewWorld_;
-    - Selected 1 Seat (number _13_) on departure for _Fulano da Silva_ and 1 Seat (number _17_) on return for the same passenger;
-    - Each item costs R$ 12.35, so the `request.buyer.payment.total` value is _2470_;
-    - The payment is settled to a single `installment`, using `creditcard`.
+Create an Order with the following data:
+- Created from a `store` called _NewWorld_;
+- Selected 1 Seat (number _13_) on departure for _Fulano da Silva_ and 1 Seat (number _17_) on return for the same passenger;
+- Each item costs R$ 12.35, so the `request.buyer.payment.total` value is _2470_;
+- The payment is settled to a single `installment`, using `creditcard`.
 
-    ```json
-    {
-        "meta": {
-            "model": "Retail",
-            "store": "NewWorld",
-            "platform": "Web"
-        },
-        "request": {
-            "ip": "192.168.14.1",
-            "buyer": {
-                "locale": "pt_BR",
-                "firstName": "Clickbus",
-                "lastName": "Test",
-                "email": "test-orders@clickbus.com",
-                "phone": "12098765432",
-                "document": "176.768.826-13",
-                "gender": "M",
-                "birthday": "1986-04-18",
-                "meta": {},
-                "payment": {
-                    "method": "creditcard",
-                    "currency": "BRL",
-                    "total": 2470,
-                    "installment": "1",
-                    "meta": {
-                        "card": "4111111111111111",
-                        "code": "737",
-                        "name": "FULANO SILVA",
-                        "expiration": "2017-07",
-                        "zipcode": "04104080"
-                    }
-                }
-            },
-            "items": [
-                {
-                    "seat": "13",
-                    "passenger": {
-                        "name": "Fulano da Silva",
-                        "document": "12.345.678-9",
-                        "documentType": "rg"
-                    },
-                    "scheduleId": "NDAxNy0tMzkzNS0tMjAxNS0wNS0yNSAyMDoxMC0tOS0tMDAxMy0tMS0tMS0tMS0tQ09OVi0tNjYuMzY="
-                },
-                {
-                    "seat": "17",
-                    "passenger": {
-                        "name": "Fulano da Silva",
-                        "document": "12.345.678-9",
-                        "documentType": "rg"
-                    },
-                    "scheduleId": "MzkzNS0tNDAxNy0tMjAxNS0wNS0yNSAwMzo1MC0tOS0tMDA4Mi0tMS0tMS0tMS0tQ09OVi0tMTA="
-                }
-            ]
-        }
-    }
-    ```
+**REQUEST (application/json)**
 
-**RESPONSE**
-
-- The following Request, with all correct parameters, will return a _201_ Response, with all details from the Order, as the example below.
-
-    ```json
-    {
-        "meta": {
-            "model": "Retail",
-            "store": "ClickBus",
-            "platform": "Web"
-        },
-        "content": {
-            "id": "1062",
-            "status": "order_finalized_successfully",
-            "localizer": "5EBP2M",
+```json
+{
+    "meta": {
+        "model": "Retail",
+        "store": "NewWorld",
+        "platform": "Web"
+    },
+    "request": {
+        "ip": "192.168.14.1",
+        "buyer": {
+            "locale": "pt_BR",
+            "firstName": "Clickbus",
+            "lastName": "Test",
+            "email": "test-orders@clickbus.com",
+            "phone": "12098765432",
+            "document": "176.768.826-13",
+            "gender": "M",
+            "birthday": "1986-04-18",
+            "meta": {},
             "payment": {
-                "method": "payment.creditcard",
-                "total": "2470",
+                "method": "creditcard",
                 "currency": "BRL",
-                "status": "order_finalized_successfully",
+                "total": 2470,
+                "installment": "1",
                 "meta": {
-                    "card": "4111-XXXX-XXXX-1111",
-                    "code": "XXX",
+                    "card": "4111111111111111",
+                    "code": "737",
                     "name": "FULANO SILVA",
-                    "expiration": "XXXX-XX-XX",
-                    "postbackUrl": "",
-                    "callbackUrl": ""
+                    "expiration": "2017-07",
+                    "zipcode": "04104080"
                 }
-            },
-            "items": [
-                {
-                    "trip_id": "4321",
-                    "localizer": "KPFHNB",
-                    "ticket_code": "6462297",
-                    "context": "departure",
-                    "order_item": "1228",
-                    "serviceClass": "Convencional",
-                    "departure": {
-                        "waypoint": "4017",
-                        "schedule": {
-                            "date": "2015-02-11",
-                            "time": "01:00",
-                            "timezone": "America/Sao_Paulo"
-                        }
-                    },
-                    "arrival": {
-                        "waypoint": "3935",
-                        "schedule": {
-                            "date": "2015-02-11",
-                            "time": "03:00",
-                            "timezone": "America/Sao_Paulo"
-                        }
-                    },
-                    "seat": {
-                        "name": "13",
-                        "price": "12.35",
-                        "status": "reserved",
-                        "currency": "BRL",
-                        "type": {}
-                    },
-                    "passenger": {
-                        "firstName": "Fulano",
-                        "lastName": "da Silva",
-                        "document": "123.456.789-00",
-                        "meta": {}
-                    },
-                    "products": [],
-                    "subtotal": "12.35"
+            }
+        },
+        "items": [
+            {
+                "seat": "13",
+                "passenger": {
+                    "name": "Fulano da Silva",
+                    "document": "12.345.678-9",
+                    "documentType": "rg"
                 },
-                {
-                    "trip_id": "7340",
-                    "localizer": "ZXSMTM",
-                    "ticket_code": "5762464",
-                    "context": "departure",
-                    "order_item": "1229",
-                    "serviceClass": "Convencional",
-                    "departure": {
-                        "waypoint": "4017",
-                        "schedule": {
-                            "date": "2015-02-11",
-                            "time": "01:00",
-                            "timezone": "America/Sao_Paulo"
-                        }
-                    },
-                    "arrival": {
-                        "waypoint": "3935",
-                        "schedule": {
-                            "date": "2015-02-11",
-                            "time": "03:00",
-                            "timezone": "America/Sao_Paulo"
-                        }
-                    },
-                    "seat": {
-                        "name": "17",
-                        "price": "12.35",
-                        "status": "reserved",
-                        "currency": "BRL",
-                        "type": {}
-                    },
-                    "passenger": {
-                        "firstName": "Fulano",
-                        "lastName": "da Silva",
-                        "document": "123.456.789-00",
-                        "meta": {}
-                    },
-                    "products": [],
-                    "subtotal": "12.35"
-                }
-            ],
-            "createdAt": "2015-01-23"
-        }
+                "scheduleId": "NDAxNy0tMzkzNS0tMjAxNS0wNS0yNSAyMDoxMC0tOS0tMDAxMy0tMS0tMS0tMS0tQ09OVi0tNjYuMzY="
+            },
+            {
+                "seat": "17",
+                "passenger": {
+                    "name": "Fulano da Silva",
+                    "document": "12.345.678-9",
+                    "documentType": "rg"
+                },
+                "scheduleId": "MzkzNS0tNDAxNy0tMjAxNS0wNS0yNSAwMzo1MC0tOS0tMDA4Mi0tMS0tMS0tMS0tQ09OVi0tMTA="
+            }
+        ]
     }
-    ```
+}
+```
 
-**Errors**
+**RESPONSE (application/json)**
+
+The following Request, with all correct parameters, will return a _201_ Response, with all details from the Order, as the example below.
+
+```json
+{
+    "meta": {
+        "model": "Retail",
+        "store": "ClickBus",
+        "platform": "Web"
+    },
+    "content": {
+        "id": "1062",
+        "status": "order_finalized_successfully",
+        "localizer": "5EBP2M",
+        "payment": {
+            "method": "payment.creditcard",
+            "total": "2470",
+            "currency": "BRL",
+            "status": "order_finalized_successfully",
+            "meta": {
+                "card": "4111-XXXX-XXXX-1111",
+                "code": "XXX",
+                "name": "FULANO SILVA",
+                "expiration": "XXXX-XX-XX",
+                "postbackUrl": "",
+                "callbackUrl": ""
+            }
+        },
+        "items": [
+            {
+                "trip_id": "4321",
+                "localizer": "KPFHNB",
+                "ticket_code": "6462297",
+                "context": "departure",
+                "order_item": "1228",
+                "serviceClass": "Convencional",
+                "departure": {
+                    "waypoint": "4017",
+                    "schedule": {
+                        "date": "2015-02-11",
+                        "time": "01:00",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "arrival": {
+                    "waypoint": "3935",
+                    "schedule": {
+                        "date": "2015-02-11",
+                        "time": "03:00",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "seat": {
+                    "name": "13",
+                    "price": "12.35",
+                    "status": "reserved",
+                    "currency": "BRL",
+                    "type": {}
+                },
+                "passenger": {
+                    "firstName": "Fulano",
+                    "lastName": "da Silva",
+                    "document": "123.456.789-00",
+                    "meta": {}
+                },
+                "products": [],
+                "subtotal": "12.35"
+            },
+            {
+                "trip_id": "7340",
+                "localizer": "ZXSMTM",
+                "ticket_code": "5762464",
+                "context": "departure",
+                "order_item": "1229",
+                "serviceClass": "Convencional",
+                "departure": {
+                    "waypoint": "4017",
+                    "schedule": {
+                        "date": "2015-02-11",
+                        "time": "01:00",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "arrival": {
+                    "waypoint": "3935",
+                    "schedule": {
+                        "date": "2015-02-11",
+                        "time": "03:00",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "seat": {
+                    "name": "17",
+                    "price": "12.35",
+                    "status": "reserved",
+                    "currency": "BRL",
+                    "type": {}
+                },
+                "passenger": {
+                    "firstName": "Fulano",
+                    "lastName": "da Silva",
+                    "document": "123.456.789-00",
+                    "meta": {}
+                },
+                "products": [],
+                "subtotal": "12.35"
+            }
+        ],
+        "createdAt": "2015-01-23"
+    }
+}
+```
+
+**2) Credit Card using MercadoPago tokens**
+
+**PARAMETERS**
+
+The values are the same for the `payment` block, as described in the [`/booking` endpoint](#booking-create-an-order).
+
+**EXAMPLE**
+
+Create an Order with the following data:
+- Created from a `store` called _NewWorld_;
+- Selected 1 Seat (number _13_) on departure for _Fulano da Silva_ and 1 Seat (number _17_) on return for the same passenger;
+- Each item costs R$ 12.35, so the `request.buyer.payment.total` value is _2470_;
+- The payment is settled to a single `installment`, using `creditcard` through the MercadoPago payment gateway, providing both token and card brand.
+
+**REQUEST (application/json)**
+
+```json
+{
+    "meta": {
+        "model": "Retail",
+        "store": "NewWorld",
+        "platform": "Web"
+    },
+    "request": {
+        "ip": "192.168.14.1",
+        "buyer": {
+            "locale": "pt_BR",
+            "firstName": "Clickbus",
+            "lastName": "Test",
+            "email": "test-orders@clickbus.com",
+            "phone": "12098765432",
+            "document": "176.768.826-13",
+            "gender": "M",
+            "birthday": "1986-04-18",
+            "meta": {},
+            "payment": {
+                "method": "creditcard",
+                "currency": "BRL",
+                "total": 2470,
+                "installment": "1",
+                "meta": {
+                    "token": "cd844c9fd6e300c7a235880de3fb6269",
+                    "card_brand": "visa",
+                    "zipcode": "12345678"
+                }
+            }
+        },
+        "items": [
+            {
+                "seat": "13",
+                "passenger": {
+                    "name": "Fulano da Silva",
+                    "document": "12.345.678-9",
+                    "documentType": "rg"
+                },
+                "scheduleId": "NDAxNy0tMzkzNS0tMjAxNS0wNS0yNSAyMDoxMC0tOS0tMDAxMy0tMS0tMS0tMS0tQ09OVi0tNjYuMzY="
+            },
+            {
+                "seat": "17",
+                "passenger": {
+                    "name": "Fulano da Silva",
+                    "document": "12.345.678-9",
+                    "documentType": "rg"
+                },
+                "scheduleId": "MzkzNS0tNDAxNy0tMjAxNS0wNS0yNSAwMzo1MC0tOS0tMDA4Mi0tMS0tMS0tMS0tQ09OVi0tMTA="
+            }
+        ]
+    }
+}
+```
+
+**RESPONSE (application/json)**
+
+The following Request, with all correct parameters, will return a _201_ Response, with all details from the Order, as the example below.
+
+```json
+{
+    "meta": {
+        "model": "Retail",
+        "store": "ClickBus",
+        "platform": "Web"
+    },
+    "content": {
+        "id": "1062",
+        "status": "order_finalized_successfully",
+        "localizer": "5EBP2M",
+        "payment": {
+            "method": "payment.creditcard.mercadopago",
+            "total": "2470",
+            "currency": "BRL",
+            "status": "order_finalized_successfully",
+            "meta": {
+                "postbackUrl": "",
+                "callbackUrl": ""
+            }
+        },
+        "items": [
+            {
+                "trip_id": "4321",
+                "localizer": "KPFHNB",
+                "ticket_code": "6462297",
+                "context": "departure",
+                "order_item": "1228",
+                "serviceClass": "Convencional",
+                "departure": {
+                    "waypoint": "4017",
+                    "schedule": {
+                        "date": "2015-02-11",
+                        "time": "01:00",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "arrival": {
+                    "waypoint": "3935",
+                    "schedule": {
+                        "date": "2015-02-11",
+                        "time": "03:00",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "seat": {
+                    "name": "13",
+                    "price": "12.35",
+                    "status": "reserved",
+                    "currency": "BRL",
+                    "type": {}
+                },
+                "passenger": {
+                    "firstName": "Fulano",
+                    "lastName": "da Silva",
+                    "document": "123.456.789-00",
+                    "meta": {}
+                },
+                "products": [],
+                "subtotal": "12.35"
+            },
+            {
+                "trip_id": "7340",
+                "localizer": "ZXSMTM",
+                "ticket_code": "5762464",
+                "context": "departure",
+                "order_item": "1229",
+                "serviceClass": "Convencional",
+                "departure": {
+                    "waypoint": "4017",
+                    "schedule": {
+                        "date": "2015-02-11",
+                        "time": "01:00",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "arrival": {
+                    "waypoint": "3935",
+                    "schedule": {
+                        "date": "2015-02-11",
+                        "time": "03:00",
+                        "timezone": "America/Sao_Paulo"
+                    }
+                },
+                "seat": {
+                    "name": "17",
+                    "price": "12.35",
+                    "status": "reserved",
+                    "currency": "BRL",
+                    "type": {}
+                },
+                "passenger": {
+                    "firstName": "Fulano",
+                    "lastName": "da Silva",
+                    "document": "123.456.789-00",
+                    "meta": {}
+                },
+                "products": [],
+                "subtotal": "12.35"
+            }
+        ],
+        "createdAt": "2015-01-23"
+    }
+}
+```
+
+**ERRORS**
 
 |CODE|DESCRIPTION|DETAILS|
 |:---:|:----|:----|
@@ -2521,11 +2647,27 @@ The values are the same for the `payment` block, as described in the [`/booking`
 |**L14**|_There was a problem with your Order. Please contact us for more details._|Your Order could not be completed. Please contact us at contato@clickbus.com.br for support and details.|
 |**L15**|_Checkout Error_|An internal error ocurred at the conclusion of your Request.|
 |**L16**|_Application Error_|An error occurred before send the success email of your Request.|
+|**L17**|_Application Error_|There was a problem with the communication with the booking engine. Please retry your request.|
 |**L23**|_The Order Cart is empty._|No Seats were found in your cart to finish your purchase. Please contact us for more details.|
 |**L24**|_The installment value is less than the minimum value supported._|The value based for each installment of your request is lower than the minimum supported value. Please contact us for more details.|
 |**L25**|_Inconsistencies were found. Please check your Payment Data._|Some required values for your payment data are missing. Please review your request before proceed.|
-|**L26**|_The given credit card brand is not supported by the payment method._|The card brand is not supported by our payment methods. Please contact us or check the /payments endpoint to verify if the given card brand is declared in the supported list.|
-
+|**L26**|_The given credit card brand is not supported by the payment method._|The card brand is not supported by our payment methods. Please contact us or check the [Payments](#payments) resource to verify if the given card brand is declared in the supported list.|
+|**L27**|_Checkout Error_|It's required to authorize this purchase with the card issuer.|
+|**L28**|_Checkout Error_|The payment was not authorized. We suggest you to check the card information before proceed.|
+|**L29**|_Checkout Error_|The payment was not authorized. We suggest you to check the card information before proceed.|
+|**L30**|_Checkout Error_|A problem ocurred while authorizing the purchase. Please check the card data or contact us for more details.|
+|**L31**|_Checkout Error_|The payment was not authorized. We suggest you to check the card information before proceed.|
+|**L32**|_Checkout Error_|The payment could not be processed.|
+|**L33**|_Checkout Error_|Please check if the card is ok or if it still requires it's activation before proceed with your payment.|
+|**L34**|_Checkout Error_|It was not possible to process the purchase.|
+|**L35**|_Checkout Error_|You have already made a purchase with the same value. If you need to pay the same amount again, please, use another card or payment method.|
+|**L36**|_Checkout Error_|Your payment was rejected. We recommend you to pay with other payment methods available.|
+|**L37**|_Checkout Error_|There is no credit available for this credit card.|
+|**L38**|_Checkout Error_|Payments in this installment amount are not processed. Please, choose other installment value.|
+|**L39**|_Checkout Error_|You have reached limit of tries. Please, use another card or payment method.|
+|**L40**|_Checkout Error_|The payment could not be processed.|
+|**L41**|_Checkout Error_|Payment not authorized. Please, check your credit card information.|
+|**L42**|_Checkout Error_|The maximum execution time was exceeded. Please check the [Order](#order-details) resource to check the actual status of your Order.|
 
 ## Unavailable Seats [/checkout]
 
@@ -2538,81 +2680,84 @@ As stated at the beginning of this group info, _there are chances that one or mo
 
 The `message` param of this response contains a JSON list with the Seats that were available in your request, in the format as below:
 
-**REQUEST**
+**EXAMPLE**
 
-- Selected 1 Seat (number _29_) for _Fulano da Silva_ and 1 Seat for _Beltrano da Silva_ (number _21_), both for the same departure;
+Selected 1 Seat (number _29_) for _Fulano da Silva_ and 1 Seat for _Beltrano da Silva_ (number _21_), both for the same departure;
     
-    ```json
-    {
-        "meta": {
-            "model": "Retail",
-            "store": "NewWorld",
-            "platform": "Web"
+**REQUEST (application/json)**
+
+```json
+{
+    "meta": {
+        "model": "Retail",
+        "store": "NewWorld",
+        "platform": "Web"
+    },
+    "request": {
+        "ip": "192.168.14.1",
+        "buyer": {
+            "locale": "pt_BR",
+            "firstName": "Clickbus",
+            "lastName": "Test",
+            "email": "test-orders@clickbus.com",
+            "phone": "12098765432",
+            "document": "176.768.826-13",
+            "gender": "M",
+            "birthday": "1986-04-18",
+            "meta": {},
+            "payment": {
+                "method": "creditcard",
+                "currency": "BRL",
+                "total": 2470,
+                "installment": "1",
+                "meta": {
+                    "card": "4111111111111111",
+                    "code": "737",
+                    "name": "FULANO SILVA",
+                    "expiration": "2017-07",
+                    "zipcode": "04104080"
+                }
+            }
         },
-        "request": {
-            "ip": "192.168.14.1",
-            "buyer": {
-                "locale": "pt_BR",
-                "firstName": "Clickbus",
-                "lastName": "Test",
-                "email": "test-orders@clickbus.com",
-                "phone": "12098765432",
-                "document": "176.768.826-13",
-                "gender": "M",
-                "birthday": "1986-04-18",
-                "meta": {},
-                "payment": {
-                    "method": "creditcard",
-                    "currency": "BRL",
-                    "total": 2470,
-                    "installment": "1",
-                    "meta": {
-                        "card": "4111111111111111",
-                        "code": "737",
-                        "name": "FULANO SILVA",
-                        "expiration": "2017-07",
-                        "zipcode": "04104080"
-                    }
-                }
-            },
-            "items": [
-                {
-                    "seat": "29",
-                    "passenger": {
-                        "name": "Fulano da Silva",
-                        "document": "12.345.678-9",
-                        "documentType": "rg"
-                    },
-                    "scheduleId": "MzA5Ny0tMzUzNS0tMjAxNS0wNi0yNSAwNzo1NS0tMTUtLTE4MTUtLTEtLTEtLTEtLUNPTUVSQ0lBTC0tMi44NQ=="
-                },
-                {
-                    "seat": "21",
-                    "passenger": {
-                        "name": "Beltrano da Silva",
-                        "document": "98.765.432-1",
-                        "documentType": "rg"
-                    },
-                    "scheduleId": "MzA5Ny0tMzUzNS0tMjAxNS0wNi0yNSAwNzo1NS0tMTUtLTE4MTUtLTEtLTEtLTEtLUNPTUVSQ0lBTC0tMi44NQ=="
-                }
-            ]
-        }
-    }
-    ```
-
-**RESPONSE**
-- For this request, only one seat (for _Fulano da Silva_) was available. So the response will describe that only that Seat (_29_) was available, along with it's `scheduleId`, to identify for which trip the Seats were unavailable, as below:
-
-    ```json
-    {
-        "error": [
+        "items": [
             {
-                "code": "L22",
-                "type": "Unavailable Seat",
-                "message": "{\"Successful seats:\":[{\"seatNumber\":\"29\",\"scheduleId\":\"MzA5Ny0tMzUzNS0tMjAxNS0wNi0yNSAwNzo1NS0tMTUtLTE4MTUtLTEtLTEtLTEtLUNPTUVSQ0lBTC0tMi44NQ==\"}]}"
+                "seat": "29",
+                "passenger": {
+                    "name": "Fulano da Silva",
+                    "document": "12.345.678-9",
+                    "documentType": "rg"
+                },
+                "scheduleId": "MzA5Ny0tMzUzNS0tMjAxNS0wNi0yNSAwNzo1NS0tMTUtLTE4MTUtLTEtLTEtLTEtLUNPTUVSQ0lBTC0tMi44NQ=="
+            },
+            {
+                "seat": "21",
+                "passenger": {
+                    "name": "Beltrano da Silva",
+                    "document": "98.765.432-1",
+                    "documentType": "rg"
+                },
+                "scheduleId": "MzA5Ny0tMzUzNS0tMjAxNS0wNi0yNSAwNzo1NS0tMTUtLTE4MTUtLTEtLTEtLTEtLUNPTUVSQ0lBTC0tMi44NQ=="
             }
         ]
     }
-    ```
+}
+```
+
+**RESPONSE (application/json)**
+
+For this request, only one seat (for _Fulano da Silva_) was available. So the response will describe that only that Seat (_29_) was available, along with it's `scheduleId`, to identify for which trip the Seats were unavailable, as below:
+
+```json
+{
+    "error": [
+        {
+            "code": "L22",
+            "type": "Unavailable Seat",
+            "message": "{\"Successful seats:\":[{\"seatNumber\":\"29\",\"scheduleId\":\"MzA5Ny0tMzUzNS0tMjAxNS0wNi0yNSAwNzo1NS0tMTUtLTE4MTUtLTEtLTEtLTEtLUNPTUVSQ0lBTC0tMi44NQ==\"}]}"
+        }
+    ]
+}
+```
 
 
 # Group Order Details
@@ -2641,8 +2786,6 @@ The resource `/order` return a list of Orders with a limit of 50 results per pag
 |:----|:----|:----|:----|
 |**page** (optional)|_integer_|Use this parameter to navigate through the result pages.|`2`|
 
-**RESPONSE**
-
 A successful request will return a _200_ Response, with the structure as described below:
 
 - `items`, which is a collection of Orders. Each Order contains:
@@ -2666,85 +2809,96 @@ A successful request will return a _200_ Response, with the structure as describ
         - `origin_station_name` is the departure point, related in the `from` parameter used in the **Trips** Request for this Order;
         - `destination_station_name` is the destination point, related in the `to` parameter used in the **Trips** Request for this Order;
         - `subtotal` is the monetary value related to this Item.
-        
 
-**Examples**
+**EXAMPLE**
 
-- Get a list of Orders, using a proper API Public Key:
+Get a list of Orders, using a proper API Public Key:
 
-    - URL:
-        ```
-        api/v1/order
-        ```
-    - Response:
-        ```json
+**REQUEST**
+
+```
+api/v1/order
+```
+
+**RESPONSE (application/json)**
+
+```json
+{
+    "meta": "",
+    "items": [
         {
-            "meta": "",
-            "items": [
+            "uuid": 88,
+            "localizer": "YDSKRH",
+            "buyer_firstname": "Peter",
+            "buyer_lastname": "Nile",
+            "buyer_email": "peter@email.com.br",
+            "buyer_gender": "",
+            "buyer_birthday": "",
+            "buyer_document": "",
+            "buyer_document_type": "",
+            "buyer_phone": "11983864125",
+            "payment_method": "payment.creditcard",
+            "total": 23.59,
+            "status": "order_finalized_successfully",
+            "created_at": "2015-03-02 17:48:58",
+            "updated_at": "",
+            "order_items": [
                 {
-                    "uuid": 88,
-                    "localizer": "YDSKRH",
-                    "buyer_firstname": "Peter",
-                    "buyer_lastname": "Nile",
-                    "buyer_email": "peter@email.com.br",
-                    "buyer_gender": "",
-                    "buyer_birthday": "",
-                    "buyer_document": "",
-                    "buyer_document_type": "",
-                    "buyer_phone": "11983864125",
-                    "payment_method": "payment.creditcard",
-                    "total": 23.59,
-                    "status": "order_finalized_successfully",
+                    "localizer": "",
+                    "ticket_code": "305913",
+                    "seat_reference": "09",
+                    "seat_price": 21.25,
+                    "passenger_firstname": "John",
+                    "passenger_lastname": "Doe",
+                    "passenger_document": "123.456.789-00",
+                    "passenger_document_type": "",
+                    "passenger_email": "",
+                    "passenger_gender": "",
+                    "passenger_birthday": "",
+                    "departure_datetime": "2015-03-25 06:30:00",
+                    "timezone": "America/Sao_Paulo",
+                    "origin_station_name": "Sao Paulo, SP - Tiete",
+                    "destination_station_name": "Santos, SP",
+                    "origin_city_name": "Sao Paulo, SP - Tiete",
+                    "destination_city_name": "Santos, SP",
+                    "subtotal": 21.25,
                     "created_at": "2015-03-02 17:48:58",
-                    "updated_at": "",
-                    "order_items": [
-                        {
-                            "localizer": "",
-                            "ticket_code": "305913",
-                            "seat_reference": "09",
-                            "seat_price": 21.25,
-                            "passenger_firstname": "John",
-                            "passenger_lastname": "Doe",
-                            "passenger_document": "123.456.789-00",
-                            "passenger_document_type": "",
-                            "passenger_email": "",
-                            "passenger_gender": "",
-                            "passenger_birthday": "",
-                            "departure_datetime": "2015-03-25 06:30:00",
-                            "timezone": "America/Sao_Paulo",
-                            "origin_station_name": "Sao Paulo, SP - Tiete",
-                            "destination_station_name": "Santos, SP",
-                            "origin_city_name": "Sao Paulo, SP - Tiete",
-                            "destination_city_name": "Santos, SP",
-                            "subtotal": 21.25,
-                            "created_at": "2015-03-02 17:48:58",
-                            "updated_at": ""
-                        }
-                    ]
-                },
-                {...}
-            ]
-        }
-        ```
-- Incorrect request (permission denied):
-    - URL:
-        ```
-        api/v1/order
-        ``` 
-    - Response (status code: _401_):
-        ```json
-        {
-            "error": [
-                {
-                    "code": "D1",
-                    "type": "Unauthorized",
-                    "message": "Unauthorized access."
+                    "updated_at": ""
                 }
             ]
-        }
-        ```
+        },
+        {...}
+    ]
+}
+```
 
-**Errors**
+**EXAMPLE**
+
+Incorrect request (permission denied):
+
+**REQUEST**
+
+```
+api/v1/order
+``` 
+
+**RESPONSE (application/json)**
+        
+Status code: _401_.
+
+```json
+{
+    "error": [
+        {
+            "code": "D1",
+            "type": "Unauthorized",
+            "message": "Unauthorized access."
+        }
+    ]
+}
+```
+
+**ERRORS**
 
 |CODE|DESCRIPTION|DETAILS|
 |:---:|:----|:----|
@@ -2763,8 +2917,6 @@ The resource `/order/{id}` provides all details of a single Order, based on the 
 |PARAMS|VALUE|DESCRIPTION|EXAMPLE|
 |:----|:----|:----|:----|
 |**id** (required)|_int_|A valid ID for any created Order.|`10`|
-
-**RESPONSE**
 
 Using a valid `id`, and providing a valid and authentic API Key, the request will return a _200_ Response, displaying an Order distributed in the following structure:
 
@@ -2794,98 +2946,131 @@ Using a valid `id`, and providing a valid and authentic API Key, the request wil
 
 **EXAMPLE**
 
-- Get the results from an Order, using credit card:
+Get the results from an Order with an ID `88`, related with an existing Order.
 
-    - URL:
-        ```
-        api/v1/order/88
-        ```
-    - Response:
-        ```json
-        {
-            "meta": "",
-            "content": {
-                "uuid": 88,
-                "localizer": "YDSKRH",
-                "buyer_firstname": "Peter",
-                "buyer_lastname": "Silva",
-                "buyer_email": "peter@email.com.br",
-                "buyer_gender": "",
-                "buyer_birthday": "",
-                "buyer_document": "",
-                "buyer_document_type": "",
-                "buyer_phone": "11983864125",
-                "payment_method": "payment.creditcard",
-                "total": 23.59,
-                "status": "order_finalized_successfully",
+**REQUEST**
+
+```
+api/v1/order/88
+```
+
+**RESPONSE (application/json)**
+
+```json
+{
+    "meta": "",
+    "content": {
+        "uuid": 88,
+        "localizer": "YDSKRH",
+        "buyer_firstname": "Peter",
+        "buyer_lastname": "Silva",
+        "buyer_email": "peter@email.com.br",
+        "buyer_gender": "",
+        "buyer_birthday": "",
+        "buyer_document": "",
+        "buyer_document_type": "",
+        "buyer_phone": "11983864125",
+        "payment_method": "payment.creditcard",
+        "total": 23.59,
+        "status": "order_finalized_successfully",
+        "created_at": "2015-03-02 17:48:58",
+        "updated_at": "",
+        "order_items": [
+            {
+                "localizer": "",
+                "ticket_code": "305913",
+                "seat_reference": "09",
+                "seat_price": 21.25,
+                "passenger_firstname": "Jhon",
+                "passenger_lastname": "Doe",
+                "passenger_document": "123.456.789-00",
+                "passenger_document_type": "",
+                "passenger_email": "",
+                "passenger_gender": "",
+                "passenger_birthday": "",
+                "departure_datetime": "2015-03-25 06:30:00",
+                "timezone": "America/Sao_Paulo",
+                "origin_station_name": "Sao Paulo - Tiete, SP",
+                "destination_station_name": "Santos, SP",
+                "origin_city_name": "Sao Paulo - Tiete, SP",
+                "destination_city_name": "Santos, SP",
+                "subtotal": 21.25,
                 "created_at": "2015-03-02 17:48:58",
-                "updated_at": "",
-                "order_items": [
-                    {
-                        "localizer": "",
-                        "ticket_code": "305913",
-                        "seat_reference": "09",
-                        "seat_price": 21.25,
-                        "passenger_firstname": "Jhon",
-                        "passenger_lastname": "Doe",
-                        "passenger_document": "123.456.789-00",
-                        "passenger_document_type": "",
-                        "passenger_email": "",
-                        "passenger_gender": "",
-                        "passenger_birthday": "",
-                        "departure_datetime": "2015-03-25 06:30:00",
-                        "timezone": "America/Sao_Paulo",
-                        "origin_station_name": "Sao Paulo - Tiete, SP",
-                        "destination_station_name": "Santos, SP",
-                        "origin_city_name": "Sao Paulo - Tiete, SP",
-                        "destination_city_name": "Santos, SP",
-                        "subtotal": 21.25,
-                        "created_at": "2015-03-02 17:48:58",
-                        "updated_at": ""
-                    }
-                ]
+                "updated_at": ""
             }
-        }
-        ```
-- Incorrect request (permission denied):
-    - URL:
-        ```
-        api/v1/order/100
-        ``` 
-    - Response (status code: _401_):
-        ```json
-        {
-            "error":[
-                {
-                    "code":"D1",
-                    "type":"Unauthorized",
-                    "message":"Unauthorized access."
-                }
-            ]
-        }
-        ```
-- Incorrect request (Order not found):
-    - URL:
-        ```
-        api/v1/order/89
-        ``` 
-    - Response (status code: _404_):
-        ```json
-        {
-            "error":[
-                {
-                    "code":"D5",
-                    "type":"Not Found",
-                    "message":"Item not found."
-                }
-            ]
-        }
-        ```
+        ]
+    }
+}
+```
 
-**Errors**
+**EXAMPLE**
+
+Incorrect request (permission denied).
+
+**REQUEST**
+
+```
+api/v1/order/100
+```
+
+**RESPONSE (application/json)**
+
+Status code: _401_.
+
+```json
+{
+    "error":[
+        {
+            "code":"D1",
+            "type":"Unauthorized",
+            "message":"Unauthorized access."
+        }
+    ]
+}
+```
+
+**EXAMPLE**
+
+Incorrect request, using `89` as the ID value, which relates to no Order (Order not found).
+
+**REQUEST**
+
+```
+api/v1/order/89
+``` 
+
+**RESPONSE (application/json)**
+
+Status code: _404_.
+
+```json
+{
+    "error":[
+        {
+            "code":"D5",
+            "type":"Not Found",
+            "message":"Item not found."
+        }
+    ]
+}
+```
+
+**ERRORS**
 
 |CODE|DESCRIPTION|DETAILS|
 |:---:|:----|:----|
 |**D1**|_Unauthorized access._|You are not authorized to view the contents of this resource. Please use a valid API Public Key.|
-|**D4**|_The given Order ID is invalid._|The valjue provided for `id` is invalid or incorrect.|
+|**D4**|_The given Order ID is invalid._|The value provided for `id` is invalid or incorrect.|
 |**D5**|_Item not found._|The requested Order could not be found.|
+
+## Order Status List [/order]
+
+Below is a reference to consider when checking this service, to understand the status described in the `content.status` parameter. Any other status found in this service must be considered as a pending step, which will evolve to other scenarios before the Order is concluded.
+
+|STATUS|DESCRIPTION|
+|:----|:----|
+|`order_canceled`|Order canceled.|
+|`order_booking_engine_confirmation_refund_successful`|Ticket canceled with the booking engine / bus company after payment failure.|
+|`clarify_booking_engine_confirmation_refund_failure`|Ticket cancelation failed after payment failure.|
+|`order_finalized_successfully`|Order finalized OK.|
+|`payment_confirmed`|Payment was successfuly confirmed.|
