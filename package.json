@@ -1,0 +1,7 @@
+{
+  "name": "clickbusdocs",
+  "version": "1.0.0",
+  "dependencies": {
+    "aglio": "^2.2.0"
+  }
+}
