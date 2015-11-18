@@ -1331,6 +1331,9 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
 <li>
 <p>We are using Conekta payment service, please read the documentation to know more about how to integrate conekta with your application: <a href="https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta">https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta</a> &amp; <a href="https://www.conekta.io/es/docs/referencias/pruebas#cards">https://www.conekta.io/es/docs/referencias/pruebas#cards</a></p>
 </li>
+<li>
+<p>Conekta token: <a href="https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta">https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta</a></p>
+</li>
 </ul>
 <div id="booking-create-an-order-post" class="action post"><h4 class="action-heading"><div class="name">Create an Order</div><a href="#booking-create-an-order-post" class="method post">POST</a><code class="uri">/booking</code></h4><p>To create an Order, the request’s body requires a range of data, which, for a better understanding, we will divide in the following blocks below:</p>
 <ul>
@@ -1488,8 +1491,8 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
 </tr>
 <tr>
 <td style="text-align:left"><strong>request.buyer.payment.meta.token</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Conekta token (more information here <a href="https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta">https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta</a>) .</td>
+<td style="text-align:left"><em>object</em></td>
+<td style="text-align:left">Conekta token</td>
 <td style="text-align:left"><code>tok_test_visa_4242</code></td>
 </tr>
 <tr>

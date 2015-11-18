@@ -1086,7 +1086,7 @@ When you have selected all the Seats, then you may proceed to create an Order, w
 - Please keep in mind that you need to provide in your header the `PHPSESSID` key with the Session's ID in the Cookie, as below:
     > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
 - We are using Conekta payment service, please read the documentation to know more about how to integrate conekta with your application: https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta & https://www.conekta.io/es/docs/referencias/pruebas#cards
-
+- Conekta token: https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta
 
 
 ### Create an Order [POST]
@@ -1124,7 +1124,7 @@ To create an Order, the request's body requires a range of data, which, for a be
 |**request.buyer.payment.total** (required)|_int_|Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, `1400` means `14.00`, and `6050` means `60.50`.|`1400`|
 |**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
 |**request.buyer.payment.meta** (required)|_object_|An object which requires the following data:||
-|**request.buyer.payment.meta.token** (required)|_string_|Conekta token (more information here https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta) .|`tok_test_visa_4242`|
+|**request.buyer.payment.meta.token** (required)|_object_|Conekta token|`tok_test_visa_4242`|
 |**request.buyer.payment.meta.referring_campaign** (optional)|_string_|The campaign `(campaign_free_pass)`.|`campaign_free_pass`|
 |**request.buyer.payment.meta.referring_source** (optional)|_string_|The source .|`sem or direct or googleoe bing`|
 |**request.buyer.payment.meta.referrer** (optional)|_string_|The referrer  .|`http://google.com`|
