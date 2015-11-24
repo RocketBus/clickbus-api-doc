@@ -1196,6 +1196,101 @@ Below you can find a list of supported card brands, based on each payment method
 
 For **PayPal** (`paypal_hpp`), there is no specific limitation for brands.
 
+# Group Vouchers
+
+# Validate Voucher [/booking/voucher]
+
+In order to provide customized discounts in the purchases, you can provide vouchers in your requests to `/booking`, so then customers can submit these vouchers and get the benefits of it's discounts.
+
+ - **ATTENTION:**
+    > 1. Before use this resource, please contact us at contato@clickbus.com.br for more details about voucher's creation process and it's usage.
+    > 2. For the purchase flow using the `/booking` endpoint, you must have created at least a single **Seat Block** before doing this request. For the purchase flow using the `/checkout` endpoint, the validation is executed in the same request.
+    > 3. The voucher cannot be applied for purchases using `paypal_hpp` as the payment option.
+
+## Validate Voucher [POST]
+
+We provide an endpoint where you can validate any given voucher before applying it in your request. This is useful to avoid a rejected request by our services due to an incorrect or invalid voucher.
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**meta** (required)|_object_|An empty object. Partners can use this parameter to provide:|`{}`|
+|**meta.model** (required)|_string_|`model` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`retail`|
+|**meta.store** (required)|_string_|`store` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`newstore`|
+|**meta.platform** (required)|_string_|`platform` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`web`|
+|**request** (required)|_object_|An object where you provide the following parameters:|`{}`|
+|**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
+|**request.voucher** (required)|_string_|The voucher code itself.|`EVAL-ORIGIN`|
+|**request.buyer** (required)|_object_|An object with a single parameter.|`{}`|
+|**request.buyer.email** (required)|_string_|The buyer's email.|`test@test.com`|
+
+The response for this endpoint provides the following values:
+
+- `discountValue` contains the discount value itself, which will be applied in the total value of the Order;
+- `isFixedValue` is a boolean value, which describes if the discount value (provided at `discountValue`) is fixed (`true`) or a percentage (`false`);
+- `serviceFeeDiscountPercentage` displays a value which relates to a percentage discount only for the service fee. If `null`, it means that the given voucher does not affect the service fee.
+
+For test purposes only, we offer a range of vouchers that can only be applied in the Evaluation environment, where each voucher has it's own details, as described in the table below:
+
+|VOUCHER|DESCRIPTION|
+|:------|:----|
+|EVAL-ORIGIN|This voucher requires that the trip must have **`sao-paulo-tiete-sp`** as the origin. It provides a discount percentage of **14%**.|
+|EVAL-DESTIN|This voucher requires that the trip must have **`santos-sp`** as the destination. It provides a discount percentage of **10%**.|
+|EVAL-FIXED|This voucher provides a fixed **R$ 5.00** discount value.|
+|EVAL-MINVAL|This voucher is only allowed for purchases with **R$ 15.00** as the minimum value for the entire purchase. It provides a fixed discount value of **R$ 10.00**.|
+|EVAL-STORE|This voucher requires that the purchase must be from the store **ClickBus**, the model **Retail** and the platform **Web**. This values must be provided in the `meta` parameter of your request. It provides a discount percentage of **8%**.|
+|EVAL-EMAIL|This voucher can only be used for a single email address at time (you can use it again by changing the email address, in the `request.buyer.email` parameter). It provides a discount percentage of **5%**.|
+|EVAL-ROUND|This voucher can only be used in round trips (trips with departure and return). It provides a discount percentage of **10%**.|
+|EVAL-BUSLIN|This voucher can only be used for trips from the bus company `Demon` (a demo bus company that exists only in out Evaluation environment). It provides a discount percentage of **10%**.|
+|EVAL-TESTOK|This voucher has no restrictions, and it provides a discount percentage of **10%**.|
+
+**EXAMPLE**
+
+Validate a given voucher `EVAL-TESTOK` before using it on a purchase.
+
+**REQUEST (application/json)**
+
+```json
+{
+    "meta": {
+      "model": "retail",
+      "store": "newstore",
+      "platform": "web"
+    },
+    "request": {
+        "sessionId": "dnlfm8aecg2omtjaang62fvla5",
+        "voucher": "EVAL-TESTOK",
+        "buyer": {
+            "email": "test@test.com"
+        }
+    }
+}
+```
+
+**RESPONSE (application/json)**
+
+```json
+{
+  "content": {
+    "discountValue": 0.1,
+    "isFixedValue": false,
+    "serviceFeeDiscountPercentage": null
+  }
+}
+```
+
+**ERRORS**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**A17**|_Please provide a `voucher`._|The value for the field `voucher` is missing.|
+|**A18**|_Invalid discount._|This voucher's discount is invalid.|
+|**A19**|_Order has not reached minimum value._|The actual total value of the Order is lower than the minimum value required for this voucher's discount.|
+|**A20**|_Invalid discount for this email._|The email in the `request.buyer.email` parameter was already applied to this voucher. Please provide another email address.|
+|**A21**|_Invalid discount for this trip._|The selected seats must be a trip from a given origin or/and destination, the same configured for this voucher.|
+|**A22**|_Discount is valid just for round trips._|This voucher can only be applied for round trips.|
+|**A23**|_Invalid discount for this busline._|The selected seats must be from a trip which belongs to the bus company configured for this voucher.|
+
+
 # Group Booking
 
 ## How to Check an Order Status [/booking]
@@ -1230,7 +1325,7 @@ When you have selected all the Seats, then you may proceed to create an Order, w
 - Please keep in mind that you need to provide in your header the `PHPSESSID` key with the Session's ID in the Cookie, as below:
     > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
 
-## Create an Order [POST]
+## Create Order [POST]
 
 To create an Order, the request's body requires a range of data, which, for a better understanding, we will divide in the following blocks below:
 
@@ -1250,6 +1345,7 @@ Each `/booking` have the same structure block except for `payment` block, which 
 |**meta.platform** (required)|_string_|Partner's `platform` data. |`web`|
 |**request** (required)|_object_|A container which requires: ||
 |**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
+|**request.voucher** (optional)|_string_|Any valid voucher.|`EVAL-TESTOK`|
 |**request.ip** (optional)|_string_|IP address from where the request was sent.|`192.168.14.1`|
 |**request.buyer** (required)|_object_|A container which requires: ||
 |**request.buyer.locale** (required)|_string_|Buyer's locale.|`pt_BR`|
@@ -1268,7 +1364,7 @@ Each `/booking` have the same structure block except for `payment` block, which 
 |**request.orderItems.passenger.firstName** (required)|_string_|Passenger's first name.|`Beltrano`|
 |**request.orderItems.passenger.lastName** (required)|_string_|Passenger's surname.|`da Silva`|
 |**request.orderItems.passenger.email** (required)|_string_|Passenger's email.|`beltrano@teste.com.br`|
-|**request.orderItems.passenger.document** (required)|_string_|Passenger's document.|`123.456.789-00`|
+|**request.orderItems.passenger.document** (required)|_string_|Passenger's document.|`12345678900`|
 |**request.orderItems.passenger.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
 |**request.orderItems.passenger.birthday** (required)|_string_|Passenger's birth date, in format `yyyy-mm-dd`.|`1970-01-15`|
 |**request.orderItems.passenger.seat** (required)|_string_|`seat` name, obtained on **Seat** proccess.|`08`|
@@ -1456,7 +1552,7 @@ The following Request, with all correct parameters, will return a _201_ Response
                 "firstName": "Nome Passageiro",
                 "lastName": "",
                 "email": "passageiro@teste.com.br",
-                "document": "123.456.789-00",
+                "document": "12345678900",
                 "gender": "",
                 "birthday": "",
                 "meta": {}
@@ -1847,7 +1943,7 @@ Create an Order with the following data:
                 "firstName": "Charles Bukowski",
                 "lastName": "",
                 "email": "teste@clickbus.com.br",
-                "document": "123.456.789-00",
+                "document": "12345678900",
                 "gender": "",
                 "birthday": "",
                 "meta": {}
@@ -2008,7 +2104,7 @@ Create an Order with the following data:
                 "firstName": "Charles Bukowski",
                 "lastName": "",
                 "email": "teste@teste.com.br",
-                "document": "123.456.789-00",
+                "document": "12345678900",
                 "gender": "",
                 "birthday": "",
                 "meta": {}
@@ -2058,7 +2154,7 @@ Create an Order with the following data:
 
 ## Credit/Debit Card Rejection [/booking]
 
-If, for any circunstances listed above, the Request detects any kind of problem related to the given credit/debit card, as above:
+If, for any circunstances listed above, the request detects any kind of problem related to the given credit/debit card, as below:
 
 - The maximum credit limit was reached;
 - The credit, for any reason, is blocked;
@@ -2233,6 +2329,7 @@ Each `/checkout` have the same structure block except for `payment` block, which
 |**meta.store** (required)|_string_|Partner's `store` data. |`newstore`|
 |**meta.platform** (required)|_string_|Partner's `platform` data. |`web`|
 |**request** (required)|_object_|A container which requires: ||
+|**request.voucher** (optional)|_string_|Any valid voucher.|`EVAL-TESTOK`|
 |**request.ip** (optional)|_string_|IP address from where the request was sent.|`192.168.14.1`|
 |**request.buyer** (required)|_object_|A container which requires: ||
 |**request.buyer.locale** (required)|_string_|Buyer's locale.|`pt_BR`|
@@ -2249,7 +2346,7 @@ Each `/checkout` have the same structure block except for `payment` block, which
 |**request.items.seat** (required)|_string_|The seat number for a single passenger.|`13`|
 |**request.items.passenger** (required)|_object_|An object, which have:|`{}`|
 |**request.items.passenger.name** (required)|_string_|Passenger's full name.|`Fulano da Silva`|
-|**request.items.passenger.document** (required)|_string_|Passenger's document.|`123.456.789-00`|
+|**request.items.passenger.document** (required)|_string_|Passenger's document.|`12345678900`|
 |**request.items.passenger.documentType** (required)|_string_|Passenger's document type. It must be a document with the passenger's picture.|`rg`|
 |**request.items.scheduleId** (required)|_string_|The `scheduleId` for one of the desired trips (departure or return).|`NDAxNy0tMzkzNS0tMjAxNS0wNS0...`|
 
@@ -2396,7 +2493,7 @@ The following Request, with all correct parameters, will return a _201_ Response
                 "passenger": {
                     "firstName": "Fulano",
                     "lastName": "da Silva",
-                    "document": "123.456.789-00",
+                    "document": "12345678900",
                     "meta": {}
                 },
                 "products": [],
@@ -2435,7 +2532,7 @@ The following Request, with all correct parameters, will return a _201_ Response
                 "passenger": {
                     "firstName": "Fulano",
                     "lastName": "da Silva",
-                    "document": "123.456.789-00",
+                    "document": "12345678900",
                     "meta": {}
                 },
                 "products": [],
@@ -2577,7 +2674,7 @@ The following Request, with all correct parameters, will return a _201_ Response
                 "passenger": {
                     "firstName": "Fulano",
                     "lastName": "da Silva",
-                    "document": "123.456.789-00",
+                    "document": "12345678900",
                     "meta": {}
                 },
                 "products": [],
@@ -2616,7 +2713,7 @@ The following Request, with all correct parameters, will return a _201_ Response
                 "passenger": {
                     "firstName": "Fulano",
                     "lastName": "da Silva",
-                    "document": "123.456.789-00",
+                    "document": "12345678900",
                     "meta": {}
                 },
                 "products": [],
@@ -2639,7 +2736,7 @@ The following Request, with all correct parameters, will return a _201_ Response
 |**L5**|_Please provide the 'scheduleId'._|The `scheduleId` for one of the order items is missing from the Request.|
 |**L6**|_The given 'scheduleId' is invalid._|The `scheduleId` for one of the order items is invalid or incorrect.|
 |**L7**|_Invalid Parameters_|(**Deprecated**: check for **L25**) Missing parameters in your payment data.|
-|**L8**|_The expiration data is invalid or incorrect._|The expiration data provided in the card is incorrect or invalid.|
+|**L8**|_The expiration date is invalid or incorrect._|The expiration date provided in the card is incorrect or invalid.|
 |**L9**|_Please provide the 'installment' for the payment data._|The parameter `installment` is missing from the Request.|
 |**L10**|_An unexpected issue happened in your Request. Please contact us for more details._|Troubles while requesting data from the booking engine. Please contact us at contato@clickbus.com.br for support and details.|
 |**L12**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request.|
@@ -2668,6 +2765,12 @@ The following Request, with all correct parameters, will return a _201_ Response
 |**L40**|_Checkout Error_|The payment could not be processed.|
 |**L41**|_Checkout Error_|Payment not authorized. Please, check your credit card information.|
 |**L42**|_Checkout Error_|The maximum execution time was exceeded. Please check the [Order](#order-details) resource to check the actual status of your Order.|
+|**L43**|_Invalid discount._|This voucher’s discount is invalid.|
+|**L44**|_Order has not reached minimum value._|The actual total value of the Order is lower than the minimum value required for this voucher’s discount.|
+|**L45**|_Invalid discount for this email._|The email in the `request.buyer.email` parameter was already applied to this voucher. Please provide another email address.|
+|**L46**|_Invalid discount for this trip._|The selected seats must be a trip from a given origin or/and destination, the same configured for this voucher.|
+|**L47**|_Discount is valid just for round trips._|This voucher can only be applied for round trips.|
+|**L48**|_Invalid discount for this busline._|The selected seats must be from a trip which belongs to the bus company configured for this voucher.|
 
 ## Unavailable Seats [/checkout]
 
@@ -2850,7 +2953,7 @@ api/v1/order
                     "seat_price": 21.25,
                     "passenger_firstname": "John",
                     "passenger_lastname": "Doe",
-                    "passenger_document": "123.456.789-00",
+                    "passenger_document": "12345678900",
                     "passenger_document_type": "",
                     "passenger_email": "",
                     "passenger_gender": "",
@@ -2983,7 +3086,7 @@ api/v1/order/88
                 "seat_price": 21.25,
                 "passenger_firstname": "Jhon",
                 "passenger_lastname": "Doe",
-                "passenger_document": "123.456.789-00",
+                "passenger_document": "12345678900",
                 "passenger_document_type": "",
                 "passenger_email": "",
                 "passenger_gender": "",
@@ -3065,7 +3168,7 @@ Status code: _404_.
 
 ## Order Status List [/order]
 
-Below is a reference to consider when checking this service, to understand the status described in the `content.status` parameter. Any other status found in this service must be considered as a pending step, which will evolve to other scenarios before the Order is concluded.
+Below is a reference to consider when checking this service, to understand the status described in the `content.status` parameter. Ths list below displays all final statuses available, which conclude the Order cycle. Any other status found in this service must be considered as a pending step, which will evolve to other scenarios before the Order is concluded.
 
 |STATUS|DESCRIPTION|
 |:----|:----|
