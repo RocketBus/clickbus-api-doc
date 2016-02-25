@@ -1219,6 +1219,8 @@ We provide an endpoint where you can validate any given voucher before applying 
 |**meta.platform** (required)|_string_|`platform` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`web`|
 |**request** (required)|_object_|An object where you provide the following parameters:|`{}`|
 |**request.sessionId** (required)|_string_|Session's ID, obtained from **Session**.|`dnlfm8aecg2omtjaang62fvla5`|
+|**request.payment_method** (required)|_string_|The payment method, as selected by the user. It must be one of the following: `creditcard` or `debitcard`|`creditcard`|
+|**request.installments** (required)|_integer_|The number of installments selected by the user.|`1`|
 |**request.voucher** (required)|_string_|The voucher code itself.|`EVAL-ORIGIN`|
 |**request.buyer** (required)|_object_|An object with a single parameter.|`{}`|
 |**request.buyer.email** (required)|_string_|The buyer's email.|`test@test.com`|
@@ -1257,6 +1259,8 @@ Validate a given voucher `EVAL-TESTOK` before using it on a purchase.
       "platform": "web"
     },
     "request": {
+        "payment_method": "creditcard",
+        "installments": 1,
         "sessionId": "dnlfm8aecg2omtjaang62fvla5",
         "voucher": "EVAL-TESTOK",
         "buyer": {
@@ -1289,6 +1293,7 @@ Validate a given voucher `EVAL-TESTOK` before using it on a purchase.
 |**A21**|_Invalid discount for this trip._|The selected seats must be a trip from a given origin or/and destination, the same configured for this voucher.|
 |**A22**|_Discount is valid just for round trips._|This voucher can only be applied for round trips.|
 |**A23**|_Invalid discount for this busline._|The selected seats must be from a trip which belongs to the bus company configured for this voucher.|
+|**A44**|_Invalid discount for this Payment Method._|The selected Payment Method is not supported for the given Voucher.|
 
 
 # Group Booking
