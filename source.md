@@ -1293,7 +1293,7 @@ Validate a given voucher `EVAL-TESTOK` before using it on a purchase.
 |**A21**|_Invalid discount for this trip._|The selected seats must be a trip from a given origin or/and destination, the same configured for this voucher.|
 |**A22**|_Discount is valid just for round trips._|This voucher can only be applied for round trips.|
 |**A23**|_Invalid discount for this busline._|The selected seats must be from a trip which belongs to the bus company configured for this voucher.|
-|**A44**|_Invalid discount for this Payment Method._|The selected Payment Method is not supported for the given Voucher.|
+|**A44**|_Unsupported payment method._|The voucher code cannot be applied to the given payment method.|
 
 
 # Group Booking
