@@ -947,6 +947,8 @@ With the correct params, this resource returns a Response _200_ and a list, in J
 
 - `paymentSettings` for:
     - `creditcard`, with it's own `serviceFee` and `serviceFeePercentage` which is attributed for each partner (contact ClickBus at contacto@clickbus.com.mx for more commercial details).
+    - In case the option `usesRange` is **true** for the payment type you must use the `serviceFeeRanges` to get the correct service fee percentage based on the range criteria.
+        - The service fee by range on `creditcard` payment type is only applicable for the installment option **1**
 
 **Examples**
 
@@ -987,8 +989,36 @@ With the correct params, this resource returns a Response _200_ and a list, in J
                         "4": "0.00",
                         "5": "0.00",
                         "6": "0.00"
-                    }
+                    },
+                    "usesRange": false
+                },
+                "serviceFeeRanges": [
+                {
+                 "minimum": 0,
+                 "maximum": 250,
+                 "serviceFeePercentage": 10
+                },
+                {
+                 "minimum": 250,
+                 "maximum": 500,
+                 "serviceFeePercentage": 10
+                },
+                {
+                 "minimum": 500,
+                 "maximum": 750,
+                 "serviceFeePercentage": 8
+                },
+                {
+                 "minimum": 750,
+                 "maximum": 1000,
+                 "serviceFeePercentage": 8
+                },
+                {
+                 "minimum": 1000,
+                 "maximum": 1000000,
+                 "serviceFeePercentage": 5
                 }
+                ]
             }
         }
         ```
