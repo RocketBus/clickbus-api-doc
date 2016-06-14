@@ -1,44 +1,166 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>Clickbus Public API</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}body{color:black;background:white;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #f2f2f2;margin-bottom:12px}h1,h2,h3,h4,h5{color:black;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:#428bca;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(0,0,0,0) 20%, rgba(0,0,0,0.2) 51.4%, rgba(255,255,255,0.2) 51.4%, rgba(255,255,255,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(0,0,0,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #e8e8e8}blockquote p:last-child{margin-bottom:0}pre{background-color:#f5f5f5;padding:12px;border:1px solid #cfcfcf;border-radius:6px;overflow:auto}pre code{color:black;background-color:transparent;padding:0;border:none}code{color:#444;background-color:#f5f5f5;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #cfcfcf;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#fafafa}table th,table td{padding:6px 12px;border:1px solid #e6e6e6}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:black;background-color:#f0f6fb;border-left:4px solid #428bca}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#428bca}.warning{color:black;background-color:#fbf1f0;border-left:4px solid #c9302c}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#c9302c}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:black;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(0,0,0,0.7);padding:8px 12px;border-top:1px solid #d9d9d9;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#000;background-color:#f2f2f2;border-radius:10px;margin:-2px 0}.badge.get{color:#70bbe1;background-color:#d9edf7}.badge.head{color:#70bbe1;background-color:#d9edf7}.badge.options{color:#70bbe1;background-color:#d9edf7}.badge.put{color:#f0db70;background-color:#fcf8e3}.badge.patch{color:#f0db70;background-color:#fcf8e3}.badge.post{color:#93cd7c;background-color:#dff0d8}.badge.delete{color:#ce8383;background-color:#f2dede}.collapse-button{float:right}.collapse-button .close{display:none;color:#428bca;cursor:pointer}.collapse-button .open{color:#428bca;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#428bca}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:white}.right pre{background-color:#1d1f21;border:1px solid #1d1f21}.right pre code{color:#c5c8c6}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e8ab8}.definition .method.head{color:#2e8ab8}.definition .method.options{color:#2e8ab8}.definition .method.post{color:#56b82e}.definition .method.put{color:#b8a22e}.definition .method.patch{color:#b8a22e}.definition .method.delete{color:#b82e2e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:black;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#444}.right .example-names .tab-button{color:white;border:1px solid #666;border-radius:6px}.right .example-names .tab-button.active{background-color:#5e5e5e}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#fbfbfb;border-right:1px solid #f0f0f0;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#333;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(0,0,0,0.5);background-color:#f2f2f2;text-decoration:none !important;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:white;border:1px solid #d9d9d9;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#f2f2f2;border-bottom:1px solid #d9d9d9;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #d9d9d9}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px}.action h4.action-heading .method.get{color:#fff;background-color:#337ab7}.action h4.action-heading .method.head{color:#fff;background-color:#337ab7}.action h4.action-heading .method.options{color:#fff;background-color:#337ab7}.action h4.action-heading .method.put{color:#fff;background-color:#ed9c28}.action h4.action-heading .method.patch{color:#fff;background-color:#ed9c28}.action h4.action-heading .method.post{color:#fff;background-color:#5cb85c}.action h4.action-heading .method.delete{color:#fff;background-color:#d9534f}.action h4.action-heading code{color:#444;background-color:#f5f5f5;border-color:#cfcfcf;font-weight:normal}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid white;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#bce8f1}.action.get h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.head{border-color:#bce8f1}.action.head h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.options{border-color:#bce8f1}.action.options h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.post{border-color:#d6e9c6}.action.post h4.action-heading{color:#5cb85c;background:#dff0d8;border-bottom-color:#d6e9c6}.action.put{border-color:#faebcc}.action.put h4.action-heading{color:#ed9c28;background:#fcf8e3;border-bottom-color:#faebcc}.action.patch{border-color:#faebcc}.action.patch h4.action-heading{color:#ed9c28;background:#fcf8e3;border-bottom-color:#faebcc}.action.delete{border-color:#ebccd1}.action.delete h4.action-heading{color:#d9534f;background:#f2dede;border-bottom-color:#ebccd1}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#top">Overview</a></div><div class="collapse-content"><ul><li><a href="#header-overview">Overview</a></li><li><a href="#header-api-reference">API Reference</a></li><li><a href="#header-predicates">Predicates</a></li><li><a href="#header-groups">Groups</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#places">Places</a></div><div class="collapse-content"><ul><li><a href="#places-get-all-places-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Get All Places</a></li><li><a href="#places-prepare-search-for-asyncronous-calls-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>/search-prepare</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#trips">Trips</a></div><div class="collapse-content"><ul><li><a href="#trips-get-all-available-trips-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Get all available Trips</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#session">Session</a></div><div class="collapse-content"><ul><li><a href="#session-get-session-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Get Session</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#trip-details">Trip Details</a></div><div class="collapse-content"><ul><li><a href="#trip-details-get-trip-details-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Get Trip Details</a></li><li><a href="#trip-details-how-seat-position-works">How Seat Position works</a><ul></ul></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#seat-block">Seat Block</a></div><div class="collapse-content"><ul><li><a href="#seat-block-create-a-block-in-a-seat-put"><span class="badge put"><i class="fa fa-pencil"></i></span>Create a block in a Seat</a></li><li><a href="#seat-block-remove-a-block-in-a-seat-delete"><span class="badge delete"><i class="fa fa-times"></i></span>Remove a block in a Seat</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#payment">Payment</a></div><div class="collapse-content"><ul><li><a href="#payment-get-all-payment-settings-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Get all Payment settings</a></li><li><a href="#payment-get-the-discounts-only-available-after-blocking-all-seats-get-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>/booking-discount</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#booking">Booking</a></div><div class="collapse-content"><ul><li><a href="#booking-create-an-order-post"><span class="badge post"><i class="fa fa-plus"></i></span>Create an Order</a></li><li><a href="#booking-credit-card-rejection">Credit Card Rejection</a><ul></ul></li></ul></div></div></nav><div class="content"><header><h1 id="top">Clickbus Public API</h1></header><p>This is the documentation and samples for Clickbus Public API. Also this can be used as mocked data to simply test API integration.</p>
-<p>In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (contacto@clickbus.com.mx for more commercial details).</p>
-<h3 id="header-overview"><strong>Overview</strong> <a class="permalink" href="#header-overview" aria-hidden="true">¶</a></h3>
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Clickbus Public API</title><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  margin-left: 3px;
+  color: #c7254e;
+  background-color: rgba(255,255,255,0.7);
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item:hover {
+  background-color: #f8f8f8;
+  border-left: 2px solid #555;
+  padding-left: 15px;
+}
+.indent {
+  display: block;
+  text-indent: 16px;
+}
+.list-group-item {
+  padding-left: 16px;
+}
+.list-group-item .toggle .open {
+  display: block;
+}
+.list-group-item .toggle .closed {
+  display: none;
+}
+.list-group-item.collapsed .toggle .open {
+  display: none;
+}
+.list-group-item.collapsed .toggle .closed {
+  display: block;
+}
+a.list-group-item {
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  font-size: 15px;
+  background-color: #f5f5f5;
+}
+a.list-group-item.heading:hover {
+  background-color: #f8f8f8;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+.list-group-item a span.closed {
+  display: none;
+}
+.list-group-item a span.open {
+  display: block;
+}
+.list-group-item a.collapsed span.closed {
+  display: block;
+}
+.list-group-item a.collapsed span.open {
+  display: none;
+}
+#nav {
+  width: inherit;
+  margin-top: 38px;
+  max-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    max-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a data-toggle="" data-target="#places-menu" href="#places" class="list-group-item heading collapsed">Places</a><div id="places-menu"><a href="#places-get-all-places" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get All Places</a><a href="#places-prepare-search-for-asyncronous-calls" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Prepare search for asyncronous calls</a></div></div><div class="list-group"><a data-toggle="" data-target="#trips-menu" href="#trips" class="list-group-item heading collapsed">Trips</a><div id="trips-menu"><a href="#trips-get-all-available-trips" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get all available Trips</a></div></div><div class="list-group"><a data-toggle="" data-target="#session-menu" href="#session" class="list-group-item heading collapsed">Session</a><div id="session-menu"><a href="#session-get-session" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Session</a></div></div><div class="list-group"><a data-toggle="" data-target="#trip-details-menu" href="#trip-details" class="list-group-item heading collapsed">Trip Details</a><div id="trip-details-menu"><a href="#trip-details-get-trip-details" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get Trip Details</a><a href="#trip-details-how-seat-position-works" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">How Seat Position works</a></div></div><div class="list-group"><a data-toggle="" data-target="#seat-block-menu" href="#seat-block" class="list-group-item heading collapsed">Seat Block</a><div id="seat-block-menu"><a href="#seat-block-create-a-block-in-a-seat" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span>Create a block in a Seat</a><a href="#seat-block-remove-a-block-in-a-seat" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-danger"><i class="fa fa-times"></i></span>Remove a block in a Seat</a></div></div><div class="list-group"><a data-toggle="" data-target="#payment-menu" href="#payment" class="list-group-item heading collapsed">Payment</a><div id="payment-menu"><a href="#payment-get-all-payment-settings" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get all Payment settings</a><a href="#payment-get-the-discounts-only-available-after-blocking-all-seats-get" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Get the discounts only available after blocking all seats GET</a></div></div><div class="list-group"><a data-toggle="" data-target="#booking-menu" href="#booking" class="list-group-item heading collapsed">Booking</a><div id="booking-menu"><a href="#booking-create-an-order" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span>Create an Order</a><a href="#booking-credit-card-rejection" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Credit Card Rejection</a></div></div></nav></div><div class="col-md-8"><div><header><div class="page-header"><h1 id="top">Clickbus Public API</h1></div></header><div class="description"><p>This is the documentation and samples for Clickbus Public API. Also this can be used as mocked data to simply test API integration.</p>
+<p>In this documentation you may find both how to integrate with Clickbus API for any country avaliable in Clickbus Portifolio but also use as a guideline to create your own Booking engine and submit to us to quickly implement your services and start selling your bus services as well using clickbus (<a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details).</p>
+<h3><strong>Overview</strong></h3>
 <p>Below are the topic Groups to perform every task for your applications:</p>
 <ul>
-<li>
-<p>Obtain a list with all <strong>Places</strong>;</p>
-</li>
-<li>
-<p>Search any of our <strong>Trips</strong>;</p>
-</li>
-<li>
-<p>Get all information about the available <strong>Payment</strong> methods;</p>
-</li>
-<li>
-<p>Obtain <strong>Trip Details</strong> from each route;</p>
-</li>
-<li>
-<p><strong>Seat Block</strong> to lock or unlock seat reservations;</p>
-</li>
-<li>
-<p><strong>Booking</strong> orders;</p>
-</li>
-<li>
-<p>Sign your actions with an ID provided by <strong>Session</strong>.</p>
-</li>
+<li><p>Obtain a list with all <strong>Places</strong>;</p></li>
+<li><p>Search any of our <strong>Trips</strong>;</p></li>
+<li><p>Get all information about the available <strong>Payment</strong> methods;</p></li>
+<li><p>Obtain <strong>Trip Details</strong> from each route;</p></li>
+<li><p><strong>Seat Block</strong> to lock or unlock seat reservations;</p></li>
+<li><p><strong>Booking</strong> orders;</p></li>
+<li><p>Sign your actions with an ID provided by <strong>Session</strong>.</p></li>
 </ul>
-<h1 id="header-api-reference">API Reference <a class="permalink" href="#header-api-reference" aria-hidden="true">¶</a></h1>
-<h2 id="header-predicates"><strong>Predicates</strong> <a class="permalink" href="#header-predicates" aria-hidden="true">¶</a></h2>
+<h1>API Reference</h1>
+<h2><strong>Predicates</strong></h2>
 <ol>
-<li>
-<p>All sucessfull requests return a <strong>20</strong>* Response header;</p>
-</li>
-<li>
-<p>The params <strong>store</strong>, <strong>model</strong> and <strong>platform</strong> are created for each partner. To obtain these credentials, please contact our commercial department at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a>.</p>
-</li>
+<li><p>All sucessfull requests return a <strong>20</strong>* Response header;</p></li>
+<li><p>The params <strong>store</strong>, <strong>model</strong> and <strong>platform</strong> are created for each partner. To obtain these credentials, please contact our commercial department at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a>.</p></li>
 </ol>
-<h2 id="header-groups"><strong>Groups</strong> <a class="permalink" href="#header-groups" aria-hidden="true">¶</a></h2>
-<section id="places" class="resource-group"><h2 class="group-heading">Places <a href="#places" class="permalink">&para;</a></h2><div id="places-get-all-places" class="resource"><h3 class="resource-heading">Get All Places <a href="#places-get-all-places" class="permalink">&nbsp;&para;</a></h3><p>The resource <code>/places</code> retrieves all the available Places, where each Place can be used as a destination point to our travels and routes.</p>
+<h2><strong>Groups</strong></h2>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="places">Places&nbsp;<a href="#places"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="places-get-all-places">Get All Places&nbsp;<a href="#places-get-all-places"><i class="fa fa-link"></i></a></h4><p>The resource <code>/places</code> retrieves all the available Places, where each Place can be used as a destination point to our travels and routes.</p>
 <p>One of the most important values on this resource is the <code>slug</code>, which contains the name to use when referencing to a Place in a <strong>Trips</strong> request.</p>
-<div id="places-get-all-places-get" class="action get"><h4 class="action-heading"><div class="name">Get All Places</div><a href="#places-get-all-places-get" class="method get">GET</a><code class="uri">/places</code></h4><p><strong>Parameters</strong></p>
+<section id="places-get-all-places-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get All Places</span></div><div style="float:left"><a href="#places-get-all-places-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/places</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
 <p><em>None</em></p>
 <p><strong>Response</strong></p>
 <p>The given request returns a Response <em>200</em>, with a list in JSON format filled with all Places:</p>
@@ -96,80 +218,55 @@
       },
       {...}
    ]
-}</code></pre>
-<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/places</span></div></div></div><div id="places-prepare-search-for-asyncronous-calls" class="resource"><h3 class="resource-heading">Prepare search for asyncronous calls <a href="#places-prepare-search-for-asyncronous-calls" class="permalink">&nbsp;&para;</a></h3><p>The resource <code>/search-prepare</code> returns a list of all the possible combinations of booking engines and pairs of origins-destinations serving a given route. This is specially useful to execute asyncronous calls to each booking engine in order to speed up the search results. It is also the only way available to get all the combinations of origins and destinations for grouped places.</p>
-<div id="places-prepare-search-for-asyncronous-calls-get" class="action get"><h4 class="action-heading"><div class="name">/search-prepare</div><a href="#places-prepare-search-for-asyncronous-calls-get" class="method get">GET</a><code class="uri">/search-prepare</code></h4><p><strong>PARAMETERS</strong></p>
+}
+</code></pre>
+</div><ul class="list-group"></ul></section><h4 id="places-prepare-search-for-asyncronous-calls">Prepare search for asyncronous calls&nbsp;<a href="#places-prepare-search-for-asyncronous-calls"><i class="fa fa-link"></i></a></h4><p>The resource <code>/search-prepare</code> returns a list of all the possible combinations of booking engines and pairs of origins-destinations serving a given route. This is specially useful to execute asyncronous calls to each booking engine in order to speed up the search results. It is also the only way available to get all the combinations of origins and destinations for grouped places.</p>
+<section id="places-prepare-search-for-asyncronous-calls-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">/search-prepare</span></div><div style="float:left"><a href="#places-prepare-search-for-asyncronous-calls-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/search-prepare</code></div></div><div class="panel-body"><p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left">PARAMS</th>
-<th style="text-align:left">VALUE</th>
-<th style="text-align:left">DESCRIPTION</th>
-<th style="text-align:left">EXAMPLE</th>
-</tr>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left"><strong>from</strong></td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">This is the place slug for the desired origin. It can be either a grouped or individual place slug.</td>
-<td style="text-align:left"><code>ixtapa-gro</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>to</strong></td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">This is the place slug for the desired destination. It can be either a grouped or individual place slug.</td>
-<td style="text-align:left"><code>zihuatanejo-gro</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>isReturn</strong> (optional)</td>
-<td style="text-align:left"><em>boolean</em></td>
-<td style="text-align:left">Whether you are looking for a round or single way trip. The default value is false</td>
-<td style="text-align:left"><code>true</code></td>
-</tr>
+<tr><td style="text-align:left"><strong>from</strong></td><td style="text-align:left"><em>string</em></td><td style="text-align:left">This is the place slug for the desired origin. It can be either a grouped or individual place slug.</td><td style="text-align:left"><code>ixtapa-gro</code></td></tr>
+<tr><td style="text-align:left"><strong>to</strong></td><td style="text-align:left"><em>string</em></td><td style="text-align:left">This is the place slug for the desired destination. It can be either a grouped or individual place slug.</td><td style="text-align:left"><code>zihuatanejo-gro</code></td></tr>
+<tr><td style="text-align:left"><strong>isReturn</strong> (optional)</td><td style="text-align:left"><em>boolean</em></td><td style="text-align:left">Whether you are looking for a round or single way trip. The default value is false</td><td style="text-align:left"><code>true</code></td></tr>
 </tbody>
 </table>
 <p><strong>RESPONSE</strong></p>
 <p>A successful request will return a <em>200</em> Response, with the structure as described below:</p>
 <ul>
-<li>
-<p><code>origin</code>, which is an array of results containing a combination of origin, destination and booking engine:</p>
+<li><p><code>origin</code>, which is an array of results containing a combination of origin, destination and booking engine:</p>
 <ul>
 <li><code>originPlace</code> a single place collection of values regarding the place of origin:
 <ul>
 <li><code>id</code> ClickBus internal placeId</li>
 <li><code>original_name</code> a description name of the place of origin</li>
 <li><code>slug</code> a slug (an easily read name by computers) for the place of origin</li>
-</ul>
-</li>
+</ul></li>
 <li><code>destinationPlace</code> a single place collection of values regarding the place of destination:
 <ul>
 <li><code>id</code> ClickBus internal placeId</li>
 <li><code>original_name</code> a description name of the place of destination</li>
 <li><code>slug</code> a slug (an easily read name by computers) for the place of destination</li>
-</ul>
-</li>
+</ul></li>
 <li><code>bookingEngine</code> a collection of values regading the booking engine
 <ul>
 <li><code>id</code> ClickBus internal booking engine id</li>
 <li><code>uuid</code> a unique identifier used for calling the booking engine to filter out the results in the /trips results</li>
 <li><code>name</code> the actual name of the booking engine</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><code>destination</code>, an array of results containin a combination of origin, destination and booking engine for the place of destination. The body of this value is contructed in the same way as origin’s.</p>
-</li>
+</ul></li>
+</ul></li>
+<li><p><code>destination</code>, an array of results containin a combination of origin, destination and booking engine for the place of destination. The body of this value is contructed in the same way as origin’s.</p></li>
 </ul>
 <p><strong>Examples</strong></p>
 <ul>
-<li>
-<p>Get a list of combinations to prepare an asyncronous call:</p>
+<li><p>Get a list of combinations to prepare an asyncronous call:</p>
 <ul>
-<li>URL:<pre><code>api/v1/search-<span class="hljs-built_in">prepare</span>?<span class="hljs-built_in">from</span>=ixtapa-gro&amp;<span class="hljs-built_in">to</span>=zihuatanejo-gro&amp;isReturn=<span class="hljs-constant">true</span></code></pre>
-</li>
-<li>Response:<pre><code class="language-json">{
+<li>URL:
+<pre><code>api/v1/search-prepare?<span class="hljs-variable">from=</span>ixtapa-gro&amp;<span class="hljs-variable">to=</span>zihuatanejo-gro&amp;<span class="hljs-variable">isReturn=</span><span class="hljs-constant">true</span>
+</code></pre></li>
+<li>Response:
+<pre><code class="language-json">{
   "<span class="hljs-attribute">origin</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">originPlace</span>": <span class="hljs-value">{
@@ -310,92 +407,44 @@
       </span>}
     </span>}
   ]
-</span>}</code></pre>
-</li>
-</ul>
-</li>
+</span>}
+</code></pre></li>
+</ul></li>
 </ul>
 <p><strong>Errors</strong></p>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">CODE</th>
-<th style="text-align:left">DESCRIPTION</th>
-<th style="text-align:left">DETAILS</th>
-</tr>
+<tr><th style="text-align:center">CODE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">DETAILS</th></tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center"><strong>None</strong></td>
-<td style="text-align:left"><em>Apliction Error</em></td>
-<td style="text-align:left">It does not exist a detailed error message right now, most probable cause of this error is a missing or malformed origin or destination slug.</td>
-</tr>
+<tr><td style="text-align:center"><strong>None</strong></td><td style="text-align:left"><em>Apliction Error</em></td><td style="text-align:left">It does not exist a detailed error message right now, most probable cause of this error is a missing or malformed origin or destination slug.</td></tr>
 </tbody>
 </table>
-<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/search-prepare</span></div></div></div></section><section id="trips" class="resource-group"><h2 class="group-heading">Trips <a href="#trips" class="permalink">&para;</a></h2><div id="trips-get-all-available-trips" class="resource"><h3 class="resource-heading">Get all available Trips <a href="#trips-get-all-available-trips" class="permalink">&nbsp;&para;</a></h3><p>The resource <code>/trips</code> provides a list with all available trips, with all sort of details you may need.</p>
+</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="trips">Trips&nbsp;<a href="#trips"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="trips-get-all-available-trips">Get all available Trips&nbsp;<a href="#trips-get-all-available-trips"><i class="fa fa-link"></i></a></h4><p>The resource <code>/trips</code> provides a list with all available trips, with all sort of details you may need.</p>
 <p><strong>ADVICES:</strong></p>
 <ul>
-<li>
-<p>Remember that each request to <code>/trips</code> will erase all items stored in your Pre-Order, so, if you have not confirmed your Order yet, all the items added to the Pre-Order will be lost.</p>
-</li>
-<li>
-<p>The <code>bookingEngine</code> value, provided in the sucessfull Response, is one of the most important values on this resource: when you request the return trip, you have to provide in the <code>engine</code> parameter the exact same <code>bookingEngine</code> obtained in the departure trip.</p>
-</li>
-<li>
-<p>In order to obtain Autovias’ return-trip discounts. It is required you include the <code>return</code> parameter. You will obtain a list with all the trips for both ways.</p>
-</li>
+<li><p>Remember that each request to <code>/trips</code> will erase all items stored in your Pre-Order, so, if you have not confirmed your Order yet, all the items added to the Pre-Order will be lost.</p></li>
+<li><p>The <code>bookingEngine</code> value, provided in the sucessfull Response, is one of the most important values on this resource: when you request the return trip, you have to provide in the <code>engine</code> parameter the exact same <code>bookingEngine</code> obtained in the departure trip.</p></li>
+<li><p>In order to obtain Autovias’ return-trip discounts. It is required you include the <code>return</code> parameter. You will obtain a list with all the trips for both ways.</p></li>
 </ul>
-<div id="trips-get-all-available-trips-get" class="action get"><h4 class="action-heading"><div class="name">Get all available Trips</div><a href="#trips-get-all-available-trips-get" class="method get">GET</a><code class="uri">/trips</code></h4><p><strong>Parameters</strong></p>
+<section id="trips-get-all-available-trips-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get all available Trips</span></div><div style="float:left"><a href="#trips-get-all-available-trips-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/trips</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left">PARAMS</th>
-<th style="text-align:left">VALUE</th>
-<th style="text-align:left">DESCRIPTION</th>
-<th style="text-align:left">EXAMPLE</th>
-</tr>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left"><strong>from</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">A destination from where a trip starts.</td>
-<td style="text-align:left"><code>queretaro-qro</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>to</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">A destination to where a trip ends.</td>
-<td style="text-align:left"><code>central-del-norte-ciudad-de-mexico-df</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>departure</strong> (required)</td>
-<td style="text-align:left"><em>date</em></td>
-<td style="text-align:left">Any valid date, in format <code>yyyy-mm-dd</code>.</td>
-<td style="text-align:left"><code>2015-07-25</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>return</strong> (optional)</td>
-<td style="text-align:left"><em>date</em></td>
-<td style="text-align:left">Any valid date, in format <code>yyyy-mm-dd</code>.</td>
-<td style="text-align:left"><code>2015-07-28</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>engine</strong> (optional)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.</td>
-<td style="text-align:left"><code>5411E7D726991</code></td>
-</tr>
+<tr><td style="text-align:left"><strong>from</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination from where a trip starts.</td><td style="text-align:left"><code>queretaro-qro</code></td></tr>
+<tr><td style="text-align:left"><strong>to</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination to where a trip ends.</td><td style="text-align:left"><code>central-del-norte-ciudad-de-mexico-df</code></td></tr>
+<tr><td style="text-align:left"><strong>departure</strong> (required)</td><td style="text-align:left"><em>date</em></td><td style="text-align:left">Any valid date, in format <code>yyyy-mm-dd</code>.</td><td style="text-align:left"><code>2015-07-25</code></td></tr>
+<tr><td style="text-align:left"><strong>return</strong> (optional)</td><td style="text-align:left"><em>date</em></td><td style="text-align:left">Any valid date, in format <code>yyyy-mm-dd</code>.</td><td style="text-align:left"><code>2015-07-28</code></td></tr>
+<tr><td style="text-align:left"><strong>engine</strong> (optional)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Specify in what booking engine you want to perform the search; if not provided, the search will be executed in the availiable booking engine on the server.</td><td style="text-align:left"><code>5411E7D726991</code></td></tr>
 </tbody>
 </table>
 <p><strong>Response</strong></p>
 <p>With the correct params, this resource returns a Response <em>200</em> and a list, in JSON format, with these details as follow:</p>
 <ul>
-<li>
-<p><code>bookingEngine</code>, which is the booking engine where the results are based on;</p>
-</li>
-<li>
-<p><code>items</code>, a list with the results from the requested <code>bookingEngine</code>, which contain:</p>
+<li><p><code>bookingEngine</code>, which is the booking engine where the results are based on;</p></li>
+<li><p><code>items</code>, a list with the results from the requested <code>bookingEngine</code>, which contain:</p>
 <ul>
 <li><code>from</code> and <code>to</code> destinations;</li>
 <li><code>parts</code> section, which contains:
@@ -403,248 +452,236 @@
 <li><code>waypoint</code> information, such as <code>schedule</code> for each waypoint, including <code>price</code>, <code>date</code> and <code>time</code>;</li>
 <li>Which <code>busCompany</code> offer these travels;</li>
 <li><code>availableSeats</code> provides how many seats are available.</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
 </ul>
 <p><strong>Examples</strong></p>
 <ul>
-<li>
-<p>Searching for travels from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> in <em>11th Feb 2015</em>, with all correct params:</p>
+<li><p>Searching for travels from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> in <em>11th Feb 2015</em>, with all correct params:</p>
 <ul>
 <li>URL:</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<pre><code>/api/v1/trips?from=queretaro-qro&amp;to=central-del-norte-ciudad-de-mexico-df&amp;engine=&amp;departure=<span class="hljs-number">2015</span>-<span class="hljs-number">07</span>-<span class="hljs-number">25</span></code></pre>
-<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/trips</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Body</h5><pre><code>{
+<pre><code>/api/v1/trips?<span class="hljs-variable">from=</span>queretaro-qro&amp;<span class="hljs-variable">to=</span>central-del-norte-ciudad-de-mexico-df&amp;<span class="hljs-variable">engine=</span>&amp;<span class="hljs-variable">departure=</span><span class="hljs-number">2015</span>-<span class="hljs-number">07</span>-<span class="hljs-number">25</span>
+</code></pre>
+</div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#6782cfd36a1d88de3684f7e3f7533c98" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="6782cfd36a1d88de3684f7e3f7533c98" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>        <span class="hljs-collection">{
     <span class="hljs-string">"meta"</span>: <span class="hljs-string">""</span>,
-    <span class="hljs-string">"items"</span>: [{
+    <span class="hljs-string">"items"</span>: <span class="hljs-collection">[<span class="hljs-collection">{
             <span class="hljs-string">"from"</span>: <span class="hljs-string">"Querétaro, QRO."</span>,
             <span class="hljs-string">"to"</span>: <span class="hljs-string">"Central del Norte - Ciudad de México, DF."</span>,
-            <span class="hljs-string">"parts"</span>: [
-                {
+            <span class="hljs-string">"parts"</span>: <span class="hljs-collection">[
+                <span class="hljs-collection">{
                     <span class="hljs-string">"trip_id"</span>: <span class="hljs-string">"15132179"</span>,
-                    <span class="hljs-string">"departure"</span>: {
+                    <span class="hljs-string">"departure"</span>: <span class="hljs-collection">{
                         <span class="hljs-string">"price"</span>: <span class="hljs-string">"257.00"</span>,
-                        <span class="hljs-string">"waypoint"</span>: {
+                        <span class="hljs-string">"waypoint"</span>: <span class="hljs-collection">{
                             <span class="hljs-string">"id"</span>: <span class="hljs-string">"5068"</span>,
-                            <span class="hljs-string">"prices"</span>: [
-                                {
+                            <span class="hljs-string">"prices"</span>: <span class="hljs-collection">[
+                                <span class="hljs-collection">{
                                     <span class="hljs-string">"waypoint"</span>: <span class="hljs-string">"5047"</span>,
                                     <span class="hljs-string">"price"</span>: <span class="hljs-string">"257.00"</span>
-                                }
-                            ],
-                            <span class="hljs-string">"schedule"</span>: {
+                                }</span>
+                            ]</span>,
+                            <span class="hljs-string">"schedule"</span>: <span class="hljs-collection">{
                                 <span class="hljs-string">"id"</span>: <span class="hljs-string">"826a3c756eeff4976893b55dcb1519fd"</span>,
                                 <span class="hljs-string">"date"</span>: <span class="hljs-string">"2015-07-25"</span>,
                                 <span class="hljs-string">"time"</span>: <span class="hljs-string">"01:20"</span>,
                                 <span class="hljs-string">"timezone"</span>: <span class="hljs-string">"America/Mexico_City"</span>
-                            },
+                            }</span>,
                             <span class="hljs-string">"context"</span>: <span class="hljs-string">"departure"</span>,
-                            <span class="hljs-string">"place"</span>: {
+                            <span class="hljs-string">"place"</span>: <span class="hljs-collection">{
                                 <span class="hljs-string">"country"</span>: <span class="hljs-string">"MX"</span>,
                                 <span class="hljs-string">"state"</span>: <span class="hljs-string">""</span>,
                                 <span class="hljs-string">"city"</span>: <span class="hljs-string">"Querétaro, QRO."</span>,
-                                <span class="hljs-string">"station"</span>: {
-                                    <span class="hljs-string">"current"</span>: {
+                                <span class="hljs-string">"station"</span>: <span class="hljs-collection">{
+                                    <span class="hljs-string">"current"</span>: <span class="hljs-collection">{
                                         <span class="hljs-string">"id"</span>: <span class="hljs-string">"5068"</span>,
                                         <span class="hljs-string">"name"</span>: <span class="hljs-string">"Querétaro, QRO."</span>,
                                         <span class="hljs-string">"locale"</span>: <span class="hljs-string">"es_MX"</span>
-                                    },
-                                    <span class="hljs-string">"default"</span>: {
+                                    }</span>,
+                                    <span class="hljs-string">"default"</span>: <span class="hljs-collection">{
                                         <span class="hljs-string">"id"</span>: <span class="hljs-string">""</span>,
                                         <span class="hljs-string">"name"</span>: <span class="hljs-string">""</span>,
                                         <span class="hljs-string">"locale"</span>: <span class="hljs-string">""</span>
-                                    }
-                                },
+                                    }</span>
+                                }</span>,
                                 <span class="hljs-string">"locale"</span>: <span class="hljs-string">"es_MX"</span>,
                                 <span class="hljs-string">"id"</span>: <span class="hljs-string">"5068"</span>
-                            },
+                            }</span>,
                             <span class="hljs-string">"isDeparture"</span>: <span class="hljs-string">"true"</span>,
                             <span class="hljs-string">"position"</span>: <span class="hljs-string">"0"</span>
-                        }
-                    },
-                    <span class="hljs-string">"arrival"</span>: {
+                        }</span>
+                    }</span>,
+                    <span class="hljs-string">"arrival"</span>: <span class="hljs-collection">{
                         <span class="hljs-string">"price"</span>: <span class="hljs-string">"257.00"</span>,
-                        <span class="hljs-string">"waypoint"</span>: {
+                        <span class="hljs-string">"waypoint"</span>: <span class="hljs-collection">{
                             <span class="hljs-string">"id"</span>: <span class="hljs-string">"5047"</span>,
-                            <span class="hljs-string">"prices"</span>: [
-                                {
+                            <span class="hljs-string">"prices"</span>: <span class="hljs-collection">[
+                                <span class="hljs-collection">{
                                     <span class="hljs-string">"waypoint"</span>: <span class="hljs-string">""</span>,
                                     <span class="hljs-string">"price"</span>: <span class="hljs-string">""</span>
-                                }
-                            ],
-                            <span class="hljs-string">"schedule"</span>: {
+                                }</span>
+                            ]</span>,
+                            <span class="hljs-string">"schedule"</span>: <span class="hljs-collection">{
                                 <span class="hljs-string">"id"</span>: <span class="hljs-string">"826a3c756eeff4976893b55dcb1519fd"</span>,
                                 <span class="hljs-string">"date"</span>: <span class="hljs-string">"2015-07-25"</span>,
                                 <span class="hljs-string">"time"</span>: <span class="hljs-string">"01:20"</span>,
                                 <span class="hljs-string">"timezone"</span>: <span class="hljs-string">"America/Mexico_City"</span>
-                            },
+                            }</span>,
                             <span class="hljs-string">"context"</span>: <span class="hljs-string">"arrival"</span>,
-                            <span class="hljs-string">"place"</span>: {
+                            <span class="hljs-string">"place"</span>: <span class="hljs-collection">{
                                 <span class="hljs-string">"country"</span>: <span class="hljs-string">"MX"</span>,
                                 <span class="hljs-string">"state"</span>: <span class="hljs-string">""</span>,
                                 <span class="hljs-string">"city"</span>: <span class="hljs-string">"Central del Norte - Ciudad de México, DF."</span>,
-                                <span class="hljs-string">"station"</span>: {
-                                    <span class="hljs-string">"current"</span>: {
+                                <span class="hljs-string">"station"</span>: <span class="hljs-collection">{
+                                    <span class="hljs-string">"current"</span>: <span class="hljs-collection">{
                                         <span class="hljs-string">"id"</span>: <span class="hljs-string">"5047"</span>,
                                         <span class="hljs-string">"name"</span>: <span class="hljs-string">"Central del Norte - Ciudad de México, DF."</span>,
                                         <span class="hljs-string">"locale"</span>: <span class="hljs-string">"es_MX"</span>
-                                    },
-                                    <span class="hljs-string">"default"</span>: {
+                                    }</span>,
+                                    <span class="hljs-string">"default"</span>: <span class="hljs-collection">{
                                         <span class="hljs-string">"id"</span>: <span class="hljs-string">""</span>,
                                         <span class="hljs-string">"name"</span>: <span class="hljs-string">""</span>,
                                         <span class="hljs-string">"locale"</span>: <span class="hljs-string">""</span>
-                                    }
-                                },
+                                    }</span>
+                                }</span>,
                                 <span class="hljs-string">"locale"</span>: <span class="hljs-string">"es_MX"</span>,
                                 <span class="hljs-string">"id"</span>: <span class="hljs-string">"5047"</span>
-                            },
+                            }</span>,
                             <span class="hljs-string">"isDeparture"</span>: <span class="hljs-string">"false"</span>,
                             <span class="hljs-string">"position"</span>: <span class="hljs-string">"0"</span>
-                        }
-                    },
-                    <span class="hljs-string">"busCompany"</span>: {
+                        }</span>
+                    }</span>,
+                    <span class="hljs-string">"busCompany"</span>: <span class="hljs-collection">{
                         <span class="hljs-string">"name"</span>: <span class="hljs-string">"Transportes del Norte"</span>,
                         <span class="hljs-string">"id"</span>: <span class="hljs-string">"34"</span>,
                         <span class="hljs-string">"logo_small"</span>: <span class="hljs-string">"http://static.evaluation.clickbus.com.mx/logos/small/bl-tdn-s.jpg"</span>
-                    },
-                    <span class="hljs-string">"bus"</span>: {
+                    }</span>,
+                    <span class="hljs-string">"bus"</span>: <span class="hljs-collection">{
                         <span class="hljs-string">"serviceClass"</span>: <span class="hljs-string">"PRIMERA"</span>,
                         <span class="hljs-string">"name"</span>: <span class="hljs-string">"PRIMERA"</span>,
                         <span class="hljs-string">"id"</span>: <span class="hljs-string">"20"</span>
-                    },
-                    <span class="hljs-string">"waypoints"</span>: [
-                        {
+                    }</span>,
+                    <span class="hljs-string">"waypoints"</span>: <span class="hljs-collection">[
+                        <span class="hljs-collection">{
                             <span class="hljs-string">"id"</span>: <span class="hljs-string">"5068"</span>,
-                            <span class="hljs-string">"prices"</span>: [
-                                {
+                            <span class="hljs-string">"prices"</span>: <span class="hljs-collection">[
+                                <span class="hljs-collection">{
                                     <span class="hljs-string">"waypoint"</span>: <span class="hljs-string">"5047"</span>,
                                     <span class="hljs-string">"price"</span>: <span class="hljs-string">"257.00"</span>
-                                }
-                            ],
-                            <span class="hljs-string">"schedule"</span>: {
+                                }</span>
+                            ]</span>,
+                            <span class="hljs-string">"schedule"</span>: <span class="hljs-collection">{
                                 <span class="hljs-string">"id"</span>: <span class="hljs-string">"826a3c756eeff4976893b55dcb1519fd"</span>,
                                 <span class="hljs-string">"date"</span>: <span class="hljs-string">"2015-07-25"</span>,
                                 <span class="hljs-string">"time"</span>: <span class="hljs-string">"01:20"</span>,
                                 <span class="hljs-string">"timezone"</span>: <span class="hljs-string">"America/Mexico_City"</span>
-                            },
+                            }</span>,
                             <span class="hljs-string">"context"</span>: <span class="hljs-string">"departure"</span>,
-                            <span class="hljs-string">"place"</span>: {
+                            <span class="hljs-string">"place"</span>: <span class="hljs-collection">{
                                 <span class="hljs-string">"country"</span>: <span class="hljs-string">"MX"</span>,
                                 <span class="hljs-string">"state"</span>: <span class="hljs-string">""</span>,
                                 <span class="hljs-string">"city"</span>: <span class="hljs-string">"Querétaro, QRO."</span>,
-                                <span class="hljs-string">"station"</span>: {
-                                    <span class="hljs-string">"current"</span>: {
+                                <span class="hljs-string">"station"</span>: <span class="hljs-collection">{
+                                    <span class="hljs-string">"current"</span>: <span class="hljs-collection">{
                                         <span class="hljs-string">"id"</span>: <span class="hljs-string">"5068"</span>,
                                         <span class="hljs-string">"name"</span>: <span class="hljs-string">"Querétaro, QRO."</span>,
                                         <span class="hljs-string">"locale"</span>: <span class="hljs-string">"es_MX"</span>
-                                    },
-                                    <span class="hljs-string">"default"</span>: {
+                                    }</span>,
+                                    <span class="hljs-string">"default"</span>: <span class="hljs-collection">{
                                         <span class="hljs-string">"id"</span>: <span class="hljs-string">""</span>,
                                         <span class="hljs-string">"name"</span>: <span class="hljs-string">""</span>,
                                         <span class="hljs-string">"locale"</span>: <span class="hljs-string">""</span>
-                                    }
-                                },
+                                    }</span>
+                                }</span>,
                                 <span class="hljs-string">"locale"</span>: <span class="hljs-string">"es_MX"</span>,
                                 <span class="hljs-string">"id"</span>: <span class="hljs-string">"123"</span>
-                            },
+                            }</span>,
                             <span class="hljs-string">"isDeparture"</span>: <span class="hljs-string">"true"</span>,
                             <span class="hljs-string">"position"</span>: <span class="hljs-string">"0"</span>
-                        },
-                        {
+                        }</span>,
+                        <span class="hljs-collection">{
                             <span class="hljs-string">"id"</span>: <span class="hljs-string">"5047"</span>,
-                            <span class="hljs-string">"prices"</span>: [
-                                {
+                            <span class="hljs-string">"prices"</span>: <span class="hljs-collection">[
+                                <span class="hljs-collection">{
                                     <span class="hljs-string">"waypoint"</span>: <span class="hljs-string">""</span>,
                                     <span class="hljs-string">"price"</span>: <span class="hljs-string">"257.00"</span>
-                                }
-                            ],
-                            <span class="hljs-string">"schedule"</span>: {
+                                }</span>
+                            ]</span>,
+                            <span class="hljs-string">"schedule"</span>: <span class="hljs-collection">{
                                 <span class="hljs-string">"id"</span>: <span class="hljs-string">"826a3c756eeff4976893b55dcb1519fd"</span>,
                                 <span class="hljs-string">"date"</span>: <span class="hljs-string">"2015-07-25"</span>,
                                 <span class="hljs-string">"time"</span>: <span class="hljs-string">"01:20"</span>,
                                 <span class="hljs-string">"timezone"</span>: <span class="hljs-string">"America/Sao_Paulo"</span>
-                            },
+                            }</span>,
                             <span class="hljs-string">"context"</span>: <span class="hljs-string">"arrival"</span>,
-                            <span class="hljs-string">"place"</span>: {
+                            <span class="hljs-string">"place"</span>: <span class="hljs-collection">{
                                 <span class="hljs-string">"country"</span>: <span class="hljs-string">"MX"</span>,
                                 <span class="hljs-string">"state"</span>: <span class="hljs-string">""</span>,
                                 <span class="hljs-string">"city"</span>: <span class="hljs-string">"Central del Norte - Ciudad de México, DF."</span>,
-                                <span class="hljs-string">"station"</span>: {
-                                    <span class="hljs-string">"current"</span>: {
+                                <span class="hljs-string">"station"</span>: <span class="hljs-collection">{
+                                    <span class="hljs-string">"current"</span>: <span class="hljs-collection">{
                                         <span class="hljs-string">"id"</span>: <span class="hljs-string">"5047"</span>,
                                         <span class="hljs-string">"name"</span>: <span class="hljs-string">"Central del Norte - Ciudad de México, DF."</span>,
                                         <span class="hljs-string">"locale"</span>: <span class="hljs-string">"es_MX"</span>
-                                    },
-                                    <span class="hljs-string">"default"</span>: {
+                                    }</span>,
+                                    <span class="hljs-string">"default"</span>: <span class="hljs-collection">{
                                         <span class="hljs-string">"id"</span>: <span class="hljs-string">""</span>,
                                         <span class="hljs-string">"name"</span>: <span class="hljs-string">""</span>,
                                         <span class="hljs-string">"locale"</span>: <span class="hljs-string">""</span>
-                                    }
-                                },
+                                    }</span>
+                                }</span>,
                                 <span class="hljs-string">"locale"</span>: <span class="hljs-string">"es_MX"</span>,
                                 <span class="hljs-string">"id"</span>: <span class="hljs-string">""</span>
-                            },
+                            }</span>,
                             <span class="hljs-string">"isDeparture"</span>: <span class="hljs-literal">false</span>,
                             <span class="hljs-string">"position"</span>: <span class="hljs-number">0</span>
-                        }
-                    ],
-                    <span class="hljs-string">"seatTypes"</span>: [],
-                    <span class="hljs-string">"products"</span>: [],
+                        }</span>
+                    ]</span>,
+                    <span class="hljs-string">"seatTypes"</span>: <span class="hljs-collection">[]</span>,
+                    <span class="hljs-string">"products"</span>: <span class="hljs-collection">[]</span>,
                     <span class="hljs-string">"availableSeats"</span>: <span class="hljs-string">"30"</span>
-                }
-            ]
-        },
-        {...}]
-}</code></pre><div style="height: 1px;"></div></div></div></div></div></section><section id="session" class="resource-group"><h2 class="group-heading">Session <a href="#session" class="permalink">&para;</a></h2><div id="session-get-session" class="resource"><h3 class="resource-heading">Get Session <a href="#session-get-session" class="permalink">&nbsp;&para;</a></h3><p>The resource <code>/session</code> retrieves the current Session ID, which is useful to obtain data from the current session, like add a reservation by locking a seat using the <strong>Seat Block</strong> resource.</p>
+                }</span>
+            ]</span>
+        }</span>,
+        <span class="hljs-collection">{...}</span>]</span>
+}</span>
+
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="session">Session&nbsp;<a href="#session"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="session-get-session">Get Session&nbsp;<a href="#session-get-session"><i class="fa fa-link"></i></a></h4><p>The resource <code>/session</code> retrieves the current Session ID, which is useful to obtain data from the current session, like add a reservation by locking a seat using the <strong>Seat Block</strong> resource.</p>
 <p><strong>NOTE:</strong> The token have a lifetime of ~15 minutes. After that, the token is expired, so you have to execute a new request to <code>/session</code> to generate a new token.</p>
-<div id="session-get-session-get" class="action get"><h4 class="action-heading"><div class="name">Get Session</div><a href="#session-get-session-get" class="method get">GET</a><code class="uri">/session</code></h4><p><strong>Parameters</strong></p>
+<section id="session-get-session-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Session</span></div><div style="float:left"><a href="#session-get-session-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/session</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
 <p><em>None</em></p>
 <p><strong>Response</strong></p>
 <p>The given request returns a Response <em>200</em>, and the session ID on the Response Body, as follow:</p>
 <p><strong>Example</strong></p>
 <ul>
-<li>
-<p>Sucessfull request:</p>
+<li><p>Sucessfull request:</p>
 <ul>
-<li>URL:<pre><code><span class="hljs-label">api</span>/<span class="hljs-literal">v1</span>/session</code></pre>
-</li>
-<li>Response:<pre><code class="language-json">{
+<li>URL:
+<pre><code>api<span class="hljs-regexp">/v1/</span>session
+</code></pre></li>
+<li>Response:
+<pre><code class="language-json">{
     "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"or8k5s91s66fsl3bp6ksu96qs7"</span>
-</span>}</code></pre>
-</li>
+</span>}
+</code></pre></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/session</span></div></div></div></section><section id="trip-details" class="resource-group"><h2 class="group-heading">Trip Details <a href="#trip-details" class="permalink">&para;</a></h2><div id="trip-details-get-trip-details" class="resource"><h3 class="resource-heading">Get Trip Details <a href="#trip-details-get-trip-details" class="permalink">&nbsp;&para;</a></h3><p>The resource <code>/trip</code> return all information related to a specific trip, based on a given schedule ID (check <strong>Trips</strong> resource for more details).</p>
+</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="trip-details">Trip Details&nbsp;<a href="#trip-details"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="trip-details-get-trip-details">Get Trip Details&nbsp;<a href="#trip-details-get-trip-details"><i class="fa fa-link"></i></a></h4><p>The resource <code>/trip</code> return all information related to a specific trip, based on a given schedule ID (check <strong>Trips</strong> resource for more details).</p>
 <ul>
 <li><strong>WARNING:</strong>
 <blockquote>
 <p>One of the most important values obtained in the <code>/trip</code>s Response is <code>sessionId</code>. <strong>Remember to keep this value</strong>: it’s required for most of your requests.
 In order to block return-trip seats (priorly obtained from a call to <code>/trips</code> using <code>return</code> parameter), you must first invoke your call to <code>/trip</code> for the first <code>scheduleId</code> then block all the seats for this specific ´scheduleId´ calling <code>/seat-block</code>. Secondly you need to call again <code>/trip</code> with the second <code>scheduleId</code>, and block all the seats for this <code>scheduleId</code> calling <code>/seat-block</code>.</p>
-</blockquote>
-</li>
+</blockquote></li>
 </ul>
-<div id="trip-details-get-trip-details-get" class="action get"><h4 class="action-heading"><div class="name">Get Trip Details</div><a href="#trip-details-get-trip-details-get" class="method get">GET</a><code class="uri">/trip</code></h4><p><strong>Parameters</strong></p>
+<section id="trip-details-get-trip-details-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Trip Details</span></div><div style="float:left"><a href="#trip-details-get-trip-details-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/trip</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left">PARAMS</th>
-<th style="text-align:left">VALUE</th>
-<th style="text-align:left">DESCRIPTION</th>
-<th style="text-align:left">EXAMPLE</th>
-</tr>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left"><strong>scheduleId</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">A given hash from a search part. See on <strong>Trips</strong> resource, in the output, into each <code>items</code> part, the value on <code>departure.waypoint.schedule.id</code> node.</td>
-<td style="text-align:left"><code>e4479611acd114b9...</code></td>
-</tr>
+<tr><td style="text-align:left"><strong>scheduleId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A given hash from a search part. See on <strong>Trips</strong> resource, in the output, into each <code>items</code> part, the value on <code>departure.waypoint.schedule.id</code> node.</td><td style="text-align:left"><code>e4479611acd114b9...</code></td></tr>
 </tbody>
 </table>
 <p><strong>Response</strong></p>
@@ -665,10 +702,8 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
 <li>There is also some specific seat types, which lasts only during specific seasons:
 <ul>
 <li><code>teacher</code> and <code>student</code> stands for the school’s vacation period.</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
 <li>Each bus seat is listed on <code>seats</code>, with:
 <ul>
 <li>A single <code>id</code>;</li>
@@ -679,28 +714,24 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
 <li><code>x</code> is for the horizontal axis;</li>
 <li><code>y</code> is for the vertical axis;</li>
 <li><code>z</code> indicates on which floor the <strong>Seat</strong> is located (only for double-decker vehicles).</li>
-</ul>
-</li>
+</ul></li>
 <li>The seat <code>details</code>, which provides:
 <ul>
 <li><strong>Seat</strong>'s <code>price</code>, <code>currency</code> and <code>seatTypes</code>.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ul>
 <p><strong>Examples</strong></p>
 <ul>
-<li>
-<p>Get the trip details from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> in <em>11th Feb 2015</em> from a single part of this search.</p>
+<li><p>Get the trip details from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> in <em>11th Feb 2015</em> from a single part of this search.</p>
 <ul>
-<li>URL:<pre><code>api/v1/trip?scheduleId=e<span class="hljs-number">4479611</span>acd<span class="hljs-number">114b958871</span>fe4cb8130af</code></pre>
-</li>
-<li>Response:<pre><code class="language-json">{
+<li>URL:
+<pre><code><span class="hljs-attribute">api/v1/trip?scheduleId</span>=<span class="hljs-string">e4479611acd114b958871fe4cb8130af
+</span></code></pre></li>
+<li>Response:
+<pre><code class="language-json">{
     "meta": {},
     "sessionId": "tofnv14ro2usflh75ragok18q5",
     "content": {
@@ -739,23 +770,22 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
             }
         }, {...}]
     }
-}</code></pre>
-</li>
-</ul>
-</li>
-<li>
-<p>Incorrect request (using a invalid or incorrect schedule ID):</p>
+}
+</code></pre></li>
+</ul></li>
+<li><p>Incorrect request (using a invalid or incorrect schedule ID):</p>
 <ul>
-<li>URL:<pre><code><span class="hljs-label">api</span>/<span class="hljs-literal">v1</span>/trip?scheduleId<span class="hljs-number">=0123456789</span>abc</code></pre>
-</li>
-<li>Response (status code: <em>400</em>):<pre><code class="language-json">{
+<li>URL:
+<pre><code><span class="hljs-attribute">api/v1/trip?scheduleId</span>=<span class="hljs-string">0123456789abc
+</span></code></pre></li>
+<li>Response (status code: <em>400</em>):
+<pre><code class="language-json">{
     "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"seat_reservation.errors.parameters.scheduleId_not_saved"</span>
-</span>}</code></pre>
-</li>
+</span>}
+</code></pre></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/trip</span></div></div></div><div id="trip-details-how-seat-position-works" class="resource"><h3 class="resource-heading">How Seat Position works <a href="#trip-details-how-seat-position-works" class="permalink">&nbsp;&para;</a></h3><p>According to the explanation about the <code>seats</code> node information, retrieved on <code>/trip</code> resource, the Seat manipulation is as follow:</p>
+</div><ul class="list-group"></ul></section><h4 id="trip-details-how-seat-position-works">How Seat Position works&nbsp;<a href="#trip-details-how-seat-position-works"><i class="fa fa-link"></i></a></h4><p>According to the explanation about the <code>seats</code> node information, retrieved on <code>/trip</code> resource, the Seat manipulation is as follow:</p>
 <p>Let’s have a look back to our <code>seats</code> node, found inside the <code>/trip</code> Response:</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">seats</span>": <span class="hljs-value">[{
@@ -773,18 +803,13 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
             "<span class="hljs-attribute">seatTypes</span>": <span class="hljs-value">[]
         </span>}
     </span>}]
-</span>}</code></pre>
+</span>}
+</code></pre>
 <p>The concept here is pretty simple: in the <code>position</code> node, we have 3 different values:</p>
 <ul>
-<li>
-<p><code>x</code>, which represents the horizontal axis;</p>
-</li>
-<li>
-<p><code>y</code>, which represents the horizontal axis;</p>
-</li>
-<li>
-<p><code>z</code>, which indicates the <strong>Seat</strong>'s floor (only for double-decker vehicles).</p>
-</li>
+<li><p><code>x</code>, which represents the horizontal axis;</p></li>
+<li><p><code>y</code>, which represents the horizontal axis;</p></li>
+<li><p><code>z</code>, which indicates the <strong>Seat</strong>'s floor (only for double-decker vehicles).</p></li>
 </ul>
 <p>Consider the image below:</p>
 <p><img src="img/1_bus.png" alt="Seat Selection - source: http://www.clickbus.com.mx"></p>
@@ -792,169 +817,63 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
 <p><img src="img/2_array.png" alt="Seat Selection - source: http://www.clickbus.com.mx"></p>
 <p>So, if you have the following coordinates: <code>{(X: 3, Y: 3, Z: 0),(X: 3, Y: 4, Z: 0),(X: 7, Y: 1, Z: 0),(X: 4, Y: 1, Z: 1)}</code>, you have selected the the following Seats, in sequence:</p>
 <ul>
-<li>
-<p>1st floor</p>
+<li><p>1st floor</p>
 <ul>
 <li><code>(X: 3, Y: 3, Z: 0)</code> stands for Seat <code>&quot;name&quot;: &quot;16&quot;</code>, 1rst floor;</li>
 <li><code>(X: 3, Y: 4, Z: 0)</code> stands for Seat <code>&quot;name&quot;: &quot;15&quot;</code>, 1rst floor;</li>
 <li><code>(X: 7, Y: 1, Z: 0)</code> stands for Seat <code>&quot;name&quot;: &quot;30&quot;</code>, 1rst floor;</li>
 </ul>
-<p><img src="img/3_seats.png" alt="Seat Selection - source: http://www.clickbus.com.mx"></p>
-</li>
+<p><img src="img/3_seats.png" alt="Seat Selection - source: http://www.clickbus.com.mx"></p></li>
 </ul>
 <ul>
-<li>
-<p>2nd floor</p>
+<li><p>2nd floor</p>
 <ul>
 <li><code>(X: 4, Y: 1, Z: 1)</code> stands for Seat <code>&quot;name&quot;: &quot;18&quot;</code>, 2nd floor;</li>
 </ul>
-<p><img src="img/4_seats_2nd.png" alt="Seat Selection - source: http://www.clickbus.com.mx"></p>
-</li>
+<p><img src="img/4_seats_2nd.png" alt="Seat Selection - source: http://www.clickbus.com.mx"></p></li>
 </ul>
-</div></section><section id="seat-block" class="resource-group"><h2 class="group-heading">Seat Block <a href="#seat-block" class="permalink">&para;</a></h2><div id="seat-block-create-a-block-in-a-seat" class="resource"><h3 class="resource-heading">Create a block in a Seat <a href="#seat-block-create-a-block-in-a-seat" class="permalink">&nbsp;&para;</a></h3><p>This request creates a block in a Seat, which indicates that this Seat is now unavailable for other passengers.</p>
+</div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="seat-block">Seat Block&nbsp;<a href="#seat-block"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="seat-block-create-a-block-in-a-seat">Create a block in a Seat&nbsp;<a href="#seat-block-create-a-block-in-a-seat"><i class="fa fa-link"></i></a></h4><p>This request creates a block in a Seat, which indicates that this Seat is now unavailable for other passengers.</p>
 <p><strong>NOTES:</strong></p>
 <ol>
-<li>
-<p>This block may last ~10 minutes. After that, the seat is available again;</p>
-</li>
-<li>
-<p>Every Request’s header shall declare the key <code>PHPSESSID</code>, along with it’s value, Session’s ID (obtained on <strong>Trip Details</strong>), as follow:</p>
+<li><p>This block may last ~10 minutes. After that, the seat is available again;</p></li>
+<li><p>Every Request’s header shall declare the key <code>PHPSESSID</code>, along with it’s value, Session’s ID (obtained on <strong>Trip Details</strong>), as follow:</p>
 <blockquote>
 <p>Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3</p>
-</blockquote>
-</li>
-<li>
-<p>You can create up to 5 Seat blocks per Order;</p>
-</li>
-<li>
-<p>According to Mexican laws, no children is allowed to travel unaccompanied by and adult. In order to follow this requirement, every request for this resource to create the first <strong>Seat Block</strong> for any Order can only use <code>adult</code>, <code>elderly</code> or <code>teacher</code> as valid <code>seat_type</code>. In order to follow this rule, if you try to select a <code>children</code> as the first <strong>Seat Block</strong>, you may receive a <em>400</em> Response with the following message:</p>
+</blockquote></li>
+<li><p>You can create up to 5 Seat blocks per Order;</p></li>
+<li><p>According to Mexican laws, no children is allowed to travel unaccompanied by and adult. In order to follow this requirement, every request for this resource to create the first <strong>Seat Block</strong> for any Order can only use <code>adult</code>, <code>elderly</code> or <code>teacher</code> as valid <code>seat_type</code>. In order to follow this rule, if you try to select a <code>children</code> as the first <strong>Seat Block</strong>, you may receive a <em>400</em> Response with the following message:</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">message</span>":<span class="hljs-value"><span class="hljs-string">"adult_first"</span>
-</span>}</code></pre>
-<p>After you’ve created a <strong>Seat Block</strong> for at least one of these three <code>seat_type</code> then you can proceed to create a <strong>Seat Block</strong> using the <code>children</code> <code>seat_type</code>.</p>
-</li>
+</span>}
+</code></pre>
+<p>After you’ve created a <strong>Seat Block</strong> for at least one of these three <code>seat_type</code> then you can proceed to create a <strong>Seat Block</strong> using the <code>children</code> <code>seat_type</code>.</p></li>
 </ol>
 <p><strong>WARNING:</strong>
 &gt; In order to block return-trip seats (priorly obtained from a call to <code>/trips</code> using <code>return</code> parameter), you must first invoke your call to <code>/trip</code> for the first <code>scheduleId</code> then block all the seats for this specific ´scheduleId´ calling <code>/seat-block</code>. Secondly you need to call again <code>/trip</code> with the second <code>scheduleId</code>, and block all the seats for this <code>scheduleId</code> calling <code>/seat-block</code>.</p>
-<div id="seat-block-create-a-block-in-a-seat-put" class="action put"><h4 class="action-heading"><div class="name">Create a block in a Seat</div><a href="#seat-block-create-a-block-in-a-seat-put" class="method put">PUT</a><code class="uri">/seat-block</code></h4><p><strong>Parameters</strong></p>
+<section id="seat-block-create-a-block-in-a-seat-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Create a block in a Seat</span></div><div style="float:left"><a href="#seat-block-create-a-block-in-a-seat-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/seat-block</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left">PARAMS</th>
-<th style="text-align:left">VALUE</th>
-<th style="text-align:left">DESCRIPTION</th>
-<th style="text-align:left">EXAMPLE</th>
-</tr>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left"><strong>meta</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">An empty object. Partners can use this parameter to provide their own <code>meta</code> information: <code>store</code>, <code>platform</code> and <code>model</code>.</td>
-<td style="text-align:left"><code>{}</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">A container which requires:</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.from</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">A destination from where a trip starts. Same value used on <strong>Trips</strong>.</td>
-<td style="text-align:left"><code>quertaro-qro</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><a href="http://request.to">request.to</a></strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">A destination to where a trip ends. Same value used on <strong>Trips</strong>.</td>
-<td style="text-align:left"><code>guadalajara-jal</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.seat</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">A container with:</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><a href="http://request.seat.name">request.seat.name</a></strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">The seat’s <code>name</code>, obtained on <strong>Trip Details</strong>.</td>
-<td style="text-align:left"><code>01</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.seat.type</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">One of the valid seat <code>type</code>, obtained on <strong>Trip Details</strong>.</td>
-<td style="text-align:left"><code>adult</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.passenger</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">A container which contains multiple items, one for each passenger:</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><a href="http://request.passenger.name">request.passenger.name</a></strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Passenger’s name.</td>
-<td style="text-align:left"><code>Fulano da Silva</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.passenger.document</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Passenger’s document.</td>
-<td style="text-align:left"><code>123.456.789-00</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.passenger.documentType</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Type of the passenger’s <code>document</code>.</td>
-<td style="text-align:left"><code>id</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.passenger.gender</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left"><code>M</code> stands for <em>Male</em>, and <code>F</code>, for <em>Female</em>.</td>
-<td style="text-align:left"><code>M</code> or <code>F</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.schedule</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">A container which requires:</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><a href="http://request.schedule.id">request.schedule.id</a></strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Schedule’s ID, obtained from <strong>Trip Details</strong>.</td>
-<td style="text-align:left"><code>e4479611acd114b958871fe4cb8130af</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.schedule.date</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Any valid date, in format <code>yyyy-mm-dd</code>. Use the same value applied on <strong>Trips</strong>.</td>
-<td style="text-align:left"><code>2015-01-27</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.schedule.time</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Any valid time between <code>00:00</code> and <code>23:59</code>, in format <code>HH:ii</code>.</td>
-<td style="text-align:left"><code>10:30</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.schedule.timezone</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Timezone information, based on actual country.</td>
-<td style="text-align:left"><code>America/Mexico_City</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.sessionId</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Session’s ID, obtained from <strong>Trip Details</strong>.</td>
-<td style="text-align:left"><code>dnlfm8aecg2omtjaang62fvla5</code></td>
-</tr>
+<tr><td style="text-align:left"><strong>meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object. Partners can use this parameter to provide their own <code>meta</code> information: <code>store</code>, <code>platform</code> and <code>model</code>.</td><td style="text-align:left"><code>{}</code></td></tr>
+<tr><td style="text-align:left"><strong>request</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.from</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination from where a trip starts. Same value used on <strong>Trips</strong>.</td><td style="text-align:left"><code>quertaro-qro</code></td></tr>
+<tr><td style="text-align:left"><strong>request.to</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">A destination to where a trip ends. Same value used on <strong>Trips</strong>.</td><td style="text-align:left"><code>guadalajara-jal</code></td></tr>
+<tr><td style="text-align:left"><strong>request.seat</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container with:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.seat.name</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">The seat’s <code>name</code>, obtained on <strong>Trip Details</strong>.</td><td style="text-align:left"><code>01</code></td></tr>
+<tr><td style="text-align:left"><strong>request.seat.type</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">One of the valid seat <code>type</code>, obtained on <strong>Trip Details</strong>.</td><td style="text-align:left"><code>adult</code></td></tr>
+<tr><td style="text-align:left"><strong>request.passenger</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which contains multiple items, one for each passenger:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.passenger.name</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s name.</td><td style="text-align:left"><code>Fulano da Silva</code></td></tr>
+<tr><td style="text-align:left"><strong>request.passenger.document</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s document.</td><td style="text-align:left"><code>123.456.789-00</code></td></tr>
+<tr><td style="text-align:left"><strong>request.passenger.documentType</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Type of the passenger’s <code>document</code>.</td><td style="text-align:left"><code>id</code></td></tr>
+<tr><td style="text-align:left"><strong>request.passenger.gender</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>M</code> stands for <em>Male</em>, and <code>F</code>, for <em>Female</em>.</td><td style="text-align:left"><code>M</code> or <code>F</code></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule.id</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Schedule’s ID, obtained from <strong>Trip Details</strong>.</td><td style="text-align:left"><code>e4479611acd114b958871fe4cb8130af</code></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule.date</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Any valid date, in format <code>yyyy-mm-dd</code>. Use the same value applied on <strong>Trips</strong>.</td><td style="text-align:left"><code>2015-01-27</code></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule.time</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Any valid time between <code>00:00</code> and <code>23:59</code>, in format <code>HH:ii</code>.</td><td style="text-align:left"><code>10:30</code></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule.timezone</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Timezone information, based on actual country.</td><td style="text-align:left"><code>America/Mexico_City</code></td></tr>
+<tr><td style="text-align:left"><strong>request.sessionId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Session’s ID, obtained from <strong>Trip Details</strong>.</td><td style="text-align:left"><code>dnlfm8aecg2omtjaang62fvla5</code></td></tr>
 </tbody>
 </table>
 <p><strong>Request</strong></p>
@@ -984,7 +903,8 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
         </span>}</span>,
         "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"b1vd4mhonggecviranmsa164k5"</span>
     </span>}
-</span>}</code></pre>
+</span>}
+</code></pre>
 <p><strong>Response</strong></p>
 <p>This request, with all correct params and being executed before the Seat block’s life time ends, will return a Response <em>200</em>, with the following Response body:</p>
 <pre><code class="language-json">{
@@ -1004,73 +924,38 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
          "<span class="hljs-attribute">expireAt</span>":<span class="hljs-value"><span class="hljs-string">"2015-07-21 12:35"</span>
       </span>}
    ]
-</span>}</code></pre>
+</span>}
+</code></pre>
 <p><strong>NOTE:</strong> If, while a Request to create a Seat Block, the selected Seat is already blocked by other Request executed previously, you may receive the following <em>400</em> Response:</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">message</span>":<span class="hljs-value"><span class="hljs-string">"Busy seat"</span>
-</span>}</code></pre>
-<h4>Example URI</h4><div class="definition"><span class="method put">PUT</span>&nbsp;<span class="uri"><span class="hostname"></span>/seat-block</span></div></div></div><div id="seat-block-remove-a-block-in-a-seat" class="resource"><h3 class="resource-heading">Remove a block in a Seat <a href="#seat-block-remove-a-block-in-a-seat" class="permalink">&nbsp;&para;</a></h3><p>As opposed to the Create proccess, the Remove will delete a block created on a Seat, which automatically turns a Seat available for all passengers.</p>
+</span>}
+</code></pre>
+</div><ul class="list-group"></ul></section><h4 id="seat-block-remove-a-block-in-a-seat">Remove a block in a Seat&nbsp;<a href="#seat-block-remove-a-block-in-a-seat"><i class="fa fa-link"></i></a></h4><p>As opposed to the Create proccess, the Remove will delete a block created on a Seat, which automatically turns a Seat available for all passengers.</p>
 <p><strong>NOTE:</strong></p>
 <ul>
 <li>Every Request’s header shall declare the key <code>PHPSESSID</code>, along with it’s value, Session’s ID (obtained on <strong>Session</strong>), as follow:
 <blockquote>
 <p>Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3</p>
-</blockquote>
-</li>
+</blockquote></li>
 </ul>
-<div id="seat-block-remove-a-block-in-a-seat-delete" class="action delete"><h4 class="action-heading"><div class="name">Remove a block in a Seat</div><a href="#seat-block-remove-a-block-in-a-seat-delete" class="method delete">DELETE</a><code class="uri">/seat-block</code></h4><p><strong>Parameters</strong></p>
+<section id="seat-block-remove-a-block-in-a-seat-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Remove a block in a Seat</span></div><div style="float:left"><a href="#seat-block-remove-a-block-in-a-seat-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/seat-block</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left">PARAMS</th>
-<th style="text-align:left">VALUE</th>
-<th style="text-align:left">DESCRIPTION</th>
-<th style="text-align:left">EXAMPLE</th>
-</tr>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left"><strong>meta</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">An empty object. Partners can use this parameter to provide their own <code>meta</code> information: <code>store</code>, <code>platform</code> and <code>model</code>.</td>
-<td style="text-align:left"><code>{}</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">A container which requires:</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.seat</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">The seat’s <code>name</code>, obtained on <strong>Trip Details</strong>.</td>
-<td style="text-align:left"><code>07</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.schedule</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">A container which requires:</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><a href="http://request.schedule.id">request.schedule.id</a></strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Schedule’s ID, obtained from <strong>Trip Details</strong>.</td>
-<td style="text-align:left"><code>e4479611acd114b958871fe4cb8130af</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.sessionId</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Session’s ID, obtained from <strong>Trip Details</strong>.</td>
-<td style="text-align:left"><code>dnlfm8aecg2omtjaang62fvla5</code></td>
-</tr>
+<tr><td style="text-align:left"><strong>meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object. Partners can use this parameter to provide their own <code>meta</code> information: <code>store</code>, <code>platform</code> and <code>model</code>.</td><td style="text-align:left"><code>{}</code></td></tr>
+<tr><td style="text-align:left"><strong>request</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.seat</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">The seat’s <code>name</code>, obtained on <strong>Trip Details</strong>.</td><td style="text-align:left"><code>07</code></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.schedule.id</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Schedule’s ID, obtained from <strong>Trip Details</strong>.</td><td style="text-align:left"><code>e4479611acd114b958871fe4cb8130af</code></td></tr>
+<tr><td style="text-align:left"><strong>request.sessionId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Session’s ID, obtained from <strong>Trip Details</strong>.</td><td style="text-align:left"><code>dnlfm8aecg2omtjaang62fvla5</code></td></tr>
 </tbody>
 </table>
 <p><strong>Request</strong></p>
 <ul>
-<li>
-<p>Removing the Seat block, named <em>07</em>, on a travel from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> in <em>11th Feb 2015</em>, with all params correct:</p>
+<li><p>Removing the Seat block, named <em>07</em>, on a travel from <em>Querétaro, QRO. - Mexico</em> to <em>Guadalajara, JAL. - Mexico</em> in <em>11th Feb 2015</em>, with all params correct:</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{}</span>,
     "<span class="hljs-attribute">request</span>": <span class="hljs-value">{
@@ -1080,8 +965,8 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
         </span>}</span>,
         "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"dnlfm8aecg2omtjaang62fvla5"</span>
     </span>}
-</span>}</code></pre>
-</li>
+</span>}
+</code></pre></li>
 </ul>
 <p><strong>Response</strong></p>
 <p>This request, with all correct params, will return a Response <em>202</em>, with the following Response body:</p>
@@ -1092,53 +977,29 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
         "<span class="hljs-attribute">messages</span>": <span class="hljs-value">[]</span>,
         "<span class="hljs-attribute">sessionId</span>": <span class="hljs-value"><span class="hljs-string">"dnlfm8aecg2omtjaang62fvla5"</span>
     </span>}
-</span>}</code></pre>
+</span>}
+</code></pre>
 <p><strong>NOTE</strong> If the <code>sessionId</code> or the lifetime of the Seat block have already expired, you may obtain a <em>400</em> Response with the following Response body:</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Invalid Parameters"</span>
-</span>}</code></pre>
-<h4>Example URI</h4><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname"></span>/seat-block</span></div></div></div></section><section id="payment" class="resource-group"><h2 class="group-heading">Payment <a href="#payment" class="permalink">&para;</a></h2><div id="payment-get-all-payment-settings" class="resource"><h3 class="resource-heading">Get all Payment settings <a href="#payment-get-all-payment-settings" class="permalink">&nbsp;&para;</a></h3><p>The resource <code>/payment</code> retrieves all the information that you need according to your <code>meta</code> parameters, which are:</p>
+</span>}
+</code></pre>
+</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="payment">Payment&nbsp;<a href="#payment"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="payment-get-all-payment-settings">Get all Payment settings&nbsp;<a href="#payment-get-all-payment-settings"><i class="fa fa-link"></i></a></h4><p>The resource <code>/payment</code> retrieves all the information that you need according to your <code>meta</code> parameters, which are:</p>
 <ul>
-<li>
-<p><code>model</code></p>
-</li>
-<li>
-<p><code>store</code></p>
-</li>
-<li>
-<p><code>platform</code></p>
-</li>
+<li><p><code>model</code></p></li>
+<li><p><code>store</code></p></li>
+<li><p><code>platform</code></p></li>
 </ul>
 <p>These parameters are created for each partner, and they are required for each request. If you have any doubts or questions about how to obtain these values, please contact our commercial department at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a>.</p>
-<div id="payment-get-all-payment-settings-get" class="action get"><h4 class="action-heading"><div class="name">Get all Payment settings</div><a href="#payment-get-all-payment-settings-get" class="method get">GET</a><code class="uri">/payment</code></h4><p><strong>Parameters</strong></p>
+<section id="payment-get-all-payment-settings-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get all Payment settings</span></div><div style="float:left"><a href="#payment-get-all-payment-settings-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/payment</code></div></div><div class="panel-body"><p><strong>Parameters</strong></p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left">PARAMS</th>
-<th style="text-align:left">VALUE</th>
-<th style="text-align:left">DESCRIPTION</th>
-<th style="text-align:left">EXAMPLE</th>
-</tr>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left"><strong>store</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left"><code>store</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details.</td>
-<td style="text-align:left"><code>clickbus</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>model</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left"><code>model</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details.</td>
-<td style="text-align:left"><code>retail</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>platform</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left"><code>platform</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details.</td>
-<td style="text-align:left"><code>web</code></td>
-</tr>
+<tr><td style="text-align:left"><strong>store</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>store</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details.</td><td style="text-align:left"><code>clickbus</code></td></tr>
+<tr><td style="text-align:left"><strong>model</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>model</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details.</td><td style="text-align:left"><code>retail</code></td></tr>
+<tr><td style="text-align:left"><strong>platform</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>platform</code> parameter. A specific param for each partner. Please contact ClickBus at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details.</td><td style="text-align:left"><code>web</code></td></tr>
 </tbody>
 </table>
 <p><strong>Response</strong></p>
@@ -1147,17 +1008,21 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
 <li><code>paymentSettings</code> for:
 <ul>
 <li><code>creditcard</code>, with it’s own <code>serviceFee</code> and <code>serviceFeePercentage</code> which is attributed for each partner (contact ClickBus at <a href="mailto:contacto@clickbus.com.mx">contacto@clickbus.com.mx</a> for more commercial details).</li>
-</ul>
-</li>
+<li>In case the option <code>usesRange</code> is <strong>true</strong> for the payment type you must use the <code>serviceFeeRanges</code> to get the correct service fee percentage based on the range criteria.
+<ul>
+<li>The service fee by range on <code>creditcard</code> payment type is only applicable for the installment option <strong>1</strong></li>
+</ul></li>
+</ul></li>
 </ul>
 <p><strong>Examples</strong></p>
 <ul>
-<li>
-<p>A request, with all valid parameters:</p>
+<li><p>A request, with all valid parameters:</p>
 <ul>
-<li>URL:<pre><code>/api/<span class="hljs-literal">v1</span>/payment?store<span class="hljs-label">=clickbus</span>&amp;platform<span class="hljs-label">=web</span>&amp;model<span class="hljs-label">=retail</span></code></pre>
-</li>
-<li>Response:<pre><code class="language-json">{
+<li>URL:
+<pre><code>/api/v1/payment?<span class="hljs-variable">store=</span>clickbus&amp;<span class="hljs-variable">platform=</span>web&amp;<span class="hljs-variable">model=</span>retail
+</code></pre></li>
+<li>Response:
+<pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
     "<span class="hljs-attribute">paymentSettings</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">creditcard</span>": <span class="hljs-value">{
@@ -1186,67 +1051,74 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
                 "<span class="hljs-attribute">4</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
                 "<span class="hljs-attribute">5</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span></span>,
                 "<span class="hljs-attribute">6</span>": <span class="hljs-value"><span class="hljs-string">"0.00"</span>
-            </span>}
+            </span>}</span>,
+            "<span class="hljs-attribute">usesRange</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">serviceFeeRanges</span>": <span class="hljs-value">[
+        {
+         "<span class="hljs-attribute">minimum</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+         "<span class="hljs-attribute">maximum</span>": <span class="hljs-value"><span class="hljs-number">250</span></span>,
+         "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value"><span class="hljs-number">10</span>
+        </span>},
+        {
+         "<span class="hljs-attribute">minimum</span>": <span class="hljs-value"><span class="hljs-number">250</span></span>,
+         "<span class="hljs-attribute">maximum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+         "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value"><span class="hljs-number">10</span>
+        </span>},
+        {
+         "<span class="hljs-attribute">minimum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+         "<span class="hljs-attribute">maximum</span>": <span class="hljs-value"><span class="hljs-number">750</span></span>,
+         "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value"><span class="hljs-number">8</span>
+        </span>},
+        {
+         "<span class="hljs-attribute">minimum</span>": <span class="hljs-value"><span class="hljs-number">750</span></span>,
+         "<span class="hljs-attribute">maximum</span>": <span class="hljs-value"><span class="hljs-number">1000</span></span>,
+         "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value"><span class="hljs-number">8</span>
+        </span>},
+        {
+         "<span class="hljs-attribute">minimum</span>": <span class="hljs-value"><span class="hljs-number">1000</span></span>,
+         "<span class="hljs-attribute">maximum</span>": <span class="hljs-value"><span class="hljs-number">1000000</span></span>,
+         "<span class="hljs-attribute">serviceFeePercentage</span>": <span class="hljs-value"><span class="hljs-number">5</span>
         </span>}
+        ]
     </span>}
-</span>}</code></pre>
-</li>
-</ul>
-</li>
+</span>}
+</code></pre></li>
+</ul></li>
 </ul>
 <hr>
-<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/payment</span></div></div></div><div id="payment-get-the-discounts-only-available-after-blocking-all-seats-get" class="resource"><h3 class="resource-heading">Get the discounts only available after blocking all seats GET <a href="#payment-get-the-discounts-only-available-after-blocking-all-seats-get" class="permalink">&nbsp;&para;</a></h3><p>The resource <code>/booking-discount</code> returns a list of all the discounts applied in specific booking engines after blocking all seats. As of today GFA (Primera Plus) can only show its return-trip discounts this way.</p>
+</div><ul class="list-group"></ul></section><h4 id="payment-get-the-discounts-only-available-after-blocking-all-seats-get">Get the discounts only available after blocking all seats GET&nbsp;<a href="#payment-get-the-discounts-only-available-after-blocking-all-seats-get"><i class="fa fa-link"></i></a></h4><p>The resource <code>/booking-discount</code> returns a list of all the discounts applied in specific booking engines after blocking all seats. As of today GFA (Primera Plus) can only show its return-trip discounts this way.</p>
 <p><em>NOTE:</em> The following sequence is compulsory to follow in order to book a ticket with a booking dicount.</p>
 <ol>
-<li>
-<p>Get return trip results in one call <code>/trips</code></p>
+<li><p>Get return trip results in one call <code>/trips</code></p>
 <ul>
 <li>To make a return trip GET request you should add the optional parameter <code>return</code> with the return date.</li>
 <li>In case you have designed your application to make two calls, then you could call a single trip on the first call and a round trip considering the two dates in the second.</li>
-</ul>
-</li>
-<li>
-<p>Get a sessionId <code>/session</code></p>
+</ul></li>
+<li><p>Get a sessionId <code>/session</code></p>
 <ul>
 <li>See documentation.</li>
-</ul>
-</li>
-<li>
-<p>Trip details and seat block <code>/trip</code> and <code>/seat-block</code> must be called in the following sequence.</p>
+</ul></li>
+<li><p>Trip details and seat block <code>/trip</code> and <code>/seat-block</code> must be called in the following sequence.</p>
 <ul>
 <li>Call <code>/trip</code> for the first trip</li>
 <li>Call <code>/seat-block</code> as many times as needed for this trip.</li>
 <li>Call  <code>/trip</code> for the second trip</li>
 <li>Call <code>/seat-block</code> as many times as needed for this trip.</li>
-</ul>
-</li>
-<li>
-<p>GET <code>/booking-discount</code> (optional) you can call this endpoint to get the discount. To get the final discount prior booking the tickets.</p>
-</li>
-<li>
-<p>Confirm a booking <code>/booking</code></p>
+</ul></li>
+<li><p>GET <code>/booking-discount</code> (optional) you can call this endpoint to get the discount. To get the final discount prior booking the tickets.</p></li>
+<li><p>Confirm a booking <code>/booking</code></p>
 <ul>
 <li>You should call this end point in the same way as in a single trip except that the scheduleId you use in the body for orderItems.seatReservation should be that of the first trip.</li>
-</ul>
-</li>
+</ul></li>
 </ol>
-<div id="payment-get-the-discounts-only-available-after-blocking-all-seats-get-get" class="action get"><h4 class="action-heading"><div class="name">/booking-discount</div><a href="#payment-get-the-discounts-only-available-after-blocking-all-seats-get-get" class="method get">GET</a><code class="uri">/booking-discount</code></h4><p><strong>PARAMETERS</strong></p>
+<section id="payment-get-the-discounts-only-available-after-blocking-all-seats-get-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">/booking-discount</span></div><div style="float:left"><a href="#payment-get-the-discounts-only-available-after-blocking-all-seats-get-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/booking-discount</code></div></div><div class="panel-body"><p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left">PARAMS</th>
-<th style="text-align:left">VALUE</th>
-<th style="text-align:left">DESCRIPTION</th>
-<th style="text-align:left">EXAMPLE</th>
-</tr>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left"><strong>none</strong></td>
-<td style="text-align:left"><em>N/A</em></td>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">N/A</td>
-</tr>
+<tr><td style="text-align:left"><strong>none</strong></td><td style="text-align:left"><em>N/A</em></td><td style="text-align:left">N/A</td><td style="text-align:left">N/A</td></tr>
 </tbody>
 </table>
 <p><strong>NOTES:</strong></p>
@@ -1254,40 +1126,30 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
 <li>Every Request’s header shall declare the key <code>PHPSESSID</code>, along with it’s value, Session’s ID (obtained on <strong>Session</strong>), as follow:
 <blockquote>
 <p>Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3</p>
-</blockquote>
-</li>
+</blockquote></li>
 </ol>
 <p><strong>RESPONSE</strong></p>
 <p>A successful request will return a <em>200</em> Response, with one of either existent or non-existent discount the structure as described below:</p>
 <ul>
-<li>
-<p><code>flag</code> whether a trip is a return trip</p>
-</li>
-<li>
-<p><code>return_discount</code> the discount response from the booking engine, it will return a false value in case there is no discount available.</p>
+<li><p><code>flag</code> whether a trip is a return trip</p></li>
+<li><p><code>return_discount</code> the discount response from the booking engine, it will return a false value in case there is no discount available.</p>
 <ul>
 <li>[DISCOUNT_REFERENCE] the discount reference provided by the booking engine
 <ul>
 <li><code>price</code> the original (one-way) price of the second trip</li>
 <li><code>newprice</code> the discounted price of the second trip</li>
-</ul>
-</li>
+</ul></li>
 <li>Alternatively it can return <code>false</code> indicating there is no discount available</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p><strong>Examples</strong></p>
 <ul>
-<li>
-<p>Get a list of combinations to prepare an asyncronous call:</p>
+<li><p>Get a list of combinations to prepare an asyncronous call:</p>
 <ul>
-<li>
-<p>URL:</p>
-<pre><code>/api/<span class="hljs-literal">v1</span>/<span class="hljs-keyword">booking-discount
-</span></code></pre>
-</li>
-<li>
-<p>Response:</p>
+<li><p>URL:</p>
+<pre><code><span class="hljs-regexp">/api/</span>v1/booking-discount
+</code></pre></li>
+<li><p>Response:</p>
 <pre><code class="language-json">{
   "<span class="hljs-attribute">flag</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
   "<span class="hljs-attribute">return_discount</span>": <span class="hljs-value">{
@@ -1296,303 +1158,93 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
       "<span class="hljs-attribute">newprice</span>": <span class="hljs-value"><span class="hljs-number">696</span>
     </span>}
   </span>}
-</span>}</code></pre>
-</li>
-</ul>
-</li>
+</span>}
+</code></pre></li>
+</ul></li>
 </ul>
 <p><strong>Errors</strong></p>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">CODE</th>
-<th style="text-align:left">DESCRIPTION</th>
-<th style="text-align:left">DETAILS</th>
-</tr>
+<tr><th style="text-align:center">CODE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">DETAILS</th></tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center"><strong>None</strong></td>
-<td style="text-align:left"><em>Apliction Error</em></td>
-<td style="text-align:left">It does not exist a detailed error message right now, most probable cause of this error is that the sequence in which seats were blocked was wrong, example, a seat in the first trip was blocked followed by one in the second, another in the first and finally one in the second. This is as opposed of one in the first a second in the first, one in the second and the last one also in the second</td>
-</tr>
+<tr><td style="text-align:center"><strong>None</strong></td><td style="text-align:left"><em>Apliction Error</em></td><td style="text-align:left">It does not exist a detailed error message right now, most probable cause of this error is that the sequence in which seats were blocked was wrong, example, a seat in the first trip was blocked followed by one in the second, another in the first and finally one in the second. This is as opposed of one in the first a second in the first, one in the second and the last one also in the second</td></tr>
 </tbody>
 </table>
 <hr>
-<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/booking-discount</span></div></div></div></section><section id="booking" class="resource-group"><h2 class="group-heading">Booking <a href="#booking" class="permalink">&para;</a></h2><div id="booking-create-an-order" class="resource"><h3 class="resource-heading">Create an Order <a href="#booking-create-an-order" class="permalink">&nbsp;&para;</a></h3><p>When you have selected all the Seats, then you may proceed to create an Order, which will start the payment process.</p>
+</div><ul class="list-group"></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="booking">Booking&nbsp;<a href="#booking"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="booking-create-an-order">Create an Order&nbsp;<a href="#booking-create-an-order"><i class="fa fa-link"></i></a></h4><p>When you have selected all the Seats, then you may proceed to create an Order, which will start the payment process.</p>
 <p><strong>NOTES:</strong></p>
 <ul>
-<li>
-<p>Please keep in mind that you need to provide in your header the <code>PHPSESSID</code> key with the Session’s ID in the Cookie, as below:</p>
+<li><p>Please keep in mind that you need to provide in your header the <code>PHPSESSID</code> key with the Session’s ID in the Cookie, as below:</p>
 <blockquote>
 <p>Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3</p>
-</blockquote>
-</li>
-<li>
-<p>We are using Conekta payment service, please read the documentation to know more about how to integrate conekta with your application: <a href="https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta">https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta</a> &amp; <a href="https://www.conekta.io/es/docs/referencias/pruebas#cards">https://www.conekta.io/es/docs/referencias/pruebas#cards</a></p>
-</li>
-<li>
-<p>Conekta token: <a href="https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta">https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta</a></p>
-</li>
+</blockquote></li>
+<li><p>We are using Conekta payment service, please read the documentation to know more about how to integrate conekta with your application: <a href="https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta">https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta</a> &amp; <a href="https://www.conekta.io/es/docs/referencias/pruebas#cards">https://www.conekta.io/es/docs/referencias/pruebas#cards</a></p></li>
+<li><p>Conekta token: <a href="https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta">https://www.conekta.io/es/docs/tutoriales/pagos-con-tarjeta</a></p></li>
 </ul>
-<div id="booking-create-an-order-post" class="action post"><h4 class="action-heading"><div class="name">Create an Order</div><a href="#booking-create-an-order-post" class="method post">POST</a><code class="uri">/booking</code></h4><p>To create an Order, the request’s body requires a range of data, which, for a better understanding, we will divide in the following blocks below:</p>
+<section id="booking-create-an-order-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Create an Order</span></div><div style="float:left"><a href="#booking-create-an-order-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/booking</code></div></div><div class="panel-body"><p>To create an Order, the request’s body requires a range of data, which, for a better understanding, we will divide in the following blocks below:</p>
 <ul>
-<li>
-<p><strong>meta</strong>, which contains the params <code>model</code>, <code>store</code> and <code>platform</code> for each Partner;</p>
-</li>
-<li>
-<p><strong>request</strong>, which contains:</p>
+<li><p><strong>meta</strong>, which contains the params <code>model</code>, <code>store</code> and <code>platform</code> for each Partner;</p></li>
+<li><p><strong>request</strong>, which contains:</p>
 <ul>
 <li><strong>request.buyer</strong> contains all required information about the Buyer;
 <ul>
 <li><strong>request.buyer.payment</strong> contains all the Buyer’s payment data;</li>
-</ul>
-</li>
+</ul></li>
 <li><strong>request.orderItems</strong> contains all the Seats, along with their information, added to the Order.</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left">PARAMS</th>
-<th style="text-align:left">VALUE</th>
-<th style="text-align:left">DESCRIPTION</th>
-<th style="text-align:left">EXAMPLE</th>
-</tr>
+<tr><th style="text-align:left">PARAMS</th><th style="text-align:left">VALUE</th><th style="text-align:left">DESCRIPTION</th><th style="text-align:left">EXAMPLE</th></tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left"><strong>meta</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">An empty object. Partners can use this parameter to provide:</td>
-<td style="text-align:left"><code>{}</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>meta.model</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Partner’s <code>model</code> data.</td>
-<td style="text-align:left"><code>retail</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>meta.store</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Partner’s <code>store</code> data.</td>
-<td style="text-align:left"><code>newstore</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>meta.platform</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Partner’s <code>platform</code> data.</td>
-<td style="text-align:left"><code>web</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">A container which requires:</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.sessionId</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Session’s ID, obtained from <strong>Trip Details</strong>.</td>
-<td style="text-align:left"><code>dnlfm8aecg2omtjaang62fvla5</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">A container which requires:</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.locale</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Buyer’s locale.</td>
-<td style="text-align:left"><code>es_MX</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.firstName</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Buyer’s first name.</td>
-<td style="text-align:left"><code>Fulano</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.lastName</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Buyer’s surname.</td>
-<td style="text-align:left"><code>de Silva</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.cc_id_number</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Buyer’s document.</td>
-<td style="text-align:left"><code>123123123</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.email</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Buyer’s email.</td>
-<td style="text-align:left"><code>fulano@teste.com.br</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.phone</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Buyer’s phone, in format <code>(AAA)-BBB-BBBB</code>, where <code>AAA</code> stands for the brazilian phone’s region code, and <code>BBB-BBBB</code> stands for the phone number.</td>
-<td style="text-align:left"><code>(011)-232-3333</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.terms</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Buyer’s response to the <em>Therms and Conditions</em> acceptance.</td>
-<td style="text-align:left"><code>1</code> stands for <em>agreed</em>, <code>0</code> stands for <em>disagreed</em></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.meta</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">An empty object.</td>
-<td style="text-align:left"><code>{}</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.payment</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">An object containing all the required information according to the payment method.</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.payment.method</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Payment type: <code>card</code>.</td>
-<td style="text-align:left"><code>card</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.payment.currency</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Payment currency.</td>
-<td style="text-align:left"><code>TRL</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.payment.total</strong> (required)</td>
-<td style="text-align:left"><em>int</em></td>
-<td style="text-align:left">Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, <code>1400</code> means <code>14.00</code>, and <code>6050</code> means <code>60.50</code>.</td>
-<td style="text-align:left"><code>1400</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.payment.installment</strong> (required)</td>
-<td style="text-align:left"><em>int</em></td>
-<td style="text-align:left">Indicates on how many installments the payment is settled.</td>
-<td style="text-align:left"><code>1</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.payment.meta</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">An object which requires the following data:</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.payment.meta.token</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">Conekta token</td>
-<td style="text-align:left"><code>tok_test_visa_4242</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.payment.meta.referring_campaign</strong> (optional)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">The campaign <code>(campaign_free_pass)</code>.</td>
-<td style="text-align:left"><code>campaign_free_pass</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.payment.meta.referring_source</strong> (optional)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">The source .</td>
-<td style="text-align:left"><code>sem or direct or googleoe bing</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.payment.meta.referrer</strong> (optional)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">The referrer  .</td>
-<td style="text-align:left"><code>http://google.com</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.buyer.payment.meta.channel</strong> (optional)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">The channel .</td>
-<td style="text-align:left"><code>webapp|mobile|web</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.orderItems</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">A collection of objects, which may contain at least 1 and a maximum of N to be considered valid. Each object contains:</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.orderItems.seatReservation</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Schedule’s ID, obtained in the <strong>Seat</strong> process.</td>
-<td style="text-align:left"><code>NDAxNy0tMzkzNS0tMjAxNS0...</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.orderItems.passenger</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">A container, which have:</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.orderItems.passenger.firstName</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Passenger’s first name.</td>
-<td style="text-align:left"><code>Beltrano</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.orderItems.passenger.lastName</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Passenger’s surname.</td>
-<td style="text-align:left"><code>da Silva</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.orderItems.passenger.email</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Passenger’s email.</td>
-<td style="text-align:left"><code>beltrano@teste.com.br</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.orderItems.passenger.document</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left">Passenger’s document.</td>
-<td style="text-align:left"><code>11111111111</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.orderItems.passenger.gender</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left"><code>M</code> stands for <em>Male</em>, and <code>F</code>, for <em>Female</em>.</td>
-<td style="text-align:left"><code>M</code> or <code>F</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.orderItems.passenger.seat</strong> (required)</td>
-<td style="text-align:left"><em>string</em></td>
-<td style="text-align:left"><code>seat</code> name, obtained on <strong>Seat</strong> proccess.</td>
-<td style="text-align:left"><code>01</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request.orderItems.passenger.meta</strong> (required)</td>
-<td style="text-align:left"><em>object</em></td>
-<td style="text-align:left">An empty object.</td>
-<td style="text-align:left"><code>{}</code></td>
-</tr>
+<tr><td style="text-align:left"><strong>meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object. Partners can use this parameter to provide:</td><td style="text-align:left"><code>{}</code></td></tr>
+<tr><td style="text-align:left"><strong>meta.model</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Partner’s <code>model</code> data.</td><td style="text-align:left"><code>retail</code></td></tr>
+<tr><td style="text-align:left"><strong>meta.store</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Partner’s <code>store</code> data.</td><td style="text-align:left"><code>newstore</code></td></tr>
+<tr><td style="text-align:left"><strong>meta.platform</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Partner’s <code>platform</code> data.</td><td style="text-align:left"><code>web</code></td></tr>
+<tr><td style="text-align:left"><strong>request</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.sessionId</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Session’s ID, obtained from <strong>Trip Details</strong>.</td><td style="text-align:left"><code>dnlfm8aecg2omtjaang62fvla5</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container which requires:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.locale</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s locale.</td><td style="text-align:left"><code>es_MX</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.firstName</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s first name.</td><td style="text-align:left"><code>Fulano</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.lastName</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s surname.</td><td style="text-align:left"><code>de Silva</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.cc_id_number</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s document.</td><td style="text-align:left"><code>123123123</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.email</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s email.</td><td style="text-align:left"><code>fulano@teste.com.br</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.phone</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s phone, in format <code>(AAA)-BBB-BBBB</code>, where <code>AAA</code> stands for the brazilian phone’s region code, and <code>BBB-BBBB</code> stands for the phone number.</td><td style="text-align:left"><code>(011)-232-3333</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.terms</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Buyer’s response to the <em>Therms and Conditions</em> acceptance.</td><td style="text-align:left"><code>1</code> stands for <em>agreed</em>, <code>0</code> stands for <em>disagreed</em></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object.</td><td style="text-align:left"><code>{}</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An object containing all the required information according to the payment method.</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.method</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment type: <code>card</code>.</td><td style="text-align:left"><code>card</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.currency</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Payment currency.</td><td style="text-align:left"><code>TRL</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.total</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, <code>1400</code> means <code>14.00</code>, and <code>6050</code> means <code>60.50</code>.</td><td style="text-align:left"><code>1400</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.installment</strong> (required)</td><td style="text-align:left"><em>int</em></td><td style="text-align:left">Indicates on how many installments the payment is settled.</td><td style="text-align:left"><code>1</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An object which requires the following data:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.token</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">Conekta token</td><td style="text-align:left"><code>tok_test_visa_4242</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.referring_campaign</strong> (optional)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">The campaign <code>(campaign_free_pass)</code>.</td><td style="text-align:left"><code>campaign_free_pass</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.referring_source</strong> (optional)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">The source .</td><td style="text-align:left"><code>sem or direct or googleoe bing</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.referrer</strong> (optional)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">The referrer  .</td><td style="text-align:left"><code>http://google.com</code></td></tr>
+<tr><td style="text-align:left"><strong>request.buyer.payment.meta.channel</strong> (optional)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">The channel .</td><td style="text-align:left">`webapp</td><td>mobile</td><td>web`</td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A collection of objects, which may contain at least 1 and a maximum of N to be considered valid. Each object contains:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.seatReservation</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Schedule’s ID, obtained in the <strong>Seat</strong> process.</td><td style="text-align:left"><code>NDAxNy0tMzkzNS0tMjAxNS0...</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">A container, which have:</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.firstName</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s first name.</td><td style="text-align:left"><code>Beltrano</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.lastName</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s surname.</td><td style="text-align:left"><code>da Silva</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.email</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s email.</td><td style="text-align:left"><code>beltrano@teste.com.br</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.document</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left">Passenger’s document.</td><td style="text-align:left"><code>11111111111</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.gender</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>M</code> stands for <em>Male</em>, and <code>F</code>, for <em>Female</em>.</td><td style="text-align:left"><code>M</code> or <code>F</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.seat</strong> (required)</td><td style="text-align:left"><em>string</em></td><td style="text-align:left"><code>seat</code> name, obtained on <strong>Seat</strong> proccess.</td><td style="text-align:left"><code>01</code></td></tr>
+<tr><td style="text-align:left"><strong>request.orderItems.passenger.meta</strong> (required)</td><td style="text-align:left"><em>object</em></td><td style="text-align:left">An empty object.</td><td style="text-align:left"><code>{}</code></td></tr>
 </tbody>
 </table>
 <p><strong>Request - Example</strong></p>
 <ul>
 <li>Create an Order with the following data:
 <ul>
-<li>
-<p>Created from a <code>store</code> called <em>NewWorld</em>;</p>
-</li>
-<li>
-<p>Selected 1 Seat for <em>Fulano da Silva</em>;</p>
-</li>
-<li>
-<p>Each item costs R$ 12.35, so the <code>request.buyer.payment.total</code> value is <em>1235</em>.</p>
+<li><p>Created from a <code>store</code> called <em>NewWorld</em>;</p></li>
+<li><p>Selected 1 Seat for <em>Fulano da Silva</em>;</p></li>
+<li><p>Each item costs R$ 12.35, so the <code>request.buyer.payment.total</code> value is <em>1235</em>.</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">meta</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">store</span>": <span class="hljs-value"><span class="hljs-string">"newworld"</span></span>,
@@ -1637,10 +1289,9 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
             </span>}
         </span>}]
     </span>}
-</span>}</code></pre>
-</li>
-</ul>
-</li>
+</span>}
+</code></pre></li>
+</ul></li>
 </ul>
 <p><strong>Response</strong></p>
 <p>The following Request, with all correct parameters, will return a <em>201</em> Response, with all details from the Order, as the example below.</p>
@@ -1710,244 +1361,29 @@ In order to block return-trip seats (priorly obtained from a call to <code>/trip
         </span>}]</span>,
         "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-23"</span>
     </span>}
-</span>}</code></pre>
-<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname"></span>/booking</span></div></div></div><div id="booking-credit-card-rejection" class="resource"><h3 class="resource-heading">Credit Card Rejection <a href="#booking-credit-card-rejection" class="permalink">&nbsp;&para;</a></h3><p>If, for any circunstances listed above, the Request detects any kind of problem related to the given credit card, as above:</p>
+</span>}
+</code></pre>
+</div><ul class="list-group"></ul></section><h4 id="booking-credit-card-rejection">Credit Card Rejection&nbsp;<a href="#booking-credit-card-rejection"><i class="fa fa-link"></i></a></h4><p>If, for any circunstances listed above, the Request detects any kind of problem related to the given credit card, as above:</p>
 <ul>
-<li>
-<p>The maximum credit limit was reached;</p>
-</li>
-<li>
-<p>The credit, for any reason, is blocked;</p>
-</li>
-<li>
-<p>There is an error with any of the credit card’s data.</p>
-</li>
+<li><p>The maximum credit limit was reached;</p></li>
+<li><p>The credit, for any reason, is blocked;</p></li>
+<li><p>There is an error with any of the credit card’s data.</p></li>
 </ul>
 <p>If this happens, then the API will return a <em>400</em> Response with the following content:</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Credit card was rejected."</span>
-</span>}</code></pre>
-</div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 18 Nov 2015</p><script>/* eslint-env browser */
-/* eslint quotes: [2, "single"] */
-'use strict';
+</span>}
+</code></pre>
+</div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 14 Jun 2016</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
 
-/*
-  Determine if a string ends with another string.
-*/
-function endsWith(str, suffix) {
-    return str.indexOf(suffix, str.length - suffix.length) !== -1;
-}
-
-/*
-  Get a list of direct child elements by class name.
-*/
-function childrenByClass(element, name) {
-  var filtered = [];
-
-  for (var i = 0; i < element.children.length; i++) {
-    var child = element.children[i];
-    var classNames = child.className.split(' ');
-    if (classNames.indexOf(name) !== -1) {
-      filtered.push(child);
-    }
+</div></body><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
   }
 
-  return filtered;
-}
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
 
-/*
-  Get an array [width, height] of the window.
-*/
-function getWindowDimensions() {
-  var w = window,
-      d = document,
-      e = d.documentElement,
-      g = d.body,
-      x = w.innerWidth || e.clientWidth || g.clientWidth,
-      y = w.innerHeight || e.clientHeight || g.clientHeight;
-
-  return [x, y];
-}
-
-/*
-  Collapse or show a request/response example.
-*/
-function toggleCollapseButton(event) {
-    var button = event.target.parentNode;
-    var content = button.parentNode.nextSibling;
-    var inner = content.children[0];
-
-    if (button.className.indexOf('collapse-button') === -1) {
-      // Clicked without hitting the right element?
-      return;
-    }
-
-    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-        // Currently showing, so let's hide it
-        button.className = 'collapse-button';
-        content.style.maxHeight = '0px';
-    } else {
-        // Currently hidden, so let's show it
-        button.className = 'collapse-button show';
-        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
-    }
-}
-
-function toggleTabButton(event) {
-    var i, index;
-    var button = event.target;
-
-    // Get index of the current button.
-    var buttons = childrenByClass(button.parentNode, 'tab-button');
-    for (i = 0; i < buttons.length; i++) {
-        if (buttons[i] === button) {
-            index = i;
-            button.className = 'tab-button active';
-        } else {
-            buttons[i].className = 'tab-button';
-        }
-    }
-
-    // Hide other tabs and show this one.
-    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
-    for (i = 0; i < tabs.length; i++) {
-        if (i === index) {
-            tabs[i].style.display = 'block';
-        } else {
-            tabs[i].style.display = 'none';
-        }
-    }
-}
-
-/*
-  Collapse or show a navigation menu. It will not be hidden unless it
-  is currently selected or `force` has been passed.
-*/
-function toggleCollapseNav(event, force) {
-    var heading = event.target.parentNode;
-    var content = heading.nextSibling;
-    var inner = content.children[0];
-
-    if (heading.className.indexOf('heading') === -1) {
-      // Clicked without hitting the right element?
-      return;
-    }
-
-    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-      // Currently showing, so let's hide it, but only if this nav item
-      // is already selected. This prevents newly selected items from
-      // collapsing in an annoying fashion.
-      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
-        content.style.maxHeight = '0px';
-      }
-    } else {
-      // Currently hidden, so let's show it
-      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
-    }
-}
-
-/*
-  Refresh the page after a live update from the server. This only
-  works in live preview mode (using the `--server` parameter).
-*/
-function refresh(body) {
-    document.querySelector('body').className = 'preload';
-    document.body.innerHTML = body;
-
-    // Re-initialize the page
-    init();
-    autoCollapse();
-
-    document.querySelector('body').className = '';
-}
-
-/*
-  Determine which navigation items should be auto-collapsed to show as many
-  as possible on the screen, based on the current window height. This also
-  collapses them.
-*/
-function autoCollapse() {
-  var windowHeight = getWindowDimensions()[1];
-  var itemsHeight = 64; /* Account for some padding */
-  var itemsArray = Array.prototype.slice.call(
-    document.querySelectorAll('nav .resource-group .heading'));
-
-  // Get the total height of the navigation items
-  itemsArray.forEach(function (item) {
-    itemsHeight += item.parentNode.offsetHeight;
-  });
-
-  // Should we auto-collapse any nav items? Try to find the smallest item
-  // that can be collapsed to show all items on the screen. If not possible,
-  // then collapse the largest item and do it again. First, sort the items
-  // by height from smallest to largest.
-  var sortedItems = itemsArray.sort(function (a, b) {
-    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
-  });
-
-  while (sortedItems.length && itemsHeight > windowHeight) {
-    for (var i = 0; i < sortedItems.length; i++) {
-      // Will collapsing this item help?
-      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
-      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
-        // It will, so let's collapse it, remove its content height from
-        // our total and then remove it from our list of candidates
-        // that can be collapsed.
-        itemsHeight -= itemHeight;
-        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
-        sortedItems.splice(i, 1);
-        break;
-      }
-    }
-  }
-}
-
-/*
-  Initialize the interactive functionality of the page.
-*/
-function init() {
-    var i, j;
-
-    // Make collapse buttons clickable
-    var buttons = document.querySelectorAll('.collapse-button');
-    for (i = 0; i < buttons.length; i++) {
-        buttons[i].onclick = toggleCollapseButton;
-
-        // Show by default? Then toggle now.
-        if (buttons[i].className.indexOf('show') !== -1) {
-            toggleCollapseButton({target: buttons[i].children[0]});
-        }
-    }
-
-    var responseCodes = document.querySelectorAll('.example-names');
-    for (i = 0; i < responseCodes.length; i++) {
-        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
-        for (j = 0; j < tabButtons.length; j++) {
-            tabButtons[j].onclick = toggleTabButton;
-
-            // Show by default?
-            if (j === 0) {
-                toggleTabButton({target: tabButtons[j]});
-            }
-        }
-    }
-
-    // Make nav items clickable to collapse/expand their content.
-    var navItems = document.querySelectorAll('nav .resource-group .heading');
-    for (i = 0; i < navItems.length; i++) {
-        navItems[i].onclick = toggleCollapseNav;
-
-        // Show all by default
-        toggleCollapseNav({target: navItems[i].children[0]});
-    }
-}
-
-// Initial call to set up buttons
-init();
-
-window.onload = function () {
-    autoCollapse();
-    // Remove the `preload` class to enable animations
-    document.querySelector('body').className = '';
-};
-</script></body></html>
+}).call(this);
+</script></html>
