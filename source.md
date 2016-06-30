@@ -921,7 +921,7 @@ This request, with all correct params, will return a Response _202_, with the fo
 
 # Group Voucher
 
-## Add Voucher [/validatevoucher/{{voucher-name}/{{client-email}/{{payment-type}]
+## Validate Voucher [/validatevoucher/{{voucher-name}/{{client-email}/{{payment-type}]
 
 The resource "/validatevoucher" adds the discount to the current cart or returns an error response.
 
