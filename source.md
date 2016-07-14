@@ -919,6 +919,24 @@ This request, with all correct params, will return a Response _202_, with the fo
 }
 ```
 
+
+# Group Order Check/Unchek
+
+## Order Check [/order/check]
+
+This application validates and book all selected seats, especially useful with ADO travel.
+
+**NOTE** After executing this request, you will not be able to block more seats, unless you call uncheck.
+
+
+### Reserve all selected seats [PUT]
+
+## Order Un Check [/order/uncheck]
+
+This Request release all selected seats.
+
+### Release all selected seats [DELETE]
+
 # Group Voucher
 
 ## Validate Voucher [/validatevoucher/{{voucher-name}/{{client-email}/{{payment-type}]
