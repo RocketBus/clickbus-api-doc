@@ -1034,6 +1034,14 @@ This request will release all selected seats blocked. The succesfull request ret
         "type":"AE2"
       }
 
+# Group Print Ticket
+
+## Print ticket [/print_ticket]
+
+
+You can view the ticket to print, request to clickbus for the implementation details.
+
+
 # Group Voucher
 
 ## Validate Voucher [/validatevoucher/{{voucher-name}/{{client-email}/{{payment-type}]
