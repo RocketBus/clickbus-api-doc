@@ -933,7 +933,7 @@ This application validates and book all selected seats, especially useful with A
 
 **Response**
 
-The succesfull request returns a _200_ status code on success, on error will have an error status code (like _400_) an error description on message attribute and an error type:
+The succesfull request returns a _200_ status code, on error will have an error status code (like _400_) an error description on message attribute and an error type:
 
 **Example**
 
@@ -1019,7 +1019,7 @@ The succesfull request returns a _200_ status code on success, on error will hav
 
 ## Order uncheck [/order/uncheck]
 
-This request will release all selected seats blocked. The succesfull request returns a _200_ status code on success, on error will have an error status code (like _400_) an error description on message attribute and an error type:
+This request will release all selected seats blocked. The succesfull request returns a _200_ status code, on error will have an error status code (like _400_) an error description on message attribute and an error type:
 
 ### Release all selected seats [DELETE]
     - Succesfull response:
