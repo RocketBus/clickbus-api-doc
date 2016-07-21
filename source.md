@@ -1466,6 +1466,6 @@ If this happens, then the API will return a _400_ Response with the following co
 ```json
 {
     "message": "Credit card was rejected.",
-    "payment_code": "payment_rejected",
+    "payment_code": "payment_rejected"
 }
 ```
