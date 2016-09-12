@@ -1,18 +1,20 @@
-# Docs clickbus
+# Clickbus's API Documentation
+
 We used aglio, the compiler markdown of the Api Blueprint.
 
 ## Install and Requirements
 
 Only you need install **npm** ([https://docs.npmjs.com/getting-started/installing-node](https://docs.npmjs.com/getting-started/installing-node))
 
-This package install gulp to manager task. You can run it with the command 
+This package install gulp to manage tasks. You can run it with the command 
  `./node_modules/gulp/bin/gulp.js` or only with `gulp` if you install it
-  globally with the command `npm -g install gulp`
+  globally in your system (`npm -g install gulp`).
 
 ## Usage
 
-You need to update the *index.md* file and after run the suitable task
- of gulp.
+You need to update the *index.md* file and after run the `gulp` to 
+see the changes in you machine (open the *./dist/index.html* file). And
+run `gulp publish` when you are ready to publish it.
 
 ## Gulp task
 
