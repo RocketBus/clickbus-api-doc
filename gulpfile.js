@@ -5,6 +5,7 @@ const gutils    = require('gulp-util');
 const del       = require('del');
 const s3        = require('knox');
 const aglio     = require('gulp-aglio');
+const fs        = require('fs');
 
 /**************************************
  * Parameters
@@ -15,13 +16,15 @@ const gulpParameters = require('./parameters/gulp/parameters.json');
  * Main Task
  *************************************/
 
-gulp.task('build', ['clean', 'compile', 'cp-img']);
+gulp.task('build', ['clean', 'compile', 'cp']);
 gulp.task('publish', ['upload']);
 gulp.task('default', ['build']);
 
 /**************************************
  * Secondary and Auxiliary Task
  *************************************/
+
+gulp.task('cp', ['cp-img', 'cp-favicon']);
 
 /**
  * Watch
@@ -41,23 +44,32 @@ gulp.task('compile', function () {
 });
 
 gulp.task('cp-img', ['clean'], function () {
-    return gulp.src(['img','favicon.ico'])
-        .pipe(gulp.dest('dist'));
+    return gulp.src(['img/*'])
+        .pipe(gulp.dest('dist/img'));
+});
+
+gulp.task('cp-favicon', ['clean'], function () {
+   return gulp.src('favicon.ico')
+       .pipe(gulp.dest('dist'));
 });
 
 gulp.task('upload', ['build'], function () {
-    const filesNames = ['index.html', 'favicon.ico', 'img'];
     const aws = {
         key: gulpParameters.awsS3Key,
         secret: gulpParameters.awsS3secret,
         bucket: gulpParameters.awsS3Bucket
     };
-    var originDir = './dist';
+    var baseFilesNames = ['index.html', 'favicon.ico'];
+    var originDir = './dist/';
     var destinationDir = '/';
+    var images = fs.readdirSync(originDir + 'img').map(function (name) {
+        return 'img/' + name;
+    });
+    var filesNames = images.concat(baseFilesNames);
 
     filesNames.forEach(function (fileName) {
         s3.createClient(aws)
-            .putFile(originDir + '/' + fileName, destinationDir + '/' + fileName, function (e, a) {
+            .putFile(originDir + '/' + fileName, destinationDir + fileName, function (e, a) {
                 if (e !== null) {
                     console.log(e);
                 }
