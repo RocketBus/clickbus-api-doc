@@ -1,7 +1,33 @@
 {
-  "name": "clickbusdocs",
-  "version": "1.0.0",
-  "dependencies": {
-    "aglio": "^2.2.0"
-  }
+  "name": "clickbus-api-doc",
+  "version": "1.74.0",
+  "devDependencies": {
+    "gulp": "3.9.1",
+    "aglio": "^2.2.0",
+    "gulp-aglio": "0.0.10",
+    "del": "^2.2.0",
+    "gulp-aws-s3": "^0.1.0",
+    "knox": "git+https://github.com/Automattic/knox.git"
+  },
+  "description": "We used aglio, the compiler markdown of the Api Blueprint.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RocketBus/clickbus-api-doc.git"
+  },
+  "keywords": [
+    "doc",
+    "api",
+    "clickbus",
+    "rest"
+  ],
+  "author": "Victor Aguilar <victor.aguilar@clickbus.com.mx>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RocketBus/clickbus-api-doc/issues"
+  },
+  "homepage": "https://github.com/RocketBus/clickbus-api-doc#readme"
 }

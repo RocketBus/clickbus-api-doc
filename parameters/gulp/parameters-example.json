@@ -1,0 +1,5 @@
+{
+  "awsS3Bucket": "docs.clickbus.com.mx",
+  "awsS3Key": "USER123",
+  "awsS3secret": "123456"
+}
