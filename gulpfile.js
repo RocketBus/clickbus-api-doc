@@ -62,7 +62,7 @@ gulp.task('upload', ['build'], function () {
     };
     var baseFilesNames = ['index.html', 'favicon.ico'];
     var originDir = './dist/';
-    var destinationDir = '/v' + pack.apiVersion;
+    var destinationDir = '/v' + pack.apiVersion + '/';
     var images = fs.readdirSync(originDir + 'img').map(function (name) {
         return 'img/' + name;
     });
