@@ -11,6 +11,7 @@ const fs        = require('fs');
  * Parameters
  **************************************/
 const gulpParameters = require('./parameters/gulp/parameters.json');
+const pack      = require('./package.json');
 
 /**************************************
  * Main Task
@@ -30,7 +31,7 @@ gulp.task('cp', ['cp-img', 'cp-favicon']);
  * Watch
  */
 gulp.task('watch', ['build'], function () {
-    gulp.watch(['source.md']);
+    gulp.watch(['src/*/**']);
 });
 
 gulp.task('clean', function () {
@@ -38,7 +39,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('compile', function () {
-    return gulp.src('index.md')
+    return gulp.src('src/index.md')
         .pipe(aglio({ template: 'default' }))
         .pipe(gulp.dest('dist'));
 });
@@ -61,7 +62,7 @@ gulp.task('upload', ['build'], function () {
     };
     var baseFilesNames = ['index.html', 'favicon.ico'];
     var originDir = './dist/';
-    var destinationDir = '/';
+    var destinationDir = '/v' + pack.apiVersion;
     var images = fs.readdirSync(originDir + 'img').map(function (name) {
         return 'img/' + name;
     });

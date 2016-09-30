@@ -1,6 +1,6 @@
 # Clickbus's API Documentation
 
-We used aglio, the compiler markdown of the Api Blueprint.
+We used aglio, the markdown compiler of the Api Blueprint.
 
 ## Install and Requirements
 
@@ -15,6 +15,8 @@ This package install gulp to manage tasks. You can run it with the command
 You need to update the *index.md* file and after run the `gulp` to 
 see the changes in you machine (open the *./dist/index.html* file). And
 run `gulp publish` when you are ready to publish it.
+
+The source code is located in */src/* directory and organized by endpoints. The main file that join all the files is *index.md*
 
 ## Gulp task
 
