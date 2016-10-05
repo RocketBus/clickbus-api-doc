@@ -65,7 +65,6 @@ gulp.task('upload', ['build'], function () {
     recusive('./dist', function (error, files) {
 
         files.forEach(function (file) {
-            console.log('Uploading: ' + file);
             s3.createClient(aws)
                 .putFile(file, file.replace('dist', ''), function (e, a) {
                     if (e !== null) {

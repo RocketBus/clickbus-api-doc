@@ -1,7 +1,6 @@
 {
   "name": "clickbus-api-doc",
   "version": "1.74.0",
-  "apiVersion": "1.0.0",
   "devDependencies": {
     "gulp": "3.9.1",
     "aglio": "^2.2.0",
