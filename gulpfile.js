@@ -6,6 +6,7 @@ const del       = require('del');
 const s3        = require('knox');
 const aglio     = require('gulp-aglio');
 const fs        = require('fs');
+const recusive  = require('recursive-readdir');
 
 /**************************************
  * Parameters
@@ -39,7 +40,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('compile', function () {
-    return gulp.src('src/index.md')
+    return gulp.src('src/*/**/index.md')
         .pipe(aglio({ template: 'default' }))
         .pipe(gulp.dest('dist'));
 });
@@ -60,22 +61,19 @@ gulp.task('upload', ['build'], function () {
         secret: gulpParameters.awsS3secret,
         bucket: gulpParameters.awsS3Bucket
     };
-    var baseFilesNames = ['index.html', 'favicon.ico'];
-    var originDir = './dist/';
-    var destinationDir = '/v' + pack.apiVersion + '/';
-    var images = fs.readdirSync(originDir + 'img').map(function (name) {
-        return 'img/' + name;
-    });
-    var filesNames = images.concat(baseFilesNames);
 
-    filesNames.forEach(function (fileName) {
-        s3.createClient(aws)
-            .putFile(originDir + '/' + fileName, destinationDir + fileName, function (e, a) {
-                if (e !== null) {
-                    console.log(e);
-                }
-                gutils.log('Url \'' + a.req.url + '\'');
-                a.resume();
-            });
+    recusive('./dist', function (error, files) {
+
+        files.forEach(function (file) {
+            console.log('Uploading: ' + file);
+            s3.createClient(aws)
+                .putFile(file, file.replace('dist', ''), function (e, a) {
+                    if (e !== null) {
+                        console.log(e);
+                    }
+                    gutils.log('Url \'' + a.req.url + '\'');
+                    a.resume();
+                });
+        });
     });
 });

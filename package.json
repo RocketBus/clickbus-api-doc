@@ -8,7 +8,8 @@
     "gulp-aglio": "0.0.10",
     "del": "^2.2.0",
     "gulp-aws-s3": "^0.1.0",
-    "knox": "git+https://github.com/Automattic/knox.git"
+    "knox": "git+https://github.com/Automattic/knox.git",
+    "recursive-readdir": "^2.1.0"
   },
   "description": "We used aglio, the compiler markdown of the Api Blueprint.",
   "main": "index.html",
