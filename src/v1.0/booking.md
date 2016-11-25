@@ -48,7 +48,7 @@ To create an Order, the request's body requires a range of data, which, for a be
 |**request.buyer.payment.total** (required)|_int_|Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, `1400` means `14.00`, and `6050` means `60.50`.|`1400`|
 |**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
 |**request.buyer.payment.meta** (required)|_object_|An object which requires the following data:||
-|**request.buyer.payment.meta.token** (optional)|_object_|Necessary when the payment method is througth a card, Conekta token|`tok_test_visa_4242`|
+|**request.buyer.payment.meta.token** (optional)|_object_|Necessary when the payment method is througth a card, Payment manager token|`tok_test_visa_4242`|
 |**request.buyer.payment.meta.store** (optional)|_string_|Necessary when the payment method is offline: `OXXO`, `SEVEN_ELEVEN`, `COPPEL`, `EXTRA`, `FARMACIA_ESQUIVAR`, `ELEKTRA`, `CASA_LEY`, `PITICO`, `TELECOMM`, `FARMACIA_ABC`|`OXXO`|
 |**request.buyer.payment.meta.referring_campaign** (optional)|_string_|The campaign `(campaign_free_pass)`.|`campaign_free_pass`|
 |**request.buyer.payment.meta.referring_source** (optional)|_string_|The source .|`sem or direct or googleoe bing`|
