@@ -42,12 +42,14 @@ To create an Order, the request's body requires a range of data, which, for a be
 |**request.buyer.terms** (required)|_string_|Buyer's response to the _Therms and Conditions_ acceptance.|`1` stands for _agreed_, `0` stands for _disagreed_|
 |**request.buyer.meta** (required)|_object_|An empty object.|`{}`|
 |**request.buyer.payment** (required)|_object_|An object containing all the required information according to the payment method.||
-|**request.buyer.payment.method** (required)|_string_|Payment type: `card`.|`card`|
+|**request.buyer.payment.method** (required)|_string_|Payment type: `card`, `offline`.|`card`|
+|**request.buyer.payment.credit** (optional)|_boolean_|indicate when de payment is with credit: `true` or `false`.|`true`|
 |**request.buyer.payment.currency** (required)|_string_|Payment currency.|`TRL`|
 |**request.buyer.payment.total** (required)|_int_|Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, `1400` means `14.00`, and `6050` means `60.50`.|`1400`|
 |**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
-|**request.buyer.payment.meta** (required)|_object_|An object which requires the following data:||
+|**request.buyer.payment.meta** (required card)|_object_|An object which requires the following data:||
 |**request.buyer.payment.meta.token** (required)|_object_|Conekta token|`tok_test_visa_4242`|
+|**request.buyer.payment.meta.store** (required offline)|_string_|`OXXO`, `SEVEN_ELEVEN`, `COPPEL`, `EXTRA`, `FARMACIA_ESQUIVAR`, `ELEKTRA`, `CASA_LEY`, `PITICO`, `TELECOMM`, `FARMACIA_ABC`|`OXXO`|
 |**request.buyer.payment.meta.referring_campaign** (optional)|_string_|The campaign `(campaign_free_pass)`.|`campaign_free_pass`|
 |**request.buyer.payment.meta.referring_source** (optional)|_string_|The source .|`sem or direct or googleoe bing`|
 |**request.buyer.payment.meta.referrer** (optional)|_string_|The referrer  .|`http://google.com`|
@@ -208,3 +210,89 @@ If this happens, then the API will return a _400_ Response with the following co
     "payment_code": "payment_rejected"
 }
 ```
+
+
+## Offline Payment [/booking]   
+
+This example is for Offline payments where is possible to buy in one of the follow convenience stores:
+
+|STORE|KEY|
+|:----|:----|
+|**Oxxo**|OXXO|
+|**7 Eleven**|SEVEN_ELEVEN|
+|**Coppel**|COPPEL|
+|**Extra**|EXTRA|
+|**Farmacias Esquivar**|FARMACIA_ESQUIVAR|
+|**Elektra**|ELEKTRA|
+|**Casa Ley**|CASA_LEY|
+|**Pitico**|PITICO|
+|**Telecomm**|TELECOMM|
+|**Farmacias ABC**|FARMACIA_ABC|
+
+
+**Flow**
+
+ - When the user purchase "n" tickets using offline payment a payment order will be sent to him 
+ - When the user has paid in the specified convenience store, the payment gateway may late between 1 and 8 hours to confirm the payment, being in the most of cases 1 hour
+ - When the payment is success, the tickets will send via email to the client automatically 
+ - The booking process may fail mainly because one of the seats in the order haven been sold to other client (_Contact with us to fix this issues_)
+ - Current Configuration (_This values could be change depending the conflicts over the bookings_):
+     - Is not possible buy tickets with less than 24 hrs before the departure.
+     - Is not possible buy when amount is less than $MX15.00 or greater than $MX10,000.00
+     - Is not possible buy more than 60% of the seats available 
+     - The orders will expire and cancelled after 16 hours
+
+
+**Request - Offline payment example**
+
+- Offline payment with the previous example:
+
+        ```json
+        {
+            "meta": {
+                "store": "newworld",
+                "platform": "web",
+                "model": "retail"
+            },
+            "request": {
+                "sessionId": "njivqofna5umqu6k3cla588462",
+                "buyer": {
+                    "locale": "es_MX",
+                    "firstName": "Beltrano",
+                    "lastName": "Silva",
+                    "cc_id_number": "123123123",
+                    "email": "teste@teste.com",
+                    "phone": "(011)-232-3333",
+                    "terms": "1",
+                    "meta": {},
+                    "payment": {
+                        "method": "offline",
+                        "credit": false,
+                        "currency": "MXN",
+                        "total": 1000,
+                        "installment": "1",
+                        "meta": {
+                            "store": "OXXO",
+                            "referring_campaign":"agua",
+                            "referring_source":"any",
+                            "referrer" : "http://anything.com",
+                            "channel" : "mobile"
+                        }
+                    }
+                },
+                "orderItems": [{
+                    "seatReservation": "e9f7adff6cd8eeaf8734615c97317386",
+                    "passenger": {
+                        "firstName": "Teste",
+                        "lastName": "Teste",
+                        "email": "dev@clickbus.com.br",
+                        "document": "11111111111",
+                        "gender": "M",
+                        "seat": "1",
+                        "meta": {}
+                    }
+                }]
+            }
+        }
+        ```
+
