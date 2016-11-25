@@ -47,9 +47,9 @@ To create an Order, the request's body requires a range of data, which, for a be
 |**request.buyer.payment.currency** (required)|_string_|Payment currency.|`TRL`|
 |**request.buyer.payment.total** (required)|_int_|Sum of the values of all items in the Order. The first two digits from right to left represent the decimal part of the value. So, for instance, `1400` means `14.00`, and `6050` means `60.50`.|`1400`|
 |**request.buyer.payment.installment** (required)|_int_|Indicates on how many installments the payment is settled.|`1`|
-|**request.buyer.payment.meta** (required card)|_object_|An object which requires the following data:||
-|**request.buyer.payment.meta.token** (required)|_object_|Conekta token|`tok_test_visa_4242`|
-|**request.buyer.payment.meta.store** (required offline)|_string_|`OXXO`, `SEVEN_ELEVEN`, `COPPEL`, `EXTRA`, `FARMACIA_ESQUIVAR`, `ELEKTRA`, `CASA_LEY`, `PITICO`, `TELECOMM`, `FARMACIA_ABC`|`OXXO`|
+|**request.buyer.payment.meta** (required)|_object_|An object which requires the following data:||
+|**request.buyer.payment.meta.token** (optional)|_object_|Necessary when the payment method is througth a card, Conekta token|`tok_test_visa_4242`|
+|**request.buyer.payment.meta.store** (optional)|_string_|Necessary when the payment method is offline: `OXXO`, `SEVEN_ELEVEN`, `COPPEL`, `EXTRA`, `FARMACIA_ESQUIVAR`, `ELEKTRA`, `CASA_LEY`, `PITICO`, `TELECOMM`, `FARMACIA_ABC`|`OXXO`|
 |**request.buyer.payment.meta.referring_campaign** (optional)|_string_|The campaign `(campaign_free_pass)`.|`campaign_free_pass`|
 |**request.buyer.payment.meta.referring_source** (optional)|_string_|The source .|`sem or direct or googleoe bing`|
 |**request.buyer.payment.meta.referrer** (optional)|_string_|The referrer  .|`http://google.com`|
@@ -235,7 +235,7 @@ This example is for Offline payments where is possible to buy in one of the foll
  - When the user purchase "n" tickets using offline payment a payment order will be sent to him 
  - When the user has paid in the specified convenience store, the payment gateway may late between 1 and 8 hours to confirm the payment, being in the most of cases 1 hour
  - When the payment is success, the tickets will send via email to the client automatically 
- - The booking process may fail mainly because one of the seats in the order haven been sold to other client (_Contact with us to fix this issues_)
+ - The booking process may fail mainly because one of the seats in the order haven been sold to other client (_We will contact with the client for a relocation_)
  - Current Configuration (_This values could be change depending the conflicts over the bookings_):
      - Is not possible buy tickets with less than 24 hrs before the departure.
      - Is not possible buy when amount is less than $MX15.00 or greater than $MX10,000.00
