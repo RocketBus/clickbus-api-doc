@@ -236,6 +236,7 @@ This example is for Offline payments where is possible to buy in one of the foll
  - When the user has paid in the specified convenience store, the payment gateway may late between 1 and 8 hours to confirm the payment, being in the most of cases 1 hour
  - When the payment is success, the tickets will send via email to the client automatically 
  - The booking process may fail mainly because one of the seats in the order haven been sold to other client (_We will contact with the client for a relocation_)
+ - The offline payment should no be available when exists at least 1 pre order seat type.
  - Current Configuration (_This values could be change depending the conflicts over the bookings_):
      - Is not possible buy tickets with less than 24 hrs before the departure.
      - Is not possible buy when amount is less than $MX15.00 or greater than $MX10,000.00
