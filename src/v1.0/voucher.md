@@ -1,6 +1,6 @@
 # Group Voucher
 
-## Validate Voucher [/validatevoucher/{{voucher-name}/{{client-email}/{{payment-type}]
+## Validate Voucher [/validatevoucher/{{voucher-name}/{{client-email}]
 
 The resource "/validatevoucher" adds the discount to the current cart or returns an error response.
 
@@ -12,7 +12,6 @@ The resource "/validatevoucher" adds the discount to the current cart or returns
 |:----|:----|:----|:----|
 |**voucher name** (required)|_string_|`voucher name` parameter. A specific name for each voucher. |bus50
 |**client email** (required)|_string_|`model` parameter. Client email|client@email.com
-|**payment type** (required)|_string_|`platform` parameter. Payment type as debit or creditcard|creditcard
 
 
 **Response**
