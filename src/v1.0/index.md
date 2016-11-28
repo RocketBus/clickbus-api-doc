@@ -1,6 +1,5 @@
 FORMAT: 1A
 
-<!-- include(../versions.md) -->
 <!-- include(introduction.md) -->
 <!-- include(places.md) -->
 <!-- include(trips.md) -->

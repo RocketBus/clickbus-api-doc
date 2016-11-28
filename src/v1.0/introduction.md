@@ -1,5 +1,7 @@
 # Clickbus Public API
 
+<!-- include(../versions.md) -->
+
 **Version: 1.0**
 
 This is the documentation and samples for Clickbus Public API. Also this can be used as mocked data to simply test API integration.
