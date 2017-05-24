@@ -24,54 +24,64 @@ The given request returns a Response _200_, with a list in JSON format filled wi
 {
    "meta":"",
    "items":[
-      {
-         "id":5068,
-         "station_id":5068,
-         "slug":"queretaro-qro",
-         "locale":"es-MX",
-         "name":"Quer\u00e9taro, QRO.",
-         "is_primary":"true",
-         "created_at":"2013-11-26 17:57:06",
-         "updated_at":"2015-07-20 15:49:16",
-         "place":{
-            "id":5068,
-            "place_id":5068,
-            "locale":"es-MX",
-            "name":"Quer\u00e9taro, QRO.",
-            "created_at":"2013-11-26 17:57:06",
-            "updated_at":"2015-07-20 15:49:16",
-            "latitude":"20.5887932",
-            "longitude":"-100.3898881",
-            "state":{
-               "code":"",
-               "name":"Quer\u00e9taro, QRO."
-            }
-         }
-      },
-      {
-         "id":5047,
-         "station_id":5047,
-         "slug":"central-del-norte-ciudad-de-mexico-df",
-         "locale":"es-MX",
-         "name":"Central del Norte - Ciudad de M\u00e9xico, DF.",
-         "is_primary":"true",
-         "created_at":"2013-11-26 17:57:06",
-         "updated_at":"2015-07-20 15:49:16",
-         "place":{
-            "id":5047,
-            "place_id":5047,
-            "locale":"es-MX",
-            "name":"Central del Norte - Ciudad de M\u00e9xico, DF.",
-            "created_at":"2013-11-26 17:57:06",
-            "updated_at":"2015-07-20 15:49:16",
-            "latitude":"19.3423057",
-            "longitude":"-99.1476417",
-            "state":{
-               "code":"",
-               "name":"Central del Norte - Ciudad de M\u00e9xico, DF."
-            }
-         }
-      },
+    {
+      "id": 17466,
+      "station_id": 17466,
+      "slug": "abilene-tx",
+      "locale": "es-MX",
+      "name": "Abilene, TX",
+      "terminal_name": "",
+      "terminal_type": "Terminal",
+      "is_primary": "true",
+      "is_group": false,
+      "in_group": false,
+      "created_at": "2017-03-06 17:21:00",
+      "updated_at": "2017-03-06 17:21:00",
+      "city": "Abilene",
+      "place": {
+        "id": 17466,
+        "place_id": 17466,
+        "locale": "es-MX",
+        "name": "Abilene, TX",
+        "created_at": "2017-03-06 17:21:00",
+        "updated_at": "2017-03-06 17:21:00",
+        "latitude": null,
+        "longitude": null,
+        "state": {
+          "code": "TX (EUA)",
+          "name": "Texas"
+        }
+      }
+    },
+    {
+      "id": 16950,
+      "station_id": 16950,
+      "slug": "acambaro-gto",
+      "locale": "es-MX",
+      "name": "Acambaro, Gto",
+      "terminal_name": "",
+      "terminal_type": "Terminal",
+      "is_primary": "true",
+      "is_group": false,
+      "in_group": false,
+      "created_at": "2017-02-21 17:25:00",
+      "updated_at": "2017-02-21 17:25:00",
+      "city": "Acambaro",
+      "place": {
+        "id": 16950,
+        "place_id": 16950,
+        "locale": "es-MX",
+        "name": "Acambaro, Gto",
+        "created_at": "2017-02-21 17:25:00",
+        "updated_at": "2017-02-21 17:25:00",
+        "latitude": null,
+        "longitude": null,
+        "state": {
+          "code": "GTO",
+          "name": "Guanajuato"
+        }
+      }
+    },
       {...}
    ]
 }

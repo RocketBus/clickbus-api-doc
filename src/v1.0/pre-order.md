@@ -1,6 +1,6 @@
 # Group Pre Order
 
-- The next json snippet is part of the /trip response. You can see an array of prices, below this json you can see the screenshots of the clickbus implementation.
+- The next json snippet is part of the `seat_type` of a `/trip` response. You can see an array of prices, below this json you can see the screenshots of the clickbus implementation.
 
       {
           "seat_type": [  
@@ -66,21 +66,21 @@
 
 - First of all we show the price with maximum priority, there is only one seat available for this price (remain:1).
 
-    ![Seat One - source: http://www.clickbus.com.mx](img/pre_order_seat_one.png)
+    ![Seat One - source: http://www.clickbus.com.mx](./../../dist/img/pre_order_seat_one.png)
 
 
 - When you want to select the second seat, the pre-order price as changed, to the price with maximum priority.
 
-    ![Seat Two - source: http://www.clickbus.com.mx](img/pre_order_seat_two.png)
+    ![Seat Two - source: http://www.clickbus.com.mx](./../../dist/img/pre_order_seat_two.png)
 
 
 - With the third and fourth seat is the same, the price change on every selected seat because all this prices have remain=1.
 
-    ![Seat Three - source: http://www.clickbus.com.mx](img/pre_order_seat_three.png)
+    ![Seat Three - source: http://www.clickbus.com.mx](./../../dist/img/pre_order_seat_three.png)
 
-    ![Seat Four - source: http://www.clickbus.com.mx](img/pre_order_seat_four.png)
+    ![Seat Four - source: http://www.clickbus.com.mx](./../../dist/img/pre_order_seat_four.png)
 
 
 - With the fifth seat, there are no more pre-order prices.
 
-    ![Seat Five - source: http://www.clickbus.com.mx](img/pre_order_seat_five.png)
+    ![Seat Five - source: http://www.clickbus.com.mx](./../../dist/img/pre_order_seat_five.png)
