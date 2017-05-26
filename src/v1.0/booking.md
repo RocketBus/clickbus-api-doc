@@ -36,10 +36,8 @@ To create an Order, the request's body requires a range of data, which, for a be
 |**request.buyer.locale** (required)|_string_|Buyer's locale.|`es_MX`|
 |**request.buyer.firstName** (required)|_string_|Buyer's first name.|`Fulano`|
 |**request.buyer.lastName** (required)|_string_|Buyer's surname.|`de Silva`|
-|**request.buyer.cc_id_number** (required)|_string_|Buyer's document.|`123123123`|
 |**request.buyer.email** (required)|_string_|Buyer's email.|`fulano@teste.com.br`|
 |**request.buyer.phone** (required)|_string_|Buyer's phone, in format `(AAA)-BBB-BBBB`, where `AAA` stands for the brazilian phone's region code, and `BBB-BBBB` stands for the phone number.|`(011)-232-3333`|
-|**request.buyer.terms** (required)|_string_|Buyer's response to the _Therms and Conditions_ acceptance.|`1` stands for _agreed_, `0` stands for _disagreed_|
 |**request.buyer.meta** (required)|_object_|An empty object.|`{}`|
 |**request.buyer.payment** (required)|_object_|An object containing all the required information according to the payment method.||
 |**request.buyer.payment.method** (required)|_string_|Payment type: `card`, `offline`.|`card`|
@@ -60,8 +58,6 @@ To create an Order, the request's body requires a range of data, which, for a be
 |**request.orderItems.passenger.firstName** (required)|_string_|Passenger's first name.|`Beltrano`|
 |**request.orderItems.passenger.lastName** (required)|_string_|Passenger's surname.|`da Silva`|
 |**request.orderItems.passenger.email** (required)|_string_|Passenger's email.|`beltrano@teste.com.br`|
-|**request.orderItems.passenger.document** (required)|_string_|Passenger's document.|`11111111111`|
-|**request.orderItems.passenger.gender** (required)|_string_|`M` stands for _Male_, and `F`, for _Female_.|`M` or `F`|
 |**request.orderItems.passenger.seat** (required)|_string_|`seat` name, obtained on **Seat** proccess.|`01`|
 |**request.orderItems.passenger.meta** (required)|_object_|An empty object.|`{}`|
 
@@ -85,10 +81,8 @@ To create an Order, the request's body requires a range of data, which, for a be
                     "locale": "es_MX",
                     "firstName": "Beltrano",
                     "lastName": "Silva",
-                    "cc_id_number": "123123123",
                     "email": "teste@teste.com",
                     "phone": "(011)-232-3333",
-                    "terms": "1",
                     "meta": {},
                     "payment": {
                         "method": "card",
@@ -110,8 +104,6 @@ To create an Order, the request's body requires a range of data, which, for a be
                         "firstName": "Teste",
                         "lastName": "Teste",
                         "email": "dev@clickbus.com.br",
-                        "document": "11111111111",
-                        "gender": "M",
                         "seat": "1",
                         "meta": {}
                     }
