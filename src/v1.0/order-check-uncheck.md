@@ -14,7 +14,7 @@ This application validates and book all selected seats, especially useful with A
 The succesfull request returns a _200_ status code, on error will have an error status code (like _400_) an error description on message attribute and an error type:
 
 **Example**
-
+```json
     - Succesfull response:
       {
         "status": true,
@@ -86,7 +86,9 @@ The succesfull request returns a _200_ status code, on error will have an error 
         "orderAbandonedId": null,
         "orderAbandonedEmail": null
       }
+```
 ------------------------      
+
 
     - Error response:
 

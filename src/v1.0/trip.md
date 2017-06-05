@@ -226,11 +226,11 @@ The concept here is pretty simple: in the `position` node, we have 3 different v
 
 Consider the image below:
 
-![Seat Selection - source: http://www.clickbus.com.mx](./../../dist/img/1_bus.png)
+![Seat Selection - source: http://www.clickbus.com.mx](./../../img/1_bus.png)
 
 In this image, we can represent the Seat manipulation as an array, with X and Y axis:
 
-![Seat Selection - source: http://www.clickbus.com.mx](./../../dist/img/2_array.png)
+![Seat Selection - source: http://www.clickbus.com.mx](./../../img/2_array.png)
 
 So, if you have the following coordinates: `{(X: 3, Y: 3, Z: 0),(X: 3, Y: 4, Z: 0),(X: 7, Y: 1, Z: 0),(X: 4, Y: 1, Z: 1)}`, you have selected the the following Seats, in sequence:
 
@@ -239,9 +239,9 @@ So, if you have the following coordinates: `{(X: 3, Y: 3, Z: 0),(X: 3, Y: 4, Z: 
     - `(X: 3, Y: 4, Z: 0)` stands for Seat `"name": "15"`, 1rst floor;
     - `(X: 7, Y: 1, Z: 0)` stands for Seat `"name": "30"`, 1rst floor;
     
-    ![Seat Selection - source: http://www.clickbus.com.mx](./../../dist/img/3_seats.png)
+    ![Seat Selection - source: http://www.clickbus.com.mx](./../../img/3_seats.png)
     
 - 2nd floor
     - `(X: 4, Y: 1, Z: 1)` stands for Seat `"name": "18"`, 2nd floor;
 
-    ![Seat Selection - source: http://www.clickbus.com.mx](./../../dist/img/4_seats_2nd.png)
+    ![Seat Selection - source: http://www.clickbus.com.mx](./../../img/4_seats_2nd.png)
