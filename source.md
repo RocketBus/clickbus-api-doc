@@ -1057,8 +1057,12 @@ With the correct params, this resource returns a Response _200 OK_, as below:
 
 |CODE|DESCRIPTION|DETAILS|
 |:---:|:----|:----|
-|**E1**|_Invalid Parameters._|At least one of the parameters `store`, `model` or `platform` is missing.|
+|**E1**|_Invalid Parameters._|`store` is missing.|
+|**E2**|_Invalid Parameters._|`platform` is missing.|
+|**E3**|_Invalid Parameters._|`model` is missing.|
 |**E4**|_Invalid Parameters._|One of the following parameters is incorrect: `store`, `platform` or `model`.|
+|**E5**|_The Application encountered a temporary error and could not complete your request._|An error occurred while proccessing your Request|
+|**E6**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request to the booking engine.|
 
 
 ## How Payment Works [/payment]
