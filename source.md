@@ -533,6 +533,11 @@ api/v1/session
 
 The resource `/trip` return all information related to a specific trip, based on a given schedule ID (check **[Trips](#trips)** resource for more details).
 
+**NOTES**
+
+1. Every Request's header shall declare the key `PHPSESSID`, along with it's value, Session's ID (obtained on **Session**), as follow:
+    > Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3
+
 ### Get Trip Details [GET]
 
 **PARAMETERS**

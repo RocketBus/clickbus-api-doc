@@ -552,6 +552,14 @@
     "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"or8k5s91s66fsl3bp6ksu96qs7"</span>
 </span>}</code></pre>
 <h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/session</span></div></div></div></section><section id="trip-details" class="resource-group"><h2 class="group-heading">Trip Details <a href="#trip-details" class="permalink">&para;</a></h2><div id="trip-details-get-trip-details" class="resource"><h3 class="resource-heading">Get Trip Details <a href="#trip-details-get-trip-details" class="permalink">&nbsp;&para;</a></h3><p>The resource <code>/trip</code> return all information related to a specific trip, based on a given schedule ID (check <strong><a href="#trips">Trips</a></strong> resource for more details).</p>
+<p><strong>NOTES</strong></p>
+<ol>
+<li>Every Request’s header shall declare the key <code>PHPSESSID</code>, along with it’s value, Session’s ID (obtained on <strong>Session</strong>), as follow:
+<blockquote>
+<p>Cookie: PHPSESSID=g1898g0ogdlh9f3mfra2hl3el3</p>
+</blockquote>
+</li>
+</ol>
 <div id="trip-details-get-trip-details-get" class="action get"><h4 class="action-heading"><div class="name">Get Trip Details</div><a href="#trip-details-get-trip-details-get" class="method get">GET</a><code class="uri">/trip</code></h4><p><strong>PARAMETERS</strong></p>
 <table>
 <thead>
