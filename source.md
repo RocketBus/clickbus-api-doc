@@ -881,6 +881,352 @@ This request, with all correct params, will return a Response _202_, with the fo
 |**H20**|_Busy seat._|The lifetime of the Seat Block is expired.|
 
 
+# Group Payment STATEFUL
+
+## Calculate your Items by SessionId [/payment]
+
+The resource `/payment` retrieves all the payment details without the need of a purchase, according to your query parameters, which are:
+
+- `model`
+- `store`
+- `platform`
+
+These parameters are created for each partner, and they are required for each request. If you have any doubts or questions about how to obtain these values, please contact our commercial department at contato@clickbus.com.br.
+
+### Calculate your Items by SessionId (Stateful Mode) [GET]
+
+**PARAMETERS**
+
+|PARAMS|VALUE|DESCRIPTION|EXAMPLE|
+|:----|:----|:----|:----|
+|**model** (required)|_string_|`model` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`retail`|
+|**store** (required)|_string_|`store` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`newstore`|
+|**platform** (required)|_string_|`platform` parameter. A specific param for each partner. Please contact ClickBus at contato@clickbus.com.br for more commercial details.|`web`|
+
+This endpoint is connected with **SEAT BLOCK** endpoint. It's depend of the block to get the **SESSIONID** on cookies and calculate all costs on the flow.
+
+
+**EXAMPLE**
+
+Calculate a purchase of 10 seats, from `sao-paulo-tiete-sp` to `santos-sp`, being 5 seats for each trip, after this seats is blocked.
+
+**REQUEST**
+
+```
+api/v1/payment?store=clickbus&platform=web&model=retail
+```
+
+**RESPONSE (application/json)**
+
+With the correct params, this resource returns a Response _200 OK_, as below:
+
+```json
+{  
+   "meta":"",
+   "paymentSettings":{  
+      "creditcard":{  
+         "total":{  
+            "1":"262.90",
+            "2":"273.30",
+            "3":"276.82",
+            "4":"280.40",
+            "5":"284.00",
+            "6":"287.62",
+            "7":"235.61",
+            "8":"235.61",
+            "9":"298.73",
+            "10":"302.49",
+            "11":"235.61",
+            "12":"310.12"
+         },
+         "discount_id":0,
+         "discount_type":0,
+         "discount_value":0,
+         "savings":0,
+         "savingsType":0,
+         "fixedValue":{  
+            "1":5,
+            "2":5,
+            "3":5,
+            "4":5,
+            "5":5,
+            "6":5,
+            "7":5,
+            "8":5,
+            "9":5,
+            "10":5,
+            "11":5,
+            "12":5
+         },
+         "serviceFee":{  
+            "1":32.2854,
+            "2":42.685911,
+            "3":46.214244,
+            "4":49.788699,
+            "5":53.386215,
+            "6":57.006792,
+            "7":5,
+            "8":5,
+            "9":68.122194,
+            "10":71.881137,
+            "11":5,
+            "12":79.514328
+         },
+         "serviceFeePercentage":{  
+            "1":14,
+            "2":18.51,
+            "3":20.04,
+            "4":21.59,
+            "5":23.15,
+            "6":24.72,
+            "7":0,
+            "8":0,
+            "9":29.54,
+            "10":31.17,
+            "11":0,
+            "12":34.48
+         },
+         "tripInsurancePercentage":0,
+         "tripInsuranceValue":4.99,
+         "installmentEnabled":{  
+            "1":true,
+            "2":true,
+            "3":true,
+            "4":true,
+            "5":true,
+            "6":true,
+            "7":false,
+            "8":false,
+            "9":true,
+            "10":true,
+            "11":false,
+            "12":true
+         }
+      },
+      "creditcard.mercadopago":{  
+         "total":[  
+
+         ],
+         "discount_id":0,
+         "discount_type":0,
+         "discount_value":0,
+         "savings":0,
+         "fixedValue":[  
+
+         ],
+         "serviceFee":[  
+
+         ],
+         "serviceFeePercentage":[  
+
+         ],
+         "tripInsurancePercentage":0,
+         "tripInsuranceValue":0
+      },
+      "debitcard":{  
+         "total":"262.90",
+         "discount_id":0,
+         "discount_type":0,
+         "discount_value":0,
+         "savings":0,
+         "savingsType":0,
+         "fixedValue":5,
+         "serviceFee":32.2854,
+         "serviceFeePercentage":14,
+         "tripInsurancePercentage":0,
+         "tripInsuranceValue":4.99
+      },
+      "paypal_hpp":{  
+         "total":"262.90",
+         "discount_id":0,
+         "discount_type":0,
+         "discount_value":0,
+         "savings":0,
+         "savingsType":0,
+         "fixedValue":5,
+         "serviceFee":32.2854,
+         "serviceFeePercentage":14,
+         "tripInsurancePercentage":0,
+         "tripInsuranceValue":4.99
+      }
+   }
+}
+```
+
+**ERRORS**
+
+|CODE|DESCRIPTION|DETAILS|
+|:---:|:----|:----|
+|**E1**|_Please provide the `store` value._|The `store` field is missing.|
+|**E2**|_Please provide the `platform` value._|The `platform` field is missing.|
+|**E3**|_Please provide the `model` value._|The `model` field is missing.|
+|**E4**|_Invalid Parameters._|One of the following parameters is incorrect: `store`, `platform` or `model`.|
+|**E5**|_The Application encountered a temporary error and could not complete your request._|An error occurred while proccessing your Request|
+|**E6**|_The Server encountered a temporary error and could not complete your request._|An error occurred after sending your Request.|
+
+
+## How Payment Works [/payment]
+
+This resource provides a list for each payment option that our API offers. The calculus is based on the following operation:
+
+So, based on the following example:
+                
+```json
+    {
+    "meta": "",
+    "paymentSettings": {
+        "creditcard": {
+            "total": {
+                "1": "262.90",
+                "2": "273.30",
+                "3": "276.82",
+                "4": "280.40",
+                "5": "284.00",
+                "6": "287.62",
+                "7": "235.61",
+                "8": "235.61",
+                "9": "298.73",
+                "10": "302.49",
+                "11": "235.61",
+                "12": "310.12"
+            },
+            "discount_id": 0,
+            "discount_type": 0,
+            "discount_value": 0,
+            "savings": 0,
+            "savingsType": 0,
+            "fixedValue": {
+                "1": 5,
+                "2": 5,
+                "3": 5,
+                "4": 5,
+                "5": 5,
+                "6": 5,
+                "7": 5,
+                "8": 5,
+                "9": 5,
+                "10": 5,
+                "11": 5,
+                "12": 5
+            },
+            "serviceFee": {
+                "1": 32.2854,
+                "2": 42.685911,
+                "3": 46.214244,
+                "4": 49.788699,
+                "5": 53.386215,
+                "6": 57.006792,
+                "7": 5,
+                "8": 5,
+                "9": 68.122194,
+                "10": 71.881137,
+                "11": 5,
+                "12": 79.514328
+            },
+            "serviceFeePercentage": {
+                "1": 14,
+                "2": 18.51,
+                "3": 20.04,
+                "4": 21.59,
+                "5": 23.15,
+                "6": 24.72,
+                "7": 0,
+                "8": 0,
+                "9": 29.54,
+                "10": 31.17,
+                "11": 0,
+                "12": 34.48
+            },
+            "tripInsurancePercentage": 0,
+            "tripInsuranceValue": 4.99,
+            "installmentEnabled": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": false,
+                "8": false,
+                "9": true,
+                "10": true,
+                "11": false,
+                "12": true
+            }
+        },
+        "creditcard.mercadopago": {
+            "total": [],
+            "discount_id": 0,
+            "discount_type": 0,
+            "discount_value": 0,
+            "savings": 0,
+            "fixedValue": [],
+            "serviceFee": [],
+            "serviceFeePercentage": [],
+            "tripInsurancePercentage": 0,
+            "tripInsuranceValue": 0
+        },
+        "debitcard": {
+            "total": "262.90",
+            "discount_id": 0,
+            "discount_type": 0,
+            "discount_value": 0,
+            "savings": 0,
+            "savingsType": 0,
+            "fixedValue": 5,
+            "serviceFee": 32.2854,
+            "serviceFeePercentage": 14,
+            "tripInsurancePercentage": 0,
+            "tripInsuranceValue": 4.99
+        },
+        "paypal_hpp": {
+            "total": "262.90",
+            "discount_id": 0,
+            "discount_type": 0,
+            "discount_value": 0,
+            "savings": 0,
+            "savingsType": 0,
+            "fixedValue": 5,
+            "serviceFee": 32.2854,
+            "serviceFeePercentage": 14,
+            "tripInsurancePercentage": 0,
+            "tripInsuranceValue": 4.99
+        }
+    }
+}
+```
+
+* If the customer decides to pay in a single installment:
+* The `original_cost` is _230.60_, the `fee` is _32.30_ and the `discount_value` is _0_;
+    > (230.60 + 32.30) = **262.90** is the `total` value.
+    > 
+    > ((`total`) - 0) / 1 = **262.90** is the value for each `installment`.
+            
+* `total` is the total value, based on `installment` + `fee`;
+* `total_with_discount` is the same total value, but applying the `discount_value`.
+
+----------------------------------------
+
+## Supported Card Brands [/payment]
+
+Below you can find a list of supported card brands, based on each payment method:
+
+- **Credit Card** (`creditcard`):
+    - American Express (`amex`)
+    - Diners (`diners`)
+    - Elo (`elo`)
+    - Hipercard (`hipercard`)
+    - MasterCard (`mastercard`)
+    - Visa (`visa`)
+
+
+- **Debit Card** (`debitcard`)
+    - Visa Electron (`visa-electron`)
+    - MasterCard Maestro (`mastercard-maestro`)
+
+For **PayPal** (`paypal_hpp`), there is no specific limitation for brands.
+
+
 # Group Payments
 
 ## Calculate your Items [/payments]
