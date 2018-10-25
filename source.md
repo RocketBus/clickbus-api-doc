@@ -772,6 +772,7 @@ This request, with all correct params and being executed before the Seat block's
             "timezone": "America/Sao_Paulo"
         },
         "status": "blocked",
+        "price": "6500",
         "sessionId": "dnlfm8aecg2omtjaang62fvla5",
         "expireAt": "2015-01-20 17:46"
     }]
